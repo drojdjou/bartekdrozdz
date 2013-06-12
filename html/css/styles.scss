@@ -1,3 +1,133 @@
+@import url(http://fonts.googleapis.com/css?family=Droid+Serif);
+
+// Main
+
+*, *:link {
+	-webkit-tap-highlight-color: rgba(0.5, 0.5, 0.5, 0.5);
+}
+
 body {
-	font-family: Arial, sans-serif;
+	font-family: 'Droid Serif', serif;
+	font-size: 1em;
+	margin: 0;
+	border: 0;
+	padding: 0;
+}
+
+h1, h2, h3, p {
+	margin: 0px;
+	font-weight: normal;
+}
+
+h1 {
+	font-family: Helevetica, Arial, sans-serif;
+	font-size: 4.5em;
+	line-height: 1em;
+	-webkit-margin-before: 0;
+}
+
+h2 {
+	font-family: Helevetica, Arial, sans-serif;
+	font-size: 2.5em;
+	letter-spacing: -2px;
+	line-height: 1.2em;
+
+	a {
+		padding: 4px;
+		background-color: #000000;
+		color: #ffffff;
+		text-decoration: none;
+		white-space: nowrap;
+	}
+}
+
+// List
+
+ul {
+
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+
+	li {
+		padding: 30px 0px 30px 10px;
+		border-bottom: #ddd 1px dashed;
+		background-size: cover;
+		color: #ffffff;
+
+		h1 {
+			font-size: 2.2em;
+			font-family: Georgia;
+			font-weight: normal;
+			letter-spacing: -1.0px;
+			margin-bottom: 6px;
+		}
+
+		h3, p {
+			font-size: 0.9em;
+			font-family: 'Droid Serif', serif;
+			letter-spacing: -0.8px;
+			line-height: 1.2em;
+			display: block;
+			padding: 2px;
+		}
+
+		a {
+			color: inherit;
+		}
+	}
+
+	.fwa-sotd {
+		color: #000000;
+		background-color: #ffd200;
+		padding: 2px;
+	}
+
+	.fwa-motd {
+		color: #ffffff;
+		background-color: #1e5fa1;
+		padding: 2px;
+	}
+
+	.fwa-sotm {
+		color: #ffffff;
+		background-color: #b00000;
+		padding: 2px;
+	}
+
+	.fwa-pca {
+		background-color: #ffffff;
+		color: #327695;
+		padding: 2px;
+	}
+
+	.project-z {
+		background: url('../assets/tool.jpg');
+		//color: #fff;
+	}
+
+	.project-a {
+		background: url('../assets/toyota.jpg');
+		//color: #ffd000;
+	}
+
+	.project-b {
+		background: url('../assets/clouds.jpg');
+		//color: #aaaaaa;
+	}
+
+	.project-c {
+		background: url('../assets/rome.jpg');
+		//color: #fff;
+	}
+
+	.project-d {
+		background: url('../assets/rectify.jpg');
+		//color: #000000;
+	}
+
+	.project-e {
+		background: url('../assets/jam.jpg');
+		color: #7d511f;
+	}
 }
