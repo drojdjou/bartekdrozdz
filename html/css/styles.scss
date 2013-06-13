@@ -20,23 +20,23 @@ h1, h2, h3, p {
 }
 
 h1 {
-	font-family: Helevetica, Arial, sans-serif;
+	font-family: Helvetica, Arial, sans-serif;
 	font-size: 4.5em;
 	line-height: 1em;
 	-webkit-margin-before: 0;
 }
 
 h2 {
-	font-family: Helevetica, Arial, sans-serif;
+	font-family: Helvetica, Arial, sans-serif;
 	font-size: 2.5em;
 	letter-spacing: -2px;
 	line-height: 1.2em;
+	padding: 10px;
 
 	a {
 		padding: 4px;
-		background-color: #000000;
-		color: #ffffff;
-		text-decoration: none;
+		color: #0b4454;
+		text-decoration: underline;
 		white-space: nowrap;
 	}
 }
@@ -52,14 +52,12 @@ ul {
 	li {
 		padding: 30px 0px 30px 10px;
 		border-bottom: #ddd 1px dashed;
-		background-size: cover;
-		color: #ffffff;
 
 		h1 {
+			font-family: Helvetica, Arial, sans-serif;
 			font-size: 2.2em;
-			font-family: Georgia;
+			letter-spacing: -1px;
 			font-weight: normal;
-			letter-spacing: -1.0px;
 			margin-bottom: 6px;
 		}
 
@@ -102,32 +100,32 @@ ul {
 	}
 
 	.project-z {
-		background: url('../assets/tool.jpg');
-		//color: #fff;
+		background-color: #000;
+		color: #fff;
 	}
 
 	.project-a {
-		background: url('../assets/toyota.jpg');
-		//color: #ffd000;
+		background-color: #555555;
+		color: #ffd000;
 	}
 
 	.project-b {
-		background: url('../assets/clouds.jpg');
-		//color: #aaaaaa;
+		background-color: #444444;
+		color: #aaaaaa;
 	}
 
 	.project-c {
-		background: url('../assets/rome.jpg');
-		//color: #fff;
+		background-color: #2b65a3;
+		color: #fff;
 	}
 
 	.project-d {
-		background: url('../assets/rectify.jpg');
-		//color: #000000;
+		background-color: #dddddd;
+		color: #000000;
 	}
 
 	.project-e {
-		background: url('../assets/jam.jpg');
+		background-color: #ffffff;
 		color: #7d511f;
 	}
 }
