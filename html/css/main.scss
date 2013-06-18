@@ -1,0 +1,59 @@
+@import url(http://fonts.googleapis.com/css?family=Inconsolata);
+
+@import url('normalize.css');
+
+body {
+	font-family: 'Inconsolata', sans-serif;
+	font-size: 100%;
+	font-weight: normal;
+	margin: 10px;
+}
+
+section {
+	max-width: 1000px;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+	font-weight: normal;
+	margin: 0;
+	line-height: 1.3em;
+}
+
+h1 {
+	color: #000000;
+	font-size: 1.5em;
+
+}
+
+h2 {
+	color: #000000;
+	font-size: 1.5em;
+
+	&:before {
+		content: "+ ";
+	}
+}
+
+h3 {
+	font-style: italic;
+	font-size: 0.9em;
+}
+
+p {
+	margin-top: 10px;
+}
+
+a {
+	color: #000000;
+	text-decoration: underline;
+}
+
+ul {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+
+	li {
+		margin-top: 10px;
+	}
+}
