@@ -1,0 +1,1 @@
+<?php header("Location: steps/03_wireframe"); ?>
