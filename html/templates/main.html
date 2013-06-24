@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{$data->title} | {$data->version}</title>
+    <link rel="stylesheet" href="wireframe.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable = no">
+</head>
+<body class="wireframe">
+
+<section id="header">{$data->header}</section>
+
+<section id="work">
+    <ul>
+        {foreach from=$data->work item=project}
+        <li>
+            <h3>{$project->name}</h3>
+            <h4>{$project->date}</h4>
+            <img src="{$project->image}"/>
+            <p>{$project->desc}</p>
+        </li>
+        {/foreach}
+    </ul>
+</section>
+
+<section id="about">
+</section>
+
+<section id="doodles">
+    <ul>
+        {foreach from=$data->doodles item=doodle}
+        <li>
+            <h3>{$doodle->name}</h3>
+            <img src="{$doodle->image}"/>
+        </li>
+        {/foreach}
+    </ul>
+</section>
+
+<section id="blog">
+    {foreach from=$posts item=post}
+    <article>
+        <h2>{$post->title}</h2>
+        <h4>{$post->date}</h4>
+        <h3>{$post->header}</h3>
+        <p>{$post->content}</p>
+    </article>
+    {/foreach}
+</section>
+
+<section id="links">
+    <ul>
+        {foreach from=$data->links item=link}
+        <li><a href="{$link->url}">{$link->name}</a></li>
+        {/foreach}
+    </ul>
+</section>
+
+<script>document.write('<script src=\"http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1\"></' + 'script>')</script>
+
+</body>
+</html>

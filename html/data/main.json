@@ -1,0 +1,113 @@
+{
+    "version": "0.1",
+
+    "title": "The title of the page",
+
+    "header": "Some text that is big and goes into the header",
+
+    "work": [
+        {
+            "name": "Work One",
+            "date": "June 2013",
+            "image": "assets/temp/cow_960.jpg",
+            "desc": "Donec ullamcorper dui et magna cursus hendrerit ut ac lacus. Quisque convallis, diam sit amet fringilla tincidunt, orci lorem posuere libero, quis suscipit risus risus et tortor."
+        },
+
+        {
+            "name": "Work Two",
+            "date": "April 2013",
+            "image": "assets/temp/cow_960.jpg",
+            "desc": "Donec ullamcorper dui et magna cursus hendrerit ut ac lacus. Quisque convallis, diam sit amet fringilla tincidunt, orci lorem posuere libero, quis suscipit risus risus et tortor."
+        },
+
+        {
+            "name": "Work Three",
+            "date": "January 2013",
+            "image": "assets/temp/cow_960.jpg",
+            "desc": "Donec ullamcorper dui et magna cursus hendrerit ut ac lacus. Quisque convallis, diam sit amet fringilla tincidunt, orci lorem posuere libero, quis suscipit risus risus et tortor."
+        },
+
+        {
+            "name": "Work Four",
+            "date": "November 2012",
+            "image": "assets/temp/cow_960.jpg",
+            "desc": "Donec ullamcorper dui et magna cursus hendrerit ut ac lacus. Quisque convallis, diam sit amet fringilla tincidunt, orci lorem posuere libero, quis suscipit risus risus et tortor."
+        },
+
+        {
+            "name": "Work Five",
+            "date": "October 2012",
+            "image": "assets/temp/cow_960.jpg",
+            "desc": "Donec ullamcorper dui et magna cursus hendrerit ut ac lacus. Quisque convallis, diam sit amet fringilla tincidunt, orci lorem posuere libero, quis suscipit risus risus et tortor."
+        },
+
+        {
+            "name": "Work Six",
+            "date": "August 2012",
+            "image": "assets/temp/cow_960.jpg",
+            "desc": "Donec ullamcorper dui et magna cursus hendrerit ut ac lacus. Quisque convallis, diam sit amet fringilla tincidunt, orci lorem posuere libero, quis suscipit risus risus et tortor."
+        },
+
+        {
+            "name": "Work Seven",
+            "date": "May 2012",
+            "image": "assets/temp/cow_960.jpg",
+            "desc": "Donec ullamcorper dui et magna cursus hendrerit ut ac lacus. Quisque convallis, diam sit amet fringilla tincidunt, orci lorem posuere libero, quis suscipit risus risus et tortor."
+        }
+    ],
+
+    "about": {
+        "header": "About",
+        "parts": [
+            "Ut velit mi, varius et tincidunt in, elementum ut nulla. Duis consectetur ac tortor sed suscipit. Vestibulum vulputate tincidunt tellus in ultricies. Aenean vitae lectus nisi. Integer nisi lacus, congue eget quam vel, pretium facilisis arcu. Nulla quis venenatis sapien, ut consequat nisl. Nunc pretium pharetra ipsum nec sodales. Vestibulum tempor tortor a mauris dictum tempus.",
+            "Cras ac nunc eu magna facilisis lobortis vitae vitae felis. Phasellus non imperdiet turpis. Proin commodo scelerisque leo, ut aliquet mauris euismod in. Aliquam hendrerit mollis magna, at scelerisque magna faucibus sed. Suspendisse potenti."
+        ]
+    },
+
+    "doodles": [
+        {
+            "name": "Doodle One",
+            "image": "assets/temp/cow_320.jpg",
+            "url": ""
+        },
+        {
+            "name": "Doodle Two",
+            "image": "assets/temp/cow_320.jpg",
+            "url": ""
+        },
+        {
+            "name": "Doodle Three",
+            "image": "assets/temp/cow_320.jpg",
+            "url": ""
+        },
+        {
+            "name": "Doodle Four",
+            "image": "assets/temp/cow_320.jpg",
+            "url": ""
+        },
+        {
+            "name": "Doodle Five",
+            "image": "assets/temp/cow_320.jpg",
+            "url": ""
+        }
+    ],
+
+    "links": [
+        {
+            "name": "Twitter",
+            "url": "http://twitter.com/"
+        },
+        {
+            "name": "Codepen",
+            "url": "http://codepen.io/"
+        },
+        {
+            "name": "Github",
+            "url": "http://github.com/"
+        },
+        {
+            "name": "Vimeo",
+            "url": "http://vimeo.com/"
+        }
+    ]
+}
