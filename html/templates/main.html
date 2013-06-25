@@ -2,10 +2,10 @@
 <html>
 <head>
     <title>{$data->title} | {$data->version}</title>
-    <link rel="stylesheet" href="wireframe.css">
+    <link rel="stylesheet" href="css/layout.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable = no">
 </head>
-<body class="wireframe">
+<body class="layout">
 
 <section id="header">{$data->header}</section>
 
@@ -23,6 +23,10 @@
 </section>
 
 <section id="about">
+    <h1>{$data->about->header}</h1>
+    {foreach from=$data->about->parts item=part}
+    <p>{$part}</p>
+    {/foreach}
 </section>
 
 <section id="doodles">

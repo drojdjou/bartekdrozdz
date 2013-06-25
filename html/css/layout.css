@@ -1,0 +1,117 @@
+@import url("normalize.css");
+body {
+  font-family: sans-serif;
+  font-size: 100%;
+  font-weight: normal;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box; }
+
+* {
+  box-sizing: inherit; }
+
+.layout #header {
+  height: 5em;
+  background-color: #ffcc00; }
+.layout #work ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0; }
+  .layout #work ul li {
+    width: 100%;
+    float: left; }
+    .layout #work ul li img {
+      max-width: 100%; }
+  .layout #work ul li:nth-child(odd) {
+    background-color: #0066cc; }
+  .layout #work ul li:nth-child(even) {
+    background-color: #0080ff; }
+.layout #about {
+  background-color: #008000; }
+.layout #doodles ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0; }
+  .layout #doodles ul li {
+    float: left;
+    width: 50%; }
+    .layout #doodles ul li img {
+      max-width: 100%; }
+  .layout #doodles ul li:nth-child(4n) {
+    background-color: #663300; }
+  .layout #doodles ul li:nth-child(4n+1) {
+    background-color: #994c00; }
+  .layout #doodles ul li:nth-child(4n+2) {
+    background-color: #cc6600; }
+  .layout #doodles ul li:nth-child(4n+3) {
+    background-color: #ff8000; }
+.layout #blog {
+  clear: both; }
+  .layout #blog article {
+    width: 100%;
+    float: left; }
+  .layout #blog article:nth-child(1) {
+    background-color: #cc0000; }
+  .layout #blog article:nth-child(2) {
+    background-color: #ff0000; }
+  .layout #blog article:nth-child(3) {
+    background-color: #990000; }
+.layout #links {
+  background-color: #000000;
+  color: #ffffff;
+  text-align: center;
+  float: left;
+  width: 100%; }
+  .layout #links ul {
+    list-style-type: none; }
+  .layout #links li {
+    display: inline; }
+@media screen and (min-width: 769px) {
+  .layout #work {
+    width: 70%;
+    float: left; }
+  .layout #about {
+    width: 30%;
+    float: right; }
+  .layout #doodles {
+    clear: both; }
+    .layout #doodles ul li {
+      width: 33.33%; }
+  .layout #blog article {
+    width: 33.33%;
+    float: left; }
+  .layout #links {
+    clear: both; } }
+@media screen and (min-width: 1201px) {
+  .layout #work {
+    width: 55%;
+    float: left; }
+  .layout #about {
+    width: 22.5%;
+    float: left; }
+  .layout #doodles {
+    width: 22.5%;
+    float: left;
+    clear: none; }
+    .layout #doodles ul li {
+      width: 100%; }
+  .layout #blog {
+    clear: both; } }
+@media screen and (min-width: 1651px) {
+  .layout #work {
+    width: 40%;
+    float: left; }
+  .layout #about {
+    width: 20%;
+    float: left; }
+  .layout #doodles {
+    width: 20%;
+    float: left; }
+  .layout #blog {
+    width: 20%;
+    float: left;
+    clear: none; }
+    .layout #blog article {
+      width: 100%; }
+  .layout #links {
+    clear: both; } }
