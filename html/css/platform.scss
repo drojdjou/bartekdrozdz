@@ -1,0 +1,11 @@
+.touch #playground {
+	.flash, .webgl {
+		display: none;
+	}
+}
+
+.no-touch #playground {
+	.mobile {
+		display: none;
+	}
+}
