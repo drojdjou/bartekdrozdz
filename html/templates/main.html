@@ -1,50 +1,41 @@
 <section id="header">
-    <h1>{$data->header->name}</h1>
-    <!--<p>{$data->header->bio}</p>-->
+    <div class="top"></div>
+
+    <h2 class="header">
+        <p>Hello, my name is <b>Bartek Drozdz</b>.</p>
+
+        <p>I create <b>interactive experiences</b>.</p>
+
+        <p>I live in sunny LA and work for nice people at <a href="http://toolofna.com">Tool</a>.</p>
+    </h2>
+
+    <div class="block"></div>
+
 </section>
 
-<section id="work">
-    <h1>{$data->work->header}</h1>
-    <ul>
-        {foreach from=$data->work->list item=project}
-        <li style="background-image: url({$project->image})">
 
-            <div class="details">
-                <h3>{$project->name}</h3><br>
-                <p>{$project->desc}</p><br>
-                <h4>Company: {$project->company}</h4><br>
-            </div>
+<section id="projects">
+    <h3 class="sub-header">Work</h3>
 
-            <img class="square" src="assets/temp/aspect1-1.jpg"/>
-            <img class="wide" src="assets/temp/aspect16-9.jpg"/>
-
+    <ul class="projects">
+        {foreach from=$data->projects item=project}
+        <li>
+            <h4>{$project->name}</h4>
+            <img src="{$project->imageLarge}">
         </li>
         {/foreach}
     </ul>
 </section>
 
-<section id="playground">
-    <h1>{$data->playground->header}</h1>
-    <ul>
-        {foreach from=$data->playground->list item=experiment}
-        <li class="{$experiment->platform}">
-            <a href="{$experiment->url}"><img src="{$experiment->image}"/></a>
+<section id="play">
+    <h3 class="sub-header">Play</h3>
+
+    <ul class="play">
+        {foreach from=$data->play item=play}
+        <li>
+            <h4>{$play->name}</h4>
+            <img src="{$play->imageLarge}">
         </li>
-        {/foreach}
-    </ul>
-</section>
-
-<section id="about">
-    <h1>{$data->about->header}</h1>
-    {foreach from=$data->about->parts item=part}
-    <p>{$part}</p>
-    {/foreach}
-</section>
-
-<section id="links">
-    <ul>
-        {foreach from=$data->links item=link}
-        <li><a href="{$link->url}">{$link->name}</a></li>
         {/foreach}
     </ul>
 </section>

@@ -1,192 +1,137 @@
 {
-    "header": {
-        "name": "Bartek Drozdz",
-        "bio": ""
-    },
-
-    "work": {
-
-        "header": "Work",
-
-        "list": [
-            {
-                "name": "Donce Quis Diam",
-                "date": "June 2013",
-                "image": "assets/images/clouds_675.jpg",
-                "bgcolor": "#ff0000",
-                "desc": "Interactive music video",
-                "company": "Beep"
-            },
-
-            {
-                "name": "Dui Quis Lorem",
-                "date": "April 2013",
-                "image": "assets/images/jam_675.jpg",
-                "bgcolor": "#800000",
-                "desc": "Quisque convallis, diam sit amet fringilla tincidunt, orci lorem posuere libero, quis suscipit risus risus et tortor.",
-                "company": "Beep"
-            },
-
-            {
-                "name": "Work Three",
-                "date": "January 2013",
-                "image": "assets/images/rectify_675.jpg",
-                "bgcolor": "#ff8000",
-                "desc": "Donec fringilla tincidunt, orci lorem posuere libero.",
-                "company": "South Loren"
-            },
-
-            {
-                "name": "Work Four",
-                "date": "November 2012",
-                "image": "assets/images/rome_675.jpg",
-                "bgcolor": "#ff0080",
-                "desc": "Hendrerit ut ac lacus. Quisque convallis, diam sit amet fringilla risus risus et tortor.",
-                "company": "South Loren"
-            },
-
-            {
-                "name": "Work Five",
-                "date": "October 2012",
-                "image": "assets/images/woodbot_675.jpg",
-                "bgcolor": "#800080",
-                "desc": "Diam sit amet fringilla quis suscipit risus risus et tortor.",
-                "company": "Udon Noodle"
-            },
-
-            {
-                "name": "Work Six",
-                "date": "August 2012",
-                "image": "assets/images/toyota_675.jpg",
-                "bgcolor": "#80ff00",
-                "desc": "Donec ullamcorper dui et magna cursus hendrerit tortor.",
-                "company": "Udon Noodle"
-            },
-
-            {
-                "name": "Work Seven",
-                "date": "May 2012",
-                "image": "assets/images/tool_675.jpg",
-                "bgcolor": "#ff00ff",
-                "desc": "Aenean vitae lectus nisi. Integer nisi lacus, congue eget quam vel, pretium facilisis arcu.",
-                "company": "Udon Noodle"
-            },
-
-            {
-                "name": "Work Seven",
-                "date": "May 2012",
-                "image": "assets/images/virgin_675.jpg",
-                "bgcolor": "#ff00ff",
-                "desc": "Interactive video experience",
-                "company": "Udon Noodle"
-            },
-
-            {
-                "name": "Work Seven",
-                "date": "May 2012",
-                "image": "assets/images/porsche_675.jpg",
-                "bgcolor": "#ff00ff",
-                "desc": "Interactive video experience",
-                "company": "Udon Noodle"
-            },
-
-            {
-                "name": "Work Seven",
-                "date": "May 2012",
-                "image": "assets/images/format_675.jpg",
-                "bgcolor": "#ff00ff",
-                "desc": "Interactive video experience",
-                "company": "Udon Noodle"
-            }
-
-        ]
-    },
-
-    "about": {
-        "header": "About",
-        "parts": [
-            "Ut velit mi, varius et tincidunt in, elementum ut nulla. Duis consectetur ac tortor sed suscipit. Vestibulum vulputate tincidunt tellus in ultricies. Aenean vitae lectus nisi. Integer nisi lacus, congue eget quam vel, pretium facilisis arcu. Nulla quis venenatis sapien, ut consequat nisl. Nunc pretium pharetra ipsum nec sodales. Vestibulum tempor tortor a mauris dictum tempus.",
-            "Cras ac nunc eu magna facilisis lobortis vitae vitae felis. Phasellus non imperdiet turpis. Proin commodo scelerisque leo, ut aliquet mauris euismod in. Aliquam hendrerit mollis magna, at scelerisque magna faucibus sed. Suspendisse potenti."
-        ]
-    },
-
-    "playground": {
-
-        "header": "Playground",
-
-        "list": [
-
-            {
-                "name": "Doodle One",
-                "image": "assets/temp/black_320.jpg",
-                "url": "blah.html",
-                "platform": "flash"
-            },
-            {
-                "name": "Doodle Two",
-                "image": "assets/temp/black_320.jpg",
-                "url": "blah.html",
-                "platform": "mobile"
-            },
-            {
-                "name": "Doodle Three",
-                "image": "assets/temp/black_320.jpg",
-                "url": "blah.html",
-                "platform": "flash"
-            },
-            {
-                "name": "Doodle Four",
-                "image": "assets/temp/black_320.jpg",
-                "url": "blah.html",
-                "platform": "mobile"
-            },
-            {
-                "name": "Doodle Five",
-                "image": "assets/temp/black_320.jpg",
-                "url": "blah.html",
-                "platform": "webgl"
-            },
-            {
-                "name": "Doodle Three",
-                "image": "assets/temp/black_320.jpg",
-                "url": "blah.html",
-                "platform": "webgl"
-            },
-            {
-                "name": "Doodle Four",
-                "image": "assets/temp/black_320.jpg",
-                "url": "blah.html",
-                "platform": "mobile"
-            },
-            {
-                "name": "Doodle Five",
-                "image": "assets/temp/black_320.jpg",
-                "url": "blah.html",
-                "platform": "universal"
-            }
-        ]
-    },
-
-    "posts": {
-        "header": "Blog"
-    },
-
-    "links": [
+    "projects": [
         {
-            "name": "Twitter",
-            "url": "http://twitter.com/"
+            "name": "Tool of North America",
+            "imageLarge": "assets/images/tool_675.jpg",
+            "url": "http://toolofna.com"
         },
         {
-            "name": "Codepen",
-            "url": "http://codepen.io/"
+            "name": "Only the name remains",
+            "imageLarge": "assets/images/toyota_675.jpg",
+            "url": "http://www.toyota.com/onlythename/"
         },
         {
-            "name": "Github",
-            "url": "http://github.com/"
+            "name": "Rectify",
+            "imageLarge": "assets/images/rectify_675.jpg",
+            "url": "http://www.mylifein20years.com/"
         },
         {
-            "name": "Vimeo",
-            "url": "http://vimeo.com/"
+            "name": "Clouds over Cuba",
+            "imageLarge": "assets/images/clouds_675.jpg",
+            "url": "http://cloudsovercuba.com/"
+        },
+        {
+            "name": "Jam with Chrome",
+            "imageLarge": "assets/images/jam_675.jpg",
+            "url": "http://www.jamwithchrome.com/"
+        },
+        {
+            "name": "Experience Virgin America",
+            "imageLarge": "assets/images/virgin_675.jpg",
+            "url": "http://experiencevirginamerica.com/"
+        },
+        {
+            "name": "3 Dreams of Black",
+            "imageLarge": "assets/images/rome_675.jpg",
+            "url": "http://www.ro.me/"
+        },
+        {
+            "name": "Woodbot Pilots",
+            "imageLarge": "assets/images/woodbot_675.jpg",
+            "url": "http://www.woodbotpilots.com/"
+        },
+        {
+            "name": "Format Journey",
+            "imageLarge": "assets/images/format_675.jpg",
+            "url": "http://"
+        },
+        {
+            "name": "Porsche Bloodlines",
+            "imageLarge": "assets/images/porsche_675.jpg",
+            "url": "http://www.f-i.com/porsche_bloodlines/"
+        }
+    ],
+
+    "play": [
+        {
+            "name": "A Day in LA",
+            "imageLarge": "assets/play/day-la.jpg",
+            "url": "http://"
+        },
+        {
+            "name": "Christmas Card",
+            "imageLarge": "assets/play/xmas.jpg",
+            "url": "http://"
+        },
+        {
+            "name": "Glass shader",
+            "imageLarge": "assets/play/glass.jpg",
+            "url": "http://"
+        },
+        {
+            "name": "Globe",
+            "imageLarge": "assets/play/polygons.jpg",
+            "url": "http://"
+        },
+        {
+            "name": "Paper",
+            "imageLarge": "assets/play/paper.jpg",
+            "url": "http://"
+        },
+        {
+            "name": "Globe",
+            "imageLarge": "assets/play/sqr_globe.jpg",
+            "url": "http://"
+        },
+        {
+            "name": "Particle stream",
+            "imageLarge": "assets/play/stream.jpg",
+            "url": "http://"
+        },
+        {
+            "name": "Webcam effect",
+            "imageLarge": "assets/play/webcam.jpg",
+            "url": "http://"
+        },
+        {
+            "name": "Earth",
+            "imageLarge": "assets/play/j3d_globe.jpg",
+            "url": "http://"
+        },
+        {
+            "name": "Robot game",
+            "imageLarge": "assets/play/robotwars.jpg",
+            "url": "http://"
+        },
+        {
+            "name": "Bunker",
+            "imageLarge": "assets/play/bunker.jpg",
+            "url": "http://"
+        },
+        {
+            "name": "Jeep",
+            "imageLarge": "assets/play/jeep.jpg",
+            "url": "http://"
+        },
+        {
+            "name": "Mustang",
+            "imageLarge": "assets/play/mustang.jpg",
+            "url": "http://"
+        },
+        {
+            "name": "Walk Cycle",
+            "imageLarge": "assets/play/walk.jpg",
+            "url": "http://"
+        },
+        {
+            "name": "Leaves",
+            "imageLarge": "assets/play/leaves.jpg",
+            "url": "http://"
+        },
+        {
+            "name": "Skate",
+            "imageLarge": "assets/play/skate.jpg",
+            "url": "http://"
         }
     ]
 }

@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Loren</title>
+    <title>Bartek Drozdz</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable = no">
 
-    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="css/main.css">
+    <link href="css/main.css" media="screen, projection" rel="stylesheet" type="text/css" />
 
-    <script type="text/javascript" src="js/modernizr.js"></script>
+    <?php //include 'js-lib.html' ?>
+
     <script type="text/javascript" src="js/main.js"></script>
+
 </head>
 <body>
 
@@ -19,14 +20,9 @@ require_once(SMARTY_DIR . 'Smarty.class.php');
 
 $data = json_decode(file_get_contents('data/main.json'));
 
-$postA = json_decode(file_get_contents('data/post-a.json'));
-$postB = json_decode(file_get_contents('data/post-a.json'));
-$postC = json_decode(file_get_contents('data/post-a.json'));
-
 $smarty = new Smarty();
 
 $smarty->assign('data', $data);
-$smarty->assign('posts', array($postA, $postB, $postC));
 
 $smarty->display('templates/main.html');
 
