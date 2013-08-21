@@ -20,8 +20,10 @@
     <ul class="projects">
         {foreach from=$data->projects item=project}
         <li>
-            <h4>{$project->name}</h4>
-            <img src="{$project->imageLarge}">
+            <a href="{$project->url}" target="_blank">
+                <h4>{$project->name}</h4>
+                <img src="{$project->imageLarge}">
+            </a>
         </li>
         {/foreach}
     </ul>
@@ -33,8 +35,10 @@
     <ul class="play">
         {foreach from=$data->play item=play}
         <li>
-            <h4>{$play->name}</h4>
-            <img src="{$play->imageLarge}">
+            <a href="{$play->url}" target="_blank">
+                <h4>{$play->name}</h4>
+                <img src="{$play->imageLarge}">
+            </a>
         </li>
         {/foreach}
     </ul>

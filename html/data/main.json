@@ -43,7 +43,7 @@
         {
             "name": "Format Journey",
             "imageLarge": "assets/images/format_675.jpg",
-            "url": "http://"
+            "url": "http://www.everyday3d.com/works/installation/colors/"
         },
         {
             "name": "Porsche Bloodlines",
@@ -56,82 +56,77 @@
         {
             "name": "A Day in LA",
             "imageLarge": "assets/play/day-la.jpg",
-            "url": "http://"
+            "url": "https://vimeo.com/45402133"
         },
         {
             "name": "Christmas Card",
             "imageLarge": "assets/play/xmas.jpg",
-            "url": "http://"
+            "url": "http://everyday3d.com/j3d/toolxmas/"
         },
         {
             "name": "Glass shader",
             "imageLarge": "assets/play/glass.jpg",
-            "url": "http://"
+            "url": "http://www.everyday3d.com/j3d/demo/004_Glass.html"
         },
         {
-            "name": "Globe",
+            "name": "Polygons",
             "imageLarge": "assets/play/polygons.jpg",
-            "url": "http://"
+            "url": "http://everyday3d.com/sqr/bin/3d/005-polygons.html"
         },
         {
             "name": "Paper",
             "imageLarge": "assets/play/paper.jpg",
-            "url": "http://"
+            "url": "http://www.everyday3d.com/j3d/demo/013_Paper.html"
         },
         {
             "name": "Globe",
             "imageLarge": "assets/play/sqr_globe.jpg",
-            "url": "http://"
-        },
-        {
-            "name": "Particle stream",
-            "imageLarge": "assets/play/stream.jpg",
-            "url": "http://"
+            "url": "http://codepen.io/bartekd/full/nvpJD"
         },
         {
             "name": "Webcam effect",
             "imageLarge": "assets/play/webcam.jpg",
-            "url": "http://"
+            "url": "http://www.everyday3d.com/j3d/demo/023_Webcam_Particles.html"
         },
         {
             "name": "Earth",
             "imageLarge": "assets/play/j3d_globe.jpg",
-            "url": "http://"
+            "url": "http://www.everyday3d.com/j3d/demo/018_Sphere.html"
         },
         {
             "name": "Robot game",
             "imageLarge": "assets/play/robotwars.jpg",
-            "url": "http://"
+            "url": "http://everyday3d.com/unity3d/game/"
         },
         {
             "name": "Bunker",
             "imageLarge": "assets/play/bunker.jpg",
-            "url": "http://"
+            "url": "http://everyday3d.com/unity3d/bunker/"
         },
         {
             "name": "Jeep",
             "imageLarge": "assets/play/jeep.jpg",
-            "url": "http://"
+            "url": "http://everyday3d.com/unity3d/jeep/"
         },
         {
             "name": "Mustang",
             "imageLarge": "assets/play/mustang.jpg",
-            "url": "http://"
+            "url": "http://www.everydayflash.com/flash/mustang/"
         },
         {
             "name": "Walk Cycle",
             "imageLarge": "assets/play/walk.jpg",
-            "url": "http://"
+            "url": "http://www.everyday3d.com/flash/walk/"
         },
         {
             "name": "Leaves",
             "imageLarge": "assets/play/leaves.jpg",
-            "url": "http://"
+            "url": "http://www.everydayflash.com/flash/pv3d/leaves/"
         },
         {
             "name": "Skate",
             "imageLarge": "assets/play/skate.jpg",
-            "url": "http://"
+            "url": "http://www.everyday3d.com/skate/"
         }
     ]
 }
