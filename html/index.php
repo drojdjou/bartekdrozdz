@@ -30,7 +30,11 @@ $smarty->display('templates/main.html');
 
 ?>
 
-<script>document.write('<script src=\"http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1\"></' + 'script>')</script>
+<script>
+	if(location.host == "localhost" || location.host.indexOf("192.168") > -1) {
+		document.write('<script src=\"http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1\"></' + 'script>');
+	}
+</script>
 
 </body>
 </html>
