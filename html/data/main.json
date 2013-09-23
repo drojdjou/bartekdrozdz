@@ -64,6 +64,11 @@
             "url": "http://everyday3d.com/j3d/toolxmas/"
         },
         {
+            "name": "Spacerun",
+            "imageLarge": "assets/play/spacerun.jpg",
+            "url": "http://everyday3d.com/spacerun/game/"
+        },
+        {
             "name": "Glass shader",
             "imageLarge": "assets/play/glass.jpg",
             "url": "http://www.everyday3d.com/j3d/demo/004_Glass.html"

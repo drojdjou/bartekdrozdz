@@ -15,6 +15,8 @@
 
 <?php
 
+error_reporting(E_ERROR | E_PARSE);
+
 define('SMARTY_DIR', '../php-lib/smarty/');
 require_once(SMARTY_DIR . 'Smarty.class.php');
 
