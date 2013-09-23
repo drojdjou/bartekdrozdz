@@ -1,0 +1,45 @@
+<section id="header">
+    <div class="top"></div>
+
+    <h2 class="header">
+        <p>Hello, my name is <b>Bartek Drozdz</b>.</p>
+
+        <p>I create <b>interactive experiences</b>.</p>
+
+        <p>I live in sunny LA and work for nice people at <a href="http://toolofna.com">Tool</a>.</p>
+    </h2>
+
+    <div class="block"></div>
+
+</section>
+
+
+<section id="projects">
+    <h3 class="sub-header">Work</h3>
+
+    <ul class="projects">
+        {foreach from=$data->projects item=project}
+        <li>
+            <a href="{$project->url}" target="_blank">
+                <h4>{$project->name}</h4>
+                <img src="{$project->imageLarge}">
+            </a>
+        </li>
+        {/foreach}
+    </ul>
+</section>
+
+<section id="play">
+    <h3 class="sub-header">Play</h3>
+
+    <ul class="play">
+        {foreach from=$data->play item=play}
+        <li>
+            <a href="{$play->url}" target="_blank">
+                <h4>{$play->name}</h4>
+                <img src="{$play->imageLarge}">
+            </a>
+        </li>
+        {/foreach}
+    </ul>
+</section>

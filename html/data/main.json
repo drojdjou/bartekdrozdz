@@ -1,0 +1,137 @@
+{
+    "projects": [
+        {
+            "name": "Tool of North America",
+            "imageLarge": "assets/images/tool_675.jpg",
+            "url": "http://toolofna.com"
+        },
+        {
+            "name": "Only the name remains",
+            "imageLarge": "assets/images/toyota_675.jpg",
+            "url": "http://www.toyota.com/onlythename/"
+        },
+        {
+            "name": "Rectify",
+            "imageLarge": "assets/images/rectify_675.jpg",
+            "url": "http://www.mylifein20years.com/"
+        },
+        {
+            "name": "Clouds over Cuba",
+            "imageLarge": "assets/images/clouds_675.jpg",
+            "url": "http://cloudsovercuba.com/"
+        },
+        {
+            "name": "Jam with Chrome",
+            "imageLarge": "assets/images/jam_675.jpg",
+            "url": "http://www.jamwithchrome.com/"
+        },
+        {
+            "name": "Experience Virgin America",
+            "imageLarge": "assets/images/virgin_675.jpg",
+            "url": "http://experiencevirginamerica.com/"
+        },
+        {
+            "name": "3 Dreams of Black",
+            "imageLarge": "assets/images/rome_675.jpg",
+            "url": "http://www.ro.me/"
+        },
+        {
+            "name": "Woodbot Pilots",
+            "imageLarge": "assets/images/woodbot_675.jpg",
+            "url": "http://www.woodbotpilots.com/"
+        },
+        {
+            "name": "Format Journey",
+            "imageLarge": "assets/images/format_675.jpg",
+            "url": "http://www.everyday3d.com/works/installation/colors/"
+        },
+        {
+            "name": "Porsche Bloodlines",
+            "imageLarge": "assets/images/porsche_675.jpg",
+            "url": "http://www.f-i.com/porsche_bloodlines/"
+        }
+    ],
+
+    "play": [
+        {
+            "name": "A Day in LA",
+            "imageLarge": "assets/play/day-la.jpg",
+            "url": "https://vimeo.com/45402133"
+        },
+        {
+            "name": "Christmas Card",
+            "imageLarge": "assets/play/xmas.jpg",
+            "url": "http://everyday3d.com/j3d/toolxmas/"
+        },
+        {
+            "name": "Spacerun",
+            "imageLarge": "assets/play/spacerun.jpg",
+            "url": "http://everyday3d.com/spacerun/game/"
+        },
+        {
+            "name": "Glass shader",
+            "imageLarge": "assets/play/glass.jpg",
+            "url": "http://www.everyday3d.com/j3d/demo/004_Glass.html"
+        },
+        {
+            "name": "Polygons",
+            "imageLarge": "assets/play/polygons.jpg",
+            "url": "http://everyday3d.com/sqr/bin/3d/005-polygons.html"
+        },
+        {
+            "name": "Paper",
+            "imageLarge": "assets/play/paper.jpg",
+            "url": "http://www.everyday3d.com/j3d/demo/013_Paper.html"
+        },
+        {
+            "name": "Globe",
+            "imageLarge": "assets/play/sqr_globe.jpg",
+            "url": "http://codepen.io/bartekd/full/nvpJD"
+        },
+        {
+            "name": "Webcam effect",
+            "imageLarge": "assets/play/webcam.jpg",
+            "url": "http://www.everyday3d.com/j3d/demo/023_Webcam_Particles.html"
+        },
+        {
+            "name": "Earth",
+            "imageLarge": "assets/play/j3d_globe.jpg",
+            "url": "http://www.everyday3d.com/j3d/demo/018_Sphere.html"
+        },
+        {
+            "name": "Robot game",
+            "imageLarge": "assets/play/robotwars.jpg",
+            "url": "http://everyday3d.com/unity3d/game/"
+        },
+        {
+            "name": "Bunker",
+            "imageLarge": "assets/play/bunker.jpg",
+            "url": "http://everyday3d.com/unity3d/bunker/"
+        },
+        {
+            "name": "Jeep",
+            "imageLarge": "assets/play/jeep.jpg",
+            "url": "http://everyday3d.com/unity3d/jeep/"
+        },
+        {
+            "name": "Mustang",
+            "imageLarge": "assets/play/mustang.jpg",
+            "url": "http://www.everydayflash.com/flash/mustang/"
+        },
+        {
+            "name": "Walk Cycle",
+            "imageLarge": "assets/play/walk.jpg",
+            "url": "http://www.everyday3d.com/flash/walk/"
+        },
+        {
+            "name": "Leaves",
+            "imageLarge": "assets/play/leaves.jpg",
+            "url": "http://www.everydayflash.com/flash/pv3d/leaves/"
+        },
+        {
+            "name": "Skate",
+            "imageLarge": "assets/play/skate.jpg",
+            "url": "http://www.everyday3d.com/skate/"
+        }
+    ]
+}
