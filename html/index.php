@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Bartek Drozdz</title>
+    <title>Bartek Drozdz | Portfolio and experiments</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable = no">
 
     <link href="css/main.css" media="screen, projection" rel="stylesheet" type="text/css" />
 
     <?php //include 'js-lib.html' ?>
 
+    <script type="text/javascript" src="js/require.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
 
 </head>
