@@ -1,0 +1,120 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
+
+#content {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	pointer-events: none;
+
+	* {
+		pointer-events: auto;
+	}
+
+	.close {
+		display: none;
+		top: 16px;
+		right: 16px;
+		z-index: 1000;
+		background-color: #000000
+	}
+
+	h2 {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		background-color: #000000;
+		color: #ffffff;
+		padding: 5px;
+		margin: 16px 0 0 16px;
+	}
+
+	> iframe {
+		width: 100%;
+		poiter-events: none;
+	}
+
+	.content {
+		position: relative;
+		top: -4px;
+		background-color: #222222;
+		font-family: 'Open Sans', sans-serif;
+		width: 100%;
+
+		color: #aaaaaa;
+		font-size: 1.0em;
+		line-height: 1.7em;
+		letter-spacing: 0;
+
+		padding: 2em 0 2em 0;
+		margin: 0;
+
+		.text {
+			@demoContentWidth: 800px;
+			position: relative;
+			width: @demoContentWidth;
+			left: 50%;
+			margin: 0 0 1em @demoContentWidth * -0.5;
+			padding: 0;
+
+			h4 {
+				font-weight: 700;
+				color: #ffffff;
+				letter-spacing: 0.08em;
+			}
+
+			h6 {
+				font-weight: 400;
+				font-size: 0.75em;
+			}
+
+			em {
+				color: #ffffff;
+				font-weight: 400;
+				font-style: normal;
+			}
+
+			a {
+				color: #ffffff;
+				border-bottom: 1px solid #ffffff;
+				padding-bottom: 1px;
+
+				&:hover {
+					border-bottom: 2px solid #ffffff;
+					padding-bottom: 0;
+				}
+			}
+
+			@videoAspect: 1.779;
+
+			.video {
+				width: @demoContentWidth - 20;
+				height: (@demoContentWidth - 20) / @videoAspect;
+				margin: 20px 0 0 0;
+			}
+		}
+
+		@media screen and (max-width: 1024px) {
+			.text {
+				@demoContentWidth: 80%;
+				width: @demoContentWidth;
+				margin: 0 0 1em @demoContentWidth * -0.5;
+			
+				.video {
+					width: 100%;
+					height: auto;
+					margin: 0 0 0 0;
+				}
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+

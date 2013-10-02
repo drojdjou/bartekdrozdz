@@ -1,3 +1,4 @@
 /.idea/
 /html/templates_c/
 /html/.sass-cache/
+.DS_Store

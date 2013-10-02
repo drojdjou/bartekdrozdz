@@ -35,6 +35,12 @@ var Wrapper = function(e) {
 		return element.offsetHeight;
 	}
 
+	this.position = function() {
+	    var el = element;
+	    for (var lx=0, ly=0; el != null; lx += el.offsetLeft, ly += el.offsetTop, el = el.offsetParent);
+	    return { x: lx, y: ly };
+	}
+
 	this.css = function(p, v) {
 		if(!p) return element.style;
 		else element.style[p] = v;
@@ -43,14 +49,43 @@ var Wrapper = function(e) {
 	this.domElement = function() {
 		return element;
 	}
+
+	this.on = function(m, f) {
+		element.addEventListener(m, f);
+	}
+
+	this.off = function(m, f) {
+		element.removeEventListener(m, f);
+	}
 }
 
-Wrapper.wrapAll = function(es) {
-	var ws = [];
+Wrapper.select = function(sel) {
+	var e = document.querySelector(sel);
+	if(e) return new Wrapper(e);
+	else return null;
+}
+
+Wrapper.selectAll = function(sel) {
+	var es = document.querySelectorAll(sel), ws = []
 
 	for(var i = 0; i < es.length; i++) {
 		ws.push(new Wrapper(es[i]));
 	}
-
+	
 	return ws;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

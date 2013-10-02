@@ -1,3 +1,4 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
 body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #000000;
@@ -11,24 +12,14 @@ body {
   -moz-box-sizing: border-box;
 }
 #main {
+  position: relative;
   background-color: #ffffff;
   overflow: hidden;
-  -webkit-transition: -webkit-transform 0.3s ease;
-  -moz-transition: transform 0.3s ease;
+  -webkit-transition: -webkit-transform 0.3s ease, -webkit-filter 0.3s ease;
+  -moz-transition: transform 0.3s ease, filter 0.3s ease;
 }
 section {
   clear: both;
-}
-.mask-pattern {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  z-index: 10000;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  opacity: 0;
-  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAG0lEQVQIW2NkYGCoB+JGGM0IZIAAXBAkgF8FAOayBwPNVygOAAAAAElFTkSuQmCC') repeat;
 }
 a {
   color: inherit;
@@ -74,6 +65,148 @@ h3.sub-header {
   margin-top: 40px;
   font-weight: bold;
   padding: 20px 10px 0 10px;
+}
+.close {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+}
+.close:hover {
+  cursor: pointer;
+}
+#content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+}
+#content * {
+  pointer-events: auto;
+}
+#content .close {
+  display: none;
+  top: 16px;
+  right: 16px;
+  z-index: 1000;
+  background-color: #000000;
+}
+#content h2 {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: #000000;
+  color: #ffffff;
+  padding: 5px;
+  margin: 16px 0 0 16px;
+}
+#content > iframe {
+  width: 100%;
+  poiter-events: none;
+}
+#content .content {
+  position: relative;
+  top: -4px;
+  background-color: #222222;
+  font-family: 'Open Sans', sans-serif;
+  width: 100%;
+  color: #aaaaaa;
+  font-size: 1.0em;
+  line-height: 1.7em;
+  letter-spacing: 0;
+  padding: 2em 0 2em 0;
+  margin: 0;
+}
+#content .content .text {
+  position: relative;
+  width: 800px;
+  left: 50%;
+  margin: 0 0 1em -400px;
+  padding: 0;
+}
+#content .content .text h4 {
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.08em;
+}
+#content .content .text h6 {
+  font-weight: 400;
+  font-size: 0.75em;
+}
+#content .content .text em {
+  color: #ffffff;
+  font-weight: 400;
+  font-style: normal;
+}
+#content .content .text a {
+  color: #ffffff;
+  border-bottom: 1px solid #ffffff;
+  padding-bottom: 1px;
+}
+#content .content .text a:hover {
+  border-bottom: 2px solid #ffffff;
+  padding-bottom: 0;
+}
+#content .content .text .video {
+  width: 780px;
+  height: 438.4485666104553px;
+  margin: 20px 0 0 0;
+}
+@media screen and (max-width: 1024px) {
+  #content .content .text {
+    width: 80%;
+    margin: 0 0 1em -40%;
+  }
+  #content .content .text .video {
+    width: 100%;
+    height: auto;
+    margin: 0 0 0 0;
+  }
+}
+#about {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: 500px;
+  color: #ffffff;
+  font-size: 1.0em;
+  line-height: 1.5em;
+  padding: 0px 40px 0 30px;
+}
+#about h2 {
+  margin-top: 20px;
+}
+#about .close {
+  top: 16px;
+  right: 36px;
+}
+#about p {
+  letter-spacing: -0.05em;
+  color: #aaaaaa;
+}
+#about ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+#about ul li {
+  font-size: 0.8em;
+  line-height: 1.6em;
+}
+#about ul i {
+  color: #aaaaaa;
+}
+#about ul i:before {
+  content: " - ";
+}
+@media screen and (max-width: 600px) {
+  #about {
+    padding: 0px 20px 0 10px;
+  }
+  #about .close {
+    right: 20px;
+  }
 }
 ul.projects {
   list-style-type: none;

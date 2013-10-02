@@ -5,7 +5,7 @@ window.VirtualScroll = (function(document) {
 	var numListeners, listeners = [];
 
 	var touchStartX, touchStartY, touchMult = 2;
-	var mozMult = -6;
+	var mozMult = -8;
 
 	var event = {
 		y: 0,
@@ -17,6 +17,16 @@ window.VirtualScroll = (function(document) {
 	vs.addEventListener = function(f) {
 		listeners.push(f);
 		numListeners = listeners.length;
+	}
+
+	/**
+	 *	Firefox will not fire mouse wheel events when mouse is over an iframe. 
+	 *	Workaround - listen to mouse wheel event in the iframe and forward it here.
+	 */
+	vs.invokeFirefox = function(e) {
+		event.y += e.detail * mozMult;
+		event.deltaY = e.detail * mozMult;
+		notify();
 	}
 
 	var notify = function() {

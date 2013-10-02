@@ -1,5 +1,27 @@
 <div id="about">
+    <h2>About</h2>
 
+    <div class="close"><img src="assets/svg/close.svg"></div>
+
+    <h4>I'm a developer with 12 years of experience in coding and designing interactive content.</h4>
+
+    <p>I worked in Europe and US for several large and small interactive agencies, including F-i and North Kingdom. Currently I work at Tool in Santa Monica as Director of Technology.</p>
+
+    <p>I like to spend his time experimenting with web technology and everything around it. Occasionaly I speak at conferences and other events.</p>
+
+    <h3>Awards</h3>
+
+    <ul>
+        {foreach from=$data->awards item=award}
+        <li><b>{$award[0]}</b><i>{$award[1]}</i></li>
+        {/foreach}
+    </ul> 
+</div>
+
+<div id="content">
+    <div class="close"><img src="assets/svg/close.svg"></div>
+    <div class="content"></div>
+    <h2></h2>
 </div>
 
 <div id="main">
@@ -7,11 +29,9 @@
         <div class="top"></div>
 
         <h2 class="header">
-            <p>Hello, my name is <b>Bartek Drozdz</b>.</p>
-
+            <p>Hello, my name is <b>Bartek</b>.</p>
             <p>I create <b>interactive experiences</b>.</p>
-
-            <p>I live in sunny LA and work for nice people at <a href="http://toolofna.com">Tool</a>.</p>
+            <p>I live in sunny LA and work for nice people at <a href='http://toolofna.com'>Tool</a>.</p>
         </h2>
 
         <div class="block" id="about-btn">+</div>
@@ -23,7 +43,13 @@
 
         <ul class="projects">
             {foreach from=$data->projects item=project}
-            <li class="box" data-url="{$project->url}">
+            <li class="box" 
+                data-id="{$project->id}" 
+                data-name="{$project->name}" 
+                data-aspect="{$project->aspect}" 
+                data-type="{$project->type}" 
+                data-deps="{$project->deps}" 
+                data-url="{$project->url}">
                 <h4>{$project->name}</h4>
                 <div>
                     <img src="{$project->imageLarge}">
@@ -39,7 +65,13 @@
 
         <ul class="play">
             {foreach from=$data->play item=play}
-            <li class="box" data-url="{$play->url}">
+            <li class="box" 
+                data-id="{$play->id}" 
+                data-name="{$play->name}" 
+                data-aspect="{$play->aspect}" 
+                data-type="{$play->type}" 
+                data-deps="{$play->deps}" 
+                data-url="{$play->url}">
                 <h4>{$play->name}</h4>
                 <div>
                     <img src="{$play->imageLarge}">
@@ -49,6 +81,4 @@
             {/foreach}
         </ul>
     </section>
-
-    <div class="mask-pattern"></div>
 </div>
