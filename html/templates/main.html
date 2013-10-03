@@ -44,12 +44,7 @@
         <ul class="projects">
             {foreach from=$data->projects item=project}
             <li class="box" 
-                data-id="{$project->id}" 
-                data-name="{$project->name}" 
-                data-aspect="{$project->aspect}" 
-                data-type="{$project->type}" 
-                data-deps="{$project->deps}" 
-                data-url="{$project->url}">
+                data-id="{$project->id}">
                 <h4>{$project->name}</h4>
                 <div>
                     <img src="{$project->imageLarge}">
@@ -66,12 +61,7 @@
         <ul class="play">
             {foreach from=$data->play item=play}
             <li class="box" 
-                data-id="{$play->id}" 
-                data-name="{$play->name}" 
-                data-aspect="{$play->aspect}" 
-                data-type="{$play->type}" 
-                data-deps="{$play->deps}" 
-                data-url="{$play->url}">
+                data-id="{$play->id}">
                 <h4>{$play->name}</h4>
                 <div>
                     <img src="{$play->imageLarge}">

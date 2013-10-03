@@ -8,7 +8,8 @@ var ContentPanel = function() {
 
 	var header = Wrapper.select('#content h2');
 	var text = Wrapper.select('#content .content');
-	var iframe = Wrapper.select('#content .demo-frame');
+
+	var iframe, poster;
 
 	var onResize = function() {
 		scrollMax = text.position().y - (window.innerHeight - text.height());
@@ -25,24 +26,37 @@ var ContentPanel = function() {
 		scrollPos += (scrollTarget - scrollPos) * 0.2;
 		text.move(0, scrollPos);
 		if(iframe) iframe.move(0, scrollPos * 0.5);
+		if(poster) poster.move(0, scrollPos * 0.5);
 	}
 
-	var show = function(data) {
+	var show = function(id) {
 		active = true;
 		scrollMax = 0;
-		setTimeout(lateShow, 500, data);
+		setTimeout(lateShow, 500, Data.getProjectById(id));
 	}
 
 	var lateShow = function(data) {
+
+		console.log("Late show", data);
 		
 		close.css("display", "block");
 		content.css("display", "block"); 
 
 		header.domElement().innerHTML = data.name;
 
-		Loader.loadText("data/generic.html", function(d) {
+		Loader.loadText(data.contentUrl, function(d) {
 			text.domElement().innerHTML = d;
 			onResize();
+
+			var videoEmbeds = Wrapper.selectAll(".video iframe");
+
+			videoEmbeds.forEach(function(ve) {
+				ve.on("load", (function() {
+					var me = ve;
+					return function(e) {
+					};
+				})());
+			});
 		});
 
 		var missingDeps = [];
@@ -55,7 +69,7 @@ var ContentPanel = function() {
 		// By default all demos display in 16:9 or lower. To make them fullscreen set "aspect": "-1:-1" in json
 		var aspect = 9 / 16;
 
-		if(data.aspect != "") {
+		if(data.aspect && data.aspect != "") {
 			var aw = parseInt(data.aspect.split(":")[0]);
 			var ah = parseInt(data.aspect.split(":")[1]);
 			if(aw == -1) aspect = window.innerHeight / window.innerWidth; 
@@ -72,25 +86,36 @@ var ContentPanel = function() {
 			fh = window.innerWidth;
 		}
 
-		iframe = new Wrapper(document.createElement("iframe"));
-		iframe.domElement().setAttribute("frameBorder", "0");
+		if(data.type == "demo") {
 
-		iframe.on("load", function(e) {
-			iframe.css("opacity", "1");
+			iframe = Wrapper.create("iframe");
+			iframe.domElement().setAttribute("frameBorder", "0");
 
-			iframe.domElement().contentDocument.addEventListener("DOMMouseScroll", function(e) {
-				VirtualScroll.invokeFirefox(e);
+			iframe.on("load", function(e) {
+				iframe.css("opacity", "1");
+				iframe.domElement().contentDocument.addEventListener("DOMMouseScroll", function(e) {
+					VirtualScroll.invokeFirefox(e);
+				});
 			});
-		});
 
-		iframe.css("opacity", "0");
-		iframe.css("height", fh + "px");
+			iframe.css("opacity", "0");
+			iframe.css("height", fh + "px");
+			content.domElement().insertBefore(iframe.domElement(), text.domElement());
+			iframe.domElement().contentWindow.location.replace(data.url);
 
-		content.domElement().insertBefore(iframe.domElement(), text.domElement());
+		} else if(data.type == "article") {
 
-		iframe.domElement().contentWindow.location.replace(data.url);
+			poster = Wrapper.create("img");
 
+			poster.on("load", function(e) {
+				onResize();
+			});
 
+			poster.domElement().src = data.poster;
+
+			content.domElement().insertBefore(poster.domElement(), text.domElement());
+
+		}
 	}
 
 	var fadeOut = function() {
@@ -100,16 +125,27 @@ var ContentPanel = function() {
 
 	var hide = function() {
 		active = false;
-		close.css("display", "none");
-		content.css("display", "none");
 
-		try {
-			iframe.domElement().contentWindow.kill();
-		} catch(e) {
-			// Nevermind
+		text.domElement().innerHTML = "";
+
+		if(iframe) {
+			try {
+				iframe.domElement().contentWindow.kill();
+			} catch(e) {
+				// Nevermind
+			}
+
+			content.domElement().removeChild(iframe.domElement());
+			iframe = null;
 		}
 
-		content.domElement().removeChild(iframe.domElement());
+		if(poster) {
+			content.domElement().removeChild(poster.domElement());
+			poster = null;
+		}
+
+		close.css("display", "none");
+		content.css("display", "none");
 	}
 
 	Broadcast.addClient(Msg.SCROLL, onScroll); 

@@ -65,17 +65,11 @@ var MainPanel = function() {
 
 	boxes.forEach(function(b) {
 
-		var d = {};
-		d.id = b.domElement().getAttribute('data-id');
-		d.type = b.domElement().getAttribute('data-type');
-		d.name = b.domElement().getAttribute('data-name');
-		d.aspect = b.domElement().getAttribute('data-aspect');
-		d.deps = b.domElement().getAttribute('data-deps').split(',');
-		d.url = b.domElement().getAttribute('data-url');
+		var id = b.domElement().getAttribute('data-id');
 
 		b.on("click", function(e) { 
 			if(active) {
-				Broadcast.send(Msg.ON_ITEM_OPEN, d); 
+				Broadcast.send(Msg.ON_ITEM_OPEN, id); 
 			} else {
 				Broadcast.send(Msg.ON_ITEM_CLOSE); 
 			}

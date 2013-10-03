@@ -104,6 +104,10 @@ h3.sub-header {
   width: 100%;
   poiter-events: none;
 }
+#content > img {
+  width: 100%;
+  height: auto;
+}
 #content .content {
   position: relative;
   top: -4px;
@@ -129,6 +133,12 @@ h3.sub-header {
   color: #ffffff;
   letter-spacing: 0.08em;
 }
+#content .content .text h5 {
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.08em;
+  margin: 4px 0 4px 0;
+}
 #content .content .text h6 {
   font-weight: 400;
   font-size: 0.75em;
@@ -147,10 +157,34 @@ h3.sub-header {
   border-bottom: 2px solid #ffffff;
   padding-bottom: 0;
 }
+#content .content .text ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+#content .content .text ul li {
+  font-size: 0.8em;
+  line-height: 1.6em;
+}
+#content .content .text ul i {
+  color: #aaaaaa;
+}
+#content .content .text ul i:before {
+  content: " - ";
+}
 #content .content .text .video {
-  width: 780px;
-  height: 438.4485666104553px;
-  margin: 20px 0 0 0;
+  position: relative;
+  height: 100px;
+  padding-bottom: 56.25%;
+  /* 16:9 */
+
+}
+#content .content .text .video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 @media screen and (max-width: 1024px) {
   #content .content .text {
@@ -217,7 +251,7 @@ ul.projects {
 ul.projects li {
   float: left;
   margin: 0;
-  border: 5px solid #ffffff;
+  border: 4px solid #ffffff;
   position: relative;
   width: 100%;
   overflow: hidden;
@@ -244,9 +278,9 @@ ul.projects h4 {
   position: absolute;
   font-size: 1.6em;
   color: #ffffff;
-  margin: 0;
+  margin: 0px;
   padding: 10px;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.75);
   line-height: 1.0em;
 }
 @media screen and (min-width: 600px) {
@@ -300,13 +334,13 @@ ul.projects h4 {
 ul.play {
   list-style-type: none;
   margin: 0 5px 0 5px;
-  padding: 0;
+  padding: 0 0 0 0;
   overflow: auto;
 }
 ul.play li {
   float: left;
   margin: 0;
-  border: 5px solid #ffffff;
+  border: 4px solid #ffffff;
   position: relative;
   width: 50%;
 }

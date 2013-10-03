@@ -12,6 +12,12 @@ Loader = {
 		}
 
 		request.send();
+	},
+
+	loadJSON: function(path, onLoadedFunc){
+		Loader.loadText(path, function(text) {
+			onLoadedFunc(JSON.parse(text));
+		});
 	}
 
 }

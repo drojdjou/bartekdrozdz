@@ -1,4 +1,4 @@
-Site = function() {
+Site = function(data) {
 
 	VirtualScroll.addEventListener(function(e) {
 		// window.scroll(0, 1);
