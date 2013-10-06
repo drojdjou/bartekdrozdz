@@ -3,6 +3,7 @@ window.onload = function() {
 		"js/lib/modernizr", 
 		"js/lib/requestAnimFrame",  
 		"js/lib/virtualscroll",
+		"js/lib/history",
 		"js/lib/xmath",
 		"js/framework/Broadcast",
 		"js/framework/Loader",
@@ -14,7 +15,7 @@ window.onload = function() {
 		"js/site/AboutPanel",
 		"js/site/ContentPanel"
 	], function() {
-		Loader.loadJSON("data/main.json", function(data) {
+		Loader.loadJSON("data", function(data) {
 			Data.setMain(data);
 			Site();
 			MainPanel();

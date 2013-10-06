@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bartek Drozdz | Portfolio and experiments</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable = no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <link href="css/main.css" media="screen, projection" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript" src="js/require.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+
+</head>
+<body>
+
+<div id="about">
+    <h2>About</h2>
+
+    <div class="close"><img src="assets/svg/close.svg"></div>
+
+    <h4>I'm a developer with 12 years of experience in coding and designing interactive content.</h4>
+
+    <p>I worked in Europe and US for several large and small interactive agencies, including F-i and North Kingdom. Currently I work at Tool in Santa Monica as Director of Technology.</p>
+
+    <p>I like to spend his time experimenting with web technology and everything around it. Occasionaly I speak at conferences and other events.</p>
+
+    <h3>Awards</h3>
+
+    <ul>
+        {{#each awards}}
+            <li><b>{{[0]}}</b><i>{{[1]}}</i></li>
+        {{/each}}
+    </ul> 
+</div>
+
+<div id="content">
+    <div class="close"><img src="assets/svg/close.svg"></div>
+    <div class="content"></div>
+    <h2></h2>
+</div>
+
+<div id="main">
+    <section id="header">
+        <div class="top"></div>
+
+        <h2 class="header">
+            <p>Hello, my name is <b>Bartek</b>.</p>
+            <p>I create <b>interactive experiences</b>.</p>
+            <p>I live in sunny LA and work for nice people at <a href='http://toolofna.com'>Tool</a>.</p>
+        </h2>
+
+        <div class="block" id="about-btn">+</div>
+    </section>
+
+
+    <section id="projects">
+        <h3 class="sub-header">Work</h3>
+
+        <ul class="projects">
+            {{#each projects}}
+            <li class="box" 
+                data-id="{{id}}">
+                <h4>{{name}}</h4>
+                <div>
+                    <img src="{{imageLarge}}">
+                </div>
+                <div></div>
+            </li>
+            {{/each}}
+        </ul>
+    </section>
+
+    <section id="play">
+        <h3 class="sub-header">Play</h3>
+
+        <ul class="play">
+            {{#each play}}
+            <li class="box" 
+                data-id="{{id}}">
+                <h4>{{name}}</h4>
+                <div>
+                    <img src="{{imageLarge}}">
+                </div>
+                <div></div>
+            </li>
+            {{/each}}
+        </ul>
+    </section>
+</div>
+
+<script>
+	if(location.host == "localhost" || location.host.indexOf("192.168") > -1) {
+		document.write('<script src=\"http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1\"></' + 'script>');
+	}
+</script>
+
+</body>
+</html>
