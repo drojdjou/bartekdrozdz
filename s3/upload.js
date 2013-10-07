@@ -5,7 +5,7 @@ var walk    = require('walk');
 var files   = [];
 
 // Walker options
-var walker  = walk.walk('../static', { followLinks: false });
+var walker  = walk.walk('./static', { followLinks: false });
 
 walker.on('file', function(root, stat, next) {
     // Add this file to the list of files

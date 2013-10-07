@@ -8,7 +8,7 @@
             "imageLarge": "assets/images/tool_675.jpg",
             "poster": "assets/content/tool-235.jpg",
             "url": "data/projects/toolofna.html",
-            "contentUrl": "data/projects/toolofna.html"
+            "contentUrl": "data/toolofna"
         },
         {
             "id": "onlythename",
@@ -18,7 +18,7 @@
             "imageLarge": "assets/images/toyota_675.jpg",
             "url": "http://www.toyota.com/onlythename/",
             "poster": "assets/content/toyota-235.jpg",
-            "contentUrl": "data/projects/toyota.html"
+            "contentUrl": "data/toyota"
         },
         {
             "id": "rectify",
@@ -28,7 +28,7 @@
             "imageLarge": "assets/images/rectify_675.jpg",
             "url": "http://www.mylifein20years.com/",
             "poster": "assets/content/rectify-235.jpg",
-            "contentUrl": "data/projects/rectify.html"
+            "contentUrl": "data/rectify"
         },
         {
             "id": "clouds",
@@ -38,7 +38,7 @@
             "imageLarge": "assets/images/clouds_675.jpg",
             "poster": "assets/content/cuba-235.jpg",
             "url": "http://cloudsovercuba.com/",
-            "contentUrl": "data/projects/cuba.html"
+            "contentUrl": "data/cuba"
         },
         {
             "id": "jam",
@@ -48,7 +48,7 @@
             "imageLarge": "assets/images/jam_675.jpg",
             "url": "http://www.jamwithchrome.com/",
             "poster": "assets/content/jam-235.jpg",
-            "contentUrl": "data/projects/jam.html"
+            "contentUrl": "data/jam"
         },
         {
             "id": "virgin",
@@ -58,7 +58,7 @@
             "imageLarge": "assets/images/virgin_675.jpg",
             "poster": "assets/content/virgin-235.jpg",
             "url": "http://experiencevirginamerica.com/",
-            "contentUrl": "data/projects/virgin.html"
+            "contentUrl": "data/virgin"
         },
         {
             "id": "rome",
@@ -68,7 +68,7 @@
             "imageLarge": "assets/images/rome_675.jpg",
             "poster": "assets/content/rome-235.jpg",
             "url": "http://www.ro.me/",
-            "contentUrl": "data/projects/rome.html"
+            "contentUrl": "data/rome"
         },
         {
             "id": "woodbots",
@@ -78,7 +78,7 @@
             "imageLarge": "assets/images/woodbot_675.jpg",
             "poster": "assets/content/woodbots-235.jpg",
             "url": "http://www.woodbotpilots.com/",
-            "contentUrl": "data/projects/woodbots.html"
+            "contentUrl": "data/woodbots"
         },
         {
             "id": "format",
@@ -87,7 +87,7 @@
             "name": "Format Journey",
             "imageLarge": "assets/images/format_675.jpg",
             "url": "http://www.everyday3d.com/works/installation/colors/",
-            "contentUrl": "data/projects/format.html"
+            "contentUrl": "data/format"
         },
         {
             "id": "bloodlines",
@@ -97,7 +97,7 @@
             "imageLarge": "assets/images/porsche_675.jpg",
             "poster": "assets/content/porsche-235.jpg",
             "url": "http://www.f-i.com/porsche_bloodlines/",
-            "contentUrl": "data/projects/porsche.html"
+            "contentUrl": "data/porsche"
         }
     ],
 
@@ -110,7 +110,7 @@
             "name": "Christmas Card",
             "imageLarge": "assets/play/xmas.jpg",
             "url": "http://everyday3d.com/j3d/toolxmas/",
-            "contentUrl": "data/generic.html"
+            "contentUrl": "data/generic"
         },
         {
             "id": "spacerun",
@@ -120,7 +120,7 @@
             "imageLarge": "assets/play/spacerun.jpg",
             "url": "http://localhost/Documents/javascript/spacerun/game/",
             "url2": "http://everyday3d.com/spacerun/game/",
-            "contentUrl": "data/generic.html"
+            "contentUrl": "data/generic"
         },
         {
             "id": "glass",
@@ -130,7 +130,7 @@
             "imageLarge": "assets/play/glass.jpg",
             "url": "http://localhost/Documents/javascript/J3D/demo/004_Glass.html",
             "url2": "http://www.everyday3d.com/j3d/demo/004_Glass.html",
-            "contentUrl": "data/generic.html"
+            "contentUrl": "data/generic"
         },
         {
             "id": "polygons",
@@ -139,7 +139,7 @@
             "deps": ["canvas"],
             "imageLarge": "assets/play/polygons.jpg",
             "url": "http://everyday3d.com/sqr/bin/3d/005-polygons.html",
-            "contentUrl": "data/generic.html"
+            "contentUrl": "data/generic"
         },
         {
             "id": "paper",
@@ -148,7 +148,7 @@
             "deps": ["webgl"],
             "imageLarge": "assets/play/paper.jpg",
             "url": "http://www.everyday3d.com/j3d/demo/013_Paper.html",
-            "contentUrl": "data/generic.html"
+            "contentUrl": "data/generic"
         },
         {
             "id": "globe",
@@ -158,7 +158,7 @@
             "imageLarge": "assets/play/sqr_globe.jpg",
             "url": "/Documents/javascript/squareroot.js/bin/3d/003-globe.html",
             "url2": "http://codepen.io/bartekd/full/nvpJD",
-            "contentUrl": "data/generic.html"
+            "contentUrl": "data/generic"
         },
         {
             "id": "webcam",
@@ -167,7 +167,7 @@
             "name": "Webcam effect",
             "imageLarge": "assets/play/webcam.jpg",
             "url": "http://www.everyday3d.com/j3d/demo/023_Webcam_Particles.html",
-            "contentUrl": "data/generic.html"
+            "contentUrl": "data/generic"
         },
         {
             "id": "earth",
@@ -176,7 +176,7 @@
             "deps": ["webgl"],
             "imageLarge": "assets/play/j3d_globe.jpg",
             "url": "http://www.everyday3d.com/j3d/demo/018_Sphere.html",
-            "contentUrl": "data/generic.html"
+            "contentUrl": "data/generic"
         },
         {
             "id": "robotwars",
@@ -185,7 +185,7 @@
             "deps": ["unity3d"],
             "imageLarge": "assets/play/robotwars.jpg",
             "url": "http://everyday3d.com/unity3d/game/",
-            "contentUrl": "data/generic.html"
+            "contentUrl": "data/generic"
         },
         {
             "id": "bunker",
@@ -194,7 +194,7 @@
             "deps": ["unity3d"],
             "imageLarge": "assets/play/bunker.jpg",
             "url": "http://everyday3d.com/unity3d/bunker/",
-            "contentUrl": "data/generic.html"
+            "contentUrl": "data/generic"
         },
         {
             "id": "jeep",
@@ -203,7 +203,7 @@
             "deps": ["unity3d"],
             "imageLarge": "assets/play/jeep.jpg",
             "url": "http://everyday3d.com/unity3d/jeep/",
-            "contentUrl": "data/generic.html"
+            "contentUrl": "data/generic"
         },
         {
             "id": "mustang",
@@ -212,7 +212,7 @@
             "deps": ["flash"],
             "imageLarge": "assets/play/mustang.jpg",
             "url": "http://www.everydayflash.com/flash/mustang/",
-            "contentUrl": "data/generic.html"
+            "contentUrl": "data/generic"
         },
         {
             "id": "pants",
@@ -221,7 +221,7 @@
             "deps": ["flash"],
             "imageLarge": "assets/play/walk.jpg",
             "url": "http://www.everyday3d.com/flash/walk/",
-            "contentUrl": "data/generic.html"
+            "contentUrl": "data/generic"
         },
         {
             "id": "leaves",
@@ -230,7 +230,7 @@
             "deps": ["flash"],
             "imageLarge": "assets/play/leaves.jpg",
             "url": "http://www.everydayflash.com/flash/pv3d/leaves/",
-            "contentUrl": "data/generic.html"
+            "contentUrl": "data/generic"
         },
         {
             "id": "skate",
@@ -239,7 +239,7 @@
             "deps": ["flash"],
             "imageLarge": "assets/play/skate.jpg",
             "url": "http://www.everyday3d.com/skate/",
-            "contentUrl": "data/generic.html"
+            "contentUrl": "data/generic"
         }
     ],
 
