@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable = no">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-    <link href="css/main.css" media="screen, projection" rel="stylesheet" type="text/css" />
+    <link href="css/style.css" media="screen, projection" rel="stylesheet" type="text/css" />
+
 
     <script type="text/javascript" src="js/require.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
@@ -14,47 +15,55 @@
 <body>
 
 <div id="about">
-    <h2>About</h2>
+    <section>
+        <h2>About</h2>
 
-    <div class="close"><img src="assets/svg/close.svg"></div>
+        <div class="close"><img src="assets/svg/close.svg"></div>
 
-    <h4>I'm a developer with 12 years of experience in coding and designing interactive content.</h4>
+        <h4>I'm a developer with 12 years of experience in coding and designing interactive content.</h4>
 
-    <p>I worked in Europe and US for several large and small interactive agencies, including F-i and North Kingdom. Currently I work at Tool in Santa Monica as Director of Technology.</p>
+        <p>I worked in Europe and US for several large and small interactive agencies, including F-i and North Kingdom. Currently I work at Tool in Santa Monica as Director of Technology.</p>
 
-    <p>I like to spend his time experimenting with web technology and everything around it. Occasionaly I speak at conferences and other events.</p>
+        <p>I worked in Europe and US for several large and small interactive agencies, including F-i and North Kingdom. Currently I work at Tool in Santa Monica as Director of Technology.</p>
 
-    <h3>Awards</h3>
+        <p>I worked in Europe and US for several large and small interactive agencies, including F-i and North Kingdom. Currently I work at Tool in Santa Monica as Director of Technology.</p>
 
-    <ul>
-        {{#each awards}}
-            <li><b>{{[0]}}</b><i>{{[1]}}</i></li>
-        {{/each}}
-    </ul> 
+        <p>I worked in Europe and US for several large and small interactive agencies, including F-i and North Kingdom. Currently I work at Tool in Santa Monica as Director of Technology.</p>
+
+        <p>I like to spend his time experimenting with web technology and everything around it. Occasionaly I speak at conferences and other events.</p>
+
+        <h3>Awards</h3>
+
+        <ul>
+            {{#each awards}}
+                <li><b>{{[0]}}</b><i>{{[1]}}</i></li>
+            {{/each}}
+        </ul> 
+    </section>
 </div>
 
 <div id="content">
-    <div class="close"><img src="assets/svg/close.svg"></div>
-    <div class="content"></div>
-    <h2></h2>
+    <section>
+        <div class="close"><img src="assets/svg/close.svg"></div>
+        <div class="content"></div>
+        <h2></h2>
+    </section>
 </div>
 
 <div id="main">
     <section id="header">
-        <div class="top"></div>
-
-        <h2 class="header">
+        <div></div>
+        <h2>
             <p>Hello, my name is <b>Bartek</b>.</p>
             <p>I create <b>interactive experiences</b>.</p>
             <p>I live in sunny LA and work for nice people at <a href='http://toolofna.com'>Tool</a>.</p>
         </h2>
-
-        <div class="block" id="about-btn">+</div>
+        <div id="about-btn">+</div>
     </section>
 
 
     <section id="projects">
-        <h3 class="sub-header">Work</h3>
+        <h3>Work</h3>
 
         <ul class="projects">
             {{#each projects}}
@@ -62,7 +71,7 @@
                 data-id="{{id}}">
                 <h4>{{name}}</h4>
                 <div>
-                    <img src="{{imageLarge}}">
+                    <img src="assets/content/675sq/{{id}}.jpg">
                 </div>
                 <div></div>
             </li>
@@ -89,7 +98,7 @@
 </div>
 
 <script>
-	if(location.host == "localhost" || location.host.indexOf("192.168") > -1) {
+	if(location.host.indexOf("localhost") > -1 || location.host.indexOf("192.168") > -1) {
 		document.write('<script src=\"http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1\"></' + 'script>');
 	}
 </script>

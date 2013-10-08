@@ -1,71 +1,20 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
+html,
 body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  color: #000000;
   background-color: #222222;
+  color: #000000;
   margin: 0;
   padding: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
 }
 * {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
-}
-#main {
-  position: relative;
-  background-color: #ffffff;
-  overflow-x: hidden;
-  overflow-y: auto;
-  -webkit-transition: -webkit-transform 0.3s ease, -webkit-filter 0.3s ease;
-  -moz-transition: transform 0.3s ease, filter 0.3s ease;
-}
-section {
-  clear: both;
-}
-a {
-  color: inherit;
-  text-decoration: none;
-}
-.top {
-  background-color: #000000;
-  width: 110px;
-  height: 40px;
-  margin-left: 10px;
-}
-.block {
-  background-color: #000000;
-  width: 110px;
-  margin-left: 10px;
-  color: #ffffff;
-  padding: 5px 5px 8px 5px;
-  font-weight: bold;
-  font-size: 0.8em;
-}
-.block:hover {
-  background-color: #9b2222;
-  cursor: pointer;
-}
-h2.header {
-  font-size: 2.2em;
-  line-height: 1.0em;
-  letter-spacing: -0.05em;
-  font-weight: 600;
-  margin: 0;
-  padding: 20px 10px 24px 10px;
-}
-h2.header p {
-  margin: 0 0 0 0;
-  line-height: 1.2em;
-  display: inline;
-}
-h2.header b,
-h2.header a {
-  color: #9b2222;
-}
-h3.sub-header {
-  margin-top: 40px;
-  font-weight: bold;
-  padding: 20px 10px 0 10px;
+  outline: none;
 }
 .close {
   position: absolute;
@@ -75,12 +24,87 @@ h3.sub-header {
 .close:hover {
   cursor: pointer;
 }
+#main {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-transition: -webkit-transform 0.3s ease, -webkit-filter 0.3s ease;
+  -moz-transition: transform 0.3s ease, filter 0.3s ease;
+}
+#main a {
+  color: inherit;
+  text-decoration: none;
+}
+#main section#header > div:nth-of-type(1) {
+  background-color: #000000;
+  width: 110px;
+  height: 40px;
+  margin-left: 10px;
+}
+#main section#header > div:nth-of-type(2) {
+  background-color: #000000;
+  width: 110px;
+  margin-left: 10px;
+  color: #ffffff;
+  padding: 5px 5px 8px 5px;
+  font-weight: bold;
+  font-size: 0.8em;
+}
+#main section#header > div:nth-of-type(2):hover {
+  background-color: #9b2222;
+  cursor: pointer;
+}
+#main section#header h2 {
+  font-size: 2.2em;
+  line-height: 1.0em;
+  letter-spacing: -0.05em;
+  font-weight: 600;
+  margin: 0;
+  padding: 20px 10px 24px 10px;
+}
+#main section#header h2 p {
+  margin: 0 0 0 0;
+  line-height: 1.2em;
+  display: inline;
+}
+#main section#header h2 b,
+#main section#header h2 a {
+  color: #9b2222;
+}
+@media screen and (min-width: 600px) {
+  #main section#header h2 {
+    font-size: 2.4em;
+  }
+}
+@media screen and (min-width: 1100px) {
+  #main section#header h2 {
+    font-size: 2.9em;
+  }
+  #main section#header h2 p {
+    display: block;
+  }
+}
+@media screen and (min-width: 1460px) {
+  #main section#header h2 {
+    font-size: 3.9em;
+  }
+}
+@media screen and (min-width: 1800px) {
+  #main section#header h2 {
+    font-size: 5.2em;
+  }
+}
 #content {
   position: absolute;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
   top: 0;
   left: 0;
   width: 100%;
-  pointer-events: none;
 }
 #content * {
   pointer-events: auto;
@@ -101,13 +125,27 @@ h3.sub-header {
   padding: 5px;
   margin: 16px 0 0 16px;
 }
-#content > iframe {
+#content section > iframe {
   width: 100%;
   poiter-events: none;
 }
-#content > img {
+#content section > img {
   width: 100%;
   height: auto;
+}
+@media screen and (max-width: 600px) {
+  #content .close {
+    top: 4px;
+    right: 4px;
+    background-color: none;
+  }
+  #content h2 {
+    padding: 7px;
+    margin: 0 0 0 0;
+    width: 100%;
+    font-size: 1.2em;
+    background-color: rgba(0, 0, 0, 0.75);
+  }
 }
 #content .content {
   position: relative;
@@ -151,12 +189,16 @@ h3.sub-header {
 }
 #content .content .text a {
   color: #ffffff;
-  border-bottom: 1px solid #ffffff;
-  padding-bottom: 1px;
+  text-decoration: underline;
 }
-#content .content .text a:hover {
-  border-bottom: 2px solid #ffffff;
-  padding-bottom: 0;
+#content .content .text .video-link {
+  margin: 0;
+  padding: 0;
+}
+#content .content .text .video-link a {
+  color: #808080;
+  border: 0;
+  font-size: 0.8em;
 }
 #content .content .text ul {
   list-style-type: none;
@@ -180,7 +222,8 @@ h3.sub-header {
   /* 16:9 */
 
 }
-#content .content .text .video iframe {
+#content .content .text .video iframe,
+#content .content .text .video video {
   position: absolute;
   top: 0;
   left: 0;
@@ -188,9 +231,13 @@ h3.sub-header {
   height: 100%;
 }
 @media screen and (max-width: 1024px) {
+  #content .content {
+    line-height: 1.5em;
+    padding: 1em 0 0 0;
+  }
   #content .content .text {
-    width: 80%;
-    margin: 0 0 1em -40%;
+    width: 90%;
+    margin: 0 0 1em -45%;
   }
   #content .content .text .video {
     width: 100%;
@@ -200,6 +247,9 @@ h3.sub-header {
 }
 #about {
   position: absolute;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
   top: 0;
   left: 0;
   width: 100%;
@@ -243,13 +293,43 @@ h3.sub-header {
     right: 20px;
   }
 }
-ul.projects {
+section#projects h3,
+section#play h3 {
+  margin-top: 40px;
+  font-weight: bold;
+  padding: 20px 10px 0 10px;
+}
+@media screen and (min-width: 600px) {
+  section#projects h3,
+  section#play h3 {
+    font-size: 1.2em;
+  }
+}
+@media screen and (min-width: 1100px) {
+  section#projects h3,
+  section#play h3 {
+    font-size: 1.4em;
+  }
+}
+@media screen and (min-width: 1460px) {
+  section#projects h3,
+  section#play h3 {
+    font-size: 1.6em;
+  }
+}
+@media screen and (min-width: 1800px) {
+  section#projects h3,
+  section#play h3 {
+    font-size: 1.8em;
+  }
+}
+section#projects ul.projects {
   list-style-type: none;
   margin: 0 5px 0 5px;
   padding: 0;
   overflow: auto;
 }
-ul.projects li {
+section#projects ul.projects li {
   float: left;
   margin: 0;
   border: 4px solid #ffffff;
@@ -257,24 +337,24 @@ ul.projects li {
   width: 100%;
   overflow: hidden;
 }
-ul.projects li div:nth-of-type(1) {
+section#projects ul.projects li div:nth-of-type(1) {
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
 }
-ul.projects li div:nth-of-type(2) {
+section#projects ul.projects li div:nth-of-type(2) {
   margin-top: 100%;
 }
-ul.projects img {
+section#projects ul.projects img {
   z-index: 10;
   position: relative;
   width: 100%;
   height: 100%;
   display: block;
 }
-ul.projects h4 {
+section#projects ul.projects h4 {
   z-index: 1000;
   position: absolute;
   font-size: 1.6em;
@@ -285,84 +365,56 @@ ul.projects h4 {
   line-height: 1.0em;
 }
 @media screen and (min-width: 600px) {
-  h2.header {
-    font-size: 2.4em;
-  }
-  h3.sub-header {
-    font-size: 1.2em;
-  }
-  ul.projects li {
+  section#projects ul.projects li {
     width: 50%;
   }
 }
 @media screen and (min-width: 1100px) {
-  h2.header {
-    font-size: 2.9em;
-  }
-  h2.header p {
-    display: block;
-  }
-  h3.sub-header {
-    font-size: 1.4em;
-    font-weight: bold;
-  }
-  ul.projects li {
+  section#projects ul.projects li {
     width: 33.33%;
   }
 }
 @media screen and (min-width: 1460px) {
-  h2.header {
-    font-size: 3.9em;
-  }
-  h3.sub-header {
-    font-size: 1.6em;
-  }
-  ul.projects li {
+  section#projects ul.projects li {
     width: 25%;
   }
 }
 @media screen and (min-width: 1800px) {
-  h2.header {
-    font-size: 5.2em;
-  }
-  h3.sub-header {
-    font-size: 1.8em;
-  }
-  ul.projects li {
+  section#projects ul.projects li {
     width: 20%;
   }
 }
-ul.play {
+section#play ul.play {
   list-style-type: none;
   margin: 0 5px 0 5px;
   padding: 0 0 0 0;
   overflow: auto;
 }
-ul.play li {
+section#play ul.play li {
   float: left;
   margin: 0;
   border: 4px solid #ffffff;
   position: relative;
   width: 50%;
 }
-ul.play li div:nth-of-type(1) {
+section#play ul.play li div:nth-of-type(1) {
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
 }
-ul.play li div:nth-of-type(2) {
+section#play ul.play li div:nth-of-type(2) {
   margin-top: 100%;
 }
-ul.play img {
+section#play ul.play img {
   z-index: 10;
   position: relative;
   width: 100%;
   height: auto;
   display: block;
 }
-ul.play h4 {
+section#play ul.play h4 {
   z-index: 1000;
   position: absolute;
   font-size: 01.0em;
@@ -373,22 +425,22 @@ ul.play h4 {
   line-height: 1.0em;
 }
 @media screen and (min-width: 600px) {
-  ul.play li {
+  section#play ul.play li {
     width: 33.33%;
   }
 }
 @media screen and (min-width: 1100px) {
-  ul.play li {
+  section#play ul.play li {
     width: 25%;
   }
 }
 @media screen and (min-width: 1460px) {
-  ul.play li {
+  section#play ul.play li {
     width: 20%;
   }
 }
 @media screen and (min-width: 1800px) {
-  ul.play li {
+  section#play ul.play li {
     width: 16.66%;
   }
 }

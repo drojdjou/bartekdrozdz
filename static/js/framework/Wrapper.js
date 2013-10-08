@@ -32,7 +32,8 @@ var Wrapper = function(e) {
 	}
 
 	this.height = function() {
-		return element.offsetHeight;
+		// return element.offsetHeight;
+		return element.scrollHeight;
 	}
 
 	this.position = function() {

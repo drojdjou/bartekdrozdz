@@ -1,4 +1,19 @@
+var Config = {
+	vscrollEnabled: true,
+	scrollMargin: 50
+};
+
 window.onload = function() {	
+
+	if(Config.vscrollEnabled) {
+		document.querySelector('#main').style.overflowY = "hidden";
+		document.querySelector('#about').style.overflowY = "hidden";
+		document.querySelector('#content').style.overflowY = "hidden";
+		document.querySelector('#content').style.pointerEvents = "none";
+	}
+
+	window.scroll(0, 1);
+
 	require([
 		"js/lib/modernizr", 
 		"js/lib/requestAnimFrame",  

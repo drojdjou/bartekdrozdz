@@ -2,7 +2,7 @@ window.VirtualScroll = (function(document) {
 
 	var vs = {};
 
-	var numListeners, listeners = [];
+	var numListeners, listeners = [], initialized = false;
 
 	var touchStartX, touchStartY, touchMult = 2;
 	var mozMult = -8;
@@ -15,6 +15,7 @@ window.VirtualScroll = (function(document) {
 	};
 
 	vs.addEventListener = function(f) {
+		if(!initialized) initListeners(); 
 		listeners.push(f);
 		numListeners = listeners.length;
 	}
@@ -35,38 +36,43 @@ window.VirtualScroll = (function(document) {
 		}
 	}
 
-	document.addEventListener("mousewheel", function(e) {
-		e.preventDefault();
-		event.y += e.wheelDeltaY;
-		event.deltaY = e.wheelDeltaY;
-		notify();		
-	});
+	var initListeners = function() {
 
-	document.addEventListener("DOMMouseScroll", function(e) {
-		e.preventDefault();
-		event.y += e.detail * mozMult;
-		event.deltaY = e.detail * mozMult;
-		notify();		
-	});
+		document.addEventListener("mousewheel", function(e) {
+			e.preventDefault();
+			event.y += e.wheelDeltaY;
+			event.deltaY = e.wheelDeltaY;
+			notify();		
+		});
 
-	document.addEventListener("touchstart", function(e) {
-		touchStartX = e.targetTouches[0].pageX;
-		touchStartY = e.targetTouches[0].pageY;
-	});
+		document.addEventListener("DOMMouseScroll", function(e) {
+			e.preventDefault();
+			event.y += e.detail * mozMult;
+			event.deltaY = e.detail * mozMult;
+			notify();		
+		});
 
-	document.addEventListener("touchmove", function(e) {
-		e.preventDefault();
+		document.addEventListener("touchstart", function(e) {
+			touchStartX = e.targetTouches[0].pageX;
+			touchStartY = e.targetTouches[0].pageY;
+		});
 
-		var v = (e.targetTouches[0].pageY - touchStartY) * touchMult;
-		event.y += v;
-		event.deltaY = v;
-		touchStartY = e.targetTouches[0].pageY;
+		document.addEventListener("touchmove", function(e) {
+			e.preventDefault();
 
-		// if(event.y > 1000) window.scroll(0, 1);
-		// else window.scroll(0, 0);
+			var v = (e.targetTouches[0].pageY - touchStartY) * touchMult;
+			event.y += v;
+			event.deltaY = v;
+			touchStartY = e.targetTouches[0].pageY;
 
-		notify();
-	});
+			// if(event.y > 1000) window.scroll(0, 1);
+			// else window.scroll(0, 0);
+
+			notify();
+		});
+
+		initialized = true;
+	}
 
 	return vs;
 })(document);

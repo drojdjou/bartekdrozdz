@@ -3,11 +3,11 @@ var AboutPanel = function() {
 	var active = false;
 	var scrollPos = 0, scrollTarget = 0, scrollMax;
 
-	var about = 		Wrapper.select('#about');
+	var about = 		Wrapper.select('#about section');
 	var close = 		Wrapper.select('#about .close');
 
 	var onResize = function() {
-		scrollMax = (about.height() < window.innerHeight) ? 0 : about.height() - window.innerHeight;
+		scrollMax = (about.height() < window.innerHeight) ? 0 : about.height() - window.innerHeight + Config.scrollMargin;
 	}
 
 	var onScroll = function(e) {

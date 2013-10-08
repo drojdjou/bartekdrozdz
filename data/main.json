@@ -5,18 +5,14 @@
             "type": "article",
             "deps": [],
             "name": "Tool of North America",
-            "imageLarge": "assets/images/tool_675.jpg",
-            "poster": "assets/content/tool-235.jpg",
             "url": "data/projects/toolofna.html",
             "contentUrl": "data/toolofna"
         },
         {
-            "id": "onlythename",
+            "id": "toyota",
             "type": "article",
             "deps": [],
             "name": "Only the name remains",
-            "imageLarge": "assets/images/toyota_675.jpg",
-            "url": "http://www.toyota.com/onlythename/",
             "poster": "assets/content/toyota-235.jpg",
             "contentUrl": "data/toyota"
         },
@@ -25,18 +21,14 @@
             "name": "Rectify",
             "type": "article",
             "deps": [],
-            "imageLarge": "assets/images/rectify_675.jpg",
-            "url": "http://www.mylifein20years.com/",
             "poster": "assets/content/rectify-235.jpg",
             "contentUrl": "data/rectify"
         },
         {
-            "id": "clouds",
+            "id": "cuba",
             "type": "article",
             "deps": [],
             "name": "Clouds over Cuba",
-            "imageLarge": "assets/images/clouds_675.jpg",
-            "poster": "assets/content/cuba-235.jpg",
             "url": "http://cloudsovercuba.com/",
             "contentUrl": "data/cuba"
         },
@@ -45,9 +37,7 @@
             "type": "article",
             "deps": [],
             "name": "Jam with Chrome",
-            "imageLarge": "assets/images/jam_675.jpg",
             "url": "http://www.jamwithchrome.com/",
-            "poster": "assets/content/jam-235.jpg",
             "contentUrl": "data/jam"
         },
         {
@@ -55,8 +45,6 @@
             "type": "article",
             "deps": [],
             "name": "Experience Virgin America",
-            "imageLarge": "assets/images/virgin_675.jpg",
-            "poster": "assets/content/virgin-235.jpg",
             "url": "http://experiencevirginamerica.com/",
             "contentUrl": "data/virgin"
         },
@@ -65,8 +53,6 @@
             "type": "article",
             "deps": [],
             "name": "3 Dreams of Black",
-            "imageLarge": "assets/images/rome_675.jpg",
-            "poster": "assets/content/rome-235.jpg",
             "url": "http://www.ro.me/",
             "contentUrl": "data/rome"
         },
@@ -75,8 +61,6 @@
             "type": "article",
             "deps": [],
             "name": "Woodbot Pilots",
-            "imageLarge": "assets/images/woodbot_675.jpg",
-            "poster": "assets/content/woodbots-235.jpg",
             "url": "http://www.woodbotpilots.com/",
             "contentUrl": "data/woodbots"
         },
@@ -85,17 +69,14 @@
             "type": "demo",
             "deps": [],
             "name": "Format Journey",
-            "imageLarge": "assets/images/format_675.jpg",
             "url": "http://www.everyday3d.com/works/installation/colors/",
             "contentUrl": "data/format"
         },
         {
-            "id": "bloodlines",
+            "id": "porsche",
             "type": "article",
             "deps": [],
             "name": "Porsche Bloodlines",
-            "imageLarge": "assets/images/porsche_675.jpg",
-            "poster": "assets/content/porsche-235.jpg",
             "url": "http://www.f-i.com/porsche_bloodlines/",
             "contentUrl": "data/porsche"
         }

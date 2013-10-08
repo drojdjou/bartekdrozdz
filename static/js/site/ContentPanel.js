@@ -3,7 +3,7 @@ var ContentPanel = function() {
 	var active = false;
 	var scrollPos = 0, scrollTarget = 0, scrollMax;
 
-	var content = 	Wrapper.select('#content');
+	var content = 	Wrapper.select('#content section');
 	var close = 	Wrapper.select('#content .close');
 
 	var header = Wrapper.select('#content h2');
@@ -12,7 +12,7 @@ var ContentPanel = function() {
 	var iframe, poster;
 
 	var onResize = function() {
-		scrollMax = text.position().y - (window.innerHeight - text.height());
+		scrollMax = text.position().y - (window.innerHeight - text.height()) + Config.scrollMargin;
 	}
 
 	var onScroll = function(e) {
@@ -36,9 +36,6 @@ var ContentPanel = function() {
 	}
 
 	var lateShow = function(data) {
-
-		console.log("Late show", data);
-		
 		close.css("display", "block");
 		content.css("display", "block"); 
 
@@ -48,14 +45,9 @@ var ContentPanel = function() {
 			text.domElement().innerHTML = d;
 			onResize();
 
-			var videoEmbeds = Wrapper.selectAll(".video iframe");
-
-			videoEmbeds.forEach(function(ve) {
-				ve.on("load", (function() {
-					var me = ve;
-					return function(e) {
-					};
-				})());
+			var videos = Wrapper.selectAll('video');
+			video.on('touchmove', function(e) {
+				e.preventDefault();
 			});
 		});
 
@@ -66,27 +58,26 @@ var ContentPanel = function() {
 			}
 		});
 
-		// By default all demos display in 16:9 or lower. To make them fullscreen set "aspect": "-1:-1" in json
-		var aspect = 9 / 16;
-
-		if(data.aspect && data.aspect != "") {
-			var aw = parseInt(data.aspect.split(":")[0]);
-			var ah = parseInt(data.aspect.split(":")[1]);
-			if(aw == -1) aspect = window.innerHeight / window.innerWidth; 
-			else aspect = ah / aw;
-		}
-
-		var fh = window.innerWidth * aspect;
-
-		if(fh < window.innerHeight - text.height()) {
-			fh = window.innerHeight - text.height();
-		}
-
-		if(window.innerWidth < 500) {
-			fh = window.innerWidth;
-		}
-
 		if(data.type == "demo") {
+			// By default all demos display in 16:9 or lower. To make them fullscreen set "aspect": "-1:-1" in json
+			var aspect = 9 / 16;
+
+			if(data.aspect && data.aspect != "") {
+				var aw = parseInt(data.aspect.split(":")[0]);
+				var ah = parseInt(data.aspect.split(":")[1]);
+				if(aw == -1) aspect = window.innerHeight / window.innerWidth; 
+				else aspect = ah / aw;
+			}
+
+			var fh = window.innerWidth * aspect;
+
+			if(fh < window.innerHeight - text.height()) {
+				fh = window.innerHeight - text.height();
+			}
+
+			if(window.innerWidth < 500) {
+				fh = window.innerWidth;
+			}
 
 			iframe = Wrapper.create("iframe");
 			iframe.domElement().setAttribute("frameBorder", "0");
@@ -104,17 +95,21 @@ var ContentPanel = function() {
 			iframe.domElement().contentWindow.location.replace(data.url);
 
 		} else if(data.type == "article") {
-
 			poster = Wrapper.create("img");
 
 			poster.on("load", function(e) {
 				onResize();
 			});
 
-			poster.domElement().src = data.poster;
+			if(window.innerWidth > window.innerHeight) {
+				// Landscape-ish screen
+				poster.domElement().src = 'assets/content/1920w-235as/' + data.id + '.jpg';
+			} else {
+				// Portrait (or ideally square)
+				poster.domElement().src = 'assets/content/871sq/' + data.id + '.jpg';
+			}
 
 			content.domElement().insertBefore(poster.domElement(), text.domElement());
-
 		}
 	}
 

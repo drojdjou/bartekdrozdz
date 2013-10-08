@@ -1,11 +1,17 @@
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
-
 #content {
 	position: absolute;
+	width: 100%;
+	height: 100%;
+
+	overflow-x: hidden;
+	overflow-y: auto;
+
 	top: 0;
 	left: 0;
 	width: 100%;
-	pointer-events: none;
+	
+	// Moved to main.js, since it blocks the normal scroll behaviour (if JS is disabled etc)
+	// pointer-events: none;
 
 	* {
 		pointer-events: auto;
@@ -29,14 +35,31 @@
 		margin: 16px 0 0 16px;
 	}
 
-	> iframe {
+	section > iframe {
 		width: 100%;
 		poiter-events: none;
 	}
 
-	> img {
+	section > img {
 		width: 100%;
 		height: auto;
+	}
+
+	@media screen and (max-width: 600px) {
+
+		.close {
+			top: 4px;
+			right: 4px;
+			background-color: none;
+		}
+
+		h2 {
+			padding: 7px;
+			margin: 0 0 0 0;
+			width: 100%;
+			font-size: 1.2em;
+			background-color: rgba(0, 0, 0, 0.75);
+		}
 	}
 
 	.content {
@@ -88,13 +111,26 @@
 
 			a {
 				color: #ffffff;
-				border-bottom: 1px solid #ffffff;
-				padding-bottom: 1px;
+				//border-bottom: 1px solid #ffffff;
+				//padding-bottom: 1px;
+				text-decoration: underline;
 
 				&:hover {
-					border-bottom: 2px solid #ffffff;
-					padding-bottom: 0;
+					//border-bottom: 2px solid #ffffff;
+					//padding-bottom: 0;
 				}
+			}
+
+			.video-link {
+				margin: 0;
+				padding: 0;
+
+				a {
+					color: #808080;
+					border: 0;
+					font-size: 0.8em;
+				}
+				
 			}
 
 			ul {
@@ -125,7 +161,7 @@
 				height: 100px;
 				padding-bottom: 56.25%; /* 16:9 */
 
-				iframe {
+				iframe, video {
 					position: absolute;
 					top: 0;
 					left: 0;
@@ -136,8 +172,12 @@
 		}
 
 		@media screen and (max-width: 1024px) {
+
+			line-height: 1.5em;
+			padding: 1em 0 0 0;
+
 			.text {
-				@demoContentWidth: 80%;
+				@demoContentWidth: 90%;
 				width: @demoContentWidth;
 				margin: 0 0 1em @demoContentWidth * -0.5;
 			
