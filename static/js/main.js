@@ -25,10 +25,11 @@ window.onload = function() {
 		"js/framework/Wrapper",
 		"js/site/Messages",
 		"js/site/Site",
-		"js/site/Data",
 		"js/site/MainPanel",
 		"js/site/AboutPanel",
-		"js/site/ContentPanel"
+		"js/site/ContentPanel",
+		"js/site/Box",
+		"../shared/Data"
 	], function() {
 		Loader.loadJSON("data", function(data) {
 			Data.setMain(data);

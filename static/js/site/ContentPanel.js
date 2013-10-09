@@ -8,6 +8,7 @@ var ContentPanel = function() {
 
 	var header = Wrapper.select('#content h2');
 	var text = Wrapper.select('#content .content');
+	var hero = Wrapper.select('#content .hero');
 
 	var iframe, poster;
 
@@ -91,25 +92,40 @@ var ContentPanel = function() {
 
 			iframe.css("opacity", "0");
 			iframe.css("height", fh + "px");
-			content.domElement().insertBefore(iframe.domElement(), text.domElement());
+			hero.domElement().appendChild(iframe.domElement());
 			iframe.domElement().contentWindow.location.replace(data.url);
 
 		} else if(data.type == "article") {
 			poster = Wrapper.create("img");
+			var posterTint = Wrapper.create("div");
 
 			poster.on("load", function(e) {
+				posterTint.css("backgroundColor", "rgba(0, 0, 0, 0)");
 				onResize();
 			});
 
 			if(window.innerWidth > window.innerHeight) {
 				// Landscape-ish screen
+				poster.css("width", "100%");
+				poster.css("height", (window.innerWidth * (100/235)) + "px");
+
+				posterTint.css("width", "100%");
+				posterTint.css("height", (window.innerWidth * (100/235)) + "px");
+
 				poster.domElement().src = 'assets/content/1920w-235as/' + data.id + '.jpg';
 			} else {
 				// Portrait (or ideally square)
+				poster.css("width", "100%");
+				poster.css("height", window.innerWidth + "px");
+
+				posterTint.css("width", "100%");
+				posterTint.css("height", window.innerWidth + "px");
+
 				poster.domElement().src = 'assets/content/871sq/' + data.id + '.jpg';
 			}
 
-			content.domElement().insertBefore(poster.domElement(), text.domElement());
+			hero.domElement().appendChild(poster.domElement());
+			hero.domElement().appendChild(posterTint.domElement());
 		}
 	}
 
@@ -130,12 +146,12 @@ var ContentPanel = function() {
 				// Nevermind
 			}
 
-			content.domElement().removeChild(iframe.domElement());
+			hero.domElement().removeChild(iframe.domElement());
 			iframe = null;
 		}
 
 		if(poster) {
-			content.domElement().removeChild(poster.domElement());
+			hero.domElement().removeChild(poster.domElement());
 			poster = null;
 		}
 

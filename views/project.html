@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bartek Drozdz | Portfolio and experiments</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable = no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <link href="/css/style.css" media="screen, projection" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+
+<div id="content">
+    <section>
+        <div class="close"><img src="assets/svg/close.svg"></div>
+        <img src="/assets/content/1920w-235as/{{item.id}}.jpg">
+        <div class="content">
+                {{{content}}}
+        </div>
+        <h2>{{item.name}}</h2>
+    </section>
+</div>
+
+<script>
+	if(location.host.indexOf("localhost") > -1 || location.host.indexOf("192.168") > -1) {
+		document.write('<script src=\"http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1\"></' + 'script>');
+	}
+</script>
+
+</body>
+</html>

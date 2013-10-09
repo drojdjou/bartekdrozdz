@@ -61,15 +61,13 @@ var MainPanel = function() {
 	Broadcast.addClient(Msg.RENDER, onRender); 
 	Broadcast.addClient(Msg.RESIZE, onResize); 
 
-	onResize();
-
 	boxes.forEach(function(b) {
 
-		var id = b.domElement().getAttribute('data-id');
+		b = Box(b);
 
 		b.on("click", function(e) { 
 			if(active) {
-				Broadcast.send(Msg.ON_ITEM_OPEN, id); 
+				Broadcast.send(Msg.ON_ITEM_OPEN, b.id); 
 			} else {
 				Broadcast.send(Msg.ON_ITEM_CLOSE); 
 			}
@@ -83,6 +81,8 @@ var MainPanel = function() {
 			Broadcast.send(Msg.ON_ABOUT_CLOSE); 
 		}	
 	});
+
+	onResize();
 }
 
 

@@ -5,23 +5,32 @@ Broadcast = (function() {
 	var b = function() {
 
 		this.send = function(m, mo) {
-			if(!clients[m]) return;			
+			var mc = clients[m];
+			if(!mc) return;			
+			var n = mc.length;
 			
-			var n = clients[m].length;
-
 			for(var i = 0; i < n; i++) {
-				clients[m][i](mo);
+				if(mc[i]) mc[i](mo);
 			}
 		}
 
 		this.addClient = function(m, c) {
 			if(!clients[m]) clients[m] = [];
-			clients[m].push(c);
+
+			var mc = clients[m];
+			if(mc[c] > -1) return;
+			mc.push(c);
 		}
 
 		this.removeClient = function(m, c) {
-			if(!clients[m]) return;	
-			clients[m].splice(clients[m].indexOf(c), 1);
+			var mc = clients[m];
+
+			if(!mc) return;	
+			return mc.splice(mc.indexOf(c), 1);
+		}
+
+		this.getClients = function(m) {
+			return clients[m];
 		}
 
 	}

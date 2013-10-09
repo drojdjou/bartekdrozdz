@@ -35,14 +35,22 @@
 		margin: 16px 0 0 16px;
 	}
 
-	section > iframe {
+	.hero iframe {
 		width: 100%;
 		poiter-events: none;
 	}
 
-	section > img {
+	.hero img {
+	}
+
+	.hero div {
+		position: absolute;
+		top: 0;
+		left: 0;
 		width: 100%;
-		height: auto;
+		background-color: rgba(0, 0, 0, 1);
+		-webkit-transition: all 1.5s ease;
+		-moz-transition: all 1.5s ease;
 	}
 
 	@media screen and (max-width: 600px) {
@@ -79,6 +87,7 @@
 
 		.text {
 			@demoContentWidth: 800px;
+
 			position: relative;
 			width: @demoContentWidth;
 			left: 50%;
@@ -111,13 +120,13 @@
 
 			a {
 				color: #ffffff;
-				//border-bottom: 1px solid #ffffff;
-				//padding-bottom: 1px;
+				// border-bottom: 1px solid #ffffff;
+				// padding-bottom: 1px;
 				text-decoration: underline;
 
 				&:hover {
-					//border-bottom: 2px solid #ffffff;
-					//padding-bottom: 0;
+				// border-bottom: 2px solid #ffffff;
+				// padding-bottom: 0;
 				}
 			}
 
@@ -152,7 +161,6 @@
 
 				i:before {
 					content: " - ";
-
 				}
 			}
 

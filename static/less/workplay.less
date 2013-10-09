@@ -43,8 +43,20 @@ section#projects {
 			margin: 0;
 			border: 4px solid #ffffff;
 			position: relative;
-			width: 100%;
+			width: 50%;
 			overflow: hidden;
+
+			h4 {
+				position: absolute;
+				font-size: 1.0em;
+				color: #ffffff;
+				margin: 0px;
+				padding: 5px;
+				background-color: rgba(0, 0, 0, 0.75);
+				line-height: 1.0em;
+				top: 0;
+				left: 0;
+			}
 
 			div:nth-of-type(1) {
 				position: absolute;
@@ -52,30 +64,31 @@ section#projects {
 			    bottom: 0;
 			    left: 0;
 			    right: 0;
+			    background-color: #dddddd;
+
+			    img {
+			    	position: absolute;
+			    	top: 0;
+			    	left: 0;
+					width: 100%;
+					height: 100%;
+				}
+
+				div {
+					position: absolute;
+					top: 0;
+			    	left: 0;
+					width: 100%;
+					height: 100%;
+					background-color: rgba(0, 0, 0, 1);
+					-webkit-transition: all 1.5s ease;
+					-moz-transition: all 1.5s ease;
+				}
 			}
 
 			div:nth-of-type(2) {
 				margin-top: 100%;
 			}
-		}
-
-		img {
-			z-index: 10;
-			position: relative;
-			width: 100%;
-			height: 100%;
-			display: block;
-		}
-
-		h4 {
-			z-index: 1000;
-			position: absolute;
-			font-size: 1.6em;
-			color: #ffffff;
-			margin: 0px;
-			padding: 10px;
-			background-color: rgba(0, 0, 0, 0.75);
-			line-height: 1.0em;
 		}
 	}
 
@@ -83,6 +96,9 @@ section#projects {
 		ul.projects {
 			li {
 				width: 50%;
+				h4 {
+					font-size: 1.2em;
+				}
 			}
 		}
 	}
@@ -91,6 +107,10 @@ section#projects {
 		ul.projects {
 			li {
 				width: 33.33%;
+				h4 {
+					padding: 10px;
+					font-size: 1.4em;
+				}
 			}
 		}
 	}
@@ -99,6 +119,9 @@ section#projects {
 		ul.projects {
 			li {
 				width: 25%;
+				h4 {
+					font-size: 1.6em;
+				}
 			}
 		}
 	}
@@ -107,6 +130,9 @@ section#projects {
 		ul.projects {
 			li {
 				width: 20%;
+				h4 {
+					font-size: 1.6em;
+				}
 			}
 		}
 	}
@@ -127,36 +153,49 @@ section#play {
 			position: relative;
 			width: 50%;
 
+			h4 {
+				position: absolute;
+				font-size: 1.0em;
+				color: #ffffff;
+				margin: 0;
+				padding: 5px;
+				background-color: rgba(0, 0, 0, 0.75);
+				line-height: 1.0em;
+				top: 0;
+				left: 0;
+			}
+
 			div:nth-of-type(1) {
 				position: absolute;
 				top: 0;
 			    bottom: 0;
 			    left: 0;
 			    right: 0;
+			    background-color: #dddddd;
+
+			    img {
+			    	position: absolute;
+			    	top: 0;
+			    	left: 0;
+					width: 100%;
+					height: 100%;
+				}
+
+				div {
+					position: absolute;
+					top: 0;
+			    	left: 0;
+					width: 100%;
+					height: 100%;
+					background-color: rgba(0, 0, 0, 1);
+					-webkit-transition: all 1.5s ease;
+					-moz-transition: all 1.5s ease;
+				}
 			}
 
 			div:nth-of-type(2) {
 				margin-top: 100%;
 			}
-		}
-
-		img {
-			z-index: 10;
-			position: relative;
-			width: 100%;
-			height: auto;
-			display: block;
-		}
-
-		h4 {
-			z-index: 1000;
-			position: absolute;
-			font-size: 01.0em;
-			color: #ffffff;
-			margin: 0;
-			padding: 5px;
-			background-color: rgba(0, 0, 0, 0.5);
-			line-height: 1.0em;
 		}
 	}
 
