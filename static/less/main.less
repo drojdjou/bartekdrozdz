@@ -8,8 +8,10 @@
 	overflow-x: hidden;
 	overflow-y: auto;
 
-	-webkit-transition: -webkit-transform 0.3s ease, -webkit-filter 0.3s ease;
-	-moz-transition: transform 0.3s ease, filter 0.3s ease;
+	&.animated {
+		.transition(~'transform 0.3s ease');
+		-webkit-transition: -webkit-transform 0.3s ease, -webkit-filter 0.3s ease;
+	}
 
 	section {
 		// clear: both;

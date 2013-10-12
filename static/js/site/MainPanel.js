@@ -1,4 +1,4 @@
-var MainPanel = function() {
+window.MainPanel = function() {
 
 	var active = true;
 
@@ -10,6 +10,14 @@ var MainPanel = function() {
 	var play =  	Wrapper.select('#play');
 	var boxes = 	Wrapper.selectAll('.box');
 	var about = 	Wrapper.select('#about-btn');
+
+	var toggleMainSlidingAnimation = function(t) {
+		if(t) {
+			main.domElement().setAttribute("class", "animated");
+		} else {
+			main.domElement().setAttribute("class", "");
+		}
+	}
 
 	var onResize = function() {
 		scrollMax = main.height() - window.innerHeight;
@@ -32,6 +40,8 @@ var MainPanel = function() {
 	}
 
 	var slideBack = function() {
+		if(active) return;
+
 		main.move(0, 0);
 		main.css("-webkit-filter", "");
 		active = true;
@@ -54,8 +64,7 @@ var MainPanel = function() {
 	Broadcast.addClient(Msg.ON_ITEM_OPEN, slideLeft); 
 	Broadcast.addClient(Msg.ON_ABOUT_OPEN, slideRight);
 
-	Broadcast.addClient(Msg.ON_ITEM_CLOSE, slideBack); 
-	Broadcast.addClient(Msg.ON_ABOUT_CLOSE, slideBack); 
+	Broadcast.addClient(Msg.ON_MAIN_OPEN, slideBack); 
 
 	Broadcast.addClient(Msg.SCROLL, onScroll); 
 	Broadcast.addClient(Msg.RENDER, onRender); 
@@ -68,9 +77,7 @@ var MainPanel = function() {
 		b.on("click", function(e) { 
 			if(active) {
 				Broadcast.send(Msg.ON_ITEM_OPEN, b.id); 
-			} else {
-				Broadcast.send(Msg.ON_ITEM_CLOSE); 
-			}
+			} 
 		});
 	});
 
@@ -78,12 +85,13 @@ var MainPanel = function() {
 		if(active) {
 			Broadcast.send(Msg.ON_ABOUT_OPEN); 
 		} else {
-			Broadcast.send(Msg.ON_ABOUT_CLOSE); 
+			Broadcast.send(Msg.ON_MAIN_OPEN); 
 		}	
 	});
 
 	onResize();
-}
+	toggleMainSlidingAnimation(true);
+};
 
 
 

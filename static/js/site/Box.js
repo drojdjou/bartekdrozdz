@@ -1,4 +1,4 @@
-Box = function(wrapper) {
+window.Box = function(wrapper) {
 
 	wrapper.id = wrapper.domElement().getAttribute('data-id');
 
@@ -10,7 +10,6 @@ Box = function(wrapper) {
 	var imagePath = img.getAttribute("data-image-large");
 
 	img.onload = function() {
-		console.log("Image loaded!")
 		div.style.backgroundColor = "rgba(0, 0, 0, 0)";
 	}
 
@@ -26,4 +25,4 @@ Box = function(wrapper) {
 	Broadcast.addClient(Msg.RENDER, isInViewport); 
 
 	return wrapper;
-}
+};

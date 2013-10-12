@@ -1,4 +1,4 @@
-Broadcast = (function() {
+window.Broadcast = (function() {
 
 	var clients = {};
 
@@ -32,7 +32,6 @@ Broadcast = (function() {
 		this.getClients = function(m) {
 			return clients[m];
 		}
-
 	}
 
 	return new b();

@@ -1,8 +1,9 @@
-Site = function(data) {
+window.Site = function(data) {
 
 	if(Config.vscrollEnabled) {
 		VirtualScroll.addEventListener(function(e) {
 			Broadcast.send(Msg.SCROLL, e);
+			window.scroll(10, 0);
 		});
 
 		document.addEventListener('touchmove', function(e) {

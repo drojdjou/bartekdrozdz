@@ -1,4 +1,4 @@
-Loader = {
+window.Loader = {
 
 	loadText: function(path, onLoadedFunc){
 
@@ -20,4 +20,4 @@ Loader = {
 		});
 	}
 
-}
+};

@@ -1,4 +1,4 @@
-var ContentPanel = function() {
+window.ContentPanel = function() {
 
 	var active = false;
 	var scrollPos = 0, scrollTarget = 0, scrollMax;
@@ -14,17 +14,19 @@ var ContentPanel = function() {
 
 	var onResize = function() {
 		scrollMax = text.position().y - (window.innerHeight - text.height()) + Config.scrollMargin;
+		scrollMax = Math.max(0, scrollMax);
 	}
 
 	var onScroll = function(e) {
-		if(!active) return;
+		if(!active || scrollMax <= 0) return;
 		scrollTarget += e.deltaY;
 	}
 
 	var onRender = function() {
-		if(!active) return;
+		if(!active || scrollMax <= 0) return;
 		scrollTarget = Math.clamp(scrollTarget, -scrollMax, 0);
 		scrollPos += (scrollTarget - scrollPos) * 0.2;
+
 		text.move(0, scrollPos);
 		if(iframe) iframe.move(0, scrollPos * 0.5);
 		if(poster) poster.move(0, scrollPos * 0.5);
@@ -45,11 +47,6 @@ var ContentPanel = function() {
 		Loader.loadText(data.contentUrl, function(d) {
 			text.domElement().innerHTML = d;
 			onResize();
-
-			var videos = Wrapper.selectAll('video');
-			video.on('touchmove', function(e) {
-				e.preventDefault();
-			});
 		});
 
 		var missingDeps = [];
@@ -130,6 +127,7 @@ var ContentPanel = function() {
 	}
 
 	var fadeOut = function() {
+		if(!active) return;
 		active = false;
 		hide();
 	}
@@ -163,11 +161,11 @@ var ContentPanel = function() {
 	Broadcast.addClient(Msg.RENDER, onRender); 
 	Broadcast.addClient(Msg.RESIZE, onResize); 
 
+	Broadcast.addClient(Msg.ON_MAIN_OPEN, fadeOut);
 	Broadcast.addClient(Msg.ON_ABOUT_OPEN, hide); 
 	Broadcast.addClient(Msg.ON_ITEM_OPEN, show);
-	Broadcast.addClient(Msg.ON_ITEM_CLOSE, fadeOut);
 
 	close.on("click", function() {
-		Broadcast.send(Msg.ON_ITEM_CLOSE);
+		Broadcast.send(Msg.ON_MAIN_OPEN);
 	});
 }

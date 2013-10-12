@@ -41,6 +41,9 @@
 	}
 
 	.hero img {
+		position: relative;
+		top: 0;
+		left: 0;
 	}
 
 	.hero div {
@@ -49,8 +52,7 @@
 		left: 0;
 		width: 100%;
 		background-color: rgba(0, 0, 0, 1);
-		-webkit-transition: all 1.5s ease;
-		-moz-transition: all 1.5s ease;
+		.transition(~"background-color 1.5s ease");
 	}
 
 	@media screen and (max-width: 600px) {

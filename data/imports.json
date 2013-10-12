@@ -1,0 +1,25 @@
+{
+
+	"scripts" :[
+		"js/main.js",
+		"shared/Data.js",
+		"js/lib/modernizr.js", 
+		"js/lib/requestAnimFrame.js", 
+		"js/lib/history.js",
+		"js/lib/virtualscroll.js",
+		"js/lib/xmath.js",
+		"js/framework/Broadcast.js",
+		"js/framework/Loader.js",
+		"js/framework/Wrapper.js",
+		"js/site/Messages.js",
+		"js/site/Site.js",
+		"js/site/MainPanel.js",
+		"js/site/AboutPanel.js",
+		"js/site/ContentPanel.js",
+		"js/site/Box.js",
+		"js/site/Router.js"
+	],
+
+	"compressed": "site.min.js"
+
+}

@@ -1,4 +1,4 @@
-var Wrapper = function(e) {
+window.Wrapper = function(e) {
 
 	var hw = true;
 	var element = e;

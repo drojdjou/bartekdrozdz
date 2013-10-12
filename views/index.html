@@ -7,9 +7,7 @@
 
     <link href="/css/style.css" media="screen, projection" rel="stylesheet" type="text/css" />
 
-
-    <script type="text/javascript" src="js/require.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
+    <base href="/">
 
     {{#noscript}}
     <!-- no JS! -->
@@ -32,20 +30,13 @@
 
         <p>I worked in Europe and US for several large and small interactive agencies, including F-i and North Kingdom. Currently I work at Tool in Santa Monica as Director of Technology.</p>
 
-        <p>I worked in Europe and US for several large and small interactive agencies, including F-i and North Kingdom. Currently I work at Tool in Santa Monica as Director of Technology.</p>
-
-        <p>I worked in Europe and US for several large and small interactive agencies, including F-i and North Kingdom. Currently I work at Tool in Santa Monica as Director of Technology.</p>
-
-        <p>I worked in Europe and US for several large and small interactive agencies, including F-i and North Kingdom. Currently I work at Tool in Santa Monica as Director of Technology.</p>
-
         <p>I like to spend his time experimenting with web technology and everything around it. Occasionaly I speak at conferences and other events.</p>
 
         <h3>Awards</h3>
 
         <ul>
-            {{#each awards}}
-                <li><b>{{[0]}}</b><i>{{[1]}}</i></li>
-            {{/each}}
+            {{#each data.awards}}
+            <li><b>{{[0]}}</b><i>{{[1]}}</i></li>{{/each}}
         </ul> 
     </section>
 </div>
@@ -75,7 +66,7 @@
         <h3>Work</h3>
 
         <ul class="projects">
-            {{#each projects}}
+            {{#each data.projects}}
             {{#noscript}}
             <li class="box">
                 <a href="project/{{id}}">
@@ -104,7 +95,7 @@
         <h3 class="sub-header">Play</h3>
 
         <ul class="play">
-            {{#each play}}
+            {{#each data.play}}
             {{#noscript}}
             <li class="box">
                 <a href="project/{{id}}">
@@ -130,11 +121,16 @@
     </section>
 </div>
 
-<script>
-	if(location.host.indexOf("localhost") > -1 || location.host.indexOf("192.168") > -1) {
-		document.write('<script src=\"http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1\"></' + 'script>');
-	}
-</script>
+{{#noscript}}
+    <!-- no JS! -->
+{{else}}
+    {{#dev}}
+        {{#each imports.scripts}}
+        <script type="text/javascript" src="{{this}}"></script>{{/each}}
+    {{else}}
+    <script type="text/javascript" src="{{imports.compressed}}"></script>
+    {{/dev}}
+{{/noscript}}
 
 </body>
 </html>
