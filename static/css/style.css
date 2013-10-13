@@ -372,7 +372,7 @@ section#play h3 {
   -moz-perspective: 1500px;
   perspective: 1500px;
 }
-#about div {
+#about section > div {
   opacity: 0;
   -webkit-transform-origin: 100% 0;
   -moz-transform-origin: 100% 0;
@@ -382,7 +382,7 @@ section#play h3 {
   padding: 20px 40px 30px 30px;
   color: #ffffff;
 }
-#about div.animated {
+#about section > div.animated {
   -webkit-transition: -webkit-transform 0.5s ease, opacity 0.5s ease;
   transition: transform 0.5s ease, opacity 0.5s ease;
 }
@@ -393,9 +393,15 @@ section#play h3 {
   position: absolute;
   top: 16px;
   right: 16px;
-  padding: 2px;
-  width: 32px;
-  height: 32px;
+  width: 24px;
+  height: 24px;
+  background-image: url('../assets/buttons.png');
+  background-size: 200% 200%;
+  background-position: 0 100%;
+}
+#about .close:hover {
+  background-position: 100% 100%;
+  cursor: pointer;
 }
 #about p {
   letter-spacing: -0.05em;
@@ -417,11 +423,12 @@ section#play h3 {
   content: " - ";
 }
 @media screen and (max-width: 600px) {
-  #about div {
+  #about section > div {
     padding: 20px 20px 20px 20px;
   }
   #about .close {
-    right: 20px;
+    width: 30px;
+    height: 30px;
   }
 }
 section#projects ul.projects {

@@ -51,7 +51,7 @@ window.ContentPanel = function() {
 
 		var missingDeps = [];
 		data.deps.forEach(function(dep) {
-			if(!Modernizr[dep]) {
+			if(!Simplrz[dep]) {
 				missingDeps.push(dep);
 			}
 		});

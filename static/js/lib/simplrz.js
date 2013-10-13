@@ -22,6 +22,13 @@ window.Simplrz = (function() {
 		} 
 	});
 
+	check("flash", function() {
+		return !!(
+			navigator.mimeTypes["application/x-shockwave-flash"] || 
+			window.ActiveXObject && new ActiveXObject('ShockwaveFlash.ShockwaveFlash')
+		);
+	});
+
 	document.documentElement.setAttribute("class", classes.join(" "));
 
 	return s;

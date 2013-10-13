@@ -20,7 +20,7 @@
 		.perspective(~"1500px");
 	}
 
-	div {	
+	section > div {	
 		opacity: 0;
 		.transform-origin(~"100% 0");
 		padding: 20px 40px 30px 30px;
@@ -41,9 +41,16 @@
 		position: absolute;
 		top: 16px;
 		right: 16px;
-		padding: 2px;
-		width: 32px;
-		height: 32px;
+		width: 24px;
+		height: 24px;
+		background-image: url('../assets/buttons.png');
+		background-size: 200% 200%;
+		background-position: 0 100%;
+
+		&:hover {
+			background-position: 100% 100%;
+			cursor: pointer;
+		}
 	}
 
 	p {
@@ -75,12 +82,13 @@
 	}
 
 	@media screen and (max-width: 600px) {
-		div {
+		section > div {
 			padding: 20px 20px 20px 20px;
 		}
 
 		.close {
-			right: 20px;
+			width: 30px;
+			height: 30px;
 		}
 	}
 }
