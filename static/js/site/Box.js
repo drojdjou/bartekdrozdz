@@ -13,7 +13,7 @@ window.Box = function(wrapper) {
 		div.style.backgroundColor = "rgba(0, 0, 0, 0)";
 	}
 
-	var isInViewport = function() {
+	var isInViewport = function(e) {
 		var bb = wrapper.domElement().getBoundingClientRect();
 
 		if(bb.top < window.innerHeight) {

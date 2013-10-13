@@ -15,6 +15,9 @@
 		}
 
 		that.getProjectById = function(id) {
+
+			id = (id.indexOf("?") > -1) ? id.split("?")[0] : id;
+
 			var np = data.projects.length;
 			var nl = data.play.length;
 			var p, i

@@ -4,9 +4,10 @@ window.Router = function() {
 
 	var solve = function(route) {
 		if(route != "") {
-			if(route == "/") Broadcast.send(Msg.ON_MAIN_OPEN);
-			if(route == "/about") Broadcast.send(Msg.ON_ABOUT_OPEN);
-			if(route.indexOf("/project") == 0) Broadcast.send(Msg.ON_ITEM_OPEN, route.split("/")[2]);
+			if(route.indexOf("/about") == 0) Broadcast.send(Msg.ON_ABOUT_OPEN);
+			else if(route.indexOf("/project") == 0) Broadcast.send(Msg.ON_ITEM_OPEN, route.split("/")[2]);
+			else Broadcast.send(Msg.ON_MAIN_OPEN);
+			
 		}
 	}
 

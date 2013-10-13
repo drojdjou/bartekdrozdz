@@ -11,19 +11,39 @@
 	width: 100%;
 	max-width: 500px;
 
-	color: #ffffff;
+	color: #808080;
 	
 	font-size: 1.0em;
 	line-height: 1.5em;
-	padding: 0px 40px 0 30px;
+
+	section {
+		.perspective(~"1500px");
+	}
+
+	div {	
+		opacity: 0;
+		.transform-origin(~"100% 0");
+		padding: 20px 40px 30px 30px;
+		color: #ffffff;
+
+		&.animated {
+			// .transition(~"transform 0.5s ease, opacity 0.5s ease");
+			-webkit-transition: -webkit-transform 0.5s ease, opacity 0.5s ease;
+			transition: transform 0.5s ease, opacity 0.5s ease;
+		}
+	}
 
 	h2 {
-		margin-top: 20px;
+		margin: 0;
 	}
 
 	.close {
+		position: absolute;
 		top: 16px;
-		right: 36px;
+		right: 16px;
+		padding: 2px;
+		width: 32px;
+		height: 32px;
 	}
 
 	p {
@@ -55,7 +75,9 @@
 	}
 
 	@media screen and (max-width: 600px) {
-		padding: 0px 20px 0 10px;
+		div {
+			padding: 20px 20px 20px 20px;
+		}
 
 		.close {
 			right: 20px;

@@ -14,34 +14,17 @@ if(!serverRoot || serverRoot == "") {
 	serverRoot = "./";
 }
 
+var defaultToDev = true;
+
 var context = {
+	config: {
+		javascriptEnabled: true,
+		dev: defaultToDev
+	},
+
 	imports: require('../data/imports.json'),
 	data: data.getMain()
 };
-
-var config = {
-	noscript: false,
-	dev: true
-};
-
-var hbsHelper = function(c, key) {
-	hbs.registerHelper(key, function(options) {
-
-		if(key == "dev") console.log("Helper invoked", c[key], key);
-
-		if(c[key]) {
-			if(key == "dev") console.log("Dev is true");
-			return options.fn(this);
-		} else {
-			if(key == "dev") console.log("Dev is false");
-			return options.inverse(this);
-		}
-	});
-};
-
-hbsHelper(config, "noscript");
-hbsHelper(config, "dev");
-
 
 var app = express();
 
@@ -49,18 +32,19 @@ app.set('view engine', 'html');
 app.engine('html', hbs.__express);
 app.use(express.static('static'));
 
+
 var renderIndex = function(response) {
 	response.render('index', context);
 }
 
 // Content routes
 app.get('/', function(request, response) {
-	if(!!request.query.dev) config.dev = (request.query.dev == "false") ? false : true;
-	else config.dev = true;
 
-	console.log("config.dev", config.dev);
+	if(!!request.query.dev) context.config.dev = (request.query.dev == "false") ? false : true;
+	else context.config.dev = defaultToDev;
 
-	config.noscript = false;
+	context.config.javascriptEnabled = true;
+
 	renderIndex(response);
 });
 
@@ -69,7 +53,9 @@ app.get('/about', function(request, response) {
 });
 
 app.get('/project/:name', function(request, response) {
-	if(config.noscript) {
+	if(context.config.javascriptEnabled) {
+		renderIndex(response);
+	} else {
 		var p = path.resolve(serverRoot + 'data/items/' + request.params.name + '.html');
 		
 		fs.readFile(p, function (err, fileContent) {
@@ -79,14 +65,12 @@ app.get('/project/:name', function(request, response) {
 		  	item: data.getProjectById(request.params.name) 
 		  });
 		});
-	} else {
-		renderIndex(response);
 	}
 });
 
 // Special routes
 app.get('/noscript', function(request, response) {
-	config.noscript = true;
+	context.config.javascriptEnabled = false;
 	renderIndex(response);
 });
 

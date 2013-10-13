@@ -216,23 +216,88 @@
         }
     ],
 
-    "awards": [
-        ["Awwards Site of the Month", "Tool of North America"],
-        ["Adobe Cutting Edge", "Tool of North America"],
-        ["FWA Siteof the Day", "Tool of North America"],
-        ["Adobe Cutting Edge", "Rectify"],
-        ["FWA Site of the Day", "Rectify"],
-        ["FWA Site of the Day", "Only the name remains"],
-        ["FWA Site of the Day", "Experience Virgin America"],
-        ["Cannes Lions", "Clouds Over Cuba"],
-        ["Cannes Gold Lion", "3 Dreams of Black"],
-        ["Cannes Silver Lion", "3 Dreams of Black"],
-        ["Cannes Bronze Lion", "3 Dreams of Black"],
-        ["D&AD Yellow Pencil", "3 Dreams of Black"],
-        ["AICP Next Experiential Award", "3 Dreams of Black"],
-        ["One Show Interactive 2 Gold Pencils", "3 Dreams of Black"],
-        ["FWA PCA 2012", "3 Dreams of Black"]
-    ]
+    "conferences": [{
+        "url" : "http://offline.la/",
+        "name": "Offline.LA",
+        "date": "2013",
+        "location": "Los Angeles"
+    },{
+        "url" : "http://createtech.aaaa.org", 
+        "name": "4A's CreativeTech",
+        "date": "2012",
+        "location": "Los Angeles"
+    },{
+        "url" : "http://js.la/past-events.html", 
+        "name": "JS.LA",
+        "date": "2012",
+        "location": "Los Angeles"
+    },{
+        "url" : "http://www.webglcamp.com/wiki/index.php?title=Agenda4", 
+        "name": "WebGL Camp", 
+        "date": "2011",
+        "location": "Mountain View, CA"
+    },{
+        "url" : "https://vimeo.com/31847980", 
+        "name": "OnGameStart", 
+        "date": "2011",
+        "location": "Warsaw, Poland"
+    },{
+        "name": "Flash And The City", 
+        "date": "2011",
+        "location": "New York"
+    },{
+        "url" : "http://www.lfpug.com/", 
+        "name": "Unity Workshop", 
+        "date": "2010",
+        "location": "London"
+    },{
+        "url" : "http://fitc.ca/speaker/bartekdrozdz/",
+        "name": "FITC", 
+        "date": "2011",
+        "location": "Amsterdam"
+    },{
+        "url" : "http://fitc.ca/speaker/bartekdrozdz/",
+        "name": "FITC",
+        "date": "2010",
+        "location": "San Francisco" 
+    },{
+        "url" : "http://fitc.ca/speaker/bartekdrozdz/",
+        "name": "FITC",
+        "date": "2010",
+        "location": "Toronto"
+    },{
+        "url" : "http://fitc.ca/speaker/bartekdrozdz/",
+        "name": "FITC",
+        "date": "2010",
+        "location": "Amsterdam"
+    },{
+        "url" : "http://flashonthebeach.com",
+        "name": "Flash On The Beach",
+        "date": "2009",
+        "location": "Brighton, UK"
+    },{
+        "name": "Flash 2000",
+        "date": "2009",
+        "location": "Antwerp"
+    }],
+
+    "publications": [{
+        "url" : "http://www.thefwa.com/interview/bartek-drozdz",
+        "title": "FWA Interview",
+        "name": "FWA"
+    },{
+        "url" : "http://www.everyday3d.com/blog/index.php/2010/03/31/unity3d-tutorial-in-net-magazine/", 
+        "title": "Unity3D Tutorial",
+        "name": ".net magazine"
+    },{
+        "url" : "http://www.netmagazine.com/tutorials/get-started-webgl-draw-square",
+        "title": "WebGL Tutorial 1",
+        "name": ".net magazine"
+    },{
+        "url" : "http://www.netmagazine.com/tutorials/create-amazing-webgl-effects-shaders",
+        "title": "WebGL Tutorial 2",
+        "name": ".net magazine"
+    }]
 }
 
 

@@ -6,6 +6,8 @@ window.AboutPanel = function() {
 
 	var about = 		Wrapper.select('#about section');
 	var close = 		Wrapper.select('#about .close');
+	var container3d = 	Wrapper.select('#about section > div');
+	var panels = 		Wrapper.selectAll('#about .panel');
 
 	var onResize = function() {
 		scrollMax = (about.height() < window.innerHeight) ? 0 : about.height() - window.innerHeight + Config.scrollMargin;
@@ -25,19 +27,28 @@ window.AboutPanel = function() {
 	}
 
 	var fadeIn = function() {
-		about.css("display", "block");
 		active = true;
+
+		container3d.domElement().setAttribute("class", "animated");
+		container3d.rotate(0, 0, 0);
+		container3d.move(0, 0, 0);
+		container3d.css("opacity", 1);
 	}
 
 	var fadeOut = function() {
 		if(!active) return;
+
+		container3d.rotate(0, -90, 0);
+		var offset = (window.innerWidth > 500) ? 500 : window.innerWidth;
+		container3d.move(-offset, 0, 0);
+		container3d.css("opacity", 0);
+
 		active = false;
 		hide();
 	}
 
 	var hide = function() {
 		active = false;
-		about.css("display", "none");
 	}
 
 	Broadcast.addClient(Msg.ON_ITEM_OPEN, hide); 
@@ -48,9 +59,13 @@ window.AboutPanel = function() {
 	Broadcast.addClient(Msg.RENDER, onRender); 
 	Broadcast.addClient(Msg.RESIZE, onResize); 
 
-	close.on("click", function() {
+	close.on(Config.click, function() {
 		Broadcast.send(Msg.ON_MAIN_OPEN);
 	});
+
+	var offset = (window.innerWidth > 500) ? 500 : window.innerWidth;
+	container3d.move(-offset, 0, 0);
+	container3d.rotate(0, -90, 0);
 
 	onResize();
 }

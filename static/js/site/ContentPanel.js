@@ -165,7 +165,7 @@ window.ContentPanel = function() {
 	Broadcast.addClient(Msg.ON_ABOUT_OPEN, hide); 
 	Broadcast.addClient(Msg.ON_ITEM_OPEN, show);
 
-	close.on("click", function() {
+	close.on(Config.click, function() {
 		Broadcast.send(Msg.ON_MAIN_OPEN);
 	});
 }

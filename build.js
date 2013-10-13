@@ -1,22 +1,23 @@
 ({
 
-	baseUrl:"static/js/", 
+	baseUrl: "static/js/", 
 
-	out:"static/site.min.js", 
+	out: "static/site.min.js", 
 
-	name:"main", 
+	name: "main", 
 
-	optimize:"uglify2",
+	optimize: "uglify2",
 
-	skipModuleInsertion:true,
+	skipModuleInsertion: true,
 
 	include: [		
 		"../../app/shared/Data",
-		"lib/modernizr", 
 		"lib/requestAnimFrame", 
+		"lib/simplrz",
 		"lib/history",
 		"lib/virtualscroll",
-		"lib/xmath",
+		"lib/misc",
+		"lib/RLdummy",
 		"framework/Broadcast",
 		"framework/Loader",
 		"framework/Wrapper",
@@ -26,5 +27,6 @@
 		"site/AboutPanel",
 		"site/ContentPanel",
 		"site/Box",
-		"site/Router"]
+		"site/Router"
+	]
 })

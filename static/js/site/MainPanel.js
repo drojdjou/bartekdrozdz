@@ -41,23 +41,19 @@ window.MainPanel = function() {
 
 	var slideBack = function() {
 		if(active) return;
-
 		main.move(0, 0);
-		main.css("-webkit-filter", "");
 		active = true;
 	}
 
 	var slideRight = function() {
 		var offset = (window.innerWidth > 500) ? 500 : window.innerWidth;
 		main.move(offset, 0);
-		main.css("-webkit-filter", "grayscale(100%) brightness(0.8)");
 		active = false;
 	}
 
 	var slideLeft = function() {
 		var offset = -window.innerWidth;
 		main.move(offset, 0);
-		main.css("-webkit-filter", "grayscale(100%) brightness(0.8)");
 		active = false;
 	}
 
@@ -67,21 +63,21 @@ window.MainPanel = function() {
 	Broadcast.addClient(Msg.ON_MAIN_OPEN, slideBack); 
 
 	Broadcast.addClient(Msg.SCROLL, onScroll); 
-	Broadcast.addClient(Msg.RENDER, onRender); 
 	Broadcast.addClient(Msg.RESIZE, onResize); 
+	Broadcast.addClient(Msg.RENDER, onRender); 
 
 	boxes.forEach(function(b) {
 
 		b = Box(b);
 
-		b.on("click", function(e) { 
+		b.on(Config.click, function(e) { 
 			if(active) {
 				Broadcast.send(Msg.ON_ITEM_OPEN, b.id); 
 			} 
 		});
 	});
 
-	about.on("click", function(e) {
+	about.on(Config.click, function(e) {
 		if(active) {
 			Broadcast.send(Msg.ON_ABOUT_OPEN); 
 		} else {
