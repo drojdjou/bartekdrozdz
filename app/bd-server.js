@@ -2,6 +2,7 @@ var express = require('express');
 var path = require('path');
 var hbs = require('hbs');
 var fs = require('fs');
+var strftime = require('strftime');
 
 var data = require('./shared/Data').Data;
 
@@ -10,7 +11,7 @@ data.setMain(require('../data/main.json'));
 var serverRoot = process.argv[2];
 
 if(!serverRoot || serverRoot == "") {
-	console.log("Server root not provided, defaulting to ./");
+	console.log(strftime('%d %b %H:%M:%S') + " - [bd-server] - Server root not provided, defaulting to ./");
 	serverRoot = "./";
 }
 
