@@ -1,6 +1,6 @@
 window.Site = function(data) {
 
-	RL.setRlc("bdcom");
+	// RL.setRlc("bdcom");
 	// RL.log("Site()");
 
 	Config.click = (Simplrz.touch) ? "tap" : "click";

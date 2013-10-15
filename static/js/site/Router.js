@@ -1,35 +1,59 @@
 window.Router = function() {
 
-	var isFromCode = false;
+	var router = {};
+	var HASH_CHECK_INTERVAL = 100;
 
-	var solve = function(route) {
-		if(route != "") {
-			if(route.indexOf("/about") == 0) Broadcast.send(Msg.ON_ABOUT_OPEN);
-			else if(route.indexOf("/project") == 0) Broadcast.send(Msg.ON_ITEM_OPEN, route.split("/")[2]);
-			else Broadcast.send(Msg.ON_MAIN_OPEN);
-			
-		}
+	var href, route, base;
+
+	var setRoute = function (r) {
+		console.log("setRoute", r);
+		route = r;
+		href = base + '#' + route;
+		document.location.href = href;
+	};
+
+	var getRoute = function() {
+		href = document.location.href;
+		var r = href.indexOf("#");
+		route = href.substring(r + 1);
+		if(!base) base = (route.length > 0) ? href.substring(0, r) : href;
+		console.log("getRoute", base, route);
+	}
+
+	// This method expects the contents from the URL after the #, not including #
+	var solveRoute = function() {
+		console.log("solveRoute", route);
+		if(route.indexOf("/about") == 0) Broadcast.send(Msg.ON_ABOUT_OPEN);
+		else if(route.indexOf("/project") == 0) Broadcast.send(Msg.ON_ITEM_OPEN, route.split("/")[2]);
+		else Broadcast.send(Msg.ON_MAIN_OPEN);
 	}
 
 	Broadcast.addClient(Msg.ON_MAIN_OPEN, function(data) {
-		isFromCode = true;
-		History.pushState({ section:"/" }, null, "/");
+		setRoute("/");
 	});
 
 	Broadcast.addClient(Msg.ON_ABOUT_OPEN, function(data) {
-		isFromCode = true;
-		History.pushState({ section:"/about" }, null, "/about");
+		setRoute("/about");
 	}); 
 
 	Broadcast.addClient(Msg.ON_ITEM_OPEN, function(data) {
-		isFromCode = true;
-		History.pushState({ section:"/project/" + data }, null, "/project/" + data);
+		setRoute("/project/" + data);
 	});
 
-	History.Adapter.bind(window, "statechange", function() {
-		if(!isFromCode) solve(History.getState().data.section);
-		isFromCode = false;
-	});
+	getRoute();
+	solveRoute();
 
-	solve(History.getState().hash);
+	setInterval(function () {
+		if (document.location.href != href) {
+			console.log("href changed", document.location.href, href);
+			getRoute();
+			solveRoute(route);
+		}
+	}, HASH_CHECK_INTERVAL);
 };
+
+
+
+
+
+

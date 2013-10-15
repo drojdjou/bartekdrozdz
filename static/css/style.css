@@ -9,8 +9,9 @@ body {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  background-color: #222222;
 }
-body {
+body.webkit.touch {
   background-color: #ffffff;
   background-image: linear-gradient(to bottom, #222222 0%, #222222 100%);
 }
@@ -159,6 +160,34 @@ body {
   #main section#header h2 {
     font-size: 5.2em;
   }
+}
+#main section#footer {
+  margin-top: 0px;
+  width: 100%;
+  background-color: #222222;
+  color: #777;
+  font-size: 0.8em;
+  overflow: auto;
+  padding: 22px 10px 22px 28px;
+}
+#main section#footer ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+#main section#footer ul li {
+  float: left;
+  margin-right: 16px;
+}
+#main section#footer ul li:not(:last-child):after {
+  content: '\2219';
+  margin-left: 20px;
+}
+#main section#footer ul li a:hover,
+#main section#footer ul li span:hover {
+  color: #ffffff;
+  cursor: pointer;
+  text-decoration: underline;
 }
 section#projects h3,
 section#play h3 {
@@ -433,14 +462,13 @@ section#play h3 {
 }
 section#projects ul.projects {
   list-style-type: none;
-  margin: 0 5px 0 5px;
+  margin: 0 0px 0 0px;
   padding: 0;
   overflow: auto;
 }
 section#projects ul.projects li {
   float: left;
   margin: 0;
-  border: 4px solid #ffffff;
   position: relative;
   width: 50%;
   overflow: hidden;
@@ -524,14 +552,13 @@ section#projects ul.projects li div:nth-of-type(2) {
 }
 section#play ul.play {
   list-style-type: none;
-  margin: 0 5px 0 5px;
+  margin: 0 0px 0 0px;
   padding: 0 0 0 0;
   overflow: auto;
 }
 section#play ul.play li {
   float: left;
   margin: 0;
-  border: 4px solid #ffffff;
   position: relative;
   width: 50%;
 }

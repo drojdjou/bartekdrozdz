@@ -5,7 +5,6 @@
 		"shared/Data.js",
 		"js/lib/requestAnimFrame.js", 
 		"js/lib/simplrz.js",
-		"js/lib/history.js",
 		"js/lib/virtualscroll.js",
 		"js/lib/misc.js",
 		"js/lib/socket.io/socket.io.js",

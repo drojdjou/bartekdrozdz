@@ -1,16 +1,15 @@
 window.Wrapper = function(e) {
 
-	var TAP = "tap";
+	var that = this;
 
+	var TAP = "tap";
 	var hw = true;
 	var element = e;
-
 	var px = 0, py = 0, pz = 0;
 	var rx = 0, ry = 0, rz = 0;
 	var sx = 1, sy = 1;
 
 	var applyTransform = function() {
-
 		var t = "translate3d(" + px + "px," + py + "px," + pz + "px) ";
 		var s = "scale(" + sx + "," + sy + ") ";
 		var r = "rotateX(" + rx + "deg) rotateY(" + ry + "deg) rotateZ(" + rz + "deg)";
@@ -62,7 +61,7 @@ window.Wrapper = function(e) {
 		else element.style[p] = v;
 	}
 
-	this.domElement = function() {
+	this.e = function() {
 		return element;
 	}
 
@@ -108,20 +107,45 @@ window.Wrapper = function(e) {
 	this.off = function(m, f) {
 		element.removeEventListener(m, f);
 	}
+
+	this.addClass = function(c) {
+		classes.push(c);
+		that.attr("class", classes.join(' '));
+	}
+
+	this.rmClass = function(c) {
+		classes.splice(classes.indexOf(c), 1);
+		that.attr("class", classes.join(' '));
+	}
+
+	this.attr = function(a, v) {
+		if(v) e.setAttribute(a, v);
+		else return e.getAttribute(a);
+	}
+
+	this.select = function(tag) {
+		return Wrapper.select(tag, element);
+	}
+
+	this.selectAll = function(tag) {
+		return Wrapper.selectAll(tag, element);
+	}
+
+	var classes = (this.attr('class') || '').split(' ');
 }
 
 Wrapper.create = function(tag) {
 	return new Wrapper(document.createElement(tag));
 }
 
-Wrapper.select = function(sel) {
-	var e = document.querySelector(sel);
+Wrapper.select = function(sel, elem) {
+	var e = (elem || document).querySelector(sel);
 	if(e) return new Wrapper(e);
 	else return null;
 }
 
-Wrapper.selectAll = function(sel) {
-	var es = document.querySelectorAll(sel), ws = []
+Wrapper.selectAll = function(sel, elem) {
+	var es = (elem || document).querySelectorAll(sel), ws = []
 
 	for(var i = 0; i < es.length; i++) {
 		ws.push(new Wrapper(es[i]));

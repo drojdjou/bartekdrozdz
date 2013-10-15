@@ -5,17 +5,18 @@ window.MainPanel = function() {
 	var scrollPos = 0, scrollTarget = 0, scrollMax;
 
 	var main = 		Wrapper.select('#main');
+
 	var header = 	Wrapper.select('#header');
 	var projects = 	Wrapper.select('#projects');
 	var play =  	Wrapper.select('#play');
+	var footer =  	Wrapper.select('#footer');
 	var boxes = 	Wrapper.selectAll('.box');
-	var about = 	Wrapper.select('#about-btn');
 
 	var toggleMainSlidingAnimation = function(t) {
 		if(t) {
-			main.domElement().setAttribute("class", "animated");
+			main.addClass("animated");
 		} else {
-			main.domElement().setAttribute("class", "");
+			main.rmClass("animated");
 		}
 	}
 
@@ -37,6 +38,7 @@ window.MainPanel = function() {
 		header.move(0, scrollPos);
 		projects.move(0, scrollPos);
 		play.move(0, scrollPos);
+		footer.move(0, scrollPos);
 	}
 
 	var slideBack = function() {
@@ -67,22 +69,7 @@ window.MainPanel = function() {
 	Broadcast.addClient(Msg.RENDER, onRender); 
 
 	boxes.forEach(function(b) {
-
 		b = Box(b);
-
-		b.on(Config.click, function(e) { 
-			if(active) {
-				Broadcast.send(Msg.ON_ITEM_OPEN, b.id); 
-			} 
-		});
-	});
-
-	about.on(Config.click, function(e) {
-		if(active) {
-			Broadcast.send(Msg.ON_ABOUT_OPEN); 
-		} else {
-			Broadcast.send(Msg.ON_MAIN_OPEN); 
-		}	
 	});
 
 	onResize();

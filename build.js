@@ -14,7 +14,6 @@
 		"../../app/shared/Data",
 		"lib/requestAnimFrame", 
 		"lib/simplrz",
-		"lib/history",
 		"lib/virtualscroll",
 		"lib/misc",
 		"lib/RLdummy",

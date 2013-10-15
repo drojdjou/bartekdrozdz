@@ -42,10 +42,10 @@ window.ContentPanel = function() {
 		close.css("display", "block");
 		content.css("display", "block"); 
 
-		header.domElement().innerHTML = data.name;
+		header.e().innerHTML = data.name;
 
 		Loader.loadText(data.contentUrl, function(d) {
-			text.domElement().innerHTML = d;
+			text.e().innerHTML = d;
 			onResize();
 		});
 
@@ -56,6 +56,8 @@ window.ContentPanel = function() {
 			}
 		});
 
+		var ww = window.innerWidth, wh = window.innerHeight;
+
 		if(data.type == "demo") {
 			// By default all demos display in 16:9 or lower. To make them fullscreen set "aspect": "-1:-1" in json
 			var aspect = 9 / 16;
@@ -63,34 +65,38 @@ window.ContentPanel = function() {
 			if(data.aspect && data.aspect != "") {
 				var aw = parseInt(data.aspect.split(":")[0]);
 				var ah = parseInt(data.aspect.split(":")[1]);
-				if(aw == -1) aspect = window.innerHeight / window.innerWidth; 
+				if(aw == -1) aspect = wh / ww 
 				else aspect = ah / aw;
 			}
 
-			var fh = window.innerWidth * aspect;
+			var fh = ww * aspect;
 
-			if(fh < window.innerHeight - text.height()) {
-				fh = window.innerHeight - text.height();
+			if(fh < wh - text.height()) {
+				fh = wh - text.height();
 			}
 
-			if(window.innerWidth < 500) {
-				fh = window.innerWidth;
+			if(ww < 500) {
+				fh = ww;
 			}
 
 			iframe = Wrapper.create("iframe");
-			iframe.domElement().setAttribute("frameBorder", "0");
+			iframe.e().setAttribute("frameBorder", "0");
 
 			iframe.on("load", function(e) {
 				iframe.css("opacity", "1");
-				iframe.domElement().contentDocument.addEventListener("DOMMouseScroll", function(e) {
-					VirtualScroll.invokeFirefox(e);
-				});
+				var cd = iframe.e().contentDocument;
+				if(cd) {
+					cd.addEventListener("DOMMouseScroll", function(e) {
+						VirtualScroll.invokeFirefox(e);
+					});
+				}
+				
 			});
 
 			iframe.css("opacity", "0");
 			iframe.css("height", fh + "px");
-			hero.domElement().appendChild(iframe.domElement());
-			iframe.domElement().contentWindow.location.replace(data.url);
+			hero.e().appendChild(iframe.e());
+			iframe.e().contentWindow.location.replace(data.url);
 
 		} else if(data.type == "article") {
 			poster = Wrapper.create("img");
@@ -101,28 +107,28 @@ window.ContentPanel = function() {
 				onResize();
 			});
 
-			if(window.innerWidth > window.innerHeight) {
+			if(ww > wh) {
 				// Landscape-ish screen
 				poster.css("width", "100%");
-				poster.css("height", (window.innerWidth * (100/235)) + "px");
+				poster.css("height", (ww * (100/235)) + "px");
 
 				posterTint.css("width", "100%");
-				posterTint.css("height", (window.innerWidth * (100/235)) + "px");
+				posterTint.css("height", (ww * (100/235)) + "px");
 
-				poster.domElement().src = 'assets/content/1920w-235as/' + data.id + '.jpg';
+				poster.e().src = 'assets/content/1920w-235as/' + data.id + '.jpg';
 			} else {
 				// Portrait (or ideally square)
 				poster.css("width", "100%");
-				poster.css("height", window.innerWidth + "px");
+				poster.css("height", ww + "px");
 
 				posterTint.css("width", "100%");
-				posterTint.css("height", window.innerWidth + "px");
+				posterTint.css("height", ww + "px");
 
-				poster.domElement().src = 'assets/content/871sq/' + data.id + '.jpg';
+				poster.e().src = 'assets/content/871sq/' + data.id + '.jpg';
 			}
 
-			hero.domElement().appendChild(poster.domElement());
-			hero.domElement().appendChild(posterTint.domElement());
+			hero.e().appendChild(poster.e());
+			hero.e().appendChild(posterTint.e());
 		}
 	}
 
@@ -135,21 +141,21 @@ window.ContentPanel = function() {
 	var hide = function() {
 		active = false;
 
-		text.domElement().innerHTML = "";
+		text.e().innerHTML = "";
 
 		if(iframe) {
 			try {
-				iframe.domElement().contentWindow.kill();
+				iframe.e().contentWindow.kill();
 			} catch(e) {
 				// Nevermind
 			}
 
-			hero.domElement().removeChild(iframe.domElement());
+			hero.e().removeChild(iframe.e());
 			iframe = null;
 		}
 
 		if(poster) {
-			hero.domElement().removeChild(poster.domElement());
+			hero.e().removeChild(poster.e());
 			poster = null;
 		}
 

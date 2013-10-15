@@ -162,6 +162,40 @@
 			}
 		}
 	}
+
+	section#footer {
+		margin-top: 0px;
+		width: 100%;
+		background-color: @darkgrey;
+
+		color: #777;
+		font-size: 0.8em;
+		overflow: auto;
+		padding: 22px 10px 22px 28px;
+
+		ul {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+
+			li {
+				float: left;
+				margin-right: 16px;
+
+				&:not(:last-child):after {
+					content: '\2219';
+					// content: '\2666';
+					margin-left: 20px;
+				}
+
+				a:hover, span:hover {
+					color: #ffffff;
+					cursor: pointer;
+					text-decoration: underline;
+				}
+			}
+		}
+	}
 }
 
 section#projects, section#play {

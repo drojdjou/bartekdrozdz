@@ -5,9 +5,15 @@ var Config = {
 };
 
 if(Config.vscrollEnabled) {
-	document.querySelector('#main').style.overflowY = "hidden";
-	document.querySelector('#about').style.overflowY = "hidden";
-	document.querySelector('#content').style.overflowY = "hidden";
+
+	var h = function(id) {
+		document.querySelector(id).style.overflowY = "hidden";
+	}
+	
+	h('#main');
+	h('#about');
+	h('#content');
+
 	document.querySelector('#content').style.pointerEvents = "none";
 }
 

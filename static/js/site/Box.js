@@ -1,11 +1,11 @@
 window.Box = function(wrapper) {
 
-	wrapper.id = wrapper.domElement().getAttribute('data-id');
+	wrapper.id = wrapper.attr('data-id');
 
 	var c = 0.1;
 
-	var img = wrapper.domElement().querySelector("div:nth-of-type(1) img");
-	var div = wrapper.domElement().querySelector("div:nth-of-type(1) div");
+	var img = wrapper.select("div:nth-of-type(1) img").e();
+	var div = wrapper.select("div:nth-of-type(1) div").e();
 
 	var imagePath = img.getAttribute("data-image-large");
 
@@ -14,7 +14,7 @@ window.Box = function(wrapper) {
 	}
 
 	var isInViewport = function(e) {
-		var bb = wrapper.domElement().getBoundingClientRect();
+		var bb = wrapper.e().getBoundingClientRect();
 
 		if(bb.top < window.innerHeight) {
 			img.src = imagePath;

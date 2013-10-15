@@ -29,7 +29,7 @@ window.AboutPanel = function() {
 	var fadeIn = function() {
 		active = true;
 
-		container3d.domElement().setAttribute("class", "animated");
+		container3d.e().setAttribute("class", "animated");
 		container3d.rotate(0, 0, 0);
 		container3d.move(0, 0, 0);
 		container3d.css("opacity", 1);
@@ -59,9 +59,9 @@ window.AboutPanel = function() {
 	Broadcast.addClient(Msg.RENDER, onRender); 
 	Broadcast.addClient(Msg.RESIZE, onResize); 
 
-	close.on(Config.click, function() {
-		Broadcast.send(Msg.ON_MAIN_OPEN);
-	});
+	// close.on(Config.click, function() {
+	// 	Broadcast.send(Msg.ON_MAIN_OPEN);
+	// });
 
 	var offset = (window.innerWidth > 500) ? 500 : window.innerWidth;
 	container3d.move(-offset, 0, 0);

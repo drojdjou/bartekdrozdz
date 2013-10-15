@@ -3,6 +3,7 @@
 @import "lesshat";
 
 @darkred: #9b2222;
+@darkgrey: #222;
 
 html, body {
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -13,11 +14,13 @@ html, body {
 	width: 100%;
 	height: 100%;
 	overflow: hidden;
+	background-color: @darkgrey; 
 }
 
-body {
+// Assume Safari iOS...
+body.webkit.touch {
 	background-color: #ffffff; 
-	background-image: linear-gradient(to bottom, #222 0%, #222 100%); 
+	background-image: linear-gradient(to bottom, @darkgrey 0%, @darkgrey 100%); 
 }
 
 * {

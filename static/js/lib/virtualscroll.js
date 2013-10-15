@@ -38,37 +38,31 @@ window.VirtualScroll = (function(document) {
 
 	var initListeners = function() {
 
-		document.addEventListener("mousewheel", function(e) {
+		var wheelFunc = function(e, dy) {
 			e.preventDefault();
-			event.y += e.wheelDeltaY;
-			event.deltaY = e.wheelDeltaY;
-			notify();		
+			event.y += dy;
+			event.deltaY = dy;
+			notify();
+		}
+
+		document.addEventListener("mousewheel", function(e) {
+			wheelFunc(e, e.wheelDeltaY);		
 		});
 
 		document.addEventListener("DOMMouseScroll", function(e) {
-			e.preventDefault();
-			event.y += e.detail * mozMult;
-			event.deltaY = e.detail * mozMult;
-			notify();		
+			wheelFunc(e, e.detail * mozMult);		
 		});
 
 		document.addEventListener("touchstart", function(e) {
-			touchStartX = e.targetTouches[0].pageX;
-			touchStartY = e.targetTouches[0].pageY;
+			var t0 = e.targetTouches[0];
+			touchStartX = t0.pageX;
+			touchStartY = t0.pageY;
 		});
 
 		document.addEventListener("touchmove", function(e) {
-			e.preventDefault();
-
-			var v = (e.targetTouches[0].pageY - touchStartY) * touchMult;
-			event.y += v;
-			event.deltaY = v;
-			touchStartY = e.targetTouches[0].pageY;
-
-			// if(event.y > 1000) window.scroll(0, 1);
-			// else window.scroll(0, 0);
-
-			notify();
+			var t0 = e.targetTouches[0];
+			wheelFunc(e, (t0.pageY - touchStartY) * touchMult);
+			touchStartY = t0.pageY;
 		});
 
 		initialized = true;

@@ -8,10 +8,28 @@ window.Simplrz = (function() {
 		classes.push( (result) ? feature : "no-" + feature );
 	}
 
+	// Source: http://davidwalsh.name/vendor-prefix
+	var prefix = (function () {
+		var styles = window.getComputedStyle(document.documentElement, ''),
+			pre = (Array.prototype.slice.call(styles).join('').match(/-(moz|webkit|ms)-/) || (styles.OLink === '' && ['', 'o']))[1],
+			dom = ('WebKit|Moz|MS|O').match(new RegExp('(' + pre + ')', 'i'))[1];
+
+		return {
+			dom: dom,
+			lowercase: pre,
+			css: '-' + pre + '-',
+			js: pre[0].toUpperCase() + pre.substr(1)
+		};
+	})();
+
+	classes.push(prefix.lowercase);
+
+	// Source: modernizr
 	check("touch", function() {
 		return (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch);
 	});
 
+	// Source: Three.js detect script
 	check("webgl", function() {
 		try { 
 			var canvas = document.createElement( 'canvas' ); 
@@ -22,6 +40,7 @@ window.Simplrz = (function() {
 		} 
 	});
 
+	// Source: hm... somewhere on SO
 	check("flash", function() {
 		return !!(
 			navigator.mimeTypes["application/x-shockwave-flash"] || 
