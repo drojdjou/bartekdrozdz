@@ -70,7 +70,7 @@
 
 
     <section id="projects">
-        <h3>Work</h3>
+        <!-- <h3>Work</h3> -->
 
         <ul class="projects">
             {{#each data.projects}}
@@ -78,8 +78,8 @@
             <li class="box" data-id="{{id}}">
                 <a href="#/project/{{id}}">
                 <div>
-                    <img data-image-large="assets/content/675sq/{{id}}.jpg" data-image-small="assets/content/320sq/{{id}}.jpg">
-                    <div></div>
+                    <canvas data-image-large="assets/content/675sq/{{id}}.jpg" data-image-small="assets/content/320sq/{{id}}.jpg" data-tint="{{tint}}"></canvas>
+                    <div class="mask"></div>
                 </div>
                 <div></div>
                 <h4>{{name}}</h4>
@@ -101,18 +101,20 @@
     </section>
 
     <section id="play">
-        <h3 class="sub-header">Play</h3>
+        <!-- <h3 class="sub-header">Play</h3> -->
 
         <ul class="play">
             {{#each data.play}}
             {{#if ../config.javascriptEnabled}}
             <li class="box" data-id="{{id}}">
+                <a href="#/project/{{id}}">
                 <div>
-                    <img data-image-large="assets/play/{{id}}.jpg" data-image-small="assets/play/{{id}}.jpg">
-                    <div></div>
+                    <canvas data-image-large="assets/play/{{id}}.jpg" data-image-small="assets/play/{{id}}.jpg" data-tint="{{tint}}"></canvas>
+                    <div class="mask"></div>
                 </div>
                 <div></div>
                 <h4>{{name}}</h4>
+                </a>
             </li>
             {{else}}
             <li class="box">
@@ -134,7 +136,8 @@
             <li>Copyright &copy; 2013 Bartek Drozdz</li>
             <li><a class="about-link" href="#/about">About</a></li>
             <li><a href="">Contact me</a></li>
-            <li><a href="">Twitter</a></li>
+            <li><a href="http://twitter.com/bartekd/">Twitter</a></li>
+            <li><a href="http://codepen.io/bartekd/">Codepen</a></li>
             <li><a href="">Pinterest</a></li>
             <li><a href="">LinkedIn</a></li>
         </ul>

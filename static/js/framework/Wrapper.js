@@ -13,7 +13,6 @@ window.Wrapper = function(e) {
 		var t = "translate3d(" + px + "px," + py + "px," + pz + "px) ";
 		var s = "scale(" + sx + "," + sy + ") ";
 		var r = "rotateX(" + rx + "deg) rotateY(" + ry + "deg) rotateZ(" + rz + "deg)";
-
 		element.style.webkitTransform = t + s + r;
 		element.style.transform = t + s + r;
 	}
@@ -33,8 +32,8 @@ window.Wrapper = function(e) {
 	}
 
 	this.scale = function(x, y) {
-		sx = x || 1;
-		sy = y || 1;
+		sx = (x !== null) ? x : 1;
+		sy = (y !== null) ? y : 1;
 		applyTransform();
 	}
 
@@ -45,9 +44,14 @@ window.Wrapper = function(e) {
 		applyTransform();
 	}
 
+	/** Deprecated (?), user rect().height **/
 	this.height = function() {
 		// return element.offsetHeight;
 		return element.scrollHeight;
+	}
+
+	this.rect = function() {
+		return element.getBoundingClientRect();
 	}
 
 	this.position = function() {

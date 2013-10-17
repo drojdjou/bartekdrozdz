@@ -107,8 +107,8 @@ window.ContentPanel = function() {
 				onResize();
 			});
 
-			if(ww > wh) {
-				// Landscape-ish screen
+			if(ww > wh || ww > 768) {
+				// Landscape-ish or just too big screen
 				poster.css("width", "100%");
 				poster.css("height", (ww * (100/235)) + "px");
 

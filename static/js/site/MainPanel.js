@@ -33,13 +33,17 @@ window.MainPanel = function() {
 		if(!active) return;
 
 		scrollTarget = Math.clamp(scrollTarget, -scrollMax, 0);
-		scrollPos += (scrollTarget - scrollPos) * 0.2;
+		var velocity = (scrollTarget - scrollPos) * 0.2;
+		scrollPos += velocity;
 
-		header.move(0, scrollPos);
-		projects.move(0, scrollPos);
-		play.move(0, scrollPos);
-		footer.move(0, scrollPos);
+		var scr = scrollPos | 0;
+
+		header.move(0, scr * 0.6);
+		projects.move(0, scr);
+		play.move(0, scr);
+		footer.move(0, scr);
 	}
+
 
 	var slideBack = function() {
 		if(active) return;
@@ -70,6 +74,7 @@ window.MainPanel = function() {
 
 	boxes.forEach(function(b) {
 		b = Box(b);
+		b.current = b.target = 0;
 	});
 
 	onResize();

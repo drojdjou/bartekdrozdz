@@ -3,6 +3,10 @@ window.Site = function(data) {
 	// RL.setRlc("bdcom");
 	// RL.log("Site()");
 
+	var mouse = {
+		x: 0, y: 0
+	};
+
 	Config.click = (Simplrz.touch) ? "tap" : "click";
 
 	if(Config.vscrollEnabled) {
@@ -16,10 +20,16 @@ window.Site = function(data) {
 		window.addEventListener("resize", function() {
 			Broadcast.send(Msg.RESIZE);
 		});
+
+		window.addEventListener("mousemove", function(e) {
+			mouse.x = e.pageX;
+			mouse.y = e.pageY;
+		});
+
 	
 		var render = function() {
 			requestAnimationFrame(render);
-			Broadcast.send(Msg.RENDER);
+			Broadcast.send(Msg.RENDER, mouse);
 		}
 
 		render();
