@@ -27,7 +27,8 @@ window.Box = function(wrapper) {
 		imageCanvas.width = w;
 		imageCanvas.height = h;
 
-	 	imageContext.fillStyle = "rgb(" + Math.random() * 255 | 0 + ", 0, 0)";
+		var rgb = "rgb(" + (Math.random() * 255 | 0) + ", 0, 0)";
+		imageContext.fillStyle = rgb;
 	 	imageContext.fillRect(0, 0, w, h);
 		imageContext.drawImage(img, 0 , 0, w, h);
 
@@ -40,7 +41,7 @@ window.Box = function(wrapper) {
 
       	context.drawImage(imageCanvas, 0, 0, w, h);
 
-		img = null;
+		//img = null;
 
 		hoverLeft = Wrapper.create("div");
 		hoverTop = Wrapper.create("div");

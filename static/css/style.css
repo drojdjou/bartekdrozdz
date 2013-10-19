@@ -625,7 +625,7 @@ section#projects ul.projects li a > div:nth-of-type(1) .mask {
   left: -0.05%;
   width: 100.1%;
   height: 100.1%;
-  background-color: #000000;
+  background-color: rgba(0, 0, 0, 0.5);
   -webkit-transform: translateZ(5);
   -moz-transform: translateZ(5);
   -o-transform: translateZ(5);

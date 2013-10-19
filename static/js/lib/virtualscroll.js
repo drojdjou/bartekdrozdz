@@ -46,7 +46,7 @@ window.VirtualScroll = (function(document) {
 		}
 
 		document.addEventListener("mousewheel", function(e) {
-			wheelFunc(e, e.wheelDeltaY);		
+			wheelFunc(e, e.wheelDeltaY || e.wheelDelta);		
 		});
 
 		document.addEventListener("DOMMouseScroll", function(e) {
