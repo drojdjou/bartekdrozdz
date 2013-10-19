@@ -4,70 +4,50 @@ window.Box = function(wrapper) {
 
 	var imageLoaded = false;
 
-	var canvas, context, img;
-	var hoverLeft, hoverTop, hoverRight, hoverBottom;
+	var hoverLeft, hoverTop, hoverRight, hoverBottom, touchFrame;
 
 	var container = wrapper.select("div:nth-of-type(1)");
-	var mask = container.select(".mask").e();
+	var mask = container.select(".mask");
 
-	canvas = container.select("canvas");
-	img = new Image();
+	var img = container.select("img");
 	
-	var imagePath = canvas.attr("data-image-large");
-	var tint = canvas.attr("data-tint");
+	var imagePath = img.attr("data-image-large");
+	var tint = img.attr("data-tint");
 
-	img.onload = function() {
-		var w = canvas.e().width = container.rect().width * 2 | 0;
-		var h = canvas.e().height = container.rect().height * 2 | 0;
+	img.on("load", function() {
 
-		context = canvas.e().getContext('2d');
+		if(!Simplrz.touch) {
+			hoverLeft = Wrapper.create("div");
+			hoverTop = Wrapper.create("div");
+			hoverRight = Wrapper.create("div");
+			hoverBottom = Wrapper.create("div");
 
-		imageCanvas = document.createElement("canvas");
-		imageContext = imageCanvas.getContext('2d');
-		imageCanvas.width = w;
-		imageCanvas.height = h;
+			hoverLeft.attr("class", "hover-frame left in-first");
+			hoverTop.attr("class", "hover-frame top in-first");
+			hoverRight.attr("class", "hover-frame right in-second");
+			hoverBottom.attr("class", "hover-frame bottom in-second");
 
-		var rgb = "rgb(" + (Math.random() * 255 | 0) + ", 0, 0)";
-		imageContext.fillStyle = rgb;
-	 	imageContext.fillRect(0, 0, w, h);
-		imageContext.drawImage(img, 0 , 0, w, h);
+			hoverLeft.css("backgroundColor", tint);
+			hoverTop.css("backgroundColor", tint);
+			hoverRight.css("backgroundColor", tint);
+			hoverBottom.css("backgroundColor", tint);
+			
+			container.e().appendChild(hoverLeft.e());
+			container.e().appendChild(hoverTop.e());
+			container.e().appendChild(hoverRight.e());
+			container.e().appendChild(hoverBottom.e());
+			Broadcast.addClient(Msg.RENDER, trackHover);
+		} else {
+			touchFrame = Wrapper.create("div");
+			touchFrame.attr("class", "frame");
+			touchFrame.css("borderColor", tint);
+			container.e().appendChild(touchFrame.e());
+		}
 
-		var g = imageContext.createLinearGradient(0, 0, 0, h);
-		g.addColorStop(0.6, 'rgba(0,0,0,0)');   
-		g.addColorStop(1, 'rgba(0,0,0,0.5)');
+		mask.css("backgroundColor", "rgba(0, 0, 0, 0)");
+	});
 
-      	imageContext.fillStyle = g;
-      	imageContext.fillRect(0, 0, w, h);
-
-      	context.drawImage(imageCanvas, 0, 0, w, h);
-
-		//img = null;
-
-		hoverLeft = Wrapper.create("div");
-		hoverTop = Wrapper.create("div");
-		hoverRight = Wrapper.create("div");
-		hoverBottom = Wrapper.create("div");
-
-		hoverLeft.attr("class", "hover-frame left in-first");
-		hoverTop.attr("class", "hover-frame top in-first");
-		hoverRight.attr("class", "hover-frame right in-second");
-		hoverBottom.attr("class", "hover-frame bottom in-second");
-
-		hoverLeft.css("backgroundColor", tint);
-		hoverTop.css("backgroundColor", tint);
-		hoverRight.css("backgroundColor", tint);
-		hoverBottom.css("backgroundColor", tint);
-		
-		container.e().appendChild(hoverLeft.e());
-		container.e().appendChild(hoverTop.e());
-		container.e().appendChild(hoverRight.e());
-		container.e().appendChild(hoverBottom.e());
-
-		mask.style.backgroundColor = "rgba(0, 0, 0, 0)";
-		imageLoaded = true;
-	}
-
-	var onHover =function(e) {
+	var onHover = function(e) {
 		hoverLeft.attr("class", "hover-frame left in-first");
 		hoverTop.attr("class", "hover-frame top in-first");
 		hoverRight.attr("class", "hover-frame right in-second");
@@ -93,23 +73,22 @@ window.Box = function(wrapper) {
 
 	var hovered = false;
 
-	var trackBox = function(e) {
+	var trackBox = function() {
 		var bb = wrapper.e().getBoundingClientRect();
-
-		if(!imageLoaded) {
-			if(bb.top < window.innerHeight) {
-				img.src = imagePath;
-			}
-		} else {
-			var h = Math.pointInRect(e, bb);
-
-			if(h != hovered) {
-				if(h) onHover();
-				else onHout();
-			} 
-
-			hovered = h;
+		if(bb.top < window.innerHeight) {
+			img.e().src = imagePath;
+			Broadcast.removeClient(Msg.RENDER, trackBox); 
 		}
+	}
+
+	var trackHover = function(e) {
+		var bb = wrapper.e().getBoundingClientRect();
+		var h = Math.pointInRect(e, bb);
+		if(h != hovered) {
+			if(h) onHover();
+			else onHout();
+		} 
+		hovered = h;
 	}
 
 	Broadcast.addClient(Msg.RENDER, trackBox); 

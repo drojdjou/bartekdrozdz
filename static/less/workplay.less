@@ -1,12 +1,12 @@
 .oversize {
-	// top: 0%;
-	// left: 0%;
-	// width: 100%;
-	// height: 100%;
-	top: -0.05%;
-	left: -0.05%;
-	width: 100.1%;
-	height: 100.1%;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	// top: -0.05%;
+	// left: -0.05%;
+	// width: 100.1%;
+	// height: 100.1%;
 }
 
 @hoverFrameSize: 10%;
@@ -32,8 +32,8 @@
 	}
 
 	&.left {
-		top: -0.1%;
-		left: -0.1%;
+		top: 0;
+		left: 0;
 		width: @hoverFrameSize;
 		height: 100%;
 		.transform-origin(~"0 0");
@@ -41,8 +41,8 @@
 	}
 
 	&.top {
-		top: -0.1%;
-		left: -0.1%;
+		top: 0;
+		left: 0;
 		width: 100%;
 		height: @hoverFrameSize;
 		.transform-origin(~"0 0");
@@ -50,8 +50,8 @@
 	}
 
 	&.right {
-		top: -0.1%;
-		right: -0.1%;
+		top: 0;
+		right: 0;
 		width: @hoverFrameSize;
 		height: 100%;
 		.transform-origin(~"0 0");
@@ -59,8 +59,8 @@
 	}
 
 	&.bottom {
-		bottom: -0.1%;
-		left: -0.1%;
+		bottom: 0;
+		left: 0;
 		width: 100%;
 		height: @hoverFrameSize;
 		.transform-origin(~"0 100%");
@@ -69,20 +69,21 @@
 }
 
 section#projects {
+	padding-top: 40px;
+	background-color: #fff;
 
 	ul.projects {
 		list-style-type: none;
-		margin: 40px 0px 0 0px;
+		margin: 0;
 		padding: 0;
 		overflow: auto;
 
 		li {
 			float: left;
 			margin: 0;
-			//border: 1px solid transparent;
+			border: 2px solid transparent;
 			position: relative;
 			width: 50%;
-			background-color: #000;
 
 			h4, > div {
 				position: absolute;
@@ -90,10 +91,9 @@ section#projects {
 				color: #ffffff;
 				margin: 0px;
 				padding: 5px;
-				// background-color: rgba(0, 0, 0, 0);
 				line-height: 1.0em;
-				bottom: 10px;
-				left: 10px;
+				bottom: 0;
+				left: 0;
 				.transform(~"translateZ(0)");
 			}
 
@@ -103,23 +103,35 @@ section#projects {
 			    bottom: 0;
 			    left: 0;
 			    right: 0;
-			    overflow: hidden;
+			    //overflow: hidden;
 
-			    img, canvas {
+			    img {
 			    	position: absolute;
 			    	.oversize();
-					.transform(~"translateZ(10)");
+					.transform(~"translateZ(100)");
 				}
 
 				.mask {
 					position: absolute;
 					.oversize();
-					background-color: rgba(0, 0, 0, 0.5);
+					background-color: rgba(0, 0, 0, 1);
 					.transform(~"translateZ(5)");
 
 					.no-touch & {
 						.transition(~"background-color 1.5s ease");
 					}
+				}
+
+				.touch & .frame {
+					position: absolute;
+					.oversize();
+					border: 5px;
+					border-style: solid;
+					opacity: 0;
+				}
+
+				.touch & .frame:active {
+					opacity: 1;
 				}
 			}
 
@@ -133,6 +145,8 @@ section#projects {
 		ul.projects {
 			li {
 				width: 50%;
+				border: 5px solid transparent;
+
 				h4 {
 					font-size: 1.2em;
 				}
@@ -144,6 +158,8 @@ section#projects {
 		ul.projects {
 			li {
 				width: 33.33%;
+				border: 10px solid transparent;
+
 				h4 {
 					padding: 10px;
 					font-size: 1.4em;
@@ -187,9 +203,9 @@ section#play {
 			float: left;
 			margin: 0;
 			position: relative;
-			//border: 1px solid transparent;
+			border: 2px solid transparent;
 			width: 50%;
-			background-color: #000;
+			background-color: #fff;
 
 			h4, > div {
 				position: absolute;
@@ -197,7 +213,6 @@ section#play {
 				color: #ffffff;
 				margin: 0;
 				padding: 5px;
-				background-color: rgba(0, 0, 0, 0);
 				line-height: 1.0em;
 				bottom: 0;
 				left: 0;
@@ -212,18 +227,15 @@ section#play {
 			    right: 0;
 			    overflow: hidden;
 
-			    img, canvas {
+			    img {
 			    	position: absolute;
 			    	.oversize();
-					.transform(~"translateZ(20)");
+					.transform(~"translateZ(200)");
 				}
 
 				.mask {
 					position: absolute;
-					top: 0;
-			    	left: 0;
-					width: 100%;
-					height: 100%;
+					.oversize();
 					background-color: rgba(0, 0, 0, 1);
 					.transform(~"translateZ(10)");
 
@@ -243,6 +255,7 @@ section#play {
 		ul.play {
 			li {
 				width: 33.33%;
+				border: 5px solid transparent;
 			}
 		}
 	}
@@ -251,6 +264,7 @@ section#play {
 		ul.play {
 			li {
 				width: 25%;
+				border: 10px solid transparent;
 			}
 		}
 	}

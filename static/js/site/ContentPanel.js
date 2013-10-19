@@ -4,11 +4,11 @@ window.ContentPanel = function() {
 	var scrollPos = 0, scrollTarget = 0, scrollMax;
 
 	var content = 	Wrapper.select('#content section');
-	var close = 	Wrapper.select('#content .close');
 
 	var header = Wrapper.select('#content h2');
 	var text = Wrapper.select('#content .content');
 	var hero = Wrapper.select('#content .hero');
+	var close = Wrapper.select('#content .close');
 
 	var iframe, poster;
 
@@ -170,8 +170,4 @@ window.ContentPanel = function() {
 	Broadcast.addClient(Msg.ON_MAIN_OPEN, fadeOut);
 	Broadcast.addClient(Msg.ON_ABOUT_OPEN, hide); 
 	Broadcast.addClient(Msg.ON_ITEM_OPEN, show);
-
-	close.on(Config.click, function() {
-		Broadcast.send(Msg.ON_MAIN_OPEN);
-	});
 }
