@@ -574,7 +574,8 @@ section#play h3 {
   transform: scale(0, 1);
 }
 section#projects {
-  padding-top: 40px;
+  padding-top: 20px;
+  margin-top: 20px;
   background-color: #fff;
 }
 section#projects ul.projects {
@@ -651,12 +652,22 @@ section#projects ul.projects li a > div:nth-of-type(1) .mask {
   left: 0;
   width: 100%;
   height: 100%;
-  border: 5px;
+  border: 10px;
   border-style: solid;
   opacity: 0;
+  -webkit-transition: opacity 0.3s ease;
+  -moz-transition: opacity 0.3s ease;
+  -o-transition: opacity 0.3s ease;
+  -ms-transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease;
 }
 .touch section#projects ul.projects li a > div:nth-of-type(1) .frame:active {
   opacity: 1;
+  -webkit-transition: opacity 0s ease;
+  -moz-transition: opacity 0s ease;
+  -o-transition: opacity 0s ease;
+  -ms-transition: opacity 0s ease;
+  transition: opacity 0s ease;
 }
 section#projects ul.projects li a > div:nth-of-type(2) {
   margin-top: 100%;
@@ -765,6 +776,19 @@ section#play ul.play li a > div:nth-of-type(1) .mask {
   -o-transition: background-color 1.5s ease;
   -ms-transition: background-color 1.5s ease;
   transition: background-color 1.5s ease;
+}
+.touch section#play ul.play li a > div:nth-of-type(1) .frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 10px;
+  border-style: solid;
+  opacity: 0;
+}
+.touch section#play ul.play li a > div:nth-of-type(1) .frame:active {
+  opacity: 1;
 }
 section#play ul.play li a > div:nth-of-type(2) {
   margin-top: 100%;

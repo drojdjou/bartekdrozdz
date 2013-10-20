@@ -69,7 +69,8 @@
 }
 
 section#projects {
-	padding-top: 40px;
+	padding-top: 20px;
+	margin-top: 20px;
 	background-color: #fff;
 
 	ul.projects {
@@ -125,13 +126,17 @@ section#projects {
 				.touch & .frame {
 					position: absolute;
 					.oversize();
-					border: 5px;
+					border: 10px;
 					border-style: solid;
 					opacity: 0;
+					.transition(~"opacity 0.3s ease");
+
 				}
 
 				.touch & .frame:active {
 					opacity: 1;
+					.transition(~"opacity 0s ease");
+
 				}
 			}
 
@@ -242,6 +247,18 @@ section#play {
 					.no-touch & {
 						.transition(~"background-color 1.5s ease");
 					}
+				}
+
+				.touch & .frame {
+					position: absolute;
+					.oversize();
+					border: 10px;
+					border-style: solid;
+					opacity: 0;
+				}
+
+				.touch & .frame:active {
+					opacity: 1;
 				}
 			}
 

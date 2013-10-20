@@ -11,8 +11,16 @@ window.Box = function(wrapper) {
 
 	var img = container.select("img");
 	
-	var imagePath = img.attr("data-image-large");
 	var tint = img.attr("data-tint");
+	var type = wrapper.attr("data-type");
+
+	var largeScreen = window.innerWidth > 768;
+	var largeFolder = (type == "project") ? "675sq" : "400sq";
+	var smallFolder = (type == "project") ? "320sq" : "200sq";
+	var imageFolder = (largeScreen) ? largeFolder : smallFolder;
+	var imagePath = "assets/content/%f%/%id%.jpg".replace("%f%", imageFolder).replace("%id%", wrapper.id);
+
+	console.log(type, largeFolder, smallFolder, imageFolder, imagePath);
 
 	img.on("load", function() {
 
