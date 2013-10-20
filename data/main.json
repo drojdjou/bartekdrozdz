@@ -90,8 +90,7 @@
             "deps": ["webgl"],
             "name": "Spacerun",
             "imageLarge": "assets/play/spacerun.jpg",
-            "url": "http://localhost/Documents/javascript/spacerun/game/",
-            "url2": "http://everyday3d.com/spacerun/game/",
+            "url": "http://everyday3d.com/spacerun/game/",
             "contentUrl": "data/generic",
             "tint": "#413c38"
         },
@@ -101,8 +100,7 @@
             "deps": ["webgl"],
             "name": "Glass shader",
             "imageLarge": "assets/play/glass.jpg",
-            "url": "http://localhost/Documents/javascript/J3D/demo/004_Glass.html",
-            "url2": "http://www.everyday3d.com/j3d/demo/004_Glass.html",
+            "url": "http://j3d.bartekdrozdz.com/demo/004_Glass.html",
             "contentUrl": "data/generic",
             "tint": "#cf5601"
         },
@@ -122,20 +120,9 @@
             "type": "demo",
             "deps": ["webgl"],
             "imageLarge": "assets/play/paper.jpg",
-            "url": "http://www.everyday3d.com/j3d/demo/013_Paper.html",
+            "url": "http://j3d.bartekdrozdz.com/demo/013_Paper.html",
             "contentUrl": "data/generic",
             "tint": "#919ec7"
-        },
-        {
-            "id": "globe",
-            "name": "Globe",
-            "type": "demo",
-            "deps": ["canvas"],
-            "imageLarge": "assets/play/sqr_globe.jpg",
-            "url": "/Documents/javascript/squareroot.js/bin/3d/003-globe.html",
-            "url2": "http://codepen.io/bartekd/full/nvpJD",
-            "contentUrl": "data/generic",
-            "tint": "#026483"
         },
         {
             "id": "webcam",
@@ -143,7 +130,7 @@
             "deps": ["webgl", "webrct"],
             "name": "Webcam effect",
             "imageLarge": "assets/play/webcam.jpg",
-            "url": "http://www.everyday3d.com/j3d/demo/023_Webcam_Particles.html",
+            "url": "http://j3d.bartekdrozdz.com/demo/021_Webcam_Particles.html",
             "contentUrl": "data/generic",
             "tint": "#045e00"
         },
@@ -153,59 +140,9 @@
             "type": "demo",
             "deps": ["webgl"],
             "imageLarge": "assets/play/j3d_globe.jpg",
-            "url": "http://www.everyday3d.com/j3d/demo/018_Sphere.html",
+            "url": "http://j3d.bartekdrozdz.com/demo/018_Sphere.html",
             "contentUrl": "data/generic",
             "tint": "#081f2c"
-        },
-        {
-            "id": "robotwars",
-            "name": "Robot game",
-            "type": "demo",
-            "deps": ["unity3d"],
-            "imageLarge": "assets/play/robotwars.jpg",
-            "url": "http://everyday3d.com/unity3d/game/",
-            "contentUrl": "data/generic",
-            "tint": "#917958"
-        },
-        {
-            "id": "bunker",
-            "name": "Bunker",
-            "type": "demo",
-            "deps": ["unity3d"],
-            "imageLarge": "assets/play/bunker.jpg",
-            "url": "http://everyday3d.com/unity3d/bunker/",
-            "contentUrl": "data/generic",
-            "tint": "#373631"
-        },
-        {
-            "id": "mustang",
-            "name": "Mustang",
-            "type": "demo",
-            "deps": ["flash"],
-            "imageLarge": "assets/play/mustang.jpg",
-            "url": "http://www.everydayflash.com/flash/mustang/",
-            "contentUrl": "data/generic",
-            "tint": "#a9cbe5"
-        },
-        {
-            "id": "pants",
-            "name": "Running Pants",
-            "type": "demo",
-            "deps": ["flash"],
-            "imageLarge": "assets/play/walk.jpg",
-            "url": "http://www.everyday3d.com/flash/walk/",
-            "contentUrl": "data/generic",
-            "tint": "#364b62"
-        },
-        {
-            "id": "skate",
-            "name": "Skate",
-            "type": "demo",
-            "deps": ["flash"],
-            "imageLarge": "assets/play/skate.jpg",
-            "url": "http://www.everyday3d.com/skate/",
-            "contentUrl": "data/generic",
-            "tint": "#e6c885"
         }
     ],
 

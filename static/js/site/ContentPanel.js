@@ -83,7 +83,6 @@ window.ContentPanel = function() {
 			iframe.e().setAttribute("frameBorder", "0");
 
 			iframe.on("load", function(e) {
-				iframe.css("opacity", "1");
 				var cd = iframe.e().contentDocument;
 				if(cd) {
 					cd.addEventListener("DOMMouseScroll", function(e) {
@@ -91,6 +90,9 @@ window.ContentPanel = function() {
 					});
 				}
 				
+				setTimeout(function() {
+					iframe.css("opacity", "1");
+				}, 500);
 			});
 
 			iframe.css("opacity", "0");

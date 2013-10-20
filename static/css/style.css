@@ -263,6 +263,7 @@ section#play h3 {
 }
 #content .hero iframe {
   width: 100%;
+  background-color: #000;
   poiter-events: none;
 }
 #content .hero img {
