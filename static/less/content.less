@@ -21,11 +21,13 @@
 		position: absolute;
 		top: 16px;
 		right: 16px;
-		width: 24px;
-		height: 24px;
+		width: 34px;
+		height: 34px;
 		background-image: url('../assets/buttons.png');
 		background-size: 200% 200%;
 		background-position: 0 100%;
+		background-repeat: no-repeat;
+		background-color: rgba(0, 0, 0, 0.5);
 
 		&:hover {
 			background-position: 100% 100%;
@@ -37,7 +39,8 @@
 		position: absolute;
 		top: 0px;
 		left: 0px;
-		background-color: #000000;
+		font-size: 1.6em;
+		background-color: rgba(0, 0, 0, 0.5);
 		color: #ffffff;
 		padding: 5px;
 		margin: 16px 0 0 16px;
@@ -69,21 +72,20 @@
 		.close {
 			top: 4px;
 			right: 4px;
-			background-color: none;
+			width: 26px;
+			height: 26px;
 		}
 
 		h2 {
-			padding: 7px;
-			margin: 0 0 0 0;
-			width: 100%;
-			font-size: 1.2em;
-			background-color: rgba(0, 0, 0, 0.75);
+			padding: 4px;
+			margin: 4px 0 0 4px;
+			font-size: 1.0em;
 		}
 	}
 
 	.content {
 		position: relative;
-		top: -4px;
+		top: 0;
 		background-color: #222222;
 		font-family: 'Open Sans', sans-serif;
 		width: 100%;
@@ -104,6 +106,26 @@
 			left: 50%;
 			margin: 0 0 1em @demoContentWidth * -0.5;
 			padding: 0;
+
+			.warning,  {
+				background-color: #7c0000;
+				color: white;
+				font-size: 0.9em;
+				padding: 5px 5px 5px 10px;
+				border-radius: 4px;
+			}
+
+			.webgl & .webgl {
+				display: none;
+			}
+
+			.canvas & .canvas {
+				display: none;
+			}
+
+			.webrct & .webrct {
+				display: none;
+			}
 
 			h4 {
 				font-weight: 700;

@@ -6,7 +6,6 @@ window.Router = function() {
 	var href, route, base;
 
 	var setRoute = function (r) {
-		console.log("setRoute", r);
 		route = r;
 		href = base + '#' + route;
 		document.location.href = href;
@@ -17,12 +16,10 @@ window.Router = function() {
 		var r = href.indexOf("#");
 		route = href.substring(r + 1);
 		if(!base) base = (route.length > 0) ? href.substring(0, r) : href;
-		console.log("getRoute", base, route);
 	}
 
 	// This method expects the contents from the URL after the #, not including #
 	var solveRoute = function() {
-		console.log("solveRoute", route);
 		if(route.indexOf("/about") == 0) Broadcast.send(Msg.ON_ABOUT_OPEN);
 		else if(route.indexOf("/project") == 0) Broadcast.send(Msg.ON_ITEM_OPEN, route.split("/")[2]);
 		else Broadcast.send(Msg.ON_MAIN_OPEN);

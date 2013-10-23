@@ -51,44 +51,33 @@ window.ContentPanel = function() {
 
 		var missingDeps = [];
 		data.deps.forEach(function(dep) {
+
+			console.log("Checking dependency", dep, Simplrz[dep]);
+
 			if(!Simplrz[dep]) {
 				missingDeps.push(dep);
 			}
 		});
 
+
 		var ww = window.innerWidth, wh = window.innerHeight;
 
-		if(data.type == "demo") {
-			// By default all demos display in 16:9 or lower. To make them fullscreen set "aspect": "-1:-1" in json
-			var aspect = 9 / 16;
+		if(data.type == "demo" && missingDeps.length == 0) {
 
-			if(data.aspect && data.aspect != "") {
-				var aw = parseInt(data.aspect.split(":")[0]);
-				var ah = parseInt(data.aspect.split(":")[1]);
-				if(aw == -1) aspect = wh / ww 
-				else aspect = ah / aw;
-			}
+			// All demos display at 80% of the screen heght
+			var demoHeight = window.innerHeight * 0.8
 
-			var fh = ww * aspect;
-
-			if(fh < wh - text.height()) {
-				fh = wh - text.height();
-			}
-
-			if(ww < 500) {
-				fh = ww;
-			}
 
 			iframe = Wrapper.create("iframe");
 			iframe.e().setAttribute("frameBorder", "0");
 
 			iframe.on("load", function(e) {
-				var cd = iframe.e().contentDocument;
-				if(cd) {
-					cd.addEventListener("DOMMouseScroll", function(e) {
-						VirtualScroll.invokeFirefox(e);
-					});
-				}
+				// var cd = iframe.e().contentDocument;
+				// if(cd) {
+				// 	cd.addEventListener("DOMMouseScroll", function(e) {
+				// 		VirtualScroll.invokeFirefox(e);
+				// 	});
+				// }
 				
 				setTimeout(function() {
 					iframe.css("opacity", "1");
@@ -96,11 +85,11 @@ window.ContentPanel = function() {
 			});
 
 			iframe.css("opacity", "0");
-			iframe.css("height", fh + "px");
+			iframe.css("height", demoHeight + "px");
 			hero.e().appendChild(iframe.e());
 			iframe.e().contentWindow.location.replace(data.url);
 
-		} else if(data.type == "article") {
+		} else {
 			poster = Wrapper.create("img");
 			var posterTint = Wrapper.create("div");
 

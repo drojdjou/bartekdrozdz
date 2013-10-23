@@ -90,8 +90,8 @@
             "deps": ["webgl"],
             "name": "Spacerun",
             "imageLarge": "assets/play/spacerun.jpg",
-            "url": "http://everyday3d.com/spacerun/game/",
-            "contentUrl": "data/generic",
+            "url": "http://j3d.bartekdrozdz.com/demo/024_Spacerun.html",
+            "contentUrl": "data/spacerun",
             "tint": "#413c38"
         },
         {
@@ -101,28 +101,28 @@
             "name": "Glass shader",
             "imageLarge": "assets/play/glass.jpg",
             "url": "http://j3d.bartekdrozdz.com/demo/004_Glass.html",
-            "contentUrl": "data/generic",
+            "contentUrl": "data/glass",
             "tint": "#cf5601"
         },
         {
-            "id": "polygons",
-            "name": "Polygons",
+            "id": "balls",
+            "name": "Balls",
             "type": "demo",
             "deps": ["canvas"],
-            "imageLarge": "assets/play/polygons.jpg",
-            "url": "http://everyday3d.com/sqr/bin/3d/005-polygons.html",
-            "contentUrl": "data/generic",
+            "imageLarge": "assets/play/balls.jpg",
+            "url": "http://sqr.bartekdrozdz.com/bin/2d/002-balls.html",
+            "contentUrl": "data/balls",
             "tint": "#550000"
         },
         {
-            "id": "paper",
-            "name": "Paper",
+            "id": "polygons",
+            "name": "3D objects + LeapMotion",
             "type": "demo",
-            "deps": ["webgl"],
-            "imageLarge": "assets/play/paper.jpg",
-            "url": "http://j3d.bartekdrozdz.com/demo/013_Paper.html",
-            "contentUrl": "data/generic",
-            "tint": "#919ec7"
+            "deps": ["canvas"],
+            "imageLarge": "assets/play/polygons.jpg",
+            "url": "http://sqr.bartekdrozdz.com/bin/3d/005-polygons.html",
+            "contentUrl": "data/polygons",
+            "tint": "#550000"
         },
         {
             "id": "webcam",
@@ -130,8 +130,8 @@
             "deps": ["webgl", "webrct"],
             "name": "Webcam effect",
             "imageLarge": "assets/play/webcam.jpg",
-            "url": "http://j3d.bartekdrozdz.com/demo/021_Webcam_Particles.html",
-            "contentUrl": "data/generic",
+            "url": "http://j3d.bartekdrozdz.com/demo/020_Webcam.html",
+            "contentUrl": "data/webcam",
             "tint": "#045e00"
         },
         {
@@ -141,7 +141,7 @@
             "deps": ["webgl"],
             "imageLarge": "assets/play/j3d_globe.jpg",
             "url": "http://j3d.bartekdrozdz.com/demo/018_Sphere.html",
-            "contentUrl": "data/generic",
+            "contentUrl": "data/earth",
             "tint": "#081f2c"
         }
     ],

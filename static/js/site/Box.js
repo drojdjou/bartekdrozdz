@@ -7,6 +7,7 @@ window.Box = function(wrapper) {
 	var hoverLeft, hoverTop, hoverRight, hoverBottom, touchFrame;
 
 	var container = wrapper.select("div:nth-of-type(1)");
+	var hoverContainer = wrapper.select(".hover");
 	var mask = container.select(".mask");
 
 	var img = container.select("img");
@@ -20,7 +21,7 @@ window.Box = function(wrapper) {
 	var imageFolder = (largeScreen) ? largeFolder : smallFolder;
 	var imagePath = "assets/content/%f%/%id%.jpg".replace("%f%", imageFolder).replace("%id%", wrapper.id);
 
-	console.log(type, largeFolder, smallFolder, imageFolder, imagePath);
+	// console.log(type, largeFolder, smallFolder, imageFolder, imagePath);
 
 	img.on("load", function() {
 
@@ -40,11 +41,12 @@ window.Box = function(wrapper) {
 			hoverRight.css("backgroundColor", tint);
 			hoverBottom.css("backgroundColor", tint);
 			
-			container.e().appendChild(hoverLeft.e());
-			container.e().appendChild(hoverTop.e());
-			container.e().appendChild(hoverRight.e());
-			container.e().appendChild(hoverBottom.e());
+			hoverContainer.e().appendChild(hoverLeft.e());
+			hoverContainer.e().appendChild(hoverTop.e());
+			hoverContainer.e().appendChild(hoverRight.e());
+			hoverContainer.e().appendChild(hoverBottom.e());
 			Broadcast.addClient(Msg.RENDER, trackHover);
+			// onHover();
 		} else {
 			touchFrame = Wrapper.create("div");
 			touchFrame.attr("class", "frame");
@@ -61,10 +63,17 @@ window.Box = function(wrapper) {
 		hoverRight.attr("class", "hover-frame right in-second");
 		hoverBottom.attr("class", "hover-frame bottom in-second");
 
-		hoverLeft.scale(1, 1);
-		hoverTop.scale(1, 1);
-		hoverRight.scale(1, 1);
-		hoverBottom.scale(1, 1);
+		// var sx = 0.9, sy = 0.9;
+
+		// hoverLeft.scale(sx, sy);
+		// hoverTop.scale(sx, sy);
+		// hoverRight.scale(sx, sy);
+		// hoverBottom.scale(sx, sy);
+
+		hoverLeft.css("height", "100%");
+		hoverTop.css("width", "100%");
+		hoverRight.css("height", "100%");
+		hoverBottom.css("width", "100%");
 	};
 
 	var onHout = function(e) {
@@ -73,10 +82,15 @@ window.Box = function(wrapper) {
 		hoverRight.attr("class", "hover-frame right out-second");
 		hoverBottom.attr("class", "hover-frame bottom out-second");
 
-		hoverLeft.scale(1, 0);
-		hoverTop.scale(0, 1);
-		hoverRight.scale(1, 0);
-		hoverBottom.scale(0, 1);
+		// hoverLeft.scale(1, 0);
+		// hoverTop.scale(0, 1);
+		// hoverRight.scale(1, 0);
+		// hoverBottom.scale(0, 1);
+
+		hoverLeft.css("height", "0");
+		hoverTop.css("width", "0");
+		hoverRight.css("height", "0");
+		hoverBottom.css("width", "0");
 	};
 
 	var hovered = false;

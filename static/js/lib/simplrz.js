@@ -29,10 +29,23 @@ window.Simplrz = (function() {
 		return (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch);
 	});
 
+	check("webrct", function() {
+		return ('getUserMedia' in navigator || 'webkitGetUserMedia' in navigator);
+	});
+
+	check("canvas", function() {
+		try { 
+			var canvas = document.createElement('canvas'); 
+			return canvas.getContext('2d');
+		} catch(e) { 
+			return false; 
+		} 
+	});
+
 	// Source: Three.js detect script
 	check("webgl", function() {
 		try { 
-			var canvas = document.createElement( 'canvas' ); 
+			var canvas = document.createElement('canvas'); 
 			return !!window.WebGLRenderingContext && 
 				(canvas.getContext('webgl') || canvas.getContext('experimental-webgl'));
 		} catch(e) { 
