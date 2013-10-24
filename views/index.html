@@ -73,6 +73,10 @@
         <!-- <h3>Work</h3> -->
 
         <ul class="projects">
+            <li class="title-box">
+                <div><h1>Work</h1></div>
+                <div></div>
+            </li>
             {{#each data.projects}}
             {{#if ../config.javascriptEnabled}}
             <li class="box" data-id="{{id}}" data-type="project">
@@ -98,13 +102,10 @@
             </li>
             {{/if}}
             {{/each}}
-        </ul>
-    </section>
-
-    <section id="play">
-        <!-- <h3 class="sub-header">Play</h3> -->
-
-        <ul class="play">
+            <li class="title-box">
+                <div><h1>Play</h1></div>
+                <div></div>
+            </li>
             {{#each data.play}}
             {{#if ../config.javascriptEnabled}}
             <li class="box" data-id="{{id}}" data-type="play">

@@ -8,7 +8,7 @@ window.MainPanel = function() {
 
 	var header = 	Wrapper.select('#header');
 	var projects = 	Wrapper.select('#projects');
-	var play =  	Wrapper.select('#play');
+	// var play =  	Wrapper.select('#play');
 	var footer =  	Wrapper.select('#footer');
 	var boxes = 	Wrapper.selectAll('.box');
 
@@ -40,7 +40,7 @@ window.MainPanel = function() {
 
 		header.move(0, scr * 0.6);
 		projects.move(0, scr);
-		play.move(0, scr);
+		// play.move(0, scr);
 		footer.move(0, scr);
 	}
 
