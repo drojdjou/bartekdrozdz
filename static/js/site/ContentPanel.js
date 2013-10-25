@@ -46,6 +46,29 @@ window.ContentPanel = function() {
 
 		Loader.loadText(data.contentUrl, function(d) {
 			text.e().innerHTML = d;
+
+			var playImage = text.select(".video .play");
+			var video = text.select(".video video");
+
+			if(Simplrz.touch) video.css("display", "none");
+
+			if(playImage) {
+				playImage.on(Config.click, function() {
+					video.css("display", "block");
+					video.e().play();
+					playImage.css("display", "none");
+				});
+			}
+
+			if(video) {
+				video.on("pause", function() {
+				    if (!video.webkitDisplayingFullscreen) {
+				    	video.css("display", "none");
+						playImage.css("display", "block");
+				    }
+				});
+			}
+
 			onResize();
 		});
 

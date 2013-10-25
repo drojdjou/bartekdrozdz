@@ -1,5 +1,5 @@
 var Config = {
-	// Doesn't work well when set to false...
+	// Doesn't work when set to false...
 	vscrollEnabled: true,
 	scrollMargin: 0
 };
