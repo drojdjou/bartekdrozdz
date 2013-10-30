@@ -12,11 +12,16 @@ window.ContentPanel = function() {
 
 	var data, iframe, poster, posterTint;
 
+	var c = 0;
+
 	var onResize = function() {
+		setScrollMax();
+		setupHeroImage();
+	}
+
+	var setScrollMax = function() {
 		scrollMax = text.position().y - (window.innerHeight - text.height()) + Config.scrollMargin;
 		scrollMax = Math.max(0, scrollMax);
-
-		setupHeroImage();
 	}
 
 	var onScroll = function(e) {
@@ -129,7 +134,7 @@ window.ContentPanel = function() {
 
 			poster.on("load", function(e) {
 				posterTint.css("backgroundColor", "rgba(0, 0, 0, 0)");
-				onResize();
+				setScrollMax();
 			});
 
 			setupHeroImage();
