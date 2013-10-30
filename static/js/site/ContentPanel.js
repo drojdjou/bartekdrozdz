@@ -10,35 +10,44 @@ window.ContentPanel = function() {
 	var hero = Wrapper.select('#content .hero');
 	var close = Wrapper.select('#content .close');
 
-	var iframe, poster;
+	var data, iframe, poster, posterTint;
 
 	var onResize = function() {
 		scrollMax = text.position().y - (window.innerHeight - text.height()) + Config.scrollMargin;
 		scrollMax = Math.max(0, scrollMax);
+
+		setupHeroImage();
 	}
 
 	var onScroll = function(e) {
-		if(!active || scrollMax <= 0) return;
-		scrollTarget += e.deltaY;
+		if(active && scrollMax > 0) scrollTarget += e.deltaY;
 	}
 
 	var onRender = function() {
-		if(!active || scrollMax <= 0) return;
+		if(active && scrollMax > 0) setPosition();
+	}
+
+	var setPosition = function() {
 		scrollTarget = Math.clamp(scrollTarget, -scrollMax, 0);
 		scrollPos += (scrollTarget - scrollPos) * 0.2;
 
 		text.move(0, scrollPos);
+
 		if(iframe) iframe.move(0, scrollPos * 0.5);
 		if(poster) poster.move(0, scrollPos * 0.5);
 	}
 
 	var show = function(id) {
-		active = true;
 		scrollMax = 0;
-		setTimeout(lateShow, 500, Data.getProjectById(id));
+		scrollTarget = 0;
+		scrollPos = 0;
+		setPosition();
+		active = true;
+		data = Data.getProjectById(id);
+		setTimeout(lateShow, 500);
 	}
 
-	var lateShow = function(data) {
+	var lateShow = function() {
 		close.css("display", "block");
 		content.css("display", "block"); 
 
@@ -53,6 +62,8 @@ window.ContentPanel = function() {
 			if(Simplrz.touch) video.css("display", "none");
 
 			if(playImage) {
+				playImage.css("backgroundImage", "url(" + playImage.attr("data-src") + ")");
+
 				playImage.on(Config.click, function() {
 					video.css("display", "block");
 					video.e().play();
@@ -62,7 +73,7 @@ window.ContentPanel = function() {
 
 			if(video) {
 				video.on("pause", function() {
-				    if (!video.webkitDisplayingFullscreen) {
+				    if (Simplrz.touch && !video.webkitDisplayingFullscreen) {
 				    	video.css("display", "none");
 						playImage.css("display", "block");
 				    }
@@ -114,35 +125,41 @@ window.ContentPanel = function() {
 
 		} else {
 			poster = Wrapper.create("img");
-			var posterTint = Wrapper.create("div");
+			posterTint = Wrapper.create("div");
 
 			poster.on("load", function(e) {
 				posterTint.css("backgroundColor", "rgba(0, 0, 0, 0)");
 				onResize();
 			});
 
-			if(ww > wh || ww > 768) {
-				// Landscape-ish or just too big screen
-				poster.css("width", "100%");
-				poster.css("height", (ww * (100/235)) + "px");
-
-				posterTint.css("width", "100%");
-				posterTint.css("height", (ww * (100/235)) + "px");
-
-				poster.e().src = 'assets/content/1920w-235as/' + data.id + '.jpg';
-			} else {
-				// Portrait (or ideally square)
-				poster.css("width", "100%");
-				poster.css("height", ww + "px");
-
-				posterTint.css("width", "100%");
-				posterTint.css("height", ww + "px");
-
-				poster.e().src = 'assets/content/871sq/' + data.id + '.jpg';
-			}
+			setupHeroImage();
 
 			hero.e().appendChild(poster.e());
 			hero.e().appendChild(posterTint.e());
+		}
+	}
+
+	var setupHeroImage = function() {
+		var ww = window.innerWidth, wh = window.innerHeight;
+
+		if(ww > wh || ww > 768) {
+			// Landscape-ish or just too big screen
+			poster.css("width", "100%");
+			poster.css("height", (ww * (100/235)) + "px");
+
+			posterTint.css("width", "100%");
+			posterTint.css("height", (ww * (100/235)) + "px");
+
+			poster.e().src = 'assets/content/1920w-235as/' + data.id + '.jpg';
+		} else {
+			// Portrait (or ideally square)
+			poster.css("width", "100%");
+			poster.css("height", ww + "px");
+
+			posterTint.css("width", "100%");
+			posterTint.css("height", ww + "px");
+
+			poster.e().src = 'assets/content/871sq/' + data.id + '.jpg';
 		}
 	}
 

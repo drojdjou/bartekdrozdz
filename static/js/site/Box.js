@@ -26,26 +26,26 @@ window.Box = function(wrapper) {
 	img.on("load", function() {
 
 		if(!Simplrz.touch) {
-			hoverLeft = Wrapper.create("div");
-			hoverTop = Wrapper.create("div");
-			hoverRight = Wrapper.create("div");
-			hoverBottom = Wrapper.create("div");
+			// hoverLeft = Wrapper.create("div");
+			// hoverTop = Wrapper.create("div");
+			// hoverRight = Wrapper.create("div");
+			// hoverBottom = Wrapper.create("div");
 
-			hoverLeft.attr("class", "hover-frame left in-first");
-			hoverTop.attr("class", "hover-frame top in-first");
-			hoverRight.attr("class", "hover-frame right in-second");
-			hoverBottom.attr("class", "hover-frame bottom in-second");
+			// hoverLeft.attr("class", "hover-frame left in-first");
+			// hoverTop.attr("class", "hover-frame top in-first");
+			// hoverRight.attr("class", "hover-frame right in-second");
+			// hoverBottom.attr("class", "hover-frame bottom in-second");
 
-			hoverLeft.css("backgroundColor", tint);
-			hoverTop.css("backgroundColor", tint);
-			hoverRight.css("backgroundColor", tint);
-			hoverBottom.css("backgroundColor", tint);
+			// hoverLeft.css("backgroundColor", tint);
+			// hoverTop.css("backgroundColor", tint);
+			// hoverRight.css("backgroundColor", tint);
+			// hoverBottom.css("backgroundColor", tint);
 			
-			hoverContainer.e().appendChild(hoverLeft.e());
-			hoverContainer.e().appendChild(hoverTop.e());
-			hoverContainer.e().appendChild(hoverRight.e());
-			hoverContainer.e().appendChild(hoverBottom.e());
-			Broadcast.addClient(Msg.RENDER, trackHover);
+			// hoverContainer.e().appendChild(hoverLeft.e());
+			// hoverContainer.e().appendChild(hoverTop.e());
+			// hoverContainer.e().appendChild(hoverRight.e());
+			// hoverContainer.e().appendChild(hoverBottom.e());
+			// Broadcast.addClient(Msg.RENDER, trackHover);
 			// onHover();
 		} else {
 			touchFrame = Wrapper.create("div");
@@ -64,7 +64,6 @@ window.Box = function(wrapper) {
 		hoverBottom.attr("class", "hover-frame bottom in-second");
 
 		// var sx = 0.9, sy = 0.9;
-
 		// hoverLeft.scale(sx, sy);
 		// hoverTop.scale(sx, sy);
 		// hoverRight.scale(sx, sy);

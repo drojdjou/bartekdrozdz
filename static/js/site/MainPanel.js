@@ -1,6 +1,7 @@
 window.MainPanel = function() {
 
 	var active = true;
+	var side = 0;
 
 	var scrollPos = 0, scrollTarget = 0, scrollMax;
 
@@ -8,7 +9,6 @@ window.MainPanel = function() {
 
 	var header = 	Wrapper.select('#header');
 	var projects = 	Wrapper.select('#projects');
-	// var play =  	Wrapper.select('#play');
 	var footer =  	Wrapper.select('#footer');
 	var boxes = 	Wrapper.selectAll('.box');
 
@@ -22,6 +22,18 @@ window.MainPanel = function() {
 
 	var onResize = function() {
 		scrollMax = main.height() - window.innerHeight;
+
+		// TODO: Fix code reptition (with slideLeft and slideRight methods)
+		switch(side) {
+			case 1:
+				var offset = (window.innerWidth > 500) ? 500 : window.innerWidth;
+				main.move(offset, 0);
+			break;
+			case -1:
+				var offset = -window.innerWidth;
+				main.move(offset, 0);
+			break;
+		}
 	}
 
 	var onScroll = function(e) {
@@ -38,9 +50,8 @@ window.MainPanel = function() {
 
 		var scr = scrollPos | 0;
 
-		header.move(0, scr * 0.6);
+		header.move(0, scr * 0.85);
 		projects.move(0, scr);
-		// play.move(0, scr);
 		footer.move(0, scr);
 	}
 
@@ -49,18 +60,21 @@ window.MainPanel = function() {
 		if(active) return;
 		main.move(0, 0);
 		active = true;
+		side = 0;
 	}
 
 	var slideRight = function() {
 		var offset = (window.innerWidth > 500) ? 500 : window.innerWidth;
 		main.move(offset, 0);
 		active = false;
+		side = 1;
 	}
 
 	var slideLeft = function() {
 		var offset = -window.innerWidth;
 		main.move(offset, 0);
 		active = false;
+		side = -1;
 	}
 
 	Broadcast.addClient(Msg.ON_ITEM_OPEN, slideLeft); 

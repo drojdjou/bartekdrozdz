@@ -70,6 +70,7 @@ window.Wrapper = function(e) {
 	}
 
 	this.on = function(m, f) {
+		// TODO move tap handling to a separate utility
 		if(m == TAP) {
 
 			f.tapHandler = (function() {

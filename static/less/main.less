@@ -155,12 +155,46 @@
 		@media screen and (min-width: 1460px) {
 			h2 {
 				font-size: 3.9em;
+
+				a {
+					&:before {
+						height: 7px;
+						margin-top: 68px;
+					}
+
+					.no-touch &:hover:before {
+						height: 64px;
+						margin-top: 4px;
+					}
+
+					.touch &:active:before {
+						height: 64px;
+						margin-top: 4px;
+					}
+				}
 			}
 		}
 
 		@media screen and (min-width: 1800px) {
 			h2 {
 				font-size: 5.2em;
+
+				a {
+					&:before {
+						height: 8px;
+						margin-top: 90px;
+					}
+
+					.no-touch &:hover:before {
+						height: 84px;
+						margin-top: 6px;
+					}
+
+					.touch &:active:before {
+						height: 84px;
+						margin-top: 6px;
+					}
+				}
 			}
 		}
 	}

@@ -3,10 +3,6 @@
 	left: 0;
 	width: 100%;
 	height: 100%;
-	// top: -1;
-	// left: -1%;
-	// width: 101%;
-	// height: 101%;
 }
 
 .hover-frame {
@@ -75,8 +71,8 @@
 }
 
 section#projects {
-	padding-top: 20px;
-	margin-top: 20px;
+	padding: 0px 2px 0 2px;
+	margin-top: 30px;
 	background-color: #fff;
 
 	ul.projects {
@@ -102,7 +98,7 @@ section#projects {
 					left: 0%;
 					width: 100%;
 					color: #fff;
-					margin: -10px 0 0 0;
+					margin: -16px 0 0 0;
 					font-size: 1.8em;
 				}
 			}
@@ -188,7 +184,18 @@ section#projects {
 	}
 
 	@media screen and (min-width: 800px) {
+		padding: 0px 4px 0 4px;
+
 		ul.projects {
+			.title-box {
+				div:nth-child(1) {
+					h1 {
+						margin: -22px 0 0 0;
+						font-size: 2.3em;
+					}
+				}
+			}
+
 			li {
 				width: 33.33%;
 				border: 5px solid transparent;
@@ -203,9 +210,17 @@ section#projects {
 
 	@media screen and (min-width: 1200px) {
 		ul.projects {
+			.title-box {
+				div:nth-child(1) {
+					h1 {
+						margin: -28px 0 0 0;
+						font-size: 2.8em;
+					}
+				}
+			}
+
 			li {
 				width: 25%;
-				border: 10px solid transparent;
 
 				h4 {
 					font-size: 1.3em;

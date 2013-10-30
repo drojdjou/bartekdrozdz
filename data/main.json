@@ -115,6 +115,15 @@
             "tint": "#550000"
         },
         {
+            "id": "head",
+            "name": "Head",
+            "type": "demo",
+            "deps": ["webgl"],
+            "url": "http://j3d.bartekdrozdz.com/demo/014_Head.html",
+            "contentUrl": "data/head",
+            "tint": "#550000"
+        },
+        {
             "id": "polygons",
             "name": "3D objects + LeapMotion",
             "type": "demo",
