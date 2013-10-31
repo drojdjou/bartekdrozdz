@@ -105,7 +105,11 @@
 			width: @demoContentWidth;
 			left: 50%;
 			margin: 0 0 1em @demoContentWidth * -0.5;
-			padding: 0;
+			padding: 0 0 40px 0;
+
+			@media screen and (min-width: 600px) {
+				padding: 0 0 20px 0;
+			}
 
 			.warning,  {
 				background-color: #7c0000;
@@ -160,6 +164,38 @@
 				&:hover {
 				// border-bottom: 2px solid #ffffff;
 				// padding-bottom: 0;
+				}
+			}
+
+			.launch {
+				background-color: @darkred;
+				color: #ffffff;
+				padding: 8px 12px 10px 12px;
+				margin: 8px 0 8px 0;
+				border-radius: 4px;
+				display: inline-block;
+
+				@media screen and (min-width: 600px) {
+					margin: 16px 0 16px 0;
+					padding: 3px 7px 5px 7px;
+				}
+
+				.transition(~"all 0.05s ease");
+
+				a {
+					color: #fff;
+					font-size: 0.8em;
+					text-decoration: none;
+					text-transform: uppercase;
+				}
+
+				&:hover {
+					background-color: #fff;
+					cursor: pointer;
+
+					a {
+						color: @darkred;
+					}
 				}
 			}
 

@@ -5,7 +5,7 @@
             "type": "article",
             "deps": [],
             "name": "Tool of North America",
-            "url": "data/projects/toolofna.html",
+            "url": "http://toolofna.com",
             "contentUrl": "data/toolofna",
             "tint": "#c8c2aa"
         },
@@ -233,8 +233,7 @@
         "title": "WebGL Tutorial 1",
         "name": ".net magazine"
     },{
-        "url" : "http://www.netmagazine.com/tutorials/create-amazing-webgl-effects-shaders",
-        "title": "WebGL Tutorial 2",
+        "title": "Create Amazing WebGL Effects",
         "name": ".net magazine"
     }]
 }

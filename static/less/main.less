@@ -30,16 +30,10 @@
 			width: @headerBlockWidth;
 			max-width: 140px;
 			height: 40px;
+			margin: 0 0 0 4px;
 
-			&:after {
-				content: '';
-				display: block;
-				background-color: #fff;
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 10px;
-				height: 100%;
+			@media screen and (min-width: 800px) {
+				margin: 0 0 0 10px;
 			}
 		}
 
@@ -200,7 +194,13 @@
 	}
 
 	section#footer {
+
 		margin-top: 2px;
+
+		@media screen and (min-width: 800px) {
+			margin-top: 5px;
+		}
+
 		width: 100%;
 		background-color: @darkgrey;
 

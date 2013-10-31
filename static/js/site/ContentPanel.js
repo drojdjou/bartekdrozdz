@@ -90,9 +90,6 @@ window.ContentPanel = function() {
 
 		var missingDeps = [];
 		data.deps.forEach(function(dep) {
-
-			console.log("Checking dependency", dep, Simplrz[dep]);
-
 			if(!Simplrz[dep]) {
 				missingDeps.push(dep);
 			}

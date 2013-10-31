@@ -26,24 +26,36 @@
             <a href="#/"><div class="close"></div></a>
             <h2>About</h2>
 
-            <h4>I'm a developer with 12 years of experience in coding and designing interactive content.</h4>
+            <h4>I have 12 years of experience in coding and designing interactive content.</h4>
 
-            <p>I worked in Europe and US for several large and small interactive agencies, including F-i and North Kingdom. Currently I work at Tool in Santa Monica as Director of Technology.</p>
+            <p>I worked in Europe and US for several renowned interactive agencies, including F-i and North Kingdom. Currently I work at <a href-"http://toolofna.com" target="_blank">Tool of North America</a> in Santa Monica as Creative Technologist.</p>
 
-            <p>I like to spend his time experimenting with web technology and everything around it. Occasionaly I speak at conferences and other events.</p>
+            <p>The projects I contributed to have been widely recognized in the industry and received multiple awards, including <b>an Emmy</b>, <b>14 Cannes Lions</b>, an <b>FWA People Choice Award</b>, <b>3 FWA Sites of the Month</b> and numerous others.</p>
+
+            <p>In my free time, I like play and experiment with web technology and everything around it. Occasionaly I speak at conferences and other events.</p>
 
             <h3>Conferences</h3>
 
             <ul>
                 {{#each data.conferences}}
-                <li><b>{{name}}</b><i>{{location}}, {{date}}</i></li>{{/each}}
+                {{#if url}}
+                <li><a href="{{url}}" target="_blank">{{name}}</a><i>{{location}}, {{date}}</i></li>
+                {{else}}
+                <li><b>{{name}}</b><i>{{location}}, {{date}}</i></li>
+                {{/if}}
+                {{/each}}
             </ul> 
 
             <h3>Publications</h3>
 
             <ul>
                 {{#each data.publications}}
-                <li><b>{{title}}</b><i>{{name}}</i></li>{{/each}}
+                {{#if url}}
+                <li><a href="{{url}}" target="_blank">{{title}}</a><i>{{name}}</i></li>
+                {{else}}
+                <li><b>{{title}}</b><i>{{name}}</i></li>
+                {{/if}}
+                {{/each}}
             </ul>
         </div>
     </section>
@@ -137,11 +149,11 @@
     <section id="footer">
         <ul>
             <li><a class="about-link" href="#/about">About</a></li>
-            <li><a href="">Contact me</a></li>
+            <li><a href="mailto:bartek@everyday3d.com">Contact me</a></li>
             <li><a href="http://twitter.com/bartekd/">Twitter</a></li>
             <li><a href="http://codepen.io/bartekd/">Codepen</a></li>
-            <li><a href="">Pinterest</a></li>
-            <li><a href="">LinkedIn</a></li>
+            <li><a href="http://www.pinterest.com/bartekdrozdz/">Pinterest</a></li>
+            <li><a href="http://www.linkedin.com/in/bartekdrozdz">LinkedIn</a></li>
             <li>Copyright &copy; 2013 Bartek Drozdz</li>
         </ul>
     </section>

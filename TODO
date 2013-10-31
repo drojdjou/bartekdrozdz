@@ -1,6 +1,11 @@
 ### Add Head WebGL demo
-	Finish writing bio
+### Finish writing bio
 	Update balls demo images
+### Add links in footer
+### Link conferences & publications
+	Add "Launch project" button
+
+	Fix no-JS version
 
 ### Resizing bug on detail page (possibly on about too)
 ###	Content hero image needs to reload when resizing
@@ -12,8 +17,9 @@
 ### Header link underline with media-queries
 ### Align "Work" and "Play" in boxes
 ### Make Play button smaller on mobile
-	Format footer for mobile and desktop
+### Format footer for mobile and desktop
 
 
 --- 2 ---
 	Add rollover effect on boxes
+	Reflow the main page boxes using javascript (?)
