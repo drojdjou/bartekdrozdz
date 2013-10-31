@@ -3,7 +3,7 @@
 	Update balls demo images
 ### Add links in footer
 ### Link conferences & publications
-	Add "Launch project" button
+### Add "Launch project" button
 
 	Fix no-JS version
 
@@ -22,4 +22,6 @@
 
 --- 2 ---
 	Add rollover effect on boxes
+	Add rollover effect on close button
 	Reflow the main page boxes using javascript (?)
+	Add posters to video in no-js mode

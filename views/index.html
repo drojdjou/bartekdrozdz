@@ -1,5 +1,11 @@
 <!DOCTYPE html>
+
+{{#if config.javascriptEnabled}}
 <html>
+{{else}}
+<html class="no-js">
+{{/if}}
+
 <head>
     <title>Bartek Drozdz | Portfolio and experiments</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable = no">
@@ -105,11 +111,12 @@
             {{else}}
             <li class="box">
                 <a href="project/{{id}}">
-                    <h4>{{name}}</h4>
+                    
                     <div>
                         <img src="assets/content/675sq/{{id}}.jpg">
                     </div>
                     <div></div>
+                    <h4>{{name}}</h4>
                 </a>
             </li>
             {{/if}}
@@ -134,11 +141,12 @@
             {{else}}
             <li class="box">
                 <a href="project/{{id}}">
-                    <h4>{{name}}</h4>
+                   
                     <div>
                         <img src="assets/content/400sq/{{id}}.jpg">
                     </div>
                     <div></div>
+                     <h4>{{name}}</h4>
                 </a>
             </li>
             {{/if}}

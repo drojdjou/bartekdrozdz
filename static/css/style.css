@@ -320,6 +320,7 @@ section#play h3 {
 }
 #content .hero img {
   position: relative;
+  width: 100%;
   top: 0;
   left: 0;
 }
@@ -509,6 +510,9 @@ section#play h3 {
 }
 #content .content .text .video .play:hover {
   cursor: pointer;
+}
+.no-js #content .content .text .video .play {
+  display: none;
 }
 @media screen and (max-width: 1024px) {
   #content .content {
