@@ -5,7 +5,7 @@ window.VirtualScroll = (function(document) {
 	var numListeners, listeners = [], initialized = false;
 
 	var touchStartX, touchStartY, touchMult = 2;
-	var mozMult = -8;
+	var mozMult = -10;
 
 	var event = {
 		y: 0,
@@ -14,6 +14,31 @@ window.VirtualScroll = (function(document) {
 		deltaY: 0
 	};
 
+	/**
+	 *	Add a javascript function that will receive feedback everytime 
+	 *  the user activates the scoll or moved his finger on touch devices:
+	 *
+	 *	VirtualScroll.addEventListener(function(e) {
+	 *		// e.x = the global scroll y
+	 *		// e.y = the global scroll x
+	 *		// e.deltaX = the amount of movement on x axis since last call
+	 *		// e.deltaY = the amount of movement on y axis since last call
+	 *  });
+	 *	
+	 *	To make a scrool with a basic ease do this:
+	 *
+	 *	var curScroll = 0, targetScroll = 0;
+	 *
+	 *	VirtualScroll.addEventListener(function(e) {
+	 *		targetScroll += e.deltaY;
+	 *	});
+	 *
+	 *	function draw() {
+	 *		requestAnimationFrame(draw);
+	 *		curScroll += (targetScroll - curScroll) * 0.1;
+	 *		someDiv.style.transform = "translateY(" + curScroll + "px)";
+	 *	}
+	 */
 	vs.addEventListener = function(f) {
 		if(!initialized) initListeners(); 
 		listeners.push(f);

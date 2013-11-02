@@ -36,6 +36,8 @@ window.ContentPanel = function() {
 		scrollTarget = Math.clamp(scrollTarget, -scrollMax, 0);
 		scrollPos += (scrollTarget - scrollPos) * 0.2;
 
+		header.move(0, scrollPos * 3);
+		close.move(0, scrollPos * 3);
 		text.move(0, scrollPos);
 
 		if(iframe) iframe.move(0, scrollPos * 0.5);
