@@ -28,15 +28,20 @@ window.VirtualScroll = (function(document) {
 	 *	To make a scrool with a basic ease do this:
 	 *
 	 *	var curScroll = 0, targetScroll = 0;
+	 *	var minScroll = 0, maxScroll = /height of some element or any other value that makes sense/
 	 *
 	 *	VirtualScroll.addEventListener(function(e) {
 	 *		targetScroll += e.deltaY;
+	 		targetScroll = Math.min(targetScroll, maxScroll);
+	 		targetScroll = Math.max(targetScroll, minScroll);
 	 *	});
 	 *
 	 *	function draw() {
 	 *		requestAnimationFrame(draw);
+	 *		// Adjust this value (0.1) for different easing value. 1 = no easing, 0.000001 - loooots of easing
 	 *		curScroll += (targetScroll - curScroll) * 0.1;
-	 *		someDiv.style.transform = "translateY(" + curScroll + "px)";
+	 *		// Typically you will want to move the div in the opposite directior, hence * -1
+	 *		someDiv.style.transform = "translateY(" + (curScroll * -1) + "px)";
 	 *	}
 	 */
 	vs.addEventListener = function(f) {
