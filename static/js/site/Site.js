@@ -26,6 +26,10 @@ window.Site = function(data) {
 			mouse.y = e.pageY;
 		});
 
+		window.addEventListener("touchmove", function(e) {
+			e.preventDefault();
+		});
+
 	
 		var render = function() {
 			requestAnimationFrame(render);
