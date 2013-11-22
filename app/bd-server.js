@@ -15,7 +15,7 @@ if(!serverRoot || serverRoot == "") {
 	serverRoot = "./";
 }
 
-var defaultToDev = true;
+var defaultToDev = process.argv[2] == "dev";
 
 var context = {
 	config: {

@@ -1,2 +1,2 @@
 #!/bin/bash
-nodemon --watch ./data --watch ./app -e js,json app/bd-server.js
+nodemon --watch ./data --watch ./app -e js,json app/bd-server.js dev
