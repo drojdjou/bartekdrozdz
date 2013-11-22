@@ -4,9 +4,12 @@ if(location.host.indexOf("localhost") > -1 || location.host.indexOf("192.168") >
 
 window.addEventListener("load", function() {
 	Data.setMain(rawData);
+
 	Site();
+
 	MainPanel();
 	AboutPanel();
 	ContentPanel();
+	
 	Router();
 });

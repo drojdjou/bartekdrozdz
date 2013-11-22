@@ -24,6 +24,31 @@ window.Simplrz = (function() {
 
 	classes.push(prefix.lowercase);
 
+	/**
+	 *	Note on detecting some CSS features:
+	 *
+	 *	After reading this (https://github.com/zamiang/detect-css3-3d-transform)
+	 *	I realized detecting css3d transforms is unreliable. But also - we don't really need it
+	 *	because typically the only browser we need to suport that doesn't do css 3d transforms 
+	 *	is IE9 and IE8 so why not do some good old browser sniffing. Then, I found the snippet below.
+	 *
+	 *	(as a reminder: IE9 - only 2d transforms, IE8 - not even 2d)
+	 */
+
+	// Source: http://james.padolsey.com/javascript/detect-ie-in-js-using-conditional-comments/
+	var ie = (function(){
+	    var v = 3, div = document.createElement('div'), all = div.getElementsByTagName('i');
+	    while (
+	        div.innerHTML = '<!--[if gt IE ' + (++v) + ']><i></i><![endif]-->',
+	        all[0]
+	    );
+	    return v > 4 ? v : null;
+	})();
+
+
+
+	classes.push((ie) ? "ie-" + ie : "no-ie");
+
 	// Source: modernizr
 	check("touch", function() {
 		return (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch);

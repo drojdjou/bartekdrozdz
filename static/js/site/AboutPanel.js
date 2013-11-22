@@ -9,6 +9,14 @@ window.AboutPanel = function() {
 	var container3d = 	Wrapper.select('#about section > div');
 	var panels = 		Wrapper.selectAll('#about .panel');
 
+	var setTranstionClass = function(t) {
+		if(t) {
+			container3d.addClass("animated");
+		} else {
+			container3d.rmClass("animated");
+		}
+	}
+
 	var onResize = function() {
 		scrollMax = (about.height() < window.innerHeight) ? 0 : about.height() - window.innerHeight;
 	}
@@ -26,16 +34,15 @@ window.AboutPanel = function() {
 		about.move(0, scrollPos);
 	}
 
-	var fadeIn = function() {
+	var show = function() {
 		active = true;
 
-		container3d.e().setAttribute("class", "animated");
 		container3d.rotate(0, 0, 0);
 		container3d.move(0, 0, 0);
 		container3d.css("opacity", 1);
 	}
 
-	var fadeOut = function() {
+	var hide = function() {
 		if(!active) return;
 
 		container3d.rotate(0, -90, 0);
@@ -47,21 +54,15 @@ window.AboutPanel = function() {
 		hide();
 	}
 
-	var hide = function() {
-		active = false;
-	}
-
-	Broadcast.addClient(Msg.ON_ITEM_OPEN, hide); 
-	Broadcast.addClient(Msg.ON_ABOUT_OPEN, fadeIn);
-	Broadcast.addClient(Msg.ON_MAIN_OPEN, fadeOut); 
+	Broadcast.addClient(Msg.NAVIGATE, function(e) {
+		setTranstionClass(e.history.length > 0);
+		if(e.parts[0] == "about") show();
+		else hide();
+	}); 
 
 	Broadcast.addClient(Msg.SCROLL, onScroll); 
 	Broadcast.addClient(Msg.RENDER, onRender); 
 	Broadcast.addClient(Msg.RESIZE, onResize); 
-
-	// close.on(Config.click, function() {
-	// 	Broadcast.send(Msg.ON_MAIN_OPEN);
-	// });
 
 	var offset = (window.innerWidth > 500) ? 500 : window.innerWidth;
 	container3d.move(-offset, 0, 0);

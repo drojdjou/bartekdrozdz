@@ -12,7 +12,7 @@ window.MainPanel = function() {
 	var footer =  	Wrapper.select('#footer');
 	var boxes = 	Wrapper.selectAll('.box');
 
-	var toggleMainSlidingAnimation = function(t) {
+	var setTranstionClass = function(t) {
 		if(t) {
 			main.addClass("animated");
 		} else {
@@ -77,10 +77,21 @@ window.MainPanel = function() {
 		side = -1;
 	}
 
-	Broadcast.addClient(Msg.ON_ITEM_OPEN, slideLeft); 
-	Broadcast.addClient(Msg.ON_ABOUT_OPEN, slideRight);
+	Broadcast.addClient(Msg.NAVIGATE, function(e) {
+		setTranstionClass(e.history.length > 0);
 
-	Broadcast.addClient(Msg.ON_MAIN_OPEN, slideBack); 
+		switch(e.parts[0]) {
+			case "about":
+				slideRight();
+				break;
+			case "project":
+				slideLeft();
+				break;
+			case "":
+				slideBack();
+				break;
+		}
+	}); 
 
 	Broadcast.addClient(Msg.SCROLL, onScroll); 
 	Broadcast.addClient(Msg.RESIZE, onResize); 
@@ -92,7 +103,6 @@ window.MainPanel = function() {
 	});
 
 	onResize();
-	toggleMainSlidingAnimation(true);
 };
 
 

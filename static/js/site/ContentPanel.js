@@ -16,7 +16,7 @@ window.ContentPanel = function() {
 
 	var onResize = function() {
 		setScrollMax();
-		setupHeroImage();
+		if(poster) setupHeroImage();
 	}
 
 	var setScrollMax = function() {
@@ -167,12 +167,6 @@ window.ContentPanel = function() {
 		}
 	}
 
-	var fadeOut = function() {
-		if(!active) return;
-		active = false;
-		hide();
-	}
-
 	var hide = function() {
 		active = false;
 
@@ -198,11 +192,12 @@ window.ContentPanel = function() {
 		content.css("display", "none");
 	}
 
+	Broadcast.addClient(Msg.NAVIGATE, function(e) {
+		if(e.parts[0] == "project") show(e.parts[1]);
+		else hide();
+	}); 
+
 	Broadcast.addClient(Msg.SCROLL, onScroll); 
 	Broadcast.addClient(Msg.RENDER, onRender); 
 	Broadcast.addClient(Msg.RESIZE, onResize); 
-
-	Broadcast.addClient(Msg.ON_MAIN_OPEN, fadeOut);
-	Broadcast.addClient(Msg.ON_ABOUT_OPEN, hide); 
-	Broadcast.addClient(Msg.ON_ITEM_OPEN, show);
 }
