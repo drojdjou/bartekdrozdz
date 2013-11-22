@@ -10,7 +10,7 @@ window.AboutPanel = function() {
 	var panels = 		Wrapper.selectAll('#about .panel');
 
 	var onResize = function() {
-		scrollMax = (about.height() < window.innerHeight) ? 0 : about.height() - window.innerHeight + Config.scrollMargin;
+		scrollMax = (about.height() < window.innerHeight) ? 0 : about.height() - window.innerHeight;
 	}
 
 	var onScroll = function(e) {

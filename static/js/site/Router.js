@@ -42,7 +42,6 @@ window.Router = function() {
 
 	setInterval(function () {
 		if (document.location.href != href) {
-			console.log("href changed", document.location.href, href);
 			getRoute();
 			solveRoute(route);
 		}

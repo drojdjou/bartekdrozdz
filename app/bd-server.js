@@ -15,7 +15,7 @@ if(!serverRoot || serverRoot == "") {
 	serverRoot = "./";
 }
 
-var defaultToDev = false;
+var defaultToDev = true;
 
 var context = {
 	config: {
@@ -24,7 +24,8 @@ var context = {
 	},
 
 	imports: require('../data/imports.json'),
-	data: data.getMain()
+	data: data.getMain(),
+	dataJson: data.toFilteredJSON()
 };
 
 var app = express();

@@ -14,6 +14,7 @@ window.Wrapper = function(e) {
 		var s = "scale(" + sx + "," + sy + ") ";
 		var r = "rotateX(" + rx + "deg) rotateY(" + ry + "deg) rotateZ(" + rz + "deg)";
 		element.style.webkitTransform = t + s + r;
+		element.style.msTransform = t + s + r;
 		element.style.transform = t + s + r;
 	}
 

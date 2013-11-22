@@ -26,7 +26,7 @@ body {
   height: 100%;
   background-color: #fff;
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: hidden;
 }
 #main.animated {
   -webkit-transition: -webkit-transform 0.5s ease;
@@ -279,7 +279,7 @@ section#play h3 {
   position: absolute;
   height: 100%;
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: hidden;
   top: 0;
   left: 0;
   width: 100%;
@@ -541,7 +541,7 @@ section#play h3 {
   position: absolute;
   height: 100%;
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: hidden;
   top: 0;
   left: 0;
   width: 100%;

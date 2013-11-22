@@ -14,6 +14,13 @@
 			return data;
 		}
 
+		that.toFilteredJSON = function() {
+			var d = {}
+			d.projects = data.projects;
+			d.play = data.play;
+			return JSON.stringify(d);
+		}
+
 		that.getProjectById = function(id) {
 
 			id = (id.indexOf("?") > -1) ? id.split("?")[0] : id;

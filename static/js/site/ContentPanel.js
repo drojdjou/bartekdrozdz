@@ -20,7 +20,7 @@ window.ContentPanel = function() {
 	}
 
 	var setScrollMax = function() {
-		scrollMax = text.position().y - (window.innerHeight - text.height()) + Config.scrollMargin;
+		scrollMax = text.position().y - (window.innerHeight - text.height());
 		scrollMax = Math.max(0, scrollMax);
 	}
 
