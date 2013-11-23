@@ -157,15 +157,19 @@
 
             var t = Simplrz.prefix.js + "Transform";
 
-            var v = Simplrz.css3d ? 
+            var v1 = Simplrz.css3d ? 
                 "translateX(" + r1x + "px) translateY(" + r1y + "px) translateZ(0)" : 
                 "translateX(" + r1x + "px) translateY(" + r1y + "px)";
 
-            _red1.style[t] = v;
-            _red1.style.transform = v;
+            var v2 = Simplrz.css3d ? 
+                "translateX(" + r2x + "px) translateY(" + r2y + "px) translateZ(0)" : 
+                "translateX(" + r2x + "px) translateY(" + r2y + "px)";
 
-            _red2.style[t] = v;
-            _red2.style.transform = v;
+            _red1.style[t] = v1;
+            _red1.style.transform = v1;
+
+            _red2.style[t] = v2;
+            _red2.style.transform = v2;
 
             // var tx = "translateX(" + r1x + "px) translateY(" + r1y + "px) translateZ(0)";
             // var ty = "translateX(" + r2x + "px) translateY(" + r2y + "px) translateZ(0)";
