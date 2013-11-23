@@ -8,29 +8,56 @@
     <style type="text/css">
         body {
             font-family: Arial, sans-serif;
-            font-size: 1.3em;
+            font-size: 1.1em;
             background-color: #000;
-            color: #fff;
+            color: #aaa;
         }
 
         ol {
-            color: #666;
-        }
-
-        a { 
-            color: #fff;
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
+            color: #999;
+            line-height: 1.4em;
         }
     </style>
 
+    <script type="text/javascript" src="../js/framework/Simplrz.js"></script>
+
 </head>
 <body>
-Coming soon!
+
+<ol id="features"></ol>
+
+<script type="text/javascript">
+
+var featureList = document.querySelector("#features");
+
+var props = [
+    "ie", "webrct", 
+    "canvas", "flash", 
+    "webgl", "touch", 
+    "pointer", "css3d", 
+    "css2d", "csstransitions", 
+    "cssanimations"
+];
+
+var li = document.createElement("li");
+
+var prefixes = [];
+for(var prefix in Simplrz.prefix) {
+    prefixes.push(prefix + ": " + Simplrz.prefix[prefix]);
+}
+
+li.innerHTML = "<b>prefix</b> - " + prefixes.join(", ");
+featureList.appendChild(li);
+
+for(var p in props) {
+    var prop = props[p];
+    var li = document.createElement("li");
+    li.innerHTML = "<b>" + prop + "</b> - " + Simplrz[prop];
+    featureList.appendChild(li);
+}
+
+</script>
+
 </body>
 </html>   
 

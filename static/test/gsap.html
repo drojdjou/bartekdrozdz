@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tween (GSAP) - Framework Tests</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable = no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <style type="text/css">
+        body {
+            position: absolute;
+            width: 100%;
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+            font-size: 1.3em;
+            background-color: #000;
+            color: #fff;
+        }
+
+        .square {
+            position: absolute;
+            left: 0px;
+            width: 50px;
+            height: 1px;
+        }
+
+        #red {
+            background-color: red;
+        }
+
+    </style>
+
+    <script type="text/javascript" src="../js/lib/Stats.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.11.2/TweenMax.min.js"></script>
+
+</head>
+<body>
+
+<script type="text/javascript">
+
+var debug = document.querySelector('#debug');
+
+var makeRedAnimation = function(top, initDelay, duration) {
+
+    var red = document.createElement('div');
+    red.setAttribute('class', 'square');
+    red.setAttribute('id', 'red');
+    red.style.top = top + "px";
+    red.x = 0;
+
+    var updateRed = function(v) {
+        red.style.webkitTransform = "translateX(" + v + "px) translateZ(0)";
+        red.style.transform = "translateX(" + v + "px) translateZ(0)";
+    }
+
+    document.body.appendChild(red);
+
+    var playIn = function() {
+        TweenLite.to(red, window.innerWidth * 4/1000, { x:window.innerWidth-50, delay:initDelay/1000, onUpdate:updateRed, onComplete:playOut });
+    }
+
+    var playOut = function() {
+        TweenLite.to(red, window.innerWidth * 4/1000, { x:0, delay:initDelay/1000, onUpdate:updateRed, onComplete:playIn });
+    }
+
+    playIn();
+}
+
+var stats = new Stats();
+document.body.appendChild( stats.domElement );
+
+var run = function() {
+    stats.begin();
+    requestAnimationFrame(run);
+    stats.end();
+}
+
+run();
+
+var c = 0;
+
+for(var i = 0; i < window.innerHeight; i += 2) {
+    c++;
+    makeRedAnimation(i, Math.random() * window.innerWidth * 3 | 0);
+}
+
+console.log(c);
+
+</script>
+
+<script type="text/javascript">
+    if(location.host.indexOf("localhost") > -1 || location.host.indexOf("192.168") > -1) {
+        document.write('<script src=\"http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1\"></' + 'script>');
+    }
+</script>
+
+</body>
+</html>   
+
+
+
+
+
+
+
+          

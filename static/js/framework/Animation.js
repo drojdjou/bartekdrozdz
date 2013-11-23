@@ -1,18 +1,16 @@
 var Anm = (function() {
 
+	var anm = {};
+
 	var now = function() {
 		return new Date().getTime();
 	}
 
-	var anm = {};
-	var runners = [], numRunners = 0;
-	var spareRunners = [];
+	var runners = [], numRunners = 0, spareRunners = [];
 	var timePadding = 0, lastTime;
 
 	anm.create = function(from, to, duration) {
-		var _delay = 0;
-		var _ease = Anm.LINEAR;
-		var _durationWithDelay = duration;
+		var _delay = 0, _ease = Anm.LINEAR, _durationWithDelay = duration;
 
 		var anim = {};
 
@@ -43,9 +41,8 @@ var Anm = (function() {
 					} else if(t >= _durationWithDelay) {
 						if(prop) obj[prop] = to;
 						if(me._onUpdate) me._onUpdate(to);
-						runners.splice(runners.indexOf(me), 1);
+						spareRunners.push(runners.splice(runners.indexOf(me), 1));
 						numRunners = runners.length;
-						spareRunners.push(me);
 						if(me._onEnd) me._onEnd();
 					} else {
 						var v = from + (to - from) * _ease((t - _delay) / duration);

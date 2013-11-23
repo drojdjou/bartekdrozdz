@@ -4,7 +4,7 @@ window.Simplrz = (function() {
 
 	var check = function(feature, test) {
 		var result = test();
-		s[feature] = result;
+		s[feature] = (result) ? true : false;
 		classes.push( (result) ? feature : "no-" + feature );
 	}
 
@@ -22,6 +22,7 @@ window.Simplrz = (function() {
 		};
 	})();
 
+	s["prefix"] = prefix;
 	classes.push(prefix.lowercase);
 
 	/**
@@ -46,8 +47,14 @@ window.Simplrz = (function() {
 	})();
 
 
-
+	s["ie"] = ie || false;
 	classes.push((ie) ? "ie-" + ie : "no-ie");
+
+	// Now add some css features that might be useful
+	check("css3d", function() { return !ie || ie >= 10; });
+	check("csstransitions", function() { return !ie || ie >= 10; });
+	check("cssanimations", function() { return !ie || ie >= 10; });
+	check("css2d", function() { return !ie || ie >= 9; });
 
 	// Source: modernizr (simplified)
 	check("touch", function() {

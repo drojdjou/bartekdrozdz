@@ -51,6 +51,7 @@
 
     </style>
 
+<script type="text/javascript" src="../js/lib/requestAnimFrame.js"></script>
 <script type="text/javascript" src="../js/framework/VirtualScroll.js"></script>
 
 </head>
@@ -130,7 +131,7 @@
         // _debug.innerHTML += "body.touchaction def: " + document.body.style.msTouchAction + "<br>";
 
         var setReds = function() {
-            requestAnimFrame(setReds);
+            requestAnimationFrame(setReds);
 
             var ease = 0.1;
 
@@ -152,12 +153,6 @@
 
             while(r1y > window.innerHeight) r1y -= window.innerHeight + 200;
             while(r2y > window.innerHeight) r2y -= window.innerHeight + 200;
-
-            r1x = Math.min(r1x, 100);
-            r1x = Math.max(r1x, -100);
-
-            r2x = Math.min(r2x, 100);
-            r2x = Math.max(r2x, -100);
 
             var tx = "translateX(" + r1x + "px) translateY(" + r1y + "px) translateZ(0)";
             var ty = "translateX(" + r2x + "px) translateY(" + r2y + "px) translateZ(0)";
@@ -197,6 +192,12 @@
 
             t1x += e.deltaX;
             t2x += e.deltaX;
+
+            t1x = Math.min(t1x, 100);
+            t1x = Math.max(t1x, -100);
+
+            t2x = Math.min(t2x, 100);
+            t2x = Math.max(t2x, -100);
 
             if(!didLogEvent) {
                 didLogEvent = true;
