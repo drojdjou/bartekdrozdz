@@ -52,6 +52,7 @@
     </style>
 
 <script type="text/javascript" src="../js/lib/requestAnimFrame.js"></script>
+<script type="text/javascript" src="../js/framework/Simplrz.js"></script>
 <script type="text/javascript" src="../js/framework/VirtualScroll.js"></script>
 
 </head>
@@ -154,17 +155,29 @@
             while(r1y > window.innerHeight) r1y -= window.innerHeight + 200;
             while(r2y > window.innerHeight) r2y -= window.innerHeight + 200;
 
-            var tx = "translateX(" + r1x + "px) translateY(" + r1y + "px) translateZ(0)";
-            var ty = "translateX(" + r2x + "px) translateY(" + r2y + "px) translateZ(0)";
+            var t = Simplrz.prefix.js + "Transform";
 
-            _red1.style.transform = tx;
-            _red2.style.transform = ty;
+            var v = Simplrz.css3d ? 
+                "translateX(" + r1x + "px) translateY(" + r1y + "px) translateZ(0)" : 
+                "translateX(" + r1x + "px) translateY(" + r1y + "px)";
 
-            _red1.style.msTransform = tx;
-            _red2.style.msTransform = ty;
+            _red1.style[t] = v;
+            _red1.style.transform = v;
 
-            _red1.style.webkitTransform = tx;
-            _red2.style.webkitTransform = ty;
+            _red2.style[t] = v;
+            _red2.style.transform = v;
+
+            // var tx = "translateX(" + r1x + "px) translateY(" + r1y + "px) translateZ(0)";
+            // var ty = "translateX(" + r2x + "px) translateY(" + r2y + "px) translateZ(0)";
+
+            // _red1.style.transform = tx;
+            // _red2.style.transform = ty;
+
+            // _red1.style.msTransform = tx;
+            // _red2.style.msTransform = ty;
+
+            // _red1.style.webkitTransform = tx;
+            // _red2.style.webkitTransform = ty;
         }
 
         VirtualScroll.addEventListener(function(e) {

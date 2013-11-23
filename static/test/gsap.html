@@ -49,8 +49,10 @@ var makeRedAnimation = function(top, initDelay, duration) {
     red.x = 0;
 
     var updateRed = function(v) {
-        red.style.webkitTransform = "translateX(" + v + "px) translateZ(0)";
-        red.style.transform = "translateX(" + v + "px) translateZ(0)";
+        var t = Simplrz.prefix.js + "Transform";
+        var v = Simplrz.css3d ? "translateX(" + v + "px) translateZ(0)" : "translateX(" + v + "px)";
+        red.style[t] = v;
+        red.style.transform = v;
     }
 
     document.body.appendChild(red);
