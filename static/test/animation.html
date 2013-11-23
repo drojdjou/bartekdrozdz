@@ -32,6 +32,7 @@
 
     <script type="text/javascript" src="../js/lib/requestAnimFrame.js"></script>
     <script type="text/javascript" src="../js/lib/Stats.js"></script>
+    <script type="text/javascript" src="../js/framework/Simplrz.js"></script>
     <script type="text/javascript" src="../js/framework/Animation.js"></script>
 
 </head>
@@ -52,8 +53,10 @@ var makeRedAnimation = function(top, initDelay, duration) {
     red.style.top = top + "px";
 
     var updateRed = function(v) {
-        red.style.webkitTransform = "translateX(" + v + "px) translateZ(0)";
-        red.style.transform = "translateX(" + v + "px) translateZ(0)";
+        var t = Simplrz.prefix.js + "Transform";
+        var v = Simplrz.css3d ? "translateX(" + v + "px)" : "translateX(" + v + "px) translateZ(0)";
+        red.style[t] = v;
+        red.style.transform = v;
     }
 
     document.body.appendChild(red);
