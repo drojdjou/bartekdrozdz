@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tween - Framework Tests</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable = no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <style type="text/css">
+        body {
+            position: absolute;
+            width: 100%;
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+            font-size: 1.3em;
+            background-color: #000;
+            color: #fff;
+        }
+
+        .square {
+            position: absolute;
+            left: 0px;
+            width: 50px;
+            height: 1px;
+        }
+
+        #red {
+            background-color: red;
+        }
+
+    </style>
+
+    <script type="text/javascript" src="../js/lib/requestAnimFrame.js"></script>
+    <script type="text/javascript" src="../js/lib/Stats.js"></script>
+    <script type="text/javascript" src="../js/framework/Animation.js"></script>
+
+</head>
+<body>
+
+<script type="text/javascript">
+
+var debug = document.querySelector('#debug');
+
+var ain = Anm.create(0, window.innerWidth-50, window.innerWidth * 4).ease(Anm.SMOOTHSTEP);
+var aout = Anm.create(window.innerWidth-50, 0, window.innerWidth * 4).ease(Anm.SMOOTHSTEP);
+
+var makeRedAnimation = function(top, initDelay, duration) {
+
+    var red = document.createElement('div');
+    red.setAttribute('class', 'square');
+    red.setAttribute('id', 'red');
+    red.style.top = top + "px";
+
+    var updateRed = function(v) {
+        red.style.webkitTransform = "translateX(" + v + "px) translateZ(0)";
+        red.style.transform = "translateX(" + v + "px) translateZ(0)";
+    }
+
+    document.body.appendChild(red);
+
+    
+
+    var playIn = function() {
+        redin.start(initDelay);
+    }
+
+    var playOut = function() {
+        redout.start(initDelay);
+    }
+
+    var redin = ain.set(red).onUpdate(updateRed).onEnd(playOut);
+    var redout = aout.set(red).onUpdate(updateRed).onEnd(playIn);
+
+    playIn();
+}
+
+var lock = false
+
+document.addEventListener('keydown', function(e) {
+    lock = true;
+});
+
+document.addEventListener('keyup', function(e) {
+    lock = false;
+});
+
+var stats = new Stats();
+document.body.appendChild( stats.domElement );
+
+var run = function() {
+    stats.begin();
+    requestAnimationFrame(run);
+    if(!lock) Anm.update();
+    stats.end();
+}
+
+var c = 0;
+
+for(var i = 0; i < window.innerHeight; i += 2) {
+    c++;
+    makeRedAnimation(i, Math.random() * window.innerWidth * 3 | 0);
+}
+
+console.log(c);
+
+run();
+
+</script>
+
+<script type="text/javascript">
+    if(location.host.indexOf("localhost") > -1 || location.host.indexOf("192.168") > -1) {
+        document.write('<script src=\"http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1\"></' + 'script>');
+    }
+</script>
+
+</body>
+</html>   
+
+
+
+
+
+
+
+          

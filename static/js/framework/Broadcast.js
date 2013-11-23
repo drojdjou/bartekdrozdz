@@ -14,7 +14,7 @@ window.Broadcast = (function() {
 			}
 		}
 
-		this.addClient = function(m, c) {
+		this.on = function(m, c) {
 			if(!clients[m]) clients[m] = [];
 
 			var mc = clients[m];
@@ -22,15 +22,11 @@ window.Broadcast = (function() {
 			mc.push(c);
 		}
 
-		this.removeClient = function(m, c) {
+		this.off = function(m, c) {
 			var mc = clients[m];
 
 			if(!mc) return;	
 			return mc.splice(mc.indexOf(c), 1);
-		}
-
-		this.getClients = function(m) {
-			return clients[m];
 		}
 	}
 

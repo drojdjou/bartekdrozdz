@@ -49,9 +49,14 @@ window.Simplrz = (function() {
 
 	classes.push((ie) ? "ie-" + ie : "no-ie");
 
-	// Source: modernizr
+	// Source: modernizr (simplified)
 	check("touch", function() {
-		return (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch);
+		// return ('ontouchstart' in document || window.DocumentTouch && document instanceof DocumentTouch);
+		return 'ontouchstart' in document;
+	});
+
+	check("pointer", function() {
+		return (navigator.msMaxTouchPoints && navigator.msMaxTouchPoints > 1);
 	});
 
 	check("webrct", function() {
@@ -64,7 +69,7 @@ window.Simplrz = (function() {
 			return canvas.getContext('2d');
 		} catch(e) { 
 			return false; 
-		} 
+		}
 	});
 
 	// Source: Three.js detect script

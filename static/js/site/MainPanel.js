@@ -77,7 +77,7 @@ window.MainPanel = function() {
 		side = -1;
 	}
 
-	Broadcast.addClient(Msg.NAVIGATE, function(e) {
+	Broadcast.on(Msg.NAVIGATE, function(e) {
 		setTranstionClass(e.history.length > 0);
 
 		switch(e.parts[0]) {
@@ -93,9 +93,9 @@ window.MainPanel = function() {
 		}
 	}); 
 
-	Broadcast.addClient(Msg.SCROLL, onScroll); 
-	Broadcast.addClient(Msg.RESIZE, onResize); 
-	Broadcast.addClient(Msg.RENDER, onRender); 
+	Broadcast.on(Msg.SCROLL, onScroll); 
+	Broadcast.on(Msg.RESIZE, onResize); 
+	Broadcast.on(Msg.RENDER, onRender); 
 
 	boxes.forEach(function(b) {
 		b = Box(b);

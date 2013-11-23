@@ -192,12 +192,12 @@ window.ContentPanel = function() {
 		content.css("display", "none");
 	}
 
-	Broadcast.addClient(Msg.NAVIGATE, function(e) {
+	Broadcast.on(Msg.NAVIGATE, function(e) {
 		if(e.parts[0] == "project") show(e.parts[1]);
 		else hide();
 	}); 
 
-	Broadcast.addClient(Msg.SCROLL, onScroll); 
-	Broadcast.addClient(Msg.RENDER, onRender); 
-	Broadcast.addClient(Msg.RESIZE, onResize); 
+	Broadcast.on(Msg.SCROLL, onScroll); 
+	Broadcast.on(Msg.RENDER, onRender); 
+	Broadcast.on(Msg.RESIZE, onResize); 
 }

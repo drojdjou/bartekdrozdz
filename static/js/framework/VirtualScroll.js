@@ -93,10 +93,10 @@ var VirtualScroll = (function(document) {
 				event.deltaX = keyStep;
 				break;
 			case 38:
-				event.deltaY = -keyStep;
+				event.deltaY = keyStep;
 				break;
 			case 40:
-				event.deltaY = keyStep;
+				event.deltaY = -keyStep;
 				break;
 		}
 

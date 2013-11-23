@@ -72,42 +72,45 @@ window.Wrapper = function(e) {
 
 	this.on = function(m, f) {
 		// TODO move tap handling to a separate utility
-		if(m == TAP) {
+		// if(m == TAP) {
 
-			f.tapHandler = (function() {
+		// 	f.tapHandler = (function() {
 
-				var th = {};
-				var minTime = 20000;
-				var startTime;
-				var minDistSq = 100;
-				var sx, sy;
+		// 		var th = {};
+		// 		var minTime = 20000;
+		// 		var startTime;
+		// 		var minDistSq = 100;
+		// 		var sx, sy;
 
-				th.touchStart = function(e) {
-					startTime = new Date().getTime();
-					sx = e.targetTouches[0].pageX;
-					sy = e.targetTouches[0].pageY;
-				}
+		// 		th.touchStart = function(e) {
+		// 			startTime = new Date().getTime();
+		// 			sx = e.targetTouches[0].pageX;
+		// 			sy = e.targetTouches[0].pageY;
+		// 		}
 
-				th.touchEnd = function(e) {
-					var t = new Date().getTime() - startTime;
+		// 		th.touchEnd = function(e) {
+		// 			var t = new Date().getTime() - startTime;
 
-					var dx = e.changedTouches[0].pageX - sx;
-					var dy = e.changedTouches[0].pageY - sy;
-					var dsq = (dx*dx + dy*dy);
+		// 			var dx = e.changedTouches[0].pageX - sx;
+		// 			var dy = e.changedTouches[0].pageY - sy;
+		// 			var dsq = (dx*dx + dy*dy);
 
-					if(t < minTime && dsq < minDistSq) f();
-				}
+		// 			if(t < minTime && dsq < minDistSq) f();
+		// 		}
 
-				return th;
+		// 		return th;
 
-			})();
+		// 	})();
 
-			element.addEventListener("touchstart", f.tapHandler.touchStart);
-			element.addEventListener("touchend", f.tapHandler.touchEnd);
+		// 	element.addEventListener("touchstart", f.tapHandler.touchStart);
+		// 	element.addEventListener("touchend", f.tapHandler.touchEnd);
 
-		} else {
-			element.addEventListener(m, f);
-		}
+		// } else {
+		// 	element.addEventListener(m, f);
+		// }
+
+		m = (m == TAP) ? "touchend" : m;
+		element.addEventListener(m, f);
 	}
 
 	this.off = function(m, f) {

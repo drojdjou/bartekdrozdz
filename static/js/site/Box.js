@@ -98,7 +98,7 @@ window.Box = function(wrapper) {
 		var bb = wrapper.e().getBoundingClientRect();
 		if(bb.top < window.innerHeight) {
 			img.e().src = imagePath;
-			Broadcast.removeClient(Msg.RENDER, trackBox); 
+			Broadcast.off(Msg.RENDER, trackBox); 
 		}
 	}
 
@@ -112,7 +112,7 @@ window.Box = function(wrapper) {
 		hovered = h;
 	}
 
-	Broadcast.addClient(Msg.RENDER, trackBox); 
+	Broadcast.on(Msg.RENDER, trackBox); 
 
 	return wrapper;
 };

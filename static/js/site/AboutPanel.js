@@ -54,15 +54,15 @@ window.AboutPanel = function() {
 		hide();
 	}
 
-	Broadcast.addClient(Msg.NAVIGATE, function(e) {
+	Broadcast.on(Msg.NAVIGATE, function(e) {
 		setTranstionClass(e.history.length > 0);
 		if(e.parts[0] == "about") show();
 		else hide();
 	}); 
 
-	Broadcast.addClient(Msg.SCROLL, onScroll); 
-	Broadcast.addClient(Msg.RENDER, onRender); 
-	Broadcast.addClient(Msg.RESIZE, onResize); 
+	Broadcast.on(Msg.SCROLL, onScroll); 
+	Broadcast.on(Msg.RENDER, onRender); 
+	Broadcast.on(Msg.RESIZE, onResize); 
 
 	var offset = (window.innerWidth > 500) ? 500 : window.innerWidth;
 	container3d.move(-offset, 0, 0);

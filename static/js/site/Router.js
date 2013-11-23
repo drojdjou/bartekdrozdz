@@ -19,7 +19,7 @@ window.Router = function() {
 		history.push(route);
 	}
 
-	Broadcast.addClient(Msg.NAVIGATE, function(e) {
+	Broadcast.on(Msg.NAVIGATE, function(e) {
 		setRoute(e.parts.join("/"));
 	});
 
