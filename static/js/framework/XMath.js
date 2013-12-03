@@ -2,8 +2,8 @@ Math.clamp = function(v, s, e) {
 	return Math.max(Math.min(v, e), s);
 }
 
-// Rect = top/left/right/bottom - basically Wrapper.rect()
-// Point = x/y
+// Rect = top/left/right/bottom - can be the object returned by element.getBoundingClientRect()
+// Point = needs to have x/y property
 Math.pointInRect = function(p, r) {
 	return (p.x >= r.left && p.x <= r.right) && (p.y >= r.top && p.y <= r.bottom);
 }

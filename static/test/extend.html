@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DomExtend - Framework Tests</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable = no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <style type="text/css">
+        body {
+            position: absolute;
+            width: 100%;
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+            font-size: 1.3em;
+            background-color: #000;
+            color: #fff;
+        }
+
+        #square {
+            background-color: red;
+            width: 200px;
+            height: 200px;
+        }
+
+    </style>
+
+    <script type="text/javascript" src="../js/framework/domExtend/DomExtend.js"></script>
+
+</head>
+<body>
+
+    <div id="square"></div>
+
+<script type="text/javascript">
+
+    var s = document.querySelector("#square");
+    console.log(s);
+    console.log(s.ext.element());
+
+</script>
+
+<script type="text/javascript">
+    if(location.host.indexOf("localhost") > -1 || location.host.indexOf("192.168") > -1) {
+        document.write('<script src=\"http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1\"></' + 'script>');
+    }
+</script>
+
+</body>
+</html>   
+
+
+
+
+
+
+
+          
