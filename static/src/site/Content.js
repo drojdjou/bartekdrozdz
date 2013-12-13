@@ -14,12 +14,10 @@ Content = function() {
 	var easer = new Easer(0.2);
 
 	var onResize = function() {
+		if(!_active) return;
 		var max = content.ext.height() - window.innerHeight;
 		easer.setLimits(-max, hero.height());
-
-		if(_active) {
-			hero.onResize();
-		}
+		hero.onResize();
 	}
 
 	var onScroll = function(e) {
@@ -31,10 +29,8 @@ Content = function() {
         if(!_active) return;
 
         var scr = easer.easeVal();
-
         content.ext.y = scr;
         content.ext.transform();
-
         hero.ext.y = (scr - hero.height()) * 0.5;
         hero.ext.transform();
 	}
@@ -61,7 +57,9 @@ Content = function() {
 				break;
 			default:
 				if(video) video.pause();
-				section.ext.transition({ transform: { x: window.innerWidth }, opacity: 0 }, 500, 'ease');
+				hero.kill();
+				if(!startUp) section.ext.transition({ transform: { x: window.innerWidth }, opacity: 0 }, 500, 'ease');
+				else section.ext.css('opacity', 0);
 				break;
 		}
 	};

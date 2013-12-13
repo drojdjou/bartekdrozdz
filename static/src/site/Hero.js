@@ -7,7 +7,14 @@ Hero = function(container) {
 
 	hi.setup = function(data) {
 
-		isDemo = (data.type == 'demo');
+		var missingDeps = [];
+		data.deps.forEach(function(dep) {
+			if(!Simplrz[dep]) {
+				missingDeps.push(dep);
+			}
+		});
+
+		isDemo = (data.type == 'demo' && missingDeps.length == 0);
 
 		if(isDemo) {
 			ctn = EXT.create('iframe');
@@ -19,7 +26,7 @@ Hero = function(container) {
 			
 		}
 
-		hi.adjust();		
+		hi.adjust();
 		container.innerHTML = '';
 		container.appendChild(ctn);
 	}
@@ -41,6 +48,22 @@ Hero = function(container) {
 		ctn.ext.width(w);
 		ctn.ext.transform({ x: ox });
 
+	}
+
+	hi.kill = function() {
+		console.log("Killing iframe 2");
+
+		if(ctn) {
+			try {
+				ctn.contentWindow.kill();
+			} catch(e) {
+				// Np
+			}
+
+			container.removeChild(ctn);
+			ctn.innerHTML = "";
+			ctn = null;
+		}
 	}
 
 	hi.height = function() {

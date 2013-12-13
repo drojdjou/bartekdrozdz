@@ -57,21 +57,31 @@ Main = function() {
 
 		switch(r) {
 			case Site.MAIN:
-				if(pr) section.ext.transition({ transform: { x: 0 } }, 500, 'ease');
+
+				if(pr) {
+					section.ext.transition({ transform: { x: 0 } }, 500, 'ease');
+				} else {
+					section.ext.transform({ x: 0 });
+				}
+
 				break;
 			case Site.ABOUT:
+
 				if(pr) {
 					section.ext.transition({ transform: { x: offset } }, 500, 'ease');
 				} else {
 					section.ext.transform({ x: offset });
 				}
+
 				break;
 			case Site.PROJECT:
+
 				if(pr) {
 					section.ext.transition({ transform: { x: -window.innerWidth } }, 500, 'ease');
 				} else {
 					section.ext.transform({ x: -window.innerWidth });
 				}
+				
 				break;
 			case Site.CONTENT:
 		}
