@@ -48,9 +48,11 @@ window.Simplrz = (function() {
 	    return v > 4 ? v : null;
 	})();
 
-
 	s["ie"] = ie || false;
 	classes.push((ie) ? "ie-" + ie : "no-ie");
+
+	s["firefox"] = prefix.lowercase == "moz";
+	classes.push((ie) ? "firefox" : "no-firefox");
 
 	check("css3d", function() {
 		var div = document.createElement("div");

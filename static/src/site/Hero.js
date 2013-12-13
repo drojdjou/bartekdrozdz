@@ -44,10 +44,11 @@ Hero = function(container) {
 			ox = (w - window.innerWidth) * -0.5;
 		}
 
-		ctn.ext.height(h);
-		ctn.ext.width(w);
-		ctn.ext.transform({ x: ox });
-
+		if(ctn) {
+			ctn.ext.height(h);
+			ctn.ext.width(w);
+			ctn.ext.transform({ x: ox });
+		}
 	}
 
 	hi.kill = function() {

@@ -524,11 +524,11 @@ section#projects ul.projects li .container .hover {
   -o-transform: translateY(150%) translateX(-15%) rotateZ(45deg) scaleX(2);
   -ms-transform: translateY(150%) translateX(-15%) rotateZ(45deg) scaleX(2);
   transform: translateY(150%) translateX(-15%) rotateZ(45deg) scaleX(2);
-  -webkit-transition: all 0.2s ease-out;
-  -moz-transition: all 0.2s ease-out;
-  -o-transition: all 0.2s ease-out;
-  -ms-transition: all 0.2s ease-out;
-  transition: all 0.2s ease-out;
+  -webkit-transition: -webkit-transform 0.2s ease-out;
+  -moz-transition: -moz-transform 0.2s ease-out;
+  -o-transition: -o-transform 0.2s ease-out;
+  -ms-transition: -ms-transform 0.2s ease-out;
+  transition: transform 0.2s ease-out;
 }
 section#projects ul.projects li .container h4 {
   border-bottom: 2px solid rgba(255, 255, 255, 0);

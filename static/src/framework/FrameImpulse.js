@@ -28,8 +28,9 @@ FrameImpulse = (function() {
 
 		if(numListeners == 0) return;
 
-		var i = numListeners;
-		while(i--) {
+		//var i = numListeners;
+		//while(i--) {
+		for(var i = 0; i < numListeners; i++) {
 			listeners[i].call(deltaTime);
 		}
 

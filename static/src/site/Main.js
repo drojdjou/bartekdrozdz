@@ -55,6 +55,8 @@ Main = function() {
 
 		_active = (r == Site.MAIN);
 
+		console.log("main.onRoute", e);
+
 		switch(r) {
 			case Site.MAIN:
 

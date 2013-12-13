@@ -3,7 +3,7 @@ HistoryRouter = function (broadcast) {
 	var rootUrl = document.location.protocol + '//' + (document.location.hostname || document.location.host);
 	if(document.location.port) rootUrl += ":" + document.location.port;
 
-	console.log("rootUrl", rootUrl);
+	// console.log("rootUrl", rootUrl);
 	
 	var route, prevRoute;
 
@@ -62,6 +62,8 @@ HistoryRouter = function (broadcast) {
 
 	broadcast.on(MSG.HIJACK_LINKS, hijackLinks);
 	broadcast.on(MSG.NAVIGATE, pushState);
+
+	if(Simplrz.firefox) setTimeout(pushState, 0);
 
 	return {
 		init: function () {

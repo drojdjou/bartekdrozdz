@@ -84,11 +84,17 @@ var Box = function(element) {
     var onRoute = function(e) {
         var r = e.parts[0];
         _active = (r == Site.MAIN);
+
+        if(!_active) {
+            container.classList.remove('hovered-container');
+        } else {
+        }
     };
 
-    FrameImpulse.on(onRender);
+    
     VirtualScroll.on(onScroll);
     Application.on(MSG.ROUTE, onRoute);
+    FrameImpulse.on(onRender);
 
     document.addEventListener("mousemove", function(e) {
         touchX = e.pageX;
