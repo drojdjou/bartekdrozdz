@@ -21,6 +21,10 @@ Main = function() {
 		boxes.forEach(function(item) {
 			item.box.onResize(max);
 		});
+
+		if(!_active) {
+			section.ext.transform({ x: -window.innerWidth });
+		}
 	}
 
 	var onScroll = function(e) {

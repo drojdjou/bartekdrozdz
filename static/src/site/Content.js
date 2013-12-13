@@ -16,6 +16,10 @@ Content = function() {
 	var onResize = function() {
 		var max = content.ext.height() - window.innerHeight;
 		easer.setLimits(-max, hero.height());
+
+		if(_active) {
+			hero.onResize();
+		}
 	}
 
 	var onScroll = function(e) {
