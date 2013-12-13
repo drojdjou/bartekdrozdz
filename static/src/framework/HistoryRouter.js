@@ -1,7 +1,11 @@
 HistoryRouter = function (broadcast) {
 
-	var rootUrl = document.location.protocol + '//' + (document.location.hostname || document.location.host) + ":" + document.location.port, 
-		route, prevRoute;
+	var rootUrl = document.location.protocol + '//' + (document.location.hostname || document.location.host);
+	if(document.location.port) rootUrl += ":" + document.location.port;
+
+	console.log("rootUrl", rootUrl);
+	
+	var route, prevRoute;
 
 	var hijackLinks = function () {
 		if (!Simplrz.history) return;

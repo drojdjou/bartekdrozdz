@@ -51,8 +51,6 @@ Hero = function(container) {
 	}
 
 	hi.kill = function() {
-		console.log("Killing iframe 2");
-
 		if(ctn) {
 			try {
 				ctn.contentWindow.kill();
