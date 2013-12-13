@@ -15,6 +15,7 @@
 		"lib/RLdummy",
 
 		"framework/Simplrz",
+		"framework/Events",
 		"framework/Application",
 
 		"framework/domExtend/DomExtend",
@@ -22,20 +23,20 @@
 		"framework/domExtend/Transform",
 		"framework/domExtend/Transition",
 
-		"framework/Events",
 		"framework/FrameImpulse",
 		"framework/HistoryRouter",
 		"framework/Loader",
 		"framework/MSG",
-		"framework/VirtualScroll.js",
-		"framework/Util.js",
+		"framework/VirtualScroll",
+		"framework/Util",
 
-		// "site/Messages",
-		// "site/Site",
-		// "site/MainPanel",
-		// "site/AboutPanel",
-		// "site/ContentPanel",
-		// "site/Box",
-		// "site/Router"
+		"site/util/Easer",
+
+		"site/Site",
+		"site/Main",
+		"site/Box",
+		"site/About",
+		"site/Content",
+		"site/Hero"
 	]
 })
