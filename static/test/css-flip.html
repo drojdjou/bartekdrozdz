@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+
+  <script type="text/javascript" src="../../framework/src/framework/Simplrz.js"></script>
+  <script type="text/javascript" src="../../framework/src/framework/domExtend/State.js"></script>
+  <script type="text/javascript" src="../../framework/src/framework/domExtend/Transform.js"></script>
+  <script type="text/javascript" src="../../framework/src/framework/domExtend/Transition.js"></script>
+  <script type="text/javascript" src="../../framework/src/framework/domExtend/DomExtend.js"></script>
+  <script type="text/javascript" src="../../framework/src/framework/Animation.js"></script>
+  <script type="text/javascript" src="../../framework/src/framework/Util.js"></script>
+  <script type="text/javascript" src="../../framework/src/lib/less-1.5.0.min.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="less/css-flip.css"/>
+
+  <script type="text/javascript">
+
+    window.onload = function () {
+
+      var cells = EXT.selectAll(".content");
+      cells.forEach(function (item, i) {
+        var del = 300 * i;
+        item.ext.transform({ x: 100, y: 40, rotY: 90, z: -200 });
+        setTimeout(function () {
+          item.ext.transition({transform: {x: 0, y: 0, rotY: 0, z: 0}, opacity: 1 }, 2000, 'ease', del);
+        }, 100);
+      });
+    };
+
+  </script>
+
+</head>
+<body>
+
+<div class="row">
+
+  <div class="outer">
+    <div class="holder">
+      <div class="content"></div>
+    </div>
+  </div>
+  <div class="outer">
+    <div class="holder">
+      <div class="content"></div>
+    </div>
+  </div>
+  <div class="outer">
+    <div class="holder">
+      <div class="content"></div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

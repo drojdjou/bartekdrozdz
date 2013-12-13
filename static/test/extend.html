@@ -5,27 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable = no">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-    <style type="text/css">
-        body {
-            position: absolute;
-            width: 100%;
-            margin: 0;
+    <link rel="stylesheet" href="css/extend.css">
 
-            font-family: Arial, sans-serif;
-            font-size: 1.3em;
-            background-color: #000;
-            color: #fff;
-        }
-
-        #square {
-            background-color: red;
-            width: 200px;
-            height: 200px;
-        }
-
-    </style>
-
-    <script type="text/javascript" src="../js/framework/domExtend/DomExtend.js"></script>
+    <script type="text/javascript" src="../src/framework/Simplrz.js"></script>
+    <script type="text/javascript" src="../src/framework/domExtend/State.js"></script>
+    <script type="text/javascript" src="../src/framework/domExtend/Transform.js"></script>
+    <script type="text/javascript" src="../src/framework/domExtend/DomExtend.js"></script>
+    <script type="text/javascript" src="../src/framework/Loader.js"></script>
 
 </head>
 <body>
@@ -34,14 +20,30 @@
 
 <script type="text/javascript">
 
-    var s = document.querySelector("#square");
-    console.log(s);
-    console.log(s.ext.element());
+    var s = document.ext.select("#square");
+    
+    console.log(s.ext.visible());
+    // s.ext.hide();
+
+    s.ext.on("click", function(e) {
+        console.log("You clicked me!");
+        s.ext.x += 100 - Math.random() * 200;
+        s.ext.y += 100 - Math.random() * 200;
+        s.ext.rotZ =Math.random()* 180;
+        s.ext.scaleX = Math.random()* 2;
+        s.ext.scaleY = Math.random()* 2;
+        s.ext.transform();
+        s.ext.css("backgroundColor","hsl(" + Math.random()*360 + ",100%,50%");
+    });
+
+    s.ext.x = window.innerWidth * 0.5 - s.ext.width() * 0.5;
+    s.ext.y = window.innerHeight * 0.5 - s.ext.height() * 0.5;
+    s.ext.transform({ rotZ: 45 });
 
 </script>
 
 <script type="text/javascript">
-    if(location.host.indexOf("localhost") > -1 || location.host.indexOf("192.168") > -1) {
+    if(location.host.indexOf("localhost") > -1 || location.host.indexOf("192.168") > -1 || location.host.indexOf("127.0") > -1) {
         document.write('<script src=\"http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1\"></' + 'script>');
     }
 </script>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Animation Hover - Framework Tests</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable = no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <link rel="stylesheet" href="css/animation-api.css">
+
+    <script type="text/javascript" src="../src/lib/Stats.js"></script>
+
+    <script type="text/javascript" src="../src/framework/Simplrz.js"></script>
+    <script type="text/javascript" src="../src/framework/Util.js"></script>
+    <script type="text/javascript" src="../src/framework/domExtend/State.js"></script>
+    <script type="text/javascript" src="../src/framework/domExtend/Transform.js"></script>
+    <script type="text/javascript" src="../src/framework/domExtend/DomExtend.js"></script>
+    <script type="text/javascript" src="../src/framework/Animation.js"></script>
+    <script type="text/javascript" src="../src/framework/FrameImpulse.js"></script>
+
+</head>
+<body>
+
+<ul>
+    <li>A</li>
+    <li>B</li>
+    <li>C</li>
+    <li>D</li>
+    <li>E</li>
+    <li>F</li>
+    <li>G</li>
+    <li>H</li>
+    <li>I</li>
+    <li>J</li>
+</ul>
+
+<script type="text/javascript">
+
+// var stats = new Stats();
+// stats.domElement.setAttribute("id", "stats");
+// document.body.appendChild(stats.domElement);
+
+
+// 1. Create a few animations
+var slideIn = Anm.create(300, { y:[-200, -20] }).ease(Anm.QUADOUT);
+var hoverItem = Anm.create(50, { y:0, opacity:1 }).ease(Anm.QUADIN);
+var resetItem = Anm.create(350, { y:-20, opacity:0.5 }).ease(Anm.QUADOUT);
+
+// 2. Grab the elements
+var items = document.ext.selectAll("li");
+
+// 3. Play initial animation
+items.forEach(function(item, index) {
+    item.ext.opacity = 0.5;
+    item.ext.setAnimation(slideIn, 200 + index * 200);
+
+    item.ext.on("mouseover", function(e) {
+        item.ext.setAnimation(hoverItem);
+    });
+
+    item.ext.on("mouseout", function(e) {
+        item.ext.setAnimation(resetItem);
+    });
+});
+
+
+var run = function() {
+    // stats.begin();
+    requestAnimationFrame(run);
+    Anm.update();
+    // stats.end();
+}
+
+run();
+
+</script>
+
+<script type="text/javascript">
+    if(location.host.indexOf("localhost") > -1 || location.host.indexOf("192.168") > -1) {
+        document.write('<script src=\"http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1\"></' + 'script>');
+    }
+</script>
+
+</body>
+</html>   
+
+
+
+
+
+
+
+          

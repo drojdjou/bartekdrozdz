@@ -1,265 +1,63 @@
 #main {
 	position: absolute;
 	width: 100%;
-	height: 100%;
 
 	background-color: #fff;
 
 	overflow-x: hidden;
 	overflow-y: hidden;
 
-	&.animated {
-		.transition(~'transform 0.5s ease');
-	}
+	font-family: @droid;
+	color: @grey;
 
 	a {
 		color: inherit;
 		text-decoration: none;
 	}
 
-	section#header {
 
+	h2.header {
 		@headerBlockWidth: 50%;
+		width: 100%;
+		text-align: center;
 
-		.transform-origin(0 0);
+		font-size: 1.8em;
+		letter-spacing: -0.02em;
+		font-weight: normal;
+		line-height: 1.4em;
+		margin: 0 0 0 0;
+		padding: 160px 40px 160px 40px;
 
-		> div:nth-of-type(1) {
-			position: relative;
-			background-color: #000000;
-			width: @headerBlockWidth;
-			max-width: 140px;
-			height: 40px;
-			margin: 0 0 0 4px;
-
-			@media screen and (min-width: 800px) {
-				margin: 0 0 0 10px;
-			}
-		}
-
-		h2 {
-			font-size: 2.1em;
-			letter-spacing: -0.05em;
-			font-weight: 600;
+		p {
 			margin: 0 0 0 0;
-			padding: 20px 30px 0px 10px;
-
-			p {
-				margin: 0 0 0 0;
-				line-height: 1.2em;
-				display: inline;
-			}
-
-			a {
-				position: relative;
-				display: inline-block;
-				padding: 0 0 0 0;
-				margin: 0 0 0 0;
-				color: @darkred;
-
-				.transition(~"color 0.2s ease");
-
-				&:before {
-					position: absolute;
-					z-index: -1000;
-					content: '';
-					display: block;
-					background-color: @darkred;
-					width: 106%;
-					margin-left: -3%;
-					height: 4px;
-					margin-top: 40px;
-
-					.transition(~"height 0.1s ease, margin-top 0.1s ease");
-				}
-
-				.no-touch &:hover {
-					color: #fff;
-					cursor: pointer;
-				}
-				
-				.no-touch &:hover:before {
-					height: 38px;
-					margin-top: 2px;
-					
-				}
-
-				.touch &:active {
-					color: #fff;
-					cursor: pointer;
-				}
-				
-				.touch &:active:before {
-					height: 38px;
-					margin-top: 2px;
-					
-				}
-			}
 		}
 
-		@media screen and (min-width: 600px) {
-			h2 {
-				font-size: 2.4em;
-
-				a {
-					&:before {
-						margin-top: 44px;
-					}
-
-					.no-touch &:hover:before {
-						height: 42px;
-						margin-top: 2px;
-					}
-
-					.touch &:active:before {
-						height: 42px;
-						margin-top: 2px;
-					}
-				}
-			}
-		}
-
-		@media screen and (min-width: 1100px) {
-			h2 {
-				font-size: 2.9em;
-
-				p {
-					display: block;
-				}
-
-				a {
-					&:before {
-						height: 5px;
-						margin-top: 52px;
-					}
-
-					.no-touch &:hover:before {
-						height: 48px;
-						margin-top: 4px;
-					}
-
-					.touch &:active:before {
-						height: 48px;
-						margin-top: 4px;
-					}
-				}
-			}
-		}
-
-		@media screen and (min-width: 1460px) {
-			h2 {
-				font-size: 3.9em;
-
-				a {
-					&:before {
-						height: 7px;
-						margin-top: 68px;
-					}
-
-					.no-touch &:hover:before {
-						height: 64px;
-						margin-top: 4px;
-					}
-
-					.touch &:active:before {
-						height: 64px;
-						margin-top: 4px;
-					}
-				}
-			}
-		}
-
-		@media screen and (min-width: 1800px) {
-			h2 {
-				font-size: 5.2em;
-
-				a {
-					&:before {
-						height: 8px;
-						margin-top: 90px;
-					}
-
-					.no-touch &:hover:before {
-						height: 84px;
-						margin-top: 6px;
-					}
-
-					.touch &:active:before {
-						height: 84px;
-						margin-top: 6px;
-					}
-				}
-			}
+		a {
+			color: @darkred;
 		}
 	}
 
-	section#footer {
-
-		margin-top: 2px;
-
-		@media screen and (min-width: 800px) {
-			margin-top: 5px;
+	@media screen and (min-width: 600px) {
+		h2 {
+			font-size: 2.0em;
 		}
+	}
 
-		width: 100%;
-		background-color: @darkgrey;
+	@media screen and (min-width: 1100px) {
+		h2 {
+			font-size: 2.2em;
+		}
+	}
 
-		color: #777;
-		font-size: 0.8em;
-		overflow: auto;
-		padding: 10px 0 10px 0;
+	@media screen and (min-width: 1460px) {
+		h2 {
+			font-size: 2.4em;
+		}
+	}
 
-		ul {
-			list-style-type: none;
-			margin: 0;
-			padding: 0;
-
-			li {
-				float: left;
-				padding: 10px 0px 10px 0;
-				text-align: center;
-
-				a:hover, span:hover {
-					color: #ffffff;
-					cursor: pointer;
-					text-decoration: underline;
-				}
-			}
-
-			li:nth-child(-n+2) {
-				width: 50%;
-			}
-
-			li:nth-child(n+3):nth-child(-n+6) {
-				width: 25%;
-			}
-
-			li:nth-child(7) {
-				width: 100%;
-			}
-
-			@media screen and (min-width: 800px) {
-
-				margin: 0 15% 0 15%;
-
-				li {
-					font-size: 0.9em;
-					font-weight: bold;
-
-					&:not(:last-child):before {
-						content: '\2219';
-						margin-right: 10px;
-					}
-
-					&:not(:last-child):after {
-						content: '\2219';
-						margin-left: 10px;
-					}
-				}
-
-				li:nth-child(-n+2), li:nth-child(n+3):nth-child(-n+6) {
-					width: 16.66%;
-				}
-			}
+	@media screen and (min-width: 1800px) {
+		h2 {
+			font-size: 2.6em;
 		}
 	}
 }

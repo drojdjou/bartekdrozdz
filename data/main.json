@@ -34,7 +34,7 @@
             "name": "Clouds over Cuba",
             "url": "http://cloudsovercuba.com/",
             "contentUrl": "data/cuba",
-            "tint": "#5d5d5d"
+            "tint": "#3d3d3d"
         },
         {
             "id": "jam",
@@ -121,7 +121,7 @@
             "deps": ["webgl"],
             "url": "http://j3d.bartekdrozdz.com/demo/014_Head.html",
             "contentUrl": "data/head",
-            "tint": "#550000"
+            "tint": "#7b6950"
         },
         {
             "id": "polygons",
@@ -131,7 +131,7 @@
             "imageLarge": "assets/play/polygons.jpg",
             "url": "http://sqr.bartekdrozdz.com/bin/3d/005-polygons.html",
             "contentUrl": "data/polygons",
-            "tint": "#550000"
+            "tint": "#055d6a"
         },
         {
             "id": "webcam",
@@ -141,7 +141,7 @@
             "imageLarge": "assets/play/webcam.jpg",
             "url": "http://j3d.bartekdrozdz.com/demo/020_Webcam.html",
             "contentUrl": "data/webcam",
-            "tint": "#045e00"
+            "tint": "#808080"
         },
         {
             "id": "earth",

@@ -1,24 +1,37 @@
 {
 
 	"scripts" :[
-		"js/main.js",
+		"src/main.js",
 		"shared/Data.js",
-		"js/lib/requestAnimFrame.js", 
-		"js/lib/socket.io/socket.io.js",
-		"js/lib/RL.js",
-		"js/framework/Broadcast.js",
-		"js/framework/Loader.js",
-		"js/framework/Wrapper.js",
-		"js/framework/VirtualScroll.js",
-		"js/framework/Simplrz.js",
-		"js/framework/XMath.js",
-		"js/site/Messages.js",
-		"js/site/Site.js",
-		"js/site/MainPanel.js",
-		"js/site/AboutPanel.js",
-		"js/site/ContentPanel.js",
-		"js/site/Box.js",
-		"js/site/Router.js"
+
+		"src/lib/socket.io/socket.io.js",
+		"src/lib/RL.js",
+		
+		"src/framework/Simplrz.js",
+		"src/framework/Events.js",
+		"src/framework/Application.js",
+
+		"src/framework/domExtend/DomExtend.js",
+		"src/framework/domExtend/State.js",
+		"src/framework/domExtend/Transform.js",
+		"src/framework/domExtend/Transition.js",
+
+		"src/framework/FrameImpulse.js",
+		"src/framework/HistoryRouter.js",
+		"src/framework/Loader.js",
+		"src/framework/MSG.js",
+		"src/framework/VirtualScroll.js",
+		"src/framework/Util.js",
+
+
+		"src/site/util/Easer.js",
+
+		"src/site/Site.js",
+		"src/site/Main.js",
+		"src/site/Box.js",
+		"src/site/About.js",
+		"src/site/Content.js",
+		"src/site/Hero.js"
 	],
 
 	"compressed": "site.min.js"

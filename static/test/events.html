@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Events - Framework Tests</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable = no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <link rel="stylesheet" href="css/extend.css">
+
+    <script type="text/javascript" src="../src/framework/Events.js"></script>
+
+</head>
+<body>
+
+<script type="text/javascript">
+
+    var E1 = "someEvent1";
+    var E2 = "someEvent2";
+    var E3 = "someEvent3";
+
+    var broadcast = new Events();
+
+    var callbacks = [];
+    var numc = 10;
+
+    for(var i = 0; i < numc; i++) {
+        var f = (function() {
+            var n = i;
+            return function() { 
+                console.log(E2, n); 
+                broadcast.off(E1, callbacks[n]);
+
+                // Case 1. E3 event will not reach the callback - it was removed before it was triggered
+                // if(n == 1) broadcast.off(E3, e3list);
+                // if(n == 3) broadcast.trigger(E3);
+                // Same as the line above:
+                // if(n == 3) broadcast.trigger(E3, null, false);
+
+                // Case 2. E3 event will reach the callback - the removal was deffered, but the trigger was not
+                // if(n == 1) broadcast.off(E3, e3list, true);
+                // if(n == 3) broadcast.trigger(E3);
+
+                // Case 3. E3 event will not reach the callback - the removal was deffered, 
+                // but the trigger was deffered too, so happens after removal
+                // (that happens even if 'off' is called after 'trigger' as below)
+                // if(n == 3) broadcast.off(E3, e3list, true);
+                // if(n == 1) broadcast.trigger(E3, null, true);
+
+                // Case 4. E3 event will reach the callback, because it is called before off and both are immediate
+                // if(n == 1) broadcast.trigger(E3);
+                // if(n == 3) broadcast.off(E3);
+
+                // Case 4. E3 event will not reach the callback - it was called before off, but deffered
+                if(n == 1) broadcast.trigger(E3, null, true);
+                if(n == 3) broadcast.off(E3);
+                
+            }
+        })();
+        callbacks.push(f);
+    }
+
+    var addAll = function() {
+        for(var i = 0; i < numc; i++) {
+            broadcast.on(E2, callbacks[i]);
+        }
+    }
+
+    var removeAll = function() {
+        for(var i = 0; i < numc; i++) {
+            broadcast.off(E2, callbacks[i]);
+        }
+    }
+
+    var e3list = broadcast.on(E3, function() {
+        console.log("e3 triggered!");
+    });
+
+    broadcast.on(E1, addAll);
+
+    broadcast.trigger(E1);
+    broadcast.trigger(E2);
+
+
+</script>
+
+<script type="text/javascript">
+    if(location.host.indexOf("localhost") > -1 || location.host.indexOf("192.168") > -1 || location.host.indexOf("127.0") > -1) {
+        document.write('<script src=\"http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1\"></' + 'script>');
+    }
+</script>
+
+</body>
+</html>   
+
+
+
+
+
+
+
+          

@@ -1,0 +1,17 @@
+body {
+  position: absolute;
+  width: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  font-size: 1.3em;
+  background-color: #000;
+  color: #fff;
+}
+#square {
+  background-color: #550000;
+  width: 200px;
+  height: 200px;
+}
+#square:active {
+  background-color: #aa0000;
+}

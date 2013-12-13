@@ -1,0 +1,30 @@
+.row {
+
+    width: 100%;
+
+    .outer {
+
+        position: relative;
+        display: inline-block;
+        float: left;
+        -webkit-perspective: 600;
+        perspective: 600;
+
+        .holder {
+            position: relative;
+            width: 200px;
+            height: 200px;
+
+            .content {
+                opacity: 0;
+                transform-origin: 30% 50%;
+                -webkit-transform-origin: 30% 50%;
+                position: absolute;
+                width: 200px;
+                height: 200px;
+                background: black;
+            }
+        }
+
+    }
+}

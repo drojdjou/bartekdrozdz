@@ -1,6 +1,6 @@
 ({
 
-	baseUrl: "static/js/", 
+	baseUrl: "static/src/", 
 
 	out: "static/site.min.js", 
 
@@ -12,20 +12,30 @@
 
 	include: [		
 		"../../app/shared/Data",
-		"lib/requestAnimFrame", 
 		"lib/RLdummy",
-		"framework/Broadcast",
-		"framework/Loader",
-		"framework/Wrapper",
-		"framework/VirtualScroll",
+
 		"framework/Simplrz",
-		"framework/XMath",
-		"site/Messages",
-		"site/Site",
-		"site/MainPanel",
-		"site/AboutPanel",
-		"site/ContentPanel",
-		"site/Box",
-		"site/Router"
+		"framework/Application",
+
+		"framework/domExtend/DomExtend",
+		"framework/domExtend/State",
+		"framework/domExtend/Transform",
+		"framework/domExtend/Transition",
+
+		"framework/Events",
+		"framework/FrameImpulse",
+		"framework/HistoryRouter",
+		"framework/Loader",
+		"framework/MSG",
+		"framework/VirtualScroll.js",
+		"framework/Util.js",
+
+		// "site/Messages",
+		// "site/Site",
+		// "site/MainPanel",
+		// "site/AboutPanel",
+		// "site/ContentPanel",
+		// "site/Box",
+		// "site/Router"
 	]
 })

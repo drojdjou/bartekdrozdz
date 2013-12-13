@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GSAP Hover - Framework Tests</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable = no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <link rel="stylesheet" href="css/animation-api.css">
+
+    <script type="text/javascript" src="../src/lib/Stats.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.11.2/TweenMax.min.js"></script>
+
+</head>
+<body>
+
+<ul>
+    <li>A</li>
+    <li>B</li>
+    <li>C</li>
+    <li>D</li>
+    <li>E</li>
+    <li>F</li>
+    <li>G</li>
+    <li>H</li>
+    <li>I</li>
+    <li>J</li>
+</ul>
+
+<script type="text/javascript">
+
+// var stats = new Stats();
+// stats.domElement.setAttribute("id", "stats");
+// document.body.appendChild(stats.domElement);
+
+// 2. Grab the elements
+var itemsNL = document.querySelectorAll("li"), items = [];
+
+for(var i = 0; i < itemsNL.length; i++) items.push(itemsNL[i]);
+
+// 3. Play initial animation
+items.forEach(function(item, index) {
+    item.style.opacity = 0.5;
+
+    TweenLite.fromTo(item, 0.5, { y: -200 }, { y: -20, delay: 0.2 + index * 0.2 });
+
+    item.addEventListener("mouseover", function(e) {
+        TweenLite.to(item, 0.1, { opacity: 1, y: 0 });
+    });
+
+    item.addEventListener("mouseout", function(e) {
+        TweenLite.to(item, 0.2, { opacity: 0.5, y: -20 });
+    });
+});
+
+
+var run = function() {
+    // stats.begin();
+    // requestAnimationFrame(run);
+    // Anm.update();
+    // stats.end();
+}
+
+run();
+
+</script>
+
+<script type="text/javascript">
+    if(location.host.indexOf("localhost") > -1 || location.host.indexOf("192.168") > -1) {
+        document.write('<script src=\"http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1\"></' + 'script>');
+    }
+</script>
+
+</body>
+</html>   
+
+
+
+
+
+
+
+          

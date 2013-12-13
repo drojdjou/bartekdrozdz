@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Framework - History Router</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable = no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <style type="text/css">
+
+    body {
+    	background-color: #000;
+    	color: #fff;
+    	font-family: Arial;
+    	margin: 0;
+    }
+
+    a {
+    	color: inherit;
+    }
+
+    ul {
+    	list-style-type: none;
+    	padding: 0;
+    	margin: 0;
+    	overflow: auto;
+    }
+
+    li {
+    	float: left;
+    	text-align: center;
+    	border: solid 1px #808080;
+    	margin: 5px;
+    	padding: 40px;
+    }
+
+    li:hover {
+    	background-color: #fff;
+    	color: #000;
+    }
+
+    li.active {
+    	background-color: #808080;
+    }
+
+    </style>
+
+</head>
+<body>
+
+<section id="main">
+	<ul>
+		<a href="history.html"><li>Main</li></a>
+		<a href="section01.html"><li>01</li></a>
+		<a href="section02.html"><li>02</li></a>
+		<a href="section03.html"><li>03</li></a>
+		<a href="section04.html"><li>04</li></a>
+		<a href="section05.html"><li>05</li></a>
+		<a href="./section06.html"><li>06</li></a>
+		<a href="./section07.html"><li>07</li></a>
+		<a href="section08.html" data-hj="no"><li>08 noHJ</li></a>
+		<a href="section09.html" target="_blank"><li>09 _blank</li></a>
+		<a href="http://cnn.com"><li>CNN</li></a>
+		<a href="ftp://someserver.com"><li>FTP</li></a>
+		<a href="mailto:admin@server.com"><li>Mail</li></a>
+	</ul>
+</section>
+
+<script type="text/javascript" src="../src/framework/Simplrz.js"></script>
+<script type="text/javascript" src="../src/framework/Events.js"></script>
+<script type="text/javascript" src="../src/framework/domExtend/State.js"></script>
+<script type="text/javascript" src="../src/framework/domExtend/DomExtend.js"></script>
+<script type="text/javascript" src="../src/framework/MSG.js"></script>
+<script type="text/javascript" src="../src/framework/Application.js"></script>
+<script type="text/javascript" src="../src/framework/HistoryRouter.js"></script>
+
+<script type="text/javascript">
+
+	Application.on(MSG.ROUTE, function(e) {
+		var f = e.route.split('/').pop();
+
+		EXT.selectAll('a[href]').forEach(function(item) {
+			var li = item.ext.select('li');
+			if(li) li.ext.attr('class', '');
+		});
+
+		var cl = EXT.select('a[href*="' + f + '"]');
+		
+		if(cl) {
+			var li = cl.ext.select('li');
+			if(li) li.ext.attr('class', 'active');
+		}
+	});
+
+	Application.init();
+  
+</script>
+
+<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+</body>
+</html>
+

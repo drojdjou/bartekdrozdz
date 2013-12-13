@@ -16,21 +16,12 @@
 	font-size: 1.0em;
 	line-height: 1.5em;
 
-	section {
-		.perspective(~"1500px");
-	}
+	.perspective(~"1500px");
 
-	section > div {	
-		opacity: 0;
+	div {	
 		.transform-origin(~"100% 0");
 		padding: 20px 40px 30px 30px;
 		color: #ffffff;
-
-		&.animated {
-			// .transition(~"transform 0.5s ease, opacity 0.5s ease");
-			-webkit-transition: -webkit-transform 0.5s ease, opacity 0.5s ease;
-			transition: transform 0.5s ease, opacity 0.5s ease;
-		}
 	}
 
 	h2 {

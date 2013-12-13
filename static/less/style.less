@@ -1,12 +1,19 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans);
 
 @import "lesshat";
 
-@darkred: #9b2222;
+@darkred: #840003;
 @darkgrey: #222;
 
+@grey: #999;
+
+@helvetica: Helvetica, Arial, sans-serif;
+@droid: 'Droid Sans', 'Helvetica', 'Arial', sans-serif;
+@opensans: 'Open Sans', sans-serif;
+
 html, body {
-	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-family: @opensans;
 	color: #000000;
 	margin: 0;
 	padding: 0;
@@ -17,12 +24,6 @@ html, body {
 	background-color: @darkgrey; 
 	font-size: 16px;
 }
-
-// Assume Safari iOS...
-// body.webkit.touch {
-// 	background-color: #ffffff; 
-// 	background-image: linear-gradient(to bottom, @darkgrey 0%, @darkgrey 100%); 
-// }
 
 * {
 	.box-sizing(border-box);

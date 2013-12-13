@@ -5,85 +5,18 @@
 	height: 100%;
 }
 
-.hover-frame {
-	position: absolute;
-	overflow: hidden;
-	background-color: rgba(0, 0, 0, 1);
-	padding: 0;
-	margin-top: 0;
-	border: 0;
-
-	&.in-first {
-		.transition(~"all 0.2s ease-in");
-	}
-
-	&.in-second {
-		.transition(~"all 0.15s ease-out 0.2s");
-	}
-
-	&.out-first {
-		.transition(~"all 0.1s ease-out 0.1s");
-	}
-
-	&.out-second {
-		.transition(~"all 0.1s ease-in");
-	}
-
-	@hoverFrameLen: 100%;
-	@hoverFrameThick: 10%;
-	@hoverFramePos: 0%;
-
-	&.left {
-		top: @hoverFramePos;
-		left: @hoverFramePos;
-		width: @hoverFrameThick;
-		height: @hoverFrameLen;
-		.transform-origin(~"0 0");
-		.transform(~"scale(1, 0)");
-	}
-
-	&.top {
-		top: @hoverFramePos;
-		left: @hoverFramePos;
-		width: @hoverFrameLen;
-		height: @hoverFrameThick;
-		.transform-origin(~"0 0");
-		.transform(~"scale(0, 1)");
-	}
-
-	&.right {
-		top: @hoverFramePos;
-		right: @hoverFramePos;
-		width: @hoverFrameThick;
-		height: @hoverFrameLen;
-		.transform-origin(~"0 0");
-		.transform(~"scale(1, 0)");
-	}
-
-	&.bottom {
-		bottom: @hoverFramePos;
-		left: @hoverFramePos;
-		width: @hoverFrameLen;
-		height: @hoverFrameThick;
-		.transform-origin(~"0 100%");
-		.transform(~"scale(0, 1)");
-	}
-}
-
 section#projects {
 	padding: 0px 2px 0 2px;
-	margin-top: 30px;
 	background-color: #fff;
 
 	ul.projects {
 		list-style-type: none;
-		margin: 0;
+		margin: 0 0 10px 0;
 		padding: 0;
-		overflow: auto;
 
 		.title-box {
 
-			div:nth-child(1) {
+			.container {
 				position: absolute;
 				top: 0;
 			    bottom: 0;
@@ -103,7 +36,7 @@ section#projects {
 				}
 			}
 
-			div:nth-child(2) {
+			.spacer {
 				margin-top: 100%;
 			}
 		}
@@ -119,66 +52,55 @@ section#projects {
 				position: absolute;
 				font-size: 1.0em;
 				color: #ffffff;
-				margin: 0px;
+				margin: 0px 0px 10px 10px;
 				padding: 5px;
-				line-height: 1.0em;
+				line-height: 0.8em;
 				bottom: 0;
 				left: 0;
-				.transform(~"translateZ(0)");
 			}
 
-			a > div:nth-of-type(1) {
+			.container {
 				position: absolute;
 				top: 0;
 			    bottom: 0;
 			    left: 0;
 			    right: 0;
+			    overflow: hidden;
 
 			    img {
 			    	position: absolute;
 			    	.oversize();
-					.transform(~"translateZ(2)");
 				}
 
-				.mask {
+				.mask, .hover {
 					position: absolute;
 					.oversize();
 					background-color: rgba(0, 0, 0, 1);
-					.transform(~"translateZ(1)");
-
-					.no-touch & {
-						.transition(~"background-color 1.5s ease");
-					}
 				}
 
-				.touch & .frame {
-					position: absolute;
-					.oversize();
-					border: 10px;
-					border-style: solid;
-					opacity: 0;
-					.transition(~"opacity 0.3s ease");
-
+				.hover {
+					.transform(~"translateY(150%) translateX(-15%) rotateZ(45deg) scaleX(2)");
+					.transition(~"all 0.2s ease-out");
 				}
 
-				.touch & .frame:active {
-					opacity: 1;
-					.transition(~"opacity 0s ease");
-
+				h4 {
+					border-bottom: 2px solid rgba(255, 255, 255, 0); // transparent;
+					.transition(~"border 0.2s ease-out");
 				}
 			}
 
-			a > div:nth-of-type(2) {
+			.hovered-container:hover {
+				.hover {
+					.transform(~"translateY(80%) rotateZ(5deg) scaleX(2)");
+				}
+
+				h4 {
+					border-bottom: 2px solid rgba(255, 255, 255, 0.8);
+				}
+			}
+
+			.spacer {
 				margin-top: 100%;
-			}
-
-			a > .hover {
-				position: absolute;
-				top: 0;
-			    bottom: 0;
-			    left: 0;
-			    right: 0;
-				overflow: hidden;
 			}
 		}
 	}
@@ -187,21 +109,9 @@ section#projects {
 		padding: 0px 4px 0 4px;
 
 		ul.projects {
-			.title-box {
-				div:nth-child(1) {
-					h1 {
-						margin: -22px 0 0 0;
-						font-size: 2.3em;
-					}
-				}
-			}
-
 			li {
 				width: 33.33%;
-				border: 5px solid transparent;
-
 				h4 {
-					padding: 10px;
 					font-size: 1.2em;
 				}
 			}
@@ -210,18 +120,8 @@ section#projects {
 
 	@media screen and (min-width: 1200px) {
 		ul.projects {
-			.title-box {
-				div:nth-child(1) {
-					h1 {
-						margin: -28px 0 0 0;
-						font-size: 2.8em;
-					}
-				}
-			}
-
 			li {
 				width: 25%;
-
 				h4 {
 					font-size: 1.3em;
 				}

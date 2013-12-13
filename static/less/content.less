@@ -9,6 +9,8 @@
 	top: 0;
 	left: 0;
 	width: 100%;
+
+	color: #fff;
 	
 	// Moved to main.js, since it blocks the normal scroll behaviour (if JS is disabled)
 	// pointer-events: none;
@@ -39,33 +41,25 @@
 		position: absolute;
 		top: 0px;
 		left: 0px;
-		font-size: 1.6em;
+		font-size: 1.5em;
 		background-color: rgba(0, 0, 0, 0.5);
 		color: #ffffff;
 		padding: 5px;
-		margin: 16px 0 0 16px;
+		margin: 10px 0 0 10px;
 	}
 
-	.hero iframe {
+	iframe.hero {
 		width: 100%;
 		background-color: #000;
 		poiter-events: none;
+		border: 0;
 	}
 
-	.hero img {
+	img.hero {
 		position: relative;
 		width: 100%;
 		top: 0;
 		left: 0;
-	}
-
-	.hero div {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		background-color: rgba(0, 0, 0, 1);
-		.transition(~"background-color 1.5s ease");
 	}
 
 	@media screen and (max-width: 600px) {
@@ -85,7 +79,7 @@
 	}
 
 	.content {
-		position: relative;
+		position: absolute;
 		top: 0;
 		background-color: #222222;
 		font-family: 'Open Sans', sans-serif;
@@ -133,9 +127,10 @@
 			}
 
 			h4 {
-				font-weight: 700;
-				color: #ffffff;
-				letter-spacing: 0.08em;
+				font-weight: 400;
+				font-size: 1.3em;
+				letter-spacing: 0.0em;
+				line-height: 1.4em;
 			}
 
 			h5 {

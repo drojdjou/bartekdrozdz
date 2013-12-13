@@ -51,9 +51,10 @@
 
     </style>
 
-<script type="text/javascript" src="../js/lib/requestAnimFrame.js"></script>
-<script type="text/javascript" src="../js/framework/Simplrz.js"></script>
-<script type="text/javascript" src="../js/framework/VirtualScroll.js"></script>
+
+<script type="text/javascript" src="../src/framework/Simplrz.js"></script>
+<script type="text/javascript" src="../src/framework/FrameImpulse.js"></script>
+<script type="text/javascript" src="../src/framework/VirtualScroll.js"></script>
 
 </head>
 <body>
@@ -184,7 +185,7 @@
             // _red2.style.webkitTransform = ty;
         }
 
-        VirtualScroll.addEventListener(function(e) {
+        VirtualScroll.on(function(e) {
 
             maxx = Math.max(Math.abs(e.deltaX), maxx);
             maxy = Math.max(Math.abs(e.deltaY), maxy);

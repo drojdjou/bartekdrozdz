@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Tween (GSAP) - Framework Tests</title>
+    <title>Tween - Framework Tests</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable = no">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
@@ -31,7 +31,10 @@
     </style>
 
     <script type="text/javascript" src="../src/lib/Stats.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.11.2/TweenMax.min.js"></script>
+    <script type="text/javascript" src="../src/framework/Simplrz.js"></script>
+    <script type="text/javascript" src="../src/framework/FrameImpulse.js"></script>
+    <script type="text/javascript" src="../src/framework/Animation.js"></script>
+    <script type="text/javascript" src="../src/framework/Util.js"></script>
 
 </head>
 <body>
@@ -40,6 +43,13 @@
 
 var debug = document.querySelector('#debug');
 
+var duration = window.innerWidth * 4;
+var start = 0;
+var end = window.innerWidth-50;
+
+var ain = Anm.create(duration, [0, 1]).ease(Anm.SMOOTHSTEP);
+var aout = Anm.create(duration, [1, 0]).ease(Anm.SMOOTHSTEP);
+
 var makeRedAnimation = function(top, initDelay, duration) {
 
     var red = document.createElement('div');
@@ -47,18 +57,39 @@ var makeRedAnimation = function(top, initDelay, duration) {
     red.setAttribute('id', 'red');
     red.style.top = top + "px";
 
+    var updateRed = function(v) {
+        v = start + (end - start) * v;
+        var t = Simplrz.prefix.js + "Transform";
+        var v = Simplrz.css3d ? "translateX(" + v + "px) translateZ(0)" : "translateX(" + v + "px)";
+        red.style[t] = v;
+        red.style.transform = v;
+    }
+
     document.body.appendChild(red);
 
     var playIn = function() {
-        TweenLite.to(red, window.innerWidth * 4/1000, { x:window.innerWidth-50, delay:initDelay/1000, onComplete:playOut });
+        redin.start(initDelay);
     }
 
     var playOut = function() {
-        TweenLite.to(red, window.innerWidth * 4/1000, { x:0, delay:initDelay/1000, onComplete:playIn });
+        redout.start(initDelay);
     }
+
+    var redin = ain.applyTo(red).onUpdate(updateRed).onEnd(playOut);
+    var redout = aout.applyTo(red).onUpdate(updateRed).onEnd(playIn);
 
     playIn();
 }
+
+var lock = false
+
+document.addEventListener('keydown', function(e) {
+    lock = true;
+});
+
+document.addEventListener('keyup', function(e) {
+    lock = false;
+});
 
 var stats = new Stats();
 document.body.appendChild( stats.domElement );
@@ -66,19 +97,20 @@ document.body.appendChild( stats.domElement );
 var run = function() {
     stats.begin();
     requestAnimationFrame(run);
+    if(!lock) Anm.update();
     stats.end();
 }
 
-run();
+var c = 0, cmax = window.innerHeight;
 
-var c = 0;
-
-for(var i = 0; i < window.innerHeight; i += 2) {
+for(var i = 0; i < cmax; i += 2) {
     c++;
     makeRedAnimation(i, Math.random() * window.innerWidth * 3 | 0);
 }
 
-console.log(c);
+if(c > 0) console.log("numRed", c);
+
+run();
 
 </script>
 

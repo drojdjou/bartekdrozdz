@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Framework Documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <link rel="stylesheet" type="text/css" href="docs.css">
+
+    <script type="text/javascript" src="../src/framework/Simplrz.js"></script>
+    <script type="text/javascript" src="../src/framework/Util.js"></script>
+
+</head>
+<body>
+<div id="main">
+
+<ul class="class-list">
+    <li><a href="#anm">Anm</a></li>
+    <li><a href="#application">Application</a></li>
+    <li><a href="#domextend">DomExtend</a></li>
+    <li><a href="#events">Events</a></li>
+    <li><a href="#frameimpulse">FrameImpulse</a></li>
+    <li><a href="#loader">Loader</a></li>
+    <li><a href="#msg">MSG</a></li>
+    <li><a href="#simplrz">Simplrz</a></li>
+    <li><a href="#util">Util</a></li>
+    <li><a href="#virtualscroll">VirtualScroll</a></li>
+</ul>
+
+<section>
+    <a name="anm"></a>
+    <h1>Anm 
+        <a href="../test/animation-perf.html">Test 1</a> 
+        <a href="../test/gsap.css.html">vs. GSAP</a> 
+        <a href="../test/animation-hover.html">Test 2</a>
+    </h1>
+
+    <p>Anm is a minimal frame-based animation engine to be used for animating elements on Canvas or WebGL. To animate DOM elements it is recommended to use <a href="#domextend">DomExtend.createTransition</a> instead (which is a wrapper around CSS transitions).</p>
+
+    <h2>create(duration, properties)</h2>
+    <p>Returns an animation object that can be used (and reused) for tweening properties on objects. Example of a few animations:</p>
+<blockquote>// Animate y from -200 to 0 in 300ms
+var a1 = Anm.create(300, { y:[-200, 0] }).ease(Anm.SMOOTHSTEP);
+// Animate y and opacity from their current values to 10 and 1 respectively.
+var a2 = Anm.create(50, { y:10, opacity:1 }).ease(Anm.LINEAR);</blockquote>
+    <p>The <code>properties</code> objects list all the properties that should be animated, specifying either only the <code>to</code> as value or both <code>from</code> and <code>to</code> as an Array. It has the following methods:</p>
+
+    <h2><i>animation</i> ease(func)</h2>
+    <p>Set a easing function for the animation. Any interpolation function will do, currently build in functions include: <code>Anm.LINEAR</code>, <code>Anm.SMOOTHSTEP</code>, <code>Anm.QUADIN</code>, <code>Anm.QUADOUT</code>, <code>Anm.QUADINOUT</code>, <code>Anm.EXPOOUT</code>.</p>
+
+    <h2><i>animation</i> delay(time)</h2>
+    <p>Set a delay for the animation in millisecond.</p>
+
+    <h2><i>animation</i> applyTo(object)</h2>
+    <p>Returns a tween object that can be used to run the animation on the <code>object</code>. This can be any object provided that it has the properties that this animation will be interpolating as defined in the <coce>properties</code> argument to <code>create</code> above. The tween object has the following methods:</p>
+
+    <h2><i>tween</i> onUpdate(callback)</h2>
+    <p>Pass a function to be invoked at every frame while the animation is running. The callback will get the interpolated value if the animation is tweening over a single property, or a value between [0,1] if there are many properties with different <code>to</code> and <code>from</code> values.</p>
+
+    <h2><i>tween</i> onEnd(callback)</h2>
+    <p>Pass a function to be invoked when the animation is over.</p>
+
+    <h2><i>tween</i> cancel()</h2>
+    <p>Cancel the animation. The properties of the tweened object will be left at whatever the were at the moment it was cancelled.</p>
+
+    <h2><i>tween</i> start(time)</h2>
+    <p>Start the animation in <code>time</code> milliseconds.</p>
+
+    <h2>update()</h2>
+    <p>This function needs to be called on every frame for the animations to run. The Anm engine doesn't take care of that automatically, so it's best to invoke this function in a loop based on <code>requestAnimationFrame</code>. However, after <a href="#application">Application.init()</a> is called, a call to Anm.update() on every frame is handled automatically.</p>
+
+
+
+
+
+
+    <a name="application"></a>
+    <h1>Application
+        <a href="../test/history.html">Test Hisotry API</a>
+    </h1>
+
+    <p>Global class that is a central piece of the entire application. It extends <a href="#events">Events</a> and is used to listen to and trigger all application-wide events using the <code>on</code>, <code>off</code> and <code>trigger</code> methods. It has the global listeners removal blocked by default using the <code>blockGloalRemoval</code> flag in <a href="#events">Events</a> constructor. Refer to <a href="#msg">MSG</a> for a list of messages that the Application object. Views and other modules that are part of the site/app should only communicte using events sent through the Application class to avoid tight coupling. Internally Application also handles routing using the History API - see <a href="#msg">MSG.ROUTE</a> for details.</p>
+
+    <h2>init()</h2>
+    <p>Call that to start the application. This function will perform some housekeeping tasks and start some processes. The base place to call init is as the first thing to do after JS is loaded (assuming JS is included at the end of the document). Otherwise it can also be called on <code>window.load</code></p>
+
+
+
+
+
+
+    <a name="domextend"></a>
+    <h1>DomExtend
+        <a href="../test/extend.html">Test</a> 
+        <a href="../test/transition.html">Test Transtion</a> 
+    </h1>
+
+    <p>DomExtend extends the DOM object with some additional features and wrappers around native functions. Once applied to a DOM element the object is available as a property on this object called <code>ext</code> which contains a collection of functions documented below. DomExtend also exposes several functions through global <code>window.EXT</code> object (those functions are marked  as <i>static</i> below). DomExtend is applied to the <code>document</code> by default so <code>document.ext</code> is always available.</p>
+
+    <em class="red">Below is a list of functions and properties NOT implemented in DomExtend, for which native JS should be used. Usually new functions should be added where the native function call is long/akward, not supported the same way by all browsers or that requires extra code. Unless one of the above turns out to be true, these properties and functions should be used natively:
+        <ul>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element.innerHTML">innerHTML</a> (use it to clear the elements contents)</li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Node.appendChild">appendChild</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Node.removeChild">removeChild</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Node.replaceChild">replaceChild</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Node.insertBefore">insertBefore</a></li>
+        </ul>
+    </em>
+
+    <!-- STATIC -->
+
+    <h2><i>static</i> create(tag)</h2>
+    <p>Creates an DOM element of type <code>tag</code>. The new DOM element is extended with DomExtend before it is returned.</p>
+
+    <h2><i>static</i> select(sel, element)</h2>
+    <p>Returns the first DOM element that matches the selector CSS <code>sel</code>. The selection is done on <code>element</code> or on document if the second argument is omitted. The returned DOM element is extended with DomExtend on the fly (if it was not extends already).</p>
+
+    <h2><i>static</i> selectAll(sel, element)</h2>
+    <p>Returns the a regular Javascript Array containing DOM elements that match the selector CSS <code>sel</code>. The selection is done on <code>element</code> or on document if the second argument is omitted. The DOM elements returned is extended with DomeExtend on the way (if it was not extends already).</p>
+
+    <h2><i>static</i> extend(element)</h2>
+    <p>Extends <code>element</code> with a DomExtend object. The DomExtend object will be available as the <code>element.ext</code> property. If <code>element</code> was already extended it won't do it again.</p>
+
+    <h2>create(tag)</h2>
+    <p>Creates an DOM element of type <code>tag</code>. The new DOM element is extended with DomExtend before it is returned.</p>
+
+    <h2>select(sel)</h2>
+    <p>Returns the first DOM element that matches the selector CSS <code>sel</code>. The selection is done on the element on which is was called. The DOM element returned is extended with DomeExtend on the way (if it was not extends already).</p>
+
+    <h2>selectAll(sel)</h2>
+    <p>Returns the a regular Javascript Array containing DOM elements that match the selector CSS <code>sel</code>. The selection is done on the element on which is was called. The DOM elements returned is extended with DomeExtend on the way (if it was not extends already).</p>
+
+    <h2>data</h2>
+    <p>An object that can be used to store data specific for this element. Similar to using <code>data</code> attributes on an element, but the data is stored only in JS, not added to the DOM as an attribute. This object doesn't need any specific strcutre. By default it is an empty object <code>{}</code></p>
+
+    <h2>show(display)</h2>
+    <p>Sets the elements CSS <code>display</code> property to the value of the argument or <code>block</code> if no argument is passed. Use to make an element visible.</p>
+
+    <h2>hide()</h2>
+    <p>Sets the elements CSS <code>display</code> property to <code>none</code>. Use to hide an element.</p>
+
+    <h2>visible()</h2>
+    <p>Return false if element CSS <code>display</code> property is set to <code>none</code>, true otherwise.</p>
+
+    <h2>on(event, callback)</h2>
+    <p>Shortcut for <code>element.addEventListener</code>. Legacy IE8 not supported, unless we add a shim.</p>
+
+    <h2>off(event, callback)</h2>
+    <p>Shortcut for <code>element.removeEventListener</code>. Legacy IE8 not supported, unless we add a shim.</p>
+
+    <h2>css(property, value)</h2>
+    <p>Sets the CSS <code>property</code> to <code>value</code>. If <code>value</code> is ommited, return the value of this property. Warning: 1. Returning a value is not reliable, since it doesn't use computed styles. 2. This function doesn't take vendor prefixes into account.</p>
+
+    <h2>attr(name, value)</h2>
+    <p>Sets an the attribute named <code>name</code> to <code>value</code>.</p>
+
+    <h2>rect()</h2>
+    <p>Returns an object specifying the screen coordinates and dimensions of the element. It has the following properties: 
+    <code><script type="text/javascript">
+
+        var d = document.querySelector("#main");
+        var r = d.getBoundingClientRect();
+        var ps = []
+        for(var p in r) ps.push(p);
+        document.write(ps.join(", "));
+
+    </script></code> Warning: this is read-only. Element positioned statically should have their position defined in CSS, those that are positioned dynamically should be positioned using the <code>DomExtend.css()</code> function. Animated objects should only be moved and/or scaled with the CSS transform property.
+    </p>
+
+    <h2>width()</h2>
+    <p>Shortcut for <code>rect().width</code> Warning: this is read-only. Static elements should have their width defined in CSS, those that are created dynamically should use the <code>DomExtend.css()</code> function. Animated objects should only be scaled with the CSS transform scaleX/Y/Z property.</p>
+
+    <h2>height()</h2>
+    <p>Shortcut for <code>rect().width</code> Warning: this is read-only. Static elements should have their width defined in CSS, those that are created dynamically should use the <code>DomExtend.css()</code> function. Animated objects should only be scaled with the CSS transform scaleX/Y/Z property.</p>
+
+    <h2>x</h2>
+    <p>Sets the <code>translateX</code> property of CSS transform. Won't be appied until <code>transform()</code> is called. Default is 0.</p>
+
+    <h2>y</h2>
+    <p>Sets the <code>translateY</code> property of CSS transform. Won't be appied until <code>transform()</code> is called. Default is 0.</p>
+
+    <h2>z</h2>
+    <p>Sets the <code>translateZ</code> property of CSS transform. Won't be appied until <code>transform()</code> is called. Default is 0.</p>
+
+    <h2>rotX</h2>
+    <p>Sets the <code>rotationX</code> property of CSS transform. Won't be appied until <code>transform()</code> is called. Default is 0.</p>
+
+    <h2>rotY</h2>
+    <p>Sets the <code>rotationY</code> property of CSS transform. Won't be appied until <code>transform()</code> is called. Default is 0.</p>
+
+    <h2>rotZ</h2>
+    <p>Sets the <code>rotationZ</code> property of CSS transform. Won't be appied until <code>transform()</code> is called. Default is 0.</p>
+
+    <h2>scaleX</h2>
+    <p>Sets the <code>scaleX</code> property of CSS transform. Won't be appied until <code>transform()</code> is called. Default is 1.</p>
+
+    <h2>scaleY</h2>
+    <p>Sets the <code>scaleY</code> property of CSS transform. Won't be appied until <code>transform()</code> is called. Default is 1.</p>
+
+    <h2>scaleZ</h2>
+    <p>Sets the <code>scaleY</code> property of CSS transform. Won't be appied until <code>transform()</code> is called. Default is 1.</p>
+
+    <!-- h2>transformToString(values, force2d)</h2>
+    <p>Returns a CSS string that represents the transform properties. Can be applied to the objects CSS transform property. Used by other objects in the framework ex. transitions.
+        <code>values</code> is optional, if omitted will use values currently set on the object. If optional <code>force2d</code> is set to true, it will omit 3D transfomration values. Defaults to false, in which case it relies on the value of <a href="#simplrz">Simplrz.css3d</a>. <i>TODO: Consider whether it should it return a matrix string instead.</i></p -->
+
+    <h2>transform(values, force2d)</h2>
+    <p>Applies the values to the elements CSS transform property set using any of the following properties: <code>x</code>, <code>y</code>, <code>z</code>, <code>rotX</code>, <code>rotY</code>, <code>rotZ</code>, <code>scaleX</code>, <code>scaleY</code> and <code>scaleZ</code>. This function will detect if CSS 3D is supported and apply the 3D properties only then, however it is also possible to force 2d mode with the <code>force2d</code> set to true (if omitted defaults to false). </p>
+
+    <h2>setAnimation(anm, delay)</h2>
+    <p>Set a frame animation <code>anm</code> to the object and play it after <code>delay</code> millis (default 0). For more information on frame animation see <a href="#anm">Anm</a>.</p>
+
+    <h2>createTransition()</h2>
+    <p>Creates a transition object, which has the following methods:</p>
+
+    <h2><i>transition</i> add(property, to, time, ease, delay)</h2>
+    <p>Adds a property to the transition. <code>property</code> is a CSS property (use the CSS, not JS syntax here - <code>background-color</code> not <code>backgroundColor</code>.<code>time</code> is the time of the transition in millis, ease is a string specyfing the easing function. <a href="#util">Util.cssEase</a> values can be used here, and if omitted defaults to <code>ease</code>. <code>dleay</code> is also specified in millis and defaults to 0 if omitted.</p>
+
+    <h2><i>transition</i> trs(values, time, ease, delay)</h2>
+    <p>Same as <code>add</code> but designed specifically to handle CSS transforms. <code>values</code> is an object specyfying values for transform properties, which can include any of: <code>x</code>, <code>y</code>, <code>z</code>, <code>rotX</code>, <code>rotY</code>, <code>rotZ</code>, <code>scaleX</code>, <code>scaleY</code> or <code>scaleZ</code>. The other arguments are the same as for <code>add</code>.</p>
+
+    <h2><i>transition</i> start(callback)</h2>
+    <p>Start the transition. Optional: <code>callback</code> will be invoked when transition ends.</p>
+
+    <h2>transition(properties, time, ease, delay, callback)</h2>
+    <p>Shortcut to create and run simple transitions. Properties is an objec specyfing the CSS properties to animate along with the values to animate to. Example:</p> 
+<blockquote>{ 
+    "background-color": "rgb(0,0,0)",
+    "width": "120px",
+    "height": "120px",
+    "transform": { x: 100, rotZ: 30 }
+}
+</blockquote>
+    <p><code>time</code>, <code>ease</code>, <code>delay</code> are the same as for <code>add</code> above. If specified, <code>callback</code> will be invoked when the transition ends.</p>
+
+
+    <a name="events"></a>
+    <h1>Events</h1>
+
+    <p>Events is a utility object used to listend to and trigger events. It can be used with arbitrary type of events, which are represetned as a string. This object should be used for internal communication on complex views or other application components. To send global events use the global static <a href="#application">Application</a> object to avoid tight coupling between parts fof the site. Do not use it on DOM element - for DOM events, rely on methods exposed by <a href="#domextend">DomExtend</a> - <code>on</code> and <code>off</code>.</p>
+
+    <h2><i>constructor</i> (obj, blockGlobalRemoval)</h2>
+    <p>Optional <code>obj</code> to extend with Events functionality. The <code>blockGlobalRemoval</code> if set to true the object will not have the method <code>offAll</code> below.</p>
+
+    <h2>trigger(event, params, deffered)</h2>
+    <p>Invokes all the callback functions listening to the event associated with <code>event</code>. If <code>params</code> argument is passed it will be forwarded to the callbacks - i.e. passed to them as argument. If called inside a function that is a callback itself, setting defered to true will prevent trigerring the event until the current loop is over, assuring that all the listeners will get the current event first, before getting the next one.</p>
+
+    <h2>on(message, callback, context)</h2>
+    <p>Register the <code>callback</code> function to listen for event <code>message</code>. Optional <code>context</code> specifies the context in which the callback should be invoked.</p>
+
+    <h2>off(event, callback, deffered)</h2>
+    <p>Unregister the <code>callback</code> from listening for event <code>event</code>. If deffered is set to false it will be removed immediately, before the current event loop will exit. This, in some specific cases can lead to issues hard to debug, so if this parameter can be set to true and the listener will only be removed after the current loop is over.</p>
+
+
+    <h2>offAll(event, deffered)</h2>
+    <p>Unregister all the <code>callbacks</code> from listening for event <code>event</code>. If deffered is set to false it will be removed immediately, before the current event loop will exit. This, in some specific cases can lead to issues hard to debug, so if this parameter can be set to true and the listener will only be removed after the current loop is over.</p>
+
+    <em>Warning. If <code>blockGlobalRemoval</code> was set to true in the constructor, this method is not available. In other cases - please use with care.</em>
+
+
+
+
+    <a name="frameimpulse"></a>
+    <h1>FrameImpulse</h1>
+    <p>Utility to listen to an event fired on every frame (based on <code>requestAnimationFrame</code>.</p>
+
+    <h2>on(callback)</h2>
+    <p>Start listening to the frame event.</p>
+
+    <h2>off(callback)</h2>
+    <p>Stop listening to the frame event.</p>
+
+
+
+
+
+
+    <a name="loader"></a>
+    <h1>Loader</h1>
+    <p>Global utility to load assets using JS/AJAX.</p>
+
+    <h2>loadText(path, callback)</h2>
+    <p>Loads a text file located at <code>path</code> and returns it's content as argument to the <code>callback</code> function.</p>
+
+    <h2>loadJSON(path, callback)</h2>
+    <p>Loads a JSON file located at <code>path</code> and returns a parsed JSON object as argument to the <code>callback</code> function.</p>
+
+    <h2>loadImage(src, callback)</h2>
+    <p>Loads an image located at <code>path</code> and returns a JS Image object as argument to the <code>callback</code> function.</p>
+
+
+
+
+
+
+
+
+
+    <a name="msg"></a>
+    <h1>MSG</h1>
+    <p>A collection of application wide messages.</p>
+
+    <h2>ROUTE</h2>
+    <p>Sent whenever the route was changed. The route can be changed either be sending a MSG>NAVIGATE event through <a href="#application">Application</a> or by a hijacked link (see HIJACK_LINKS below). Use <code>Application.on(MSG.ROUTE, callback)</code>. Do not trigger this manually.</p>
+
+    <h2>RESIZE</h2>
+    <p>Sent whenever the size of the viewport changes - based on <code>window.onresize</code>. Use <code>window.innerWidth</code> and <code>window.innerHeight</code> to retreive new viewport dimensions.</p>
+
+    <h2>HIJACK_LINKS</h2>
+    <p>Trigger this event to run the link hijacking function on the entire document. This function finds all the relative link URLs in the document (i.e. links specified in the <code>href</code> attribute of a <code>&lt;a&gt;</code> tag) and overrides it's <code>click</code> event to run JS code. Instead of triggering a page reload the link will invoke <code>History.pushState</code> and pass the value of <code>href</code> to it. Usage: <code>Application.trigger(MSG.HIJACK_LINKS)</code>. If for some reason there is a link in the site that is relative and should not be hijacked add the following data attribite to it: <code>&lt;a href="/some/path" data-hj="no"&gt;</code></p>
+
+    <h2>NAVIGATE</h2>
+    <p>Use to manually trigger a <code>History.pushState</code>. Usage: <code>Application.trigger(MSG.NAVIGATE, "new/path")</code>.</p>
+
+
+
+
+
+
+
+    <a name="simplrz"></a>
+    <h1>Simplrz
+        <a href="../test/simplrz.html">Test</a>
+    </h1>
+    <p>Feature detection utility. It checks for support of several features at startup, which are exposed as boolean properties of the object for use in the code. Those properties are listed below. Additionaly, all features are set as classes on the document's <code>&lt;html&gt;</code> element, as either the property name, if supported, or ther property name preceded by <code>no-</code> if not. Example: <code>webgl</code> or <code>no-webgl</code>.</p>
+
+    <script type="text/javascript">
+
+        var props = [
+            "ie", "webrct", 
+            "canvas", "flash", 
+            "webgl", "touch", 
+            "pointer", "css3d", 
+            "css2d", "csstransitions", 
+            "cssanimations", "history"
+        ];
+
+        var descriptions = {
+            "ie" : "Returns the version of IE or false it not IE.", 
+            "webrct" : "Returns true if browser supports WebRCT.", 
+            "canvas" : "Returns true if browser supports Canvas 2D.", 
+            "flash" : "Returns true if browser supports Flash.", 
+            "webgl" : "Returns true if browser supports WebGL.", 
+            "touch" : "Returns true device has a touch screen and supports touch events (but not pointer events).", 
+            "pointer" : "Returns true if browser supports pointer events. These are mostly Windows devices with a touch screen.", 
+            "css3d" : "Returns true if browser supports CSS 3D transformations.", 
+            "css2d" : "Returns true if browser supports CSS 2D transformations.", 
+            "csstransitions" : "Returns true if browser CSS transitions.", 
+            "cssanimations" : "Returns true if browser supports CSS animations.",
+            "history" : "Returns true if browser supports the History API."
+        };
+
+        var r = "";
+
+
+        var prefixes = [];
+        for(var prefix in Simplrz.prefix) {
+            prefixes.push(prefix + ": " + Simplrz.prefix[prefix]);
+        }
+
+        r += "<h2>prefix</h2>";
+        r += "<p>Returs an object containing several versions of the vendor prefix to be used when setting prefixed CSS or JS properties and calling prefixed functions. Your browser returns: <code>" + prefixes.join(", ") + "</code></p>";
+        
+
+        for(var p in props) {
+            var prop = props[p];
+
+            r += "<h2>" + prop + "</h2>";
+            r += "<p>" + descriptions[prop];
+            r += " Your browser returns: <code>" + Simplrz[prop] + "</code></p>";
+
+            
+        }
+
+        document.write(r);
+
+    </script>
+
+
+
+
+
+
+    <a name="xmath"></a>
+    <h1>Util</h1>
+    <p>A collection of misc utility functions and properties. Some are added as extenstion to the built-in Math object, others are grouped in an object called Util.</p>
+
+    <h2>Math.clamp(value, start, end)</h2>
+    <p>Limits a value between start and end values.</p>
+
+    <h2>Math.clamp01(value)</h2>
+    <p>Limits a value between 0 and 1.</p>
+
+    <h2>Math.pointInRect(point, rectangle)</h2>
+    <p>Returns true if point is inside rectangle. Rectangle needs to be an object with top/left/right/bottom properties defined. Point needs to have x/y properties.</p>
+
+    <h2>Math.randomBtwn(minVal, maxVal)</h2>
+    <p>Returns random number between <code>minVal</code> and <code>maxVal</code>.</p>
+
+    <h2>Math.norm (value , min, max)</h2>
+    <p>Normalizes a number from another range into a value between 0 and 1. </p>
+
+    <h2>Math.map(value, min1, max1, min2, max2)</h2>
+    <p>Re-maps a number from one range to another.</p>
+
+    <h2>Math.lerp(min, max, amt)</h2>
+    <p>Linear interpolation between of <code>amt</code> between <code>min</code> and <code>max</code>.</p>
+
+    <h2>Math.hexToRgb(hex)</h2>
+    <p>Takes a hex value, such as <code>#ff00dd</code> and returns an object with R, G and B values in 0-255 range.</p>
+
+    <h2>Util.cssEase</h2>
+    <p>A collection of strings used to define css transtion and animation easing. It includes the following easing functions: <script type="text/javascript">
+        for(var e in Util.cssEase) {
+            document.write("<code>" + e + "</code>, ");
+        }
+    </script></p>
+
+    <h2>Util.delay(func, scope, time)</h2>
+    <p>Delays execution of <code>func</code> by <code>time</code> milliseconds (it omitted defaults to 0). Optional <code>scope</code> argument specifies the scope in which <code>func</code> should be invoked.</p> 
+
+    <h2>Util.debounce(func, wait)</h2>
+    <p>Throttles invoking <code>func</code> to every <code>wait</code> milliseconds. Usage:<br></p>
+<blockquote>// some callback function that is called (too) often
+var func = function() {}
+
+// now it's invoked every 100ms
+func = Util.debounce(func, 100);</blockquote>
+    <em>This function can be useful, but in most cases it's an ugly hack, so think twice before you use it!</em>
+
+
+
+
+
+
+    <a name="virtualscroll"></a>
+    <h1>VirtualScroll
+        <a href="../test/wheel.html">Test</a>
+    </h1>
+    <p>Utility to listen to an event fired on every mouse wheel interaction or touch & drag gesture on touch screen. It also has a cursor key fallback. For all your paralax scrolling needs!</p>
+
+    <h2>on(callback)</h2>
+    <p>Start listening to the mousewheel / touch & drag event. The callback receives an object that has the following properties: <code>y</code> - the absolute value of horizontal scroll, <code>x</code> - the absolute value of vertical scroll, <code>deltaX</code> - the delta value of horizontal scroll, <code>deltaY</code> - the delta value of vertical scroll, <code>originalEvent</code> - the original event fired (typically by <code>mousewheel</code> or <code>touchmove</code>)</p>
+
+    <h2>off(callback)</h2>
+    <p>Stop listening to the mousewheel / touch & drag event.</p>
+
+
+
+
+</section>
+
+</div>
+
+<script type="text/javascript">
+    if(location.host.indexOf("localhost") > -1 || location.host.indexOf("192.168") > -1) {
+        document.write('<script src=\"http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1\"></' + 'script>');
+    }
+</script>
+</body>
+</html>   
+
+
+
+
+
+
+
+          

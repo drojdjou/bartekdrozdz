@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+
+<script type="text/javascript" src="../src/framework/Simplrz.js"></script>
+<script type="text/javascript" src="../src/framework/Events.js"></script>
+<script type="text/javascript" src="../src/framework/domExtend/State.js"></script>
+<script type="text/javascript" src="../src/framework/domExtend/Transform.js"></script>
+<script type="text/javascript" src="../src/framework/domExtend/Transition.js"></script>
+<script type="text/javascript" src="../src/framework/domExtend/DomExtend.js"></script>
+<script type="text/javascript" src="../src/framework/Util.js"></script>
+
+<style type="text/css">
+
+  #square {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: red;
+    opacity: 0.5;
+  }
+
+</style>
+
+<body>
+
+<div id="square"></div>
+
+<script type="text/javascript">
+
+var red = EXT.select("#square");
+
+// property, to, time, ease, delay
+// var t = red.ext.createTransition();
+// t.add("top", "100px", 500, 'ease', 0)
+//  .add("left", "100px", 500, 'ease', 250)
+//  .add("opacity", 1, 250, 'ease', 750)
+//  .trs({ rotZ: 45 }, 500, 'ease-out', 500)
+//  .start(function() { console.log("DONE!"); });
+
+// ------- ------- ------- --------
+
+function toBlack() {
+  // red.ext.transition({ "background-color": "rgb(0,0,0)" }, 500, 'ease', 1000, toRed);
+  red.ext.transition({ 
+    "background-color": "rgb(0,0,0)",
+    "width": "120px",
+    "height": "120px",
+    "transform": { x: 50, y: 50, rotZ: 60 }
+  }, 500, 'ease', 1000, function() {
+    console.log("DONE!");
+  });
+}
+
+// toBlack();
+
+// function toRed() {
+//   red.ext.transition({ "background-color": "rgb(255,0,0)" }, 500, 'ease', 1000, toBlack);
+// }
+
+
+
+
+// ------- ------- ------- --------
+var t = red.ext.createTransition();
+
+var left = function() {
+  t.trs({ x: 100 }, 500, Util.cssEase.ease).start(down);
+}
+
+var down = function() {
+  t.trs({ y: 100 }, 500, Util.cssEase.ease).start(right);
+}
+
+var right = function() {
+  t.trs({ x: 0 }, 500, Util.cssEase.ease).start(up);
+}
+
+var up = function() {
+  t.trs({ y: 0 }, 500, Util.cssEase.ease).start(left);
+}
+
+left();
+
+</script>
+
+<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
