@@ -36,7 +36,7 @@ Content = function() {
 	var onRoute = function(e) {
 		var r = e.parts[0];
 		var startUp = e.prevRoute == null;
-		var offset = Math.min(500, window.innerWidth);
+		var offset = window.innerWidth * 0.5;
 
 		_active = (r == Site.PROJECT || r == Site.ARTICLE);
 
@@ -52,7 +52,9 @@ Content = function() {
 			case Site.PROJECT:
 			case Site.ARTICLE:
 				if(!startUp) {
-					section.ext.transition({ transform: { x: 0 }, opacity: 1 }, 500, 'ease', 0, function() {
+					hero.adjust();
+					section.ext.transition({ transform: { x: 0 }, opacity: 1 }, 800, 'ease', 0, function() {
+						console.log("Content.transtion.in over");
 						hero.setup(data);
 					});
 				} else {
@@ -68,9 +70,9 @@ Content = function() {
 				hero.kill();
 
 				if(!startUp) {
-					section.ext.transition({ transform: { x: window.innerWidth }, opacity: 0 }, 500, 'ease');
+					section.ext.transition({ transform: { x: offset }, opacity: 0 }, 800, 'ease');
 				} else {
-					section.ext.transform({ x: window.innerWidth });
+					section.ext.transform({ x: offset });
 					section.ext.css('opacity', 0);
 				}
 

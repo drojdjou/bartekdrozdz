@@ -20,7 +20,8 @@ var defaultToDev = process.argv[3] == "dev";
 var context = {
 	config: {
 		javascriptEnabled: true,
-		dev: defaultToDev
+		dev: defaultToDev,
+		jsq: ''
 	},
 
 	imports: require('../data/imports.json'),
@@ -39,14 +40,19 @@ var renderIndex = function(response) {
 	response.render('index', context);
 }
 
-// Content routes
-app.get('/', function(request, response) {
-
+var parseQuery = function(request) {
+	if(request.query.ns != null) context.config.javascriptEnabled = false;
+	else context.config.javascriptEnabled = true;
+	context.config.jsq = (context.config.javascriptEnabled) ? '' : '?ns';
 	if(!!request.query.dev) context.config.dev = (request.query.dev == "false") ? false : true;
 	else context.config.dev = defaultToDev;
 
-	context.config.javascriptEnabled = true;
+	context.config.path = request.path;
+}
 
+// Content routes
+app.get('/', function(request, response) {
+	parseQuery(request);
 	renderIndex(response);
 });
 
@@ -55,6 +61,8 @@ app.get('/about', function(request, response) {
 });
 
 app.get('/project/:name', function(request, response) {
+	parseQuery(request);
+
 	if(context.config.javascriptEnabled) {
 		renderIndex(response);
 	} else {
@@ -64,16 +72,11 @@ app.get('/project/:name', function(request, response) {
 		  if (err) throw err;
 		  response.render('project', { 
 		  	content: fileContent, 
-		  	item: data.getProjectById(request.params.name) 
+		  	item: data.getProjectById(request.params.name),
+		  	config: context.config
 		  });
 		});
 	}
-});
-
-// Special routes
-app.get('/noscript', function(request, response) {
-	context.config.javascriptEnabled = false;
-	renderIndex(response);
 });
 
 // Data routes

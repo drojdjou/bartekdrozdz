@@ -82,6 +82,7 @@ Util = {
 
 	cssEase: {
 		'ease': 'ease',
+		'smoothstep': 'ease',
 		'in': 'ease-in',
 		'out': 'ease-out',
 		'in-out': 'ease-in-out',

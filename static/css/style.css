@@ -1,6 +1,3 @@
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
-
-@import url(http://fonts.googleapis.com/css?family=Droid+Sans);
 html,
 body {
   font-family: 'Open Sans', sans-serif;
@@ -10,9 +7,11 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  overflow: hidden;
   background-color: #222222;
   font-size: 16px;
+}
+html.js body {
+  overflow: hidden;
 }
 * {
   -webkit-box-sizing: border-box;
@@ -23,13 +22,14 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 #main {
-  position: absolute;
   width: 100%;
   background-color: #fff;
-  overflow-x: hidden;
   overflow-y: hidden;
   font-family: 'Droid Sans', 'Helvetica', 'Arial', sans-serif;
   color: #999999;
+}
+.js #main {
+  position: absolute;
 }
 #main a {
   color: inherit;
@@ -105,11 +105,13 @@ section#play h3 {
   position: absolute;
   height: 100%;
   overflow-x: hidden;
-  overflow-y: hidden;
   top: 0;
   left: 0;
   width: 100%;
   color: #fff;
+}
+.js #content {
+  overflow-y: hidden;
 }
 #content * {
   pointer-events: auto;
@@ -140,17 +142,12 @@ section#play h3 {
   padding: 5px;
   margin: 10px 0 0 10px;
 }
-#content iframe.hero {
-  width: 100%;
-  background-color: #000;
-  poiter-events: none;
-  border: 0;
+#content .hero {
+  background-color: #000000;
 }
-#content img.hero {
-  position: relative;
+.no-js #content .hero img {
   width: 100%;
-  top: 0;
-  left: 0;
+  height: auto;
 }
 @media screen and (max-width: 600px) {
   #content .close {
@@ -166,8 +163,6 @@ section#play h3 {
   }
 }
 #content .content {
-  position: absolute;
-  top: 0;
   background-color: #222222;
   font-family: 'Open Sans', sans-serif;
   width: 100%;
@@ -177,6 +172,10 @@ section#play h3 {
   letter-spacing: 0;
   padding: 2em 0 2em 0;
   margin: 0;
+}
+.js #content .content {
+  position: absolute;
+  top: 0;
 }
 #content .content .text {
   position: relative;
@@ -294,7 +293,6 @@ section#play h3 {
   /* 16:9 */
 
 }
-#content .content .text .video iframe,
 #content .content .text .video video,
 #content .content .text .video img {
   position: absolute;
@@ -355,20 +353,29 @@ section#play h3 {
   }
 }
 #about {
-  position: absolute;
-  height: 100%;
   overflow-x: hidden;
-  overflow-y: hidden;
-  top: 0;
-  left: 0;
-  width: 100%;
-  max-width: 500px;
   color: #808080;
   font-size: 1.0em;
   line-height: 1.5em;
   -webkit-perspective: 1500px;
   -moz-perspective: 1500px;
   perspective: 1500px;
+}
+.js #about {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow-y: hidden;
+  max-width: 500px;
+  pointer-events: none;
+}
+.no-js #about {
+  position: relative;
+  width: 800px;
+  left: 50%;
+  margin-left: -400px;
 }
 #about div {
   -webkit-transform-origin: 100% 0;
@@ -378,6 +385,8 @@ section#play h3 {
   transform-origin: 100% 0;
   padding: 20px 40px 30px 30px;
   color: #ffffff;
+  pointer-events: auto;
+  display: none;
 }
 #about h2 {
   margin: 0;
@@ -486,11 +495,11 @@ section#projects ul.projects li {
 }
 section#projects ul.projects li h4 {
   position: absolute;
-  font-size: 1.0em;
+  font-size: 0.8em;
+  line-height: 1.2em;
   color: #ffffff;
-  margin: 0px 0px 10px 10px;
-  padding: 5px;
-  line-height: 0.8em;
+  margin: 0 0 5px 5px;
+  padding: 2px;
   bottom: 0;
   left: 0;
 }
@@ -508,6 +517,7 @@ section#projects ul.projects li .container img {
   left: 0;
   width: 100%;
   height: 100%;
+  border: 0;
 }
 section#projects ul.projects li .container .mask,
 section#projects ul.projects li .container .hover {
@@ -524,14 +534,18 @@ section#projects ul.projects li .container .hover {
   -o-transform: translateY(150%) translateX(-15%) rotateZ(45deg) scaleX(2);
   -ms-transform: translateY(150%) translateX(-15%) rotateZ(45deg) scaleX(2);
   transform: translateY(150%) translateX(-15%) rotateZ(45deg) scaleX(2);
+}
+section#projects ul.projects li .container h4 {
+  border-bottom: 2px solid rgba(255, 255, 255, 0);
+}
+section#projects ul.projects li .hovered-transition .hover {
   -webkit-transition: -webkit-transform 0.2s ease-out;
   -moz-transition: -moz-transform 0.2s ease-out;
   -o-transition: -o-transform 0.2s ease-out;
   -ms-transition: -ms-transform 0.2s ease-out;
   transition: transform 0.2s ease-out;
 }
-section#projects ul.projects li .container h4 {
-  border-bottom: 2px solid rgba(255, 255, 255, 0);
+section#projects ul.projects li .hovered-transition h4 {
   -webkit-transition: border 0.2s ease-out;
   -moz-transition: border 0.2s ease-out;
   -o-transition: border 0.2s ease-out;
@@ -550,6 +564,16 @@ section#projects ul.projects li .hovered-container:hover h4 {
 }
 section#projects ul.projects li .spacer {
   margin-top: 100%;
+}
+@media screen and (min-width: 600px) {
+  section#projects {
+    padding: 0px 4px 0 4px;
+  }
+  section#projects ul.projects li h4 {
+    font-size: 1.2em;
+    padding: 5px;
+    margin: 0px 0px 10px 10px;
+  }
 }
 @media screen and (min-width: 800px) {
   section#projects {

@@ -3,6 +3,7 @@ About = function() {
 	var _active = false, _canScroll = false;
 
 	var plate = EXT.select('#about > div');
+	plate.ext.show();
 
 	var easer = new Easer(0.2);
 
@@ -40,13 +41,15 @@ About = function() {
 			case Site.ABOUT:
 				if(!startUp) {
 					_canScroll = false;
-					plate.ext.transition({ transform: { rotY: 0, x: 0 }, opacity: 1 }, 500, 'ease', 0, onAnimatedIn);
+					plate.ext.transition({ transform: { rotY: 0, x: 0 }, opacity: 1 }, 800, 'ease', 0, onAnimatedIn);
+				} else {
+					_canScroll = true;
 				}
 				break;
 			default:
 				if(!startUp) {
 					_canScroll = false;
-					plate.ext.transition({ transform: { rotY: -90, x: -offset }, opacity: 0 }, 500, 'ease');
+					plate.ext.transition({ transform: { rotY: -90, x: -offset }, opacity: 0 }, 800, 'ease');
 				} else {
 					plate.ext.transform({ rotY: -90, x: -offset });
 					plate.ext.css('opacity', 0);

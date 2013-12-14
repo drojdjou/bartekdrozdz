@@ -24,14 +24,14 @@ var Box = function(element) {
         var imagePath = "assets/content/%f%/%id%.jpg".replace("%f%", imageFolder).replace("%id%", data.id);
 
         img.ext.on('load', function() {
-
-            mask.ext.transition({ 'background-color': 'rgba(0,0,0,0)' }, 500, 'ease');
-
-            Util.delay(function() {
-                mask.ext.css('backgroundColor', data.tint);
-            	mask.ext.attr('class', 'hover');
-                releaseHoverLock();
-            }, 250);
+            mask.ext.transition({ 'backgroundColor': 'rgba(0,0,0,0)' }, 500, 'ease', 0, function() {
+                mask.ext.attr('class', 'hover');
+                Util.delay(function() {
+                    mask.ext.css('backgroundColor', data.tint);
+                    container.classList.add('hovered-transition');
+                    releaseHoverLock();
+                });
+            });
         });
     }
 
@@ -49,10 +49,8 @@ var Box = function(element) {
         hoverLockTimer = setTimeout(releaseHoverLock, 1000);
     }
 
-    var c = 0;
-
     var onRender = function() {
-        
+        if(!_active) return;
 
         if(!imageLoaded && img) {
             var bb = element.ext.rect();
@@ -61,8 +59,6 @@ var Box = function(element) {
                 imageLoaded = true;
             }
         }
-
-        if(!_active) return;
 
         // On touch screens scroll the whole panel (for better performance) (see Main.onRender)
         if(!Simplrz.touch) {
@@ -86,8 +82,8 @@ var Box = function(element) {
         _active = (r == Site.MAIN);
 
         if(!_active) {
+            clearTimeout(hoverLockTimer);
             container.classList.remove('hovered-container');
-        } else {
         }
     };
 
@@ -110,13 +106,13 @@ var Box = function(element) {
     element.box.onResize = function(m) {
         easer.setLimits(-m, 0);
 
-        // var bb = element.ext.rect();
+        var bb = element.ext.rect();
 
-        // var w = bb.width() | 0;
-        // var h = bb.height() | 0;
+        var w = bb.width | 0;
+        var h = bb.height | 0;
 
-        // container.ext.width(w);
-        // container.ext.height(h);
+        container.ext.width(w-5);
+        container.ext.height(h-5);
     }    
 };
 

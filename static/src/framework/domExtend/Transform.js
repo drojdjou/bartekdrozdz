@@ -4,15 +4,26 @@ Transform = function(ext, element) {
 		return element.getBoundingClientRect();
 	};
 
+	/**
+	 *	The 'else' below si because IE somehow throws an error 
+	 *	when the value is set and then rect() is called immediately after
+	 */
 	ext.width = function(v) {
-		if(v) element.style.width = v + "px";
-		return ext.rect().width;
+		if(v) {
+			element.style.width = v + "px";
+			return v;
+		} else {
+			return ext.rect().width;
+		}
 	};
 
 	ext.height = function(v) {
-		if(v) element.style.height = v + "px";
-		// TODO: Check if returning element.scrollHeight isn't more reliable
-		return ext.rect().height;
+		if(v) {
+			element.style.height = v + "px";
+			return v;
+		} else {
+			return ext.rect().height;
+		}
 	};
 
 	ext.x = 0;
@@ -55,7 +66,7 @@ Transform = function(ext, element) {
 
 		var t = ext.transformToString(ext, force2d);
 		element.style[Simplrz.prefix.js + "Transform"] = t;
-		// element.style["transform"] = t;
+		element.style["transform"] = t;
 	};
 
 	var anim;

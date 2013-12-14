@@ -1,13 +1,14 @@
 {
 
 	"scripts" :[
+		"src/framework/Simplrz.js",
+		
 		"src/main.js",
 		"shared/Data.js",
 
 		"src/lib/socket.io/socket.io.js",
 		"src/lib/RL.js",
 		
-		"src/framework/Simplrz.js",
 		"src/framework/Events.js",
 		"src/framework/Application.js",
 

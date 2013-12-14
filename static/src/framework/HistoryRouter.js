@@ -3,8 +3,6 @@ HistoryRouter = function (broadcast) {
 	var rootUrl = document.location.protocol + '//' + (document.location.hostname || document.location.host);
 	if(document.location.port) rootUrl += ":" + document.location.port;
 
-	// console.log("rootUrl", rootUrl);
-	
 	var route, prevRoute;
 
 	var hijackLinks = function () {
@@ -36,7 +34,7 @@ HistoryRouter = function (broadcast) {
 	};
 
 	var notify = function() {
-		var r = route.replace(rootUrl, "");
+		var r = route.substring(rootUrl.length);
 		var p = r.split("/");
 		p.shift(); // Remove the first empty element
 
@@ -63,7 +61,7 @@ HistoryRouter = function (broadcast) {
 	broadcast.on(MSG.HIJACK_LINKS, hijackLinks);
 	broadcast.on(MSG.NAVIGATE, pushState);
 
-	if(Simplrz.firefox) setTimeout(pushState, 0);
+	if(Simplrz.firefox || Simplrz.ie) setTimeout(pushState, 0, document.location.href);
 
 	return {
 		init: function () {

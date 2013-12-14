@@ -48,16 +48,16 @@ var red = EXT.select("#square");
 function toBlack() {
   // red.ext.transition({ "background-color": "rgb(0,0,0)" }, 500, 'ease', 1000, toRed);
   red.ext.transition({ 
-    "background-color": "rgb(0,0,0)",
+    "backgroundColor": "rgb(0,0,0)",
     "width": "120px",
     "height": "120px",
     "transform": { x: 50, y: 50, rotZ: 60 }
-  }, 500, 'ease', 1000, function() {
+  }, 500, 'ease', 100, function() {
     console.log("DONE!");
   });
 }
 
-// toBlack();
+toBlack();
 
 // function toRed() {
 //   red.ext.transition({ "background-color": "rgb(255,0,0)" }, 500, 'ease', 1000, toBlack);
@@ -85,7 +85,7 @@ var up = function() {
   t.trs({ y: 0 }, 500, Util.cssEase.ease).start(left);
 }
 
-left();
+// left();
 
 </script>
 

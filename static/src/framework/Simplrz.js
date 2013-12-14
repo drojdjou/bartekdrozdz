@@ -1,6 +1,6 @@
 window.Simplrz = (function() {
 
-	var s ={}, classes = [];
+	var s ={}, classes = ['js']; // Add 'js' class by default (bc if this code runs, JS is enabled, right?)
 
 	var check = function(feature, test) {
 		var result = test();
@@ -44,9 +44,19 @@ window.Simplrz = (function() {
 	    while (
 	        div.innerHTML = '<!--[if gt IE ' + (++v) + ']><i></i><![endif]-->',
 	        all[0]
-	    );
+	    ) {
+	    	// console.log(div.innerHTML);
+	    }
 	    return v > 4 ? v : null;
 	})();
+
+	// IE 10 doesn't use conditional comments anymore
+	if(ie == null) {
+		var p = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+		var ua = navigator.userAgent;
+		var m = ua.match(p);
+		ie = (m && m.length > 1) ? parseInt(m[1]) : null;
+	}
 
 	s["ie"] = ie || false;
 	classes.push((ie) ? "ie-" + ie : "no-ie");

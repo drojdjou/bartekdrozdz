@@ -23,17 +23,21 @@ Hero = function(container) {
 		} else {
 			ctn = EXT.create('img');
 			ctn.src = 'assets/content/1920w-235as/' + data.id + '.jpg';
-			
 		}
 
+		ctn.ext.on('load', function() {
+			ctn.ext.transition({ opacity: 1 }, 200, 'ease-out');
+		});
+
 		hi.adjust();
+		ctn.ext.css('opacity', 0);
 		container.innerHTML = '';
 		container.appendChild(ctn);
 	}
 
 	hi.adjust = function() {
 		var h, w, ox;
-
+		
 		if(isDemo) {
 			h = hi.height();
 			w = window.innerWidth;
@@ -43,6 +47,8 @@ Hero = function(container) {
 			w = h * ASPECT;
 			ox = (w - window.innerWidth) * -0.5;
 		}
+
+		container.ext.height(h);
 
 		if(ctn) {
 			ctn.ext.height(h);

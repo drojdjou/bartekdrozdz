@@ -55,13 +55,11 @@ Main = function() {
 
 		_active = (r == Site.MAIN);
 
-		console.log("main.onRoute", e);
-
 		switch(r) {
 			case Site.MAIN:
 
 				if(pr) {
-					section.ext.transition({ transform: { x: 0 } }, 500, 'ease');
+					section.ext.transition({ transform: { x: 0 } }, 800, 'ease');
 				} else {
 					section.ext.transform({ x: 0 });
 				}
@@ -70,7 +68,7 @@ Main = function() {
 			case Site.ABOUT:
 
 				if(pr) {
-					section.ext.transition({ transform: { x: offset } }, 500, 'ease');
+					section.ext.transition({ transform: { x: offset } }, 800, 'ease');
 				} else {
 					section.ext.transform({ x: offset });
 				}
@@ -79,13 +77,14 @@ Main = function() {
 			case Site.PROJECT:
 
 				if(pr) {
-					section.ext.transition({ transform: { x: -window.innerWidth } }, 500, 'ease');
+					section.ext.transition({ transform: { x: -window.innerWidth } }, 800, 'ease', 0, function() {
+						console.log("Main.transtion.in over");
+					});
 				} else {
 					section.ext.transform({ x: -window.innerWidth });
 				}
 				
 				break;
-			case Site.CONTENT:
 		}
 	};
 

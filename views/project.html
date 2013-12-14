@@ -1,10 +1,5 @@
 <!DOCTYPE html>
-
-{{#if config.javascriptEnabled}}
-<html>
-{{else}}
 <html class="no-js">
-{{/if}}
 
 <head>
     <title>Bartek Drozdz | Portfolio and experiments</title>
@@ -23,9 +18,17 @@
         <div class="hero"><img src="/assets/content/1920w-235as/{{item.id}}.jpg"></div>
         <div class="content">{{{content}}}</div>
         <h2>{{item.name}}</h2>
-        <a href="/"><div class="close"></div></a>
+        <a href="/{{config.jsq}}"><div class="close"></div></a>
     </section>
 </div>
+
+{{!--
+<script type="text/javascript">
+    if(location.host.indexOf("localhost") > -1 || location.host.indexOf("192.168") > -1) {
+        document.write('<script src=\"http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1\"></' + 'script>');
+    }
+</script>
+--}}
 
 </body>
 </html>

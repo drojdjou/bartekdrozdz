@@ -1,5 +1,5 @@
 window.Site = function(data) {
-
+	
 	if(Simplrz.touch) {
 		document.addEventListener("touchmove", function(e) {
 			e.preventDefault();

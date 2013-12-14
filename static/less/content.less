@@ -4,7 +4,10 @@
 	height: 100%;
 
 	overflow-x: hidden;
-	overflow-y: hidden;
+
+	.js & {
+		overflow-y: hidden;
+	}
 
 	top: 0;
 	left: 0;
@@ -48,18 +51,13 @@
 		margin: 10px 0 0 10px;
 	}
 
-	iframe.hero {
-		width: 100%;
-		background-color: #000;
-		poiter-events: none;
-		border: 0;
+	.hero {
+		background-color: #000000;
 	}
 
-	img.hero {
-		position: relative;
+	.no-js & .hero img {
 		width: 100%;
-		top: 0;
-		left: 0;
+		height: auto;
 	}
 
 	@media screen and (max-width: 600px) {
@@ -79,8 +77,12 @@
 	}
 
 	.content {
-		position: absolute;
-		top: 0;
+	
+		.js & {
+			position: absolute;
+			top: 0;
+		}
+		
 		background-color: #222222;
 		font-family: 'Open Sans', sans-serif;
 		width: 100%;
@@ -234,7 +236,7 @@
 				height: 100px;
 				padding-bottom: 56.25%; /* 16:9 */
 
-				iframe, video, img {
+				video, img {
 					position: absolute;
 					top: 0;
 					left: 0;

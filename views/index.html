@@ -1,5 +1,16 @@
+<!--[if gte IE 9]>
 <!DOCTYPE html>
+<![endif]-->
+
+<!--[if !IE]> -->
+<!DOCTYPE html>
+<!-- <![endif]-->
+
+{{#if config.javascriptEnabled}}
 <html>
+{{else}}
+<html class="no-js">
+{{/if}}
 
 <head>
     <title>Bartek Drozdz | Portfolio and experiments</title>
@@ -10,22 +21,92 @@
 
     <base href="/">
 
+    {{#if config.javascriptEnabled}}
     <script type="text/javascript">
         var rawData = {{{dataJson}}};
     </script>
 
+    <noscript>
+        <meta http-equiv="Refresh" content="0;URL={{config.path}}?ns" />
+    </noscript>
+    {{else}}
+    {{/if}}
 
 </head>
 <body>
 
+{{#if config.javascriptEnabled}}
+<section id="content">
+    <div class="hero"></div>
+    <div class="content"></div>
+    <h2></h2>
+    <a href="/"><div class="close"></div></a>
+</section>
+{{/if}}
+
+<section id="main">
+    
+    <h2 class="header">
+        <p>Hello, my name is <a href="/about">Bartek</a>.</p>
+        <p>I live in sunny LA and I like to build interactive things.</p>
+    </h2>
+
+    <section id="projects">
+        <ul class="projects">
+            <li class="box title-box">
+                <div class="container"><h1>Work</h1></div>
+                <div class="spacer"></div>
+            </li>
+            {{#each data.projects}}
+            <li class="box" data-id="{{id}}" data-type="project">
+                <a href="/project/{{id}}{{../config.jsq}}">
+                <div class="container">
+                    {{#if ../config.javascriptEnabled}}
+                    <img>
+                    <div class="mask"></div>
+                    {{else}}
+                    <img src="/assets/content/675sq/{{id}}.jpg">
+                    {{/if}}
+                    <h4>{{name}}</h4>
+                </div>
+                <div class="spacer"></div>
+                </a>
+            </li>
+            {{/each}}
+            <li class="box title-box">
+                <div class="container"><h1>Play</h1></div>
+                <div class="spacer"></div>
+            </li>
+            {{#each data.play}}
+            <li class="box" data-id="{{id}}" data-type="play">
+                <a href="/project/{{id}}{{../config.jsq}}">
+                <div class="container">
+                    {{#if ../config.javascriptEnabled}}
+                    <img>
+                    <div class="mask"></div>
+                    {{else}}
+                    <img src="/assets/content/400sq/{{id}}.jpg">
+                    {{/if}}
+                    <h4>{{name}}</h4>
+                </div>
+                <div class="spacer"></div>
+                </a>
+            </li>
+            {{/each}}
+        </ul>
+    </section>
+</section>
+
 <section id="about">
     <div>
+        {{#if config.javascriptEnabled}}
         <a href="/" class="close"></a>
-        <h2>About</h2>
+        <h2>About me</h2>
+        {{/if}}
 
         <h4>I have 12 years of experience in coding and designing interactive content.</h4>
 
-        <p>I worked in Europe and US for several renowned interactive agencies, including F-i and North Kingdom. Currently I work at <a href-"http://toolofna.com" target="_blank">Tool of North America</a> in Santa Monica as Creative Technologist.</p>
+        <p>I worked in Europe and US for several renowned interactive agencies, including F-i and North Kingdom. Currently I work at <a href="http://toolofna.com" target="_blank">Tool of North America</a> in Santa Monica as Creative Technologist.</p>
 
         <p>The projects I contributed to have been widely recognized in the industry and received multiple awards, including <b>an Emmy</b>, <b>14 Cannes Lions</b>, an <b>FWA People Choice Award</b>, <b>3 FWA Sites of the Month</b> and numerous others.</p>
 
@@ -57,66 +138,22 @@
     </div>
 </section>
 
-<section id="content">
-    <div class="hero"></div>
-    <div class="content"></div>
-    <h2></h2>
-    <a href="/"><div class="close"></div></a>
-</section>
-
-<section id="main">
-    
-    <h2 class="header">
-        <p>Hello, my name is <a href="/about">Bartek</a>.</p>
-        <p>I live in sunny LA and I like to build interactive things.</p>
-    </h2>
-
-    <section id="projects">
-        <!-- <h3>Work</h3> -->
-
-        <ul class="projects">
-            <li class="box title-box">
-                <div class="container"><h1>Work</h1></div>
-                <div class="spacer"></div>
-            </li>
-            {{#each data.projects}}
-            <li class="box" data-id="{{id}}" data-type="project">
-                <a href="/project/{{id}}">
-                <div class="container">
-                    <img>
-                    <div class="mask"></div>
-                    <h4>{{name}}</h4>
-                </div>
-                <div class="spacer"></div>
-                </a>
-            </li>
-            {{/each}}
-            <li class="box title-box">
-                <div class="container"><h1>Play</h1></div>
-                <div class="spacer"></div>
-            </li>
-            {{#each data.play}}
-            <li class="box" data-id="{{id}}" data-type="play">
-                <a href="/project/{{id}}">
-                <div class="container">
-                    <img>
-                    <div class="mask"></div>
-                    <h4>{{name}}</h4>
-                </div>
-                <div class="spacer"></div>
-                </a>
-            </li>
-            {{/each}}
-        </ul>
-    </section>
-</section>
-
-{{#if config.dev}}
-    {{#each imports.scripts}}
-    <script type="text/javascript" src="{{this}}"></script>{{/each}}
-{{else}}
-<script type="text/javascript" src="{{imports.compressed}}"></script>
+{{#if config.javascriptEnabled}}
+    {{#if config.dev}}
+        {{#each imports.scripts}}
+        <script type="text/javascript" src="{{this}}"></script>{{/each}}
+    {{else}}
+    <script type="text/javascript" src="{{imports.compressed}}"></script>
+    {{/if}}
 {{/if}}
+
+
+<script type="text/javascript">
+    if(location.host.indexOf("localhost") > -1 || location.host.indexOf("192.168") > -1) {
+        document.write('<script src=\"http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1\"></' + 'script>');
+    }
+</script>
+
 
 </body>
 </html>

@@ -50,11 +50,11 @@ section#projects {
 
 			h4 {
 				position: absolute;
-				font-size: 1.0em;
+				font-size: 0.8em;
+				line-height: 1.2em;
 				color: #ffffff;
-				margin: 0px 0px 10px 10px;
-				padding: 5px;
-				line-height: 0.8em;
+				margin: 0 0 5px 5px;
+				padding: 2px;
 				bottom: 0;
 				left: 0;
 			}
@@ -70,6 +70,7 @@ section#projects {
 			    img {
 			    	position: absolute;
 			    	.oversize();
+			    	border: 0;
 				}
 
 				.mask, .hover {
@@ -80,11 +81,19 @@ section#projects {
 
 				.hover {
 					.transform(~"translateY(150%) translateX(-15%) rotateZ(45deg) scaleX(2)");
-					.transition(~"transform 0.2s ease-out");
 				}
 
 				h4 {
 					border-bottom: 2px solid rgba(255, 255, 255, 0); // transparent;
+				}
+			}
+
+			.hovered-transition {
+				.hover {
+					.transition(~"transform 0.2s ease-out");
+				}
+
+				h4 {
 					.transition(~"border 0.2s ease-out");
 				}
 			}
@@ -101,6 +110,20 @@ section#projects {
 
 			.spacer {
 				margin-top: 100%;
+			}
+		}
+	}
+
+	@media screen and (min-width: 600px) {
+		padding: 0px 4px 0 4px;
+
+		ul.projects {
+			li {
+				h4 {
+					font-size: 1.2em;
+					padding: 5px;
+					margin: 0px 0px 10px 10px;
+				}
 			}
 		}
 	}

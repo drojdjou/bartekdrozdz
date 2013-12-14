@@ -11,19 +11,35 @@ Transition = function(ext, element) {
 	var trEvent = events[Simplrz.prefix.js];
 	var TR = "transform";
 
+	var now = function() {
+		return new Date().getTime();
+	}
+
 	ext.createTransition = function() {
 
 		var transition = {};
 		var tr = [], ts = [];
 		var cb, numTrans;
+		var startTime, maxTime = 0, finalized;
 
 		var onEnded = function(e) {
 			numTrans--;
-			if(numTrans <=0) {
-				transition.clear();
-				if(cb) cb(e);
+			if(numTrans <= 0) {
+				var t = now() - startTime;
+				if(t >= maxTime) {
+					finalize();
+				} else if(!finalized) {
+					console.log("Bullshit > ", t, maxTime);
+					setTimeout(finalize, t);
+					finalized = true;
+				}
 			}
 		};
+
+		var finalize = function() {
+			transition.clear();
+			if(cb) cb();
+		}
 
 		var setValues = function() {
 			for(var i = 0; i < numTrans; i++) {
@@ -33,16 +49,22 @@ Transition = function(ext, element) {
 			}
 		};
 
+		function propToCss(str) {
+			return str.replace(/([A-Z])/g, function(letter) { return '-' + letter.toLowerCase(); });
+		}
+
 		transition.add = function(property, to, time, ease, delay) {
+			maxTime = Math.max(maxTime, time);
 			ease = ease || Util.cssEase.ease;
 			delay = delay || 0;
-			tr.push([property, time+'ms', ease, delay+'ms'].join(' '));
+			tr.push([propToCss(property), time+'ms', ease, delay+'ms'].join(' '));
 			ts.push([property, to]);
 
 			return transition;
 		};
 
 		transition.trs = function(values, time, ease, delay) {
+			maxTime = Math.max(maxTime, time);
 			ease = ease || Util.cssEase.ease;
 			delay = delay || 0;
 			tr.push([Simplrz.prefix.css + "transform", time+'ms', ease, delay+'ms'].join(' '));
@@ -68,9 +90,11 @@ Transition = function(ext, element) {
 			element.addEventListener(trEvent, onEnded);
 
 			// have to wait for properties to settle before applying the transition
-			setTimeout(function(){
+			setTimeout(function() {
+				startTime = now();
+				finalized = false;
 				element.style[Simplrz.prefix.js + "Transition"] = tr;
-				// element.style["transition"] = trs;
+				element.style["transition"] = tr;
 				setValues();
 			}, 0);
 
