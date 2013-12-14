@@ -5,6 +5,10 @@ Hero = function(container) {
 	var ctn;
 	var isDemo;
 
+	var fadeIn = function() {
+		ctn.ext.transition({ opacity: 1 }, 400, 'ease-out');
+	}
+
 	hi.setup = function(data) {
 
 		var missingDeps = [];
@@ -16,21 +20,13 @@ Hero = function(container) {
 
 		isDemo = (data.type == 'demo' && missingDeps.length == 0);
 
-		if(isDemo) {
-			ctn = EXT.create('iframe');
-			ctn.ext.attr('frameborder', 0);
-			ctn.src = data.url;
-		} else {
-			ctn = EXT.create('img');
-			ctn.src = 'assets/content/1920w-235as/' + data.id + '.jpg';
-		}
-
-		ctn.ext.on('load', function() {
-			ctn.ext.transition({ opacity: 1 }, 200, 'ease-out');
-		});
-
-		hi.adjust();
+		ctn = EXT.create(isDemo ? 'iframe' : 'img');
+		ctn.ext.attr('frameborder', 0);
 		ctn.ext.css('opacity', 0);
+		ctn.ext.on('load', fadeIn);
+		ctn.src = isDemo ? data.url : 'assets/content/1920w-235as/' + data.id + '.jpg';
+		
+		hi.adjust();
 		container.innerHTML = '';
 		container.appendChild(ctn);
 	}
@@ -57,14 +53,18 @@ Hero = function(container) {
 		}
 	}
 
-	hi.kill = function() {
+	hi.killIframe = function() {
 		if(ctn) {
 			try {
 				ctn.contentWindow.kill();
 			} catch(e) {
 				// Np
 			}
+		}
+	}
 
+	hi.kill = function() {
+		if(ctn) {
 			container.removeChild(ctn);
 			ctn.innerHTML = "";
 			ctn = null;

@@ -12,7 +12,7 @@ About = function() {
 	}
 
 	var onResize = function() {
-		var max = plate.ext.height() - window.innerHeight;
+		var max = Math.max(0, plate.ext.height() - window.innerHeight);
 		easer.setLimits(-max, 0);
 	}
 

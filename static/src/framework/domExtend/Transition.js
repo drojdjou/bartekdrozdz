@@ -29,7 +29,7 @@ Transition = function(ext, element) {
 				if(t >= maxTime) {
 					finalize();
 				} else if(!finalized) {
-					console.log("Bullshit > ", t, maxTime);
+					// console.log("Transition early end > ", t, maxTime);
 					setTimeout(finalize, t);
 					finalized = true;
 				}

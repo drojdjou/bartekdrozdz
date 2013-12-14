@@ -27,10 +27,15 @@ Content = function() {
    		if(!_active) return;
 
         var scr = easer.easeVal();
+
         content.ext.y = scr;
         content.ext.transform();
+
         hero.ext.y = (scr - hero.height()) * 0.5;
         hero.ext.transform();
+
+        smallHeader.ext.y = (scr - hero.height()) * 0.75;
+        smallHeader.ext.transform();
 	}
 
 	var onRoute = function(e) {
@@ -54,7 +59,7 @@ Content = function() {
 				if(!startUp) {
 					hero.adjust();
 					section.ext.transition({ transform: { x: 0 }, opacity: 1 }, 800, 'ease', 0, function() {
-						console.log("Content.transtion.in over");
+						// console.log("Content.transtion.in over");
 						hero.setup(data);
 					});
 				} else {
@@ -67,10 +72,12 @@ Content = function() {
 			default:
 
 				if(video) video.pause();
-				hero.kill();
+				hero.killIframe();
 
 				if(!startUp) {
-					section.ext.transition({ transform: { x: offset }, opacity: 0 }, 800, 'ease');
+					section.ext.transition({ transform: { x: offset }, opacity: 0 }, 800, 'ease', 0, function() {
+						hero.kill();
+					});
 				} else {
 					section.ext.transform({ x: offset });
 					section.ext.css('opacity', 0);

@@ -1,3 +1,6 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
+
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans);
 html,
 body {
   font-family: 'Open Sans', sans-serif;
@@ -52,23 +55,25 @@ html.js body {
   color: #840003;
 }
 @media screen and (min-width: 600px) {
-  #main h2 {
+  #main h2.header {
     font-size: 2.0em;
   }
 }
 @media screen and (min-width: 1100px) {
-  #main h2 {
+  #main h2.header {
     font-size: 2.2em;
   }
 }
 @media screen and (min-width: 1460px) {
-  #main h2 {
+  #main h2.header {
     font-size: 2.4em;
+    padding: 200px 40px 200px 40px;
   }
 }
 @media screen and (min-width: 1800px) {
-  #main h2 {
+  #main h2.header {
     font-size: 2.6em;
+    padding: 260px 40px 260px 40px;
   }
 }
 section#projects h3,
@@ -148,6 +153,12 @@ section#play h3 {
 .no-js #content .hero img {
   width: 100%;
   height: auto;
+}
+@media screen and (min-width: 1920px) {
+  #content h2 {
+    font-size: 3.5em;
+    padding: 10px;
+  }
 }
 @media screen and (max-width: 600px) {
   #content .close {
@@ -328,6 +339,43 @@ section#play h3 {
 }
 .no-js #content .content .text .video .play {
   display: none;
+}
+@media screen and (min-width: 1920px) {
+  #content .content {
+    line-height: 1.5em;
+    padding: 1em 0 0 0;
+  }
+  #content .content .text {
+    width: 1600px;
+    margin: 0 0 1em -800px;
+  }
+  #content .content .text h4 {
+    font-size: 2.4em;
+    line-height: 1.7em;
+    font-weight: normal;
+  }
+  #content .content .text p {
+    font-size: 1.6em;
+    line-height: 1.7em;
+  }
+  #content .content .text .launch {
+    font-size: 2em;
+    padding: 20px;
+  }
+  #content .content .text h5 {
+    font-size: 1.3em;
+  }
+  #content .content .text ul li {
+    font-size: 1.3em;
+  }
+  #content .content .text .video {
+    width: 100%;
+    height: auto;
+    margin: 90px 0 0px 0;
+  }
+  #content .content .text .video-link {
+    margin-bottom: 90px;
+  }
 }
 @media screen and (max-width: 1024px) {
   #content .content {

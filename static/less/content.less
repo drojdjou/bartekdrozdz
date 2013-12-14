@@ -60,6 +60,13 @@
 		height: auto;
 	}
 
+	@media screen and (min-width: 1920px) {
+		h2 {
+			font-size: 3.5em;
+			padding: 10px;
+		}
+	}
+
 	@media screen and (max-width: 600px) {
 
 		.close {
@@ -274,6 +281,53 @@
 
 				.no-js & .play {
 					display: none;
+				}
+			}
+		}
+
+		@media screen and (min-width: 1920px) {
+
+			line-height: 1.5em;
+			padding: 1em 0 0 0;
+
+			.text {
+				@demoContentWidth: 1600px;
+				width: @demoContentWidth;
+				margin: 0 0 1em @demoContentWidth * -0.5;
+
+				h4 {
+					font-size: 2.4em;
+					line-height: 1.7em;
+					font-weight: normal;
+				}
+
+				p {
+
+					font-size: 1.6em;
+					line-height: 1.7em;
+				}
+
+				.launch {
+					font-size: 2em;
+					padding: 20px;
+				}
+
+				h5 {
+					font-size: 1.3em;
+				}
+
+				ul li {
+					font-size: 1.3em;
+				}
+			
+				.video {
+					width: 100%;
+					height: auto;
+					margin: 90px 0 0px 0;
+				}
+
+				.video-link {
+					margin-bottom: 90px;
 				}
 			}
 		}

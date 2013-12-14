@@ -46,6 +46,9 @@ for(var prefix in Simplrz.prefix) {
     prefixes.push(prefix + ": " + Simplrz.prefix[prefix]);
 }
 
+li.innerHTML = "<b>user-agent</b> - " + navigator.userAgent;
+featureList.appendChild(li);
+
 li.innerHTML = "<b>prefix</b> - " + prefixes.join(", ");
 featureList.appendChild(li);
 

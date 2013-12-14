@@ -78,7 +78,7 @@ Main = function() {
 
 				if(pr) {
 					section.ext.transition({ transform: { x: -window.innerWidth } }, 800, 'ease', 0, function() {
-						console.log("Main.transtion.in over");
+						// console.log("Main.transtion.in over");
 					});
 				} else {
 					section.ext.transform({ x: -window.innerWidth });
