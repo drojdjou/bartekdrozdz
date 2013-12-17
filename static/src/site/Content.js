@@ -45,7 +45,10 @@ Content = function() {
 		if(_active) {
 			data = Data.getProjectById(e.parts[1]);
 			content.innerHTML = '';
+
 			easer.reset(hero.height());
+			onResize();
+
 			Loader.loadText('/data/' + e.parts[1], onData);
 		}
 

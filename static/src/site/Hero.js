@@ -3,7 +3,7 @@ Hero = function(container) {
 	var hi = {};
 	var ASPECT = 2.35;
 	var ctn;
-	var isDemo;
+	var isDemo, isWide;
 
 	var fadeIn = function() {
 		ctn.ext.transition({ opacity: 1 }, 400, 'ease-out');
@@ -19,12 +19,14 @@ Hero = function(container) {
 		});
 
 		isDemo = (data.type == 'demo' && missingDeps.length == 0);
+		isWide = window.innerWidth > 1024;
 
 		ctn = EXT.create(isDemo ? 'iframe' : 'img');
 		ctn.ext.attr('frameborder', 0);
 		ctn.ext.css('opacity', 0);
 		ctn.ext.on('load', fadeIn);
-		ctn.src = isDemo ? data.url : 'assets/content/1920w-235as/' + data.id + '.jpg';
+		var folder = (isWide) ? 'assets/content/1920w-235as/' : 'assets/content/871sq/';
+		ctn.src = isDemo ? data.url : folder + data.id + '.jpg';
 		
 		hi.adjust();
 		container.innerHTML = '';
@@ -34,14 +36,19 @@ Hero = function(container) {
 	hi.adjust = function() {
 		var h, w, ox;
 		
-		if(isDemo) {
-			h = hi.height();
-			w = window.innerWidth;
-			ox = 0;
+		if(isWide) {
+			if(isDemo) {
+				h = hi.height();
+				w = window.innerWidth;
+				ox = 0;
+			} else {
+				h = hi.height();
+				w = h * ASPECT;
+				ox = (w - window.innerWidth) * -0.5;
+			}
 		} else {
-			h = hi.height();
-			w = h * ASPECT;
-			ox = (w - window.innerWidth) * -0.5;
+			h = w = window.innerWidth;
+			ox = 0;
 		}
 
 		container.ext.height(h);
@@ -72,7 +79,7 @@ Hero = function(container) {
 	}
 
 	hi.height = function() {
-		return Math.max(window.innerWidth / ASPECT, window.innerHeight * 0.75);
+		return isWide ? Math.max(window.innerWidth / ASPECT, window.innerHeight * 0.75) : window.innerWidth;
 	}
 
 	hi.onResize = function() {

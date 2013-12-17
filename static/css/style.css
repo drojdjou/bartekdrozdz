@@ -412,8 +412,8 @@ section#play h3 {
   }
   #content .content h1 {
     width: 90%;
-    margin: 0 0 1em -45%;
-    font-size: 2.3em;
+    margin: 0.6em 0 1em -45%;
+    font-size: 3em;
   }
   #content .content .text {
     width: 90%;
@@ -673,28 +673,33 @@ section#projects ul.projects li .hovered-container:hover .hover {
   transform: translateY(80%) scaleX(2);
 }
 section#projects ul.projects li .hovered-container:hover img {
-  -webkit-transform: translateY(-2%);
-  -moz-transform: translateY(-2%);
-  -o-transform: translateY(-2%);
-  -ms-transform: translateY(-2%);
-  transform: translateY(-2%);
+  -webkit-transform: translateY(-3%);
+  -moz-transform: translateY(-3%);
+  -o-transform: translateY(-3%);
+  -ms-transform: translateY(-3%);
+  transform: translateY(-3%);
 }
 section#projects ul.projects li .hovered-container:hover h4 {
-  -webkit-transform: translateY(-10%);
-  -moz-transform: translateY(-10%);
-  -o-transform: translateY(-10%);
-  -ms-transform: translateY(-10%);
-  transform: translateY(-10%);
+  -webkit-transform: translateY(-40%);
+  -moz-transform: translateY(-40%);
+  -o-transform: translateY(-40%);
+  -ms-transform: translateY(-40%);
+  transform: translateY(-40%);
 }
 section#projects ul.projects li .spacer {
   margin-top: 100%;
+}
+@media screen and (min-width: 500px) {
+  section#projects ul.projects li h4 {
+    font-size: 0.9em;
+  }
 }
 @media screen and (min-width: 600px) {
   section#projects {
     padding: 0px 4px 0 4px;
   }
   section#projects ul.projects li h4 {
-    font-size: 0.9em;
+    font-size: 1.2em;
     padding: 5px;
     margin: 0px 0px 10px 10px;
     font-weight: 100;
@@ -706,9 +711,6 @@ section#projects ul.projects li .spacer {
   }
   section#projects ul.projects li {
     width: 33.33%;
-  }
-  section#projects ul.projects li h4 {
-    font-size: 1.2em;
   }
 }
 @media screen and (min-width: 1200px) {
