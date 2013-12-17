@@ -9,6 +9,10 @@
 		overflow-y: hidden;
 		max-width: 500px;
 		pointer-events: none;
+
+		div {
+			display: none;
+		}
 	}  
 
 	.no-js & {
@@ -19,6 +23,7 @@
 	}
 
 	overflow-x: hidden;
+
 	font-size: 1.0em;
 	line-height: 1.5em;
 
@@ -28,7 +33,7 @@
 		.transform-origin(~"100% 0");
 		padding: 20px 10px 30px 10px;
 		pointer-events: auto;
-		display: none;
+		
 
 		color: #aaa;
 		font-family: @contentFont;

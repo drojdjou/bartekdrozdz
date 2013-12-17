@@ -451,6 +451,9 @@ section#play h3 {
   max-width: 500px;
   pointer-events: none;
 }
+.js #about div {
+  display: none;
+}
 .no-js #about {
   position: relative;
   width: 800px;
@@ -465,7 +468,6 @@ section#play h3 {
   transform-origin: 100% 0;
   padding: 20px 10px 30px 10px;
   pointer-events: auto;
-  display: none;
   color: #aaa;
   font-family: Helvetica, Arial, sans-serif;
   letter-spacing: 0.02em;

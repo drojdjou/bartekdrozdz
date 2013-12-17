@@ -46,8 +46,13 @@
 
 <section id="main">
     
+    
     <h2 class="header">
+        {{#if config.javascriptEnabled}}
         <p>Hi! my name is <a href="/about">Bartek</a>.</p>
+        {{else}}
+        <p>Hi! my name is Bartek.</p>
+        {{/if}}
         <p>I like to build things.</p>
     </h2>
 
