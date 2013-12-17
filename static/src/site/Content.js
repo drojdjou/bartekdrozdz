@@ -2,8 +2,8 @@ Content = function() {
 
 	var _active = false;
 
+	var data;
 	var section = EXT.select('#content');
-	var smallHeader = section.ext.select('h2');
 	var close = section.ext.select('.close');
 	var hero = Hero(section.ext.select('.hero')), video;
 	var content = section.ext.select('.content');
@@ -33,9 +33,6 @@ Content = function() {
 
         hero.ext.y = (scr - hero.height()) * 0.5;
         hero.ext.transform();
-
-        smallHeader.ext.y = (scr - hero.height()) * 0.75;
-        smallHeader.ext.transform();
 	}
 
 	var onRoute = function(e) {
@@ -46,8 +43,7 @@ Content = function() {
 		_active = (r == Site.PROJECT || r == Site.ARTICLE);
 
 		if(_active) {
-			var data = Data.getProjectById(e.parts[1]);
-			smallHeader.innerHTML = data.name;
+			data = Data.getProjectById(e.parts[1]);
 			content.innerHTML = '';
 			easer.reset(hero.height());
 			Loader.loadText('/data/' + e.parts[1], onData);
@@ -88,7 +84,7 @@ Content = function() {
 	};
 
 	var onData = function(html) {
-		content.innerHTML = html;
+		content.innerHTML = '<h1>' + data.name + '</h1>' + html;
 
 		var playImage = content.ext.select(".video .play");
 		video = content.ext.select(".video video");

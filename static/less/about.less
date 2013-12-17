@@ -19,9 +19,6 @@
 	}
 
 	overflow-x: hidden;
-
-	color: #808080;
-	
 	font-size: 1.0em;
 	line-height: 1.5em;
 
@@ -29,25 +26,42 @@
 
 	div {	
 		.transform-origin(~"100% 0");
-		padding: 20px 40px 30px 30px;
-		color: #ffffff;
+		padding: 20px 10px 30px 10px;
 		pointer-events: auto;
 		display: none;
+
+		color: #aaa;
+		font-family: @contentFont;
+		letter-spacing: 0.02em;
 	}
 
 	h2 {
-		margin: 0;
+		margin: 0 0 0 0;
+		font-family: @titleFont;
+		font-size: 2em;
+		display: inline-block;
+	}
+
+	h3 {
+		font-family: @titleFont;
+		font-size: 1.4em;
+		line-height: 1.2em;
+	}
+
+	h4 {
+		font-size: 1.1em;
 	}
 
 	.close {
 		position: absolute;
-		top: 16px;
-		right: 16px;
+		top: 24px;
+		right: 24px;
 		width: 24px;
 		height: 24px;
 		background-image: url('../assets/buttons.png');
 		background-size: 200% 200%;
 		background-position: 0 100%;
+		border: 0;
 
 		&:hover {
 			background-position: 100% 100%;
@@ -56,18 +70,16 @@
 	}
 
 	p {
-		letter-spacing: -0.02em;
-		color: #999999;
+		font-size: 0.9em;
 	}
 
 	b, a {
-		letter-spacing: 0.02em;
-		color: #ffffff;
-		font-weight: bold;
+		text-decoration: none;
+		color: #fff;
 	}
 
-	a:hover {
-		text-decoration: underline;
+	a {
+		border-bottom: 1px solid white;
 	}
 
 	ul {
@@ -76,32 +88,26 @@
 		padding: 0;
 
 		li {
-			font-size: 0.8em;
-			line-height: 1.6em;
-		}
-
-		a, b {
-			letter-spacing: 0.02em;
-			text-decoration: none;
-		}
-
-		a:hover {
-			text-decoration: underline;
+			font-size: 0.9em;
+			line-height: 2em;
 		}
 
 		i {
-			color: #999999;
 		}
 
 		i:before {
 			content: " - ";
-
 		}
 	}
 
-	@media screen and (max-width: 600px) {
-		section > div {
-			padding: 20px 20px 20px 20px;
+	@media screen and (min-width: 600px) {
+		div {
+			padding: 30px 20px 20px 20px;
+			font-weight: normal;
+		}
+
+		a {
+			border-bottom: 1px solid white;
 		}
 
 		.close {

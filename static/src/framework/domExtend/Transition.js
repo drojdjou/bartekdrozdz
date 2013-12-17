@@ -41,12 +41,16 @@ Transition = function(ext, element) {
 			if(cb) cb();
 		}
 
-		var setValues = function() {
-			for(var i = 0; i < numTrans; i++) {
-				var p = ts[i][0], v = ts[i][1];
+		var setValues = function(vals) {
+			var nv = vals.length;
+
+			for(var i = 0; i < nv; i++) {
+				var p = vals[i][0], v = vals[i][1];
 				if(p == TR) ext.transform(v);
 				else element.style[p] = v;
 			}
+
+			return transition;
 		};
 
 		function propToCss(str) {
@@ -61,7 +65,7 @@ Transition = function(ext, element) {
 			ts.push([property, to]);
 
 			return transition;
-		};
+		}
 
 		transition.trs = function(values, time, ease, delay) {
 			maxTime = Math.max(maxTime, time);
@@ -71,7 +75,7 @@ Transition = function(ext, element) {
 			ts.push([TR, values]);
 
 			return transition;
-		};
+		}
 
 		transition.clear = function() {
 			element.removeEventListener(trEvent, onEnded);
@@ -84,9 +88,6 @@ Transition = function(ext, element) {
 			cb = callback;
 			numTrans = ts.length;
 
-			// not needed
-			// var trs = tr.join(', ');
-
 			element.addEventListener(trEvent, onEnded);
 
 			// have to wait for properties to settle before applying the transition
@@ -95,11 +96,24 @@ Transition = function(ext, element) {
 				finalized = false;
 				element.style[Simplrz.prefix.js + "Transition"] = tr;
 				element.style["transition"] = tr;
-				setValues();
+				setValues(ts);
 			}, 0);
 
 			return transition;
 		};
+
+		transition.then = function(callback) {
+			var t = ext.createTransition();
+
+			var c = function() {
+				callback();
+				t.start();
+			}
+
+			transition.start(c);
+
+			return t;
+		}
 
 		return transition;
 

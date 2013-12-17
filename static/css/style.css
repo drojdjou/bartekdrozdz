@@ -1,9 +1,7 @@
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
-
-@import url(http://fonts.googleapis.com/css?family=Droid+Sans);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400);
 html,
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   color: #000000;
   margin: 0;
   padding: 0;
@@ -16,6 +14,16 @@ body {
 html.js body {
   overflow: hidden;
 }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+b,
+p {
+  font-weight: 100;
+}
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -23,16 +31,16 @@ html.js body {
   outline: none;
   -webkit-appearance: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-backface-visibility: hidden;
 }
 #main {
   width: 100%;
   background-color: #fff;
   overflow-y: hidden;
-  font-family: 'Droid Sans', 'Helvetica', 'Arial', sans-serif;
-  color: #999999;
 }
 .js #main {
   position: absolute;
+  overflow-x: hidden;
 }
 #main a {
   color: inherit;
@@ -40,41 +48,57 @@ html.js body {
 }
 #main h2.header {
   width: 100%;
-  text-align: center;
-  font-size: 1.8em;
+  margin: 0;
+  padding: 120px 20px 120px 20px;
+  font-family: 'Source Sans Pro', sans-serif;
+  text-transform: uppercase;
+  font-size: 2.4em;
   letter-spacing: -0.02em;
-  font-weight: normal;
-  line-height: 1.4em;
-  margin: 0 0 0 0;
-  padding: 160px 40px 160px 40px;
+  font-weight: 100;
+  line-height: 1.1em;
+  text-align: center;
+  color: black;
 }
 #main h2.header p {
-  margin: 0 0 0 0;
+  margin: 0;
+  color: #808080;
 }
 #main h2.header a {
-  color: #840003;
+  display: inline-block;
+  line-height: 0.9em;
+  padding: 0px 5px 0px 0px;
+  border-bottom: 1px solid #808080;
+  -webkit-transition: border 0.1s ease, color 0.1s ease;
+  -moz-transition: border 0.1s ease, color 0.1s ease;
+  -o-transition: border 0.1s ease, color 0.1s ease;
+  -ms-transition: border 0.1s ease, color 0.1s ease;
+  transition: border 0.1s ease, color 0.1s ease;
+}
+.no-touch #main h2.header a:hover {
+  color: black;
+  border-bottom: 4px solid black;
 }
 @media screen and (min-width: 600px) {
   #main h2.header {
-    font-size: 2.0em;
+    padding: 250px 20px 250px 20px;
+    font-size: 3em;
+  }
+  #main h2.header a {
+    border-bottom: 2px solid #808080;
   }
 }
 @media screen and (min-width: 1100px) {
   #main h2.header {
-    font-size: 2.2em;
+    font-size: 4em;
   }
 }
 @media screen and (min-width: 1460px) {
   #main h2.header {
-    font-size: 2.4em;
-    padding: 200px 40px 200px 40px;
+    font-size: 5em;
   }
 }
 @media screen and (min-width: 1800px) {
-  #main h2.header {
-    font-size: 2.6em;
-    padding: 260px 40px 260px 40px;
-  }
+  
 }
 section#projects h3,
 section#play h3 {
@@ -123,8 +147,8 @@ section#play h3 {
 }
 #content .close {
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: 24px;
+  right: 24px;
   width: 34px;
   height: 34px;
   background-image: url('../assets/buttons.png');
@@ -136,16 +160,6 @@ section#play h3 {
 #content .close:hover {
   background-position: 100% 100%;
   cursor: pointer;
-}
-#content h2 {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  font-size: 1.5em;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: #ffffff;
-  padding: 5px;
-  margin: 10px 0 0 10px;
 }
 #content .hero {
   background-color: #000000;
@@ -175,7 +189,7 @@ section#play h3 {
 }
 #content .content {
   background-color: #222222;
-  font-family: 'Open Sans', sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   width: 100%;
   color: #aaaaaa;
   font-size: 1.0em;
@@ -187,6 +201,16 @@ section#play h3 {
 .js #content .content {
   position: absolute;
   top: 0;
+}
+#content .content h1 {
+  position: relative;
+  width: 800px;
+  left: 50%;
+  margin: 0.5em 0 0.8em -400px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 4em;
+  line-height: 1em;
+  text-transform: uppercase;
 }
 #content .content .text {
   position: relative;
@@ -217,35 +241,51 @@ section#play h3 {
   display: none;
 }
 #content .content .text h4 {
-  font-weight: 400;
-  font-size: 1.3em;
-  letter-spacing: 0.0em;
-  line-height: 1.4em;
+  font-size: 1.2em;
+  line-height: 1.6em;
 }
 #content .content .text h5 {
-  font-weight: 700;
-  color: #ffffff;
-  letter-spacing: 0.08em;
   margin: 4px 0 4px 0;
+  color: #fff;
 }
 #content .content .text h6 {
-  font-weight: 400;
   font-size: 0.75em;
+  color: #fff;
+}
+#content .content .text p {
+  font-size: 1em;
+  line-height: 1.6em;
 }
 #content .content .text em {
-  color: #ffffff;
-  font-weight: 400;
   font-style: normal;
+  color: #fff;
+}
+#content .content .text ul {
+  list-style-type: none;
+  padding: 0;
+}
+#content .content .text ul li {
+  font-size: 0.9em;
+  line-height: 2em;
+}
+#content .content .text ul b {
+  color: #fff;
+}
+#content .content .text ul i:before {
+  content: " - ";
 }
 #content .content .text a {
-  color: #ffffff;
-  text-decoration: underline;
+  color: inherit;
+  border-bottom: 1px solid #ffffff;
+  text-decoration: none;
+}
+#content .content .text a:hover {
+  color: #fff;
 }
 #content .content .text .launch {
   background-color: #840003;
   color: #ffffff;
-  padding: 8px 12px 10px 12px;
-  margin: 8px 0 8px 0;
+  padding: 10px 12px 10px 12px;
   border-radius: 4px;
   display: inline-block;
   -webkit-transition: all 0.05s ease;
@@ -256,13 +296,13 @@ section#play h3 {
 }
 @media screen and (min-width: 600px) {
   #content .content .text .launch {
-    margin: 16px 0 16px 0;
     padding: 3px 7px 5px 7px;
   }
 }
 #content .content .text .launch a {
   color: #fff;
   font-size: 0.8em;
+  border-bottom: 0;
   text-decoration: none;
   text-transform: uppercase;
 }
@@ -281,21 +321,6 @@ section#play h3 {
   color: #808080;
   border: 0;
   font-size: 0.8em;
-}
-#content .content .text ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-#content .content .text ul li {
-  font-size: 0.8em;
-  line-height: 1.6em;
-}
-#content .content .text ul i {
-  color: #aaaaaa;
-}
-#content .content .text ul i:before {
-  content: " - ";
 }
 #content .content .text .video {
   position: relative;
@@ -382,6 +407,11 @@ section#play h3 {
     line-height: 1.5em;
     padding: 1em 0 0 0;
   }
+  #content .content h1 {
+    width: 90%;
+    margin: 0 0 1em -45%;
+    font-size: 2.3em;
+  }
   #content .content .text {
     width: 90%;
     margin: 0 0 1em -45%;
@@ -402,7 +432,6 @@ section#play h3 {
 }
 #about {
   overflow-x: hidden;
-  color: #808080;
   font-size: 1.0em;
   line-height: 1.5em;
   -webkit-perspective: 1500px;
@@ -431,40 +460,52 @@ section#play h3 {
   -o-transform-origin: 100% 0;
   -ms-transform-origin: 100% 0;
   transform-origin: 100% 0;
-  padding: 20px 40px 30px 30px;
-  color: #ffffff;
+  padding: 20px 10px 30px 10px;
   pointer-events: auto;
   display: none;
+  color: #aaa;
+  font-family: Helvetica, Arial, sans-serif;
+  letter-spacing: 0.02em;
 }
 #about h2 {
-  margin: 0;
+  margin: 0 0 0 0;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 2em;
+  display: inline-block;
+}
+#about h3 {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 1.4em;
+  line-height: 1.2em;
+}
+#about h4 {
+  font-size: 1.1em;
 }
 #about .close {
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: 24px;
+  right: 24px;
   width: 24px;
   height: 24px;
   background-image: url('../assets/buttons.png');
   background-size: 200% 200%;
   background-position: 0 100%;
+  border: 0;
 }
 #about .close:hover {
   background-position: 100% 100%;
   cursor: pointer;
 }
 #about p {
-  letter-spacing: -0.02em;
-  color: #999999;
+  font-size: 0.9em;
 }
 #about b,
 #about a {
-  letter-spacing: 0.02em;
-  color: #ffffff;
-  font-weight: bold;
+  text-decoration: none;
+  color: #fff;
 }
-#about a:hover {
-  text-decoration: underline;
+#about a {
+  border-bottom: 1px solid white;
 }
 #about ul {
   list-style-type: none;
@@ -472,26 +513,19 @@ section#play h3 {
   padding: 0;
 }
 #about ul li {
-  font-size: 0.8em;
-  line-height: 1.6em;
-}
-#about ul a,
-#about ul b {
-  letter-spacing: 0.02em;
-  text-decoration: none;
-}
-#about ul a:hover {
-  text-decoration: underline;
-}
-#about ul i {
-  color: #999999;
+  font-size: 0.9em;
+  line-height: 2em;
 }
 #about ul i:before {
   content: " - ";
 }
-@media screen and (max-width: 600px) {
-  #about section > div {
-    padding: 20px 20px 20px 20px;
+@media screen and (min-width: 600px) {
+  #about div {
+    padding: 30px 20px 20px 20px;
+    font-weight: normal;
+  }
+  #about a {
+    border-bottom: 1px solid white;
   }
   #about .close {
     width: 30px;
@@ -510,8 +544,12 @@ section#projects {
 }
 section#projects ul.projects {
   list-style-type: none;
-  margin: 0 0 10px 0;
+  margin: 0;
   padding: 0;
+}
+.touch section#projects ul.projects {
+  clear: both;
+  overflow: auto;
 }
 section#projects ul.projects .title-box .container {
   position: absolute;
@@ -519,17 +557,29 @@ section#projects ul.projects .title-box .container {
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: #000;
-  text-align: center;
+  background-color: #e6e6e6;
+  text-align: left;
 }
 section#projects ul.projects .title-box .container h1 {
   position: absolute;
-  top: 50%;
-  left: 0%;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: black;
+  text-transform: uppercase;
+  bottom: 0%;
+  right: 0%;
+  margin: 0 15px 5px 15px;
+  font-size: 2.2em;
+  font-weight: 100;
+}
+section#projects ul.projects .title-box .container .fwd-b {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: '';
+  display: block;
   width: 100%;
-  color: #fff;
-  margin: -16px 0 0 0;
-  font-size: 1.8em;
+  height: 100%;
+  background-color: #cccccc;
 }
 section#projects ul.projects .title-box .spacer {
   margin-top: 100%;
@@ -543,13 +593,16 @@ section#projects ul.projects li {
 }
 section#projects ul.projects li h4 {
   position: absolute;
-  font-size: 0.8em;
-  line-height: 1.2em;
-  color: #ffffff;
+  font-family: 'Source Sans Pro', sans-serif;
+  text-transform: uppercase;
+  font-size: 0.9em;
+  line-height: 1.0em;
+  color: white;
   margin: 0 0 5px 5px;
   padding: 2px;
   bottom: 0;
   left: 0;
+  font-weight: 400;
 }
 section#projects ul.projects li .container {
   position: absolute;
@@ -577,16 +630,20 @@ section#projects ul.projects li .container .hover {
   background-color: #000000;
 }
 section#projects ul.projects li .container .hover {
-  -webkit-transform: translateY(150%) translateX(-15%) rotateZ(45deg) scaleX(2);
-  -moz-transform: translateY(150%) translateX(-15%) rotateZ(45deg) scaleX(2);
-  -o-transform: translateY(150%) translateX(-15%) rotateZ(45deg) scaleX(2);
-  -ms-transform: translateY(150%) translateX(-15%) rotateZ(45deg) scaleX(2);
-  transform: translateY(150%) translateX(-15%) rotateZ(45deg) scaleX(2);
-}
-section#projects ul.projects li .container h4 {
-  border-bottom: 2px solid rgba(255, 255, 255, 0);
+  -webkit-transform: translateY(150%) translateX(-15%) scaleX(2);
+  -moz-transform: translateY(150%) translateX(-15%) scaleX(2);
+  -o-transform: translateY(150%) translateX(-15%) scaleX(2);
+  -ms-transform: translateY(150%) translateX(-15%) scaleX(2);
+  transform: translateY(150%) translateX(-15%) scaleX(2);
 }
 section#projects ul.projects li .hovered-transition .hover {
+  -webkit-transition: -webkit-transform 0.8s ease-out;
+  -moz-transition: -moz-transform 0.8s ease-out;
+  -o-transition: -o-transform 0.8s ease-out;
+  -ms-transition: -ms-transform 0.8s ease-out;
+  transition: transform 0.8s ease-out;
+}
+section#projects ul.projects li .hovered-transition img {
   -webkit-transition: -webkit-transform 0.2s ease-out;
   -moz-transition: -moz-transform 0.2s ease-out;
   -o-transition: -o-transform 0.2s ease-out;
@@ -594,21 +651,37 @@ section#projects ul.projects li .hovered-transition .hover {
   transition: transform 0.2s ease-out;
 }
 section#projects ul.projects li .hovered-transition h4 {
-  -webkit-transition: border 0.2s ease-out;
-  -moz-transition: border 0.2s ease-out;
-  -o-transition: border 0.2s ease-out;
-  -ms-transition: border 0.2s ease-out;
-  transition: border 0.2s ease-out;
+  -webkit-transition: -webkit-transform 0.2s ease-out;
+  -moz-transition: -moz-transform 0.2s ease-out;
+  -o-transition: -o-transform 0.2s ease-out;
+  -ms-transition: -ms-transform 0.2s ease-out;
+  transition: transform 0.2s ease-out;
 }
 section#projects ul.projects li .hovered-container:hover .hover {
-  -webkit-transform: translateY(80%) rotateZ(5deg) scaleX(2);
-  -moz-transform: translateY(80%) rotateZ(5deg) scaleX(2);
-  -o-transform: translateY(80%) rotateZ(5deg) scaleX(2);
-  -ms-transform: translateY(80%) rotateZ(5deg) scaleX(2);
-  transform: translateY(80%) rotateZ(5deg) scaleX(2);
+  -webkit-transition: -webkit-transform 0.1s ease-out;
+  -moz-transition: -moz-transform 0.1s ease-out;
+  -o-transition: -o-transform 0.1s ease-out;
+  -ms-transition: -ms-transform 0.1s ease-out;
+  transition: transform 0.1s ease-out;
+  -webkit-transform: translateY(80%) scaleX(2);
+  -moz-transform: translateY(80%) scaleX(2);
+  -o-transform: translateY(80%) scaleX(2);
+  -ms-transform: translateY(80%) scaleX(2);
+  transform: translateY(80%) scaleX(2);
+}
+section#projects ul.projects li .hovered-container:hover img {
+  -webkit-transform: translateY(-2%);
+  -moz-transform: translateY(-2%);
+  -o-transform: translateY(-2%);
+  -ms-transform: translateY(-2%);
+  transform: translateY(-2%);
 }
 section#projects ul.projects li .hovered-container:hover h4 {
-  border-bottom: 2px solid rgba(255, 255, 255, 0.8);
+  -webkit-transform: translateY(-10%);
+  -moz-transform: translateY(-10%);
+  -o-transform: translateY(-10%);
+  -ms-transform: translateY(-10%);
+  transform: translateY(-10%);
 }
 section#projects ul.projects li .spacer {
   margin-top: 100%;
@@ -618,9 +691,10 @@ section#projects ul.projects li .spacer {
     padding: 0px 4px 0 4px;
   }
   section#projects ul.projects li h4 {
-    font-size: 1.2em;
+    font-size: 0.9em;
     padding: 5px;
     margin: 0px 0px 10px 10px;
+    font-weight: 100;
   }
 }
 @media screen and (min-width: 800px) {
@@ -639,7 +713,7 @@ section#projects ul.projects li .spacer {
     width: 25%;
   }
   section#projects ul.projects li h4 {
-    font-size: 1.3em;
+    font-size: 1.2em;
   }
 }
 @media screen and (min-width: 1600px) {
@@ -647,6 +721,6 @@ section#projects ul.projects li .spacer {
     width: 20%;
   }
   section#projects ul.projects li h4 {
-    font-size: 1.6em;
+    font-size: 1.4em;
   }
 }

@@ -38,8 +38,8 @@
 {{#if config.javascriptEnabled}}
 <section id="content">
     <div class="hero"></div>
-    <div class="content"></div>
-    <h2></h2>
+    <div class="content">
+    </div>
     <a href="/"><div class="close"></div></a>
 </section>
 {{/if}}
@@ -47,14 +47,16 @@
 <section id="main">
     
     <h2 class="header">
-        <p>Hello, my name is <a href="/about">Bartek</a>.</p>
-        <p>I live in sunny LA and I like to build interactive things.</p>
+        <p>Hi! my name is <a href="/about">Bartek</a>.</p>
+        <p>I like to build things.</p>
     </h2>
 
     <section id="projects">
         <ul class="projects">
             <li class="box title-box">
-                <div class="container"><h1>Work</h1></div>
+                <div class="container">
+                    <h1>Work</h1>
+                </div>
                 <div class="spacer"></div>
             </li>
             {{#each data.projects}}
@@ -74,7 +76,9 @@
             </li>
             {{/each}}
             <li class="box title-box">
-                <div class="container"><h1>Play</h1></div>
+                <div class="container">
+                    <h1>Play</h1>
+                </div>
                 <div class="spacer"></div>
             </li>
             {{#each data.play}}

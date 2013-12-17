@@ -1,19 +1,19 @@
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
-@import url(http://fonts.googleapis.com/css?family=Droid+Sans);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400);
 
 @import "lesshat";
 
 @darkred: #840003;
 @darkgrey: #222;
-
 @grey: #999;
 
-@helvetica: Helvetica, Arial, sans-serif;
-@droid: 'Droid Sans', 'Helvetica', 'Arial', sans-serif;
-@opensans: 'Open Sans', sans-serif;
+
+@titleFont: 'Source Sans Pro', sans-serif;
+@headerFont: 'Source Sans Pro', sans-serif;
+@contentFont: Helvetica, Arial, sans-serif;
+@defFont: Helvetica, Arial, sans-serif;
 
 html, body {
-	font-family: @opensans;
+	font-family: @contentFont;
 	color: #000000;
 	margin: 0;
 	padding: 0;
@@ -28,11 +28,16 @@ html.js body {
 	overflow: hidden;
 }
 
+h1, h2, h3, h4, h5, h6, b, p {
+	font-weight: 100;
+}
+
 * {
 	.box-sizing(border-box);
 	outline: none;
 	-webkit-appearance: none;
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	-webkit-backface-visibility: hidden;
 }
 
 @import "main";

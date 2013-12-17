@@ -24,8 +24,8 @@
 
 	.close {
 		position: absolute;
-		top: 16px;
-		right: 16px;
+		top: 24px;
+		right: 24px;
 		width: 34px;
 		height: 34px;
 		background-image: url('../assets/buttons.png');
@@ -38,17 +38,6 @@
 			background-position: 100% 100%;
 			cursor: pointer;
 		}
-	}
-
-	h2 {
-		position: absolute;
-		top: 0px;
-		left: 0px;
-		font-size: 1.5em;
-		background-color: rgba(0, 0, 0, 0.5);
-		color: #ffffff;
-		padding: 5px;
-		margin: 10px 0 0 10px;
 	}
 
 	.hero {
@@ -91,7 +80,7 @@
 		}
 		
 		background-color: #222222;
-		font-family: 'Open Sans', sans-serif;
+		font-family: @contentFont;
 		width: 100%;
 
 		color: #aaaaaa;
@@ -102,8 +91,21 @@
 		padding: 2em 0 2em 0;
 		margin: 0;
 
+		@demoContentWidth: 800px;
+
+		h1 {
+			position: relative;
+			width: @demoContentWidth;
+			left: 50%;
+			margin: 0.5em 0 0.8em @demoContentWidth * -0.5;
+
+			font-family: @titleFont;
+			font-size: 4em;
+			line-height: 1em;
+			text-transform: uppercase;
+		}
+
 		.text {
-			@demoContentWidth: 800px;
 
 			position: relative;
 			width: @demoContentWidth;
@@ -136,52 +138,69 @@
 			}
 
 			h4 {
-				font-weight: 400;
-				font-size: 1.3em;
-				letter-spacing: 0.0em;
-				line-height: 1.4em;
+				font-size: 1.2em;
+				line-height: 1.6em;
 			}
 
 			h5 {
-				font-weight: 700;
-				color: #ffffff;
-				letter-spacing: 0.08em;
 				margin: 4px 0 4px 0;
+				color: #fff;
 			}
 
 			h6 {
-				font-weight: 400;
 				font-size: 0.75em;
+				color: #fff;
+			}
+
+			p {
+				font-size: 1em;
+				line-height: 1.6em;
 			}
 
 			em {
-				color: #ffffff;
-				font-weight: 400;
 				font-style: normal;
+				color: #fff;
+			}
+
+			ul {
+				list-style-type: none;
+				padding: 0;
+
+				li {
+					font-size: 0.9em;
+					line-height: 2em;
+				}
+
+				b {
+					color: #fff;
+				}
+
+				i {
+				}
+
+				i:before {
+					content: " - ";
+				}
 			}
 
 			a {
-				color: #ffffff;
-				// border-bottom: 1px solid #ffffff;
-				// padding-bottom: 1px;
-				text-decoration: underline;
+				color: inherit;
+				border-bottom: 1px solid #ffffff;
+				text-decoration: none;
 
 				&:hover {
-				// border-bottom: 2px solid #ffffff;
-				// padding-bottom: 0;
+					color: #fff;
 				}
 			}
 
 			.launch {
 				background-color: @darkred;
 				color: #ffffff;
-				padding: 8px 12px 10px 12px;
-				margin: 8px 0 8px 0;
+				padding: 10px 12px 10px 12px;
 				border-radius: 4px;
 				display: inline-block;
 
 				@media screen and (min-width: 600px) {
-					margin: 16px 0 16px 0;
 					padding: 3px 7px 5px 7px;
 				}
 
@@ -190,6 +209,7 @@
 				a {
 					color: #fff;
 					font-size: 0.8em;
+					border-bottom: 0;
 					text-decoration: none;
 					text-transform: uppercase;
 				}
@@ -214,28 +234,6 @@
 					font-size: 0.8em;
 				}
 				
-			}
-
-			ul {
-				list-style-type: none;
-				margin: 0;
-				padding: 0;
-
-				li {
-					font-size: 0.8em;
-					line-height: 1.6em;
-				}
-
-				b {
-				}
-
-				i {
-					color: #aaaaaa;
-				}
-
-				i:before {
-					content: " - ";
-				}
 			}
 
 			.video {
@@ -336,6 +334,15 @@
 
 			line-height: 1.5em;
 			padding: 1em 0 0 0;
+
+			@demoContentWidth: 90%;
+
+			h1 {
+				width: @demoContentWidth;
+				margin: 0 0 1em @demoContentWidth * -0.5;
+
+				font-size: 2.3em;
+			}
 
 			.text {
 				@demoContentWidth: 90%;
