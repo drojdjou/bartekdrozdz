@@ -370,18 +370,21 @@ section#play h3 {
     line-height: 1.5em;
     padding: 1em 0 0 0;
   }
+  #content .content h1 {
+    width: 1400px;
+    margin: 0.6em 0 0.7em -710px;
+    font-size: 8em;
+  }
   #content .content .text {
-    width: 1600px;
-    margin: 0 0 1em -800px;
+    width: 1400px;
+    margin: 0 0 1em -700px;
   }
   #content .content .text h4 {
     font-size: 2.4em;
-    line-height: 1.7em;
-    font-weight: normal;
+    line-height: 1.6em;
   }
   #content .content .text p {
     font-size: 1.6em;
-    line-height: 1.7em;
   }
   #content .content .text .launch {
     font-size: 2em;
