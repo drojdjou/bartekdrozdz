@@ -3,10 +3,14 @@ Hero = function(container) {
 	var hi = {};
 	var ASPECT = 2.35;
 	var ctn;
-	var isDemo, isWide;
+	var isDemo;
 
 	var fadeIn = function() {
 		ctn.ext.transition({ opacity: 1 }, 400, 'ease-out');
+	}
+
+	var isWide = function() {
+		return window.innerWidth >= 1024;
 	}
 
 	hi.setup = function(data) {
@@ -19,13 +23,13 @@ Hero = function(container) {
 		});
 
 		isDemo = (data.type == 'demo' && missingDeps.length == 0);
-		isWide = window.innerWidth >= 1024;
+		
 
 		ctn = EXT.create(isDemo ? 'iframe' : 'img');
 		ctn.ext.attr('frameborder', 0);
 		ctn.ext.css('opacity', 0);
 		ctn.ext.on('load', fadeIn);
-		var folder = (isWide) ? 'assets/content/1920w-235as/' : 'assets/content/871sq/';
+		var folder = isWide() ? 'assets/content/1920w-235as/' : 'assets/content/871sq/';
 		ctn.src = isDemo ? data.url : folder + data.id + '.jpg';
 		
 		hi.adjust();
@@ -36,7 +40,7 @@ Hero = function(container) {
 	hi.adjust = function() {
 		var h, w, ox;
 		
-		if(isWide) {
+		if(isWide()) {
 			if(isDemo) {
 				h = hi.height();
 				w = window.innerWidth;
@@ -79,7 +83,7 @@ Hero = function(container) {
 	}
 
 	hi.height = function() {
-		return isWide ? Math.max(window.innerWidth / ASPECT, window.innerHeight * 0.75) : window.innerWidth;
+		return isWide() ? Math.max(window.innerWidth / ASPECT, window.innerHeight * 0.75) : window.innerWidth;
 	}
 
 	hi.onResize = function() {
