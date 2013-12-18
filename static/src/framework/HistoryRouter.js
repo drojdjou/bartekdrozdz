@@ -22,7 +22,7 @@ HistoryRouter = function (broadcast) {
 				// Skip absolute URLs, those that have a _blank target 
 				// and those that are explicitely set to not be hijacked
 				// (this is done by adding an attribute like this: data-hj='no')
-				
+
 				// console.log('HistoryRouter.hijackLinks: skipping', url);
 				continue;
 			}
@@ -30,7 +30,7 @@ HistoryRouter = function (broadcast) {
 			if (!link.hijacked) {
 				link.hijacked = true;
 
-				var ev = (Simplrz.touch) ? 'touchstart' : 'click';
+				var ev = (Simplrz.touch) ? 'touchend' : 'click';
 
 				link.addEventListener(ev, function (e) {
 					e.preventDefault();

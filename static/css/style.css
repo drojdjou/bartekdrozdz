@@ -138,7 +138,7 @@ p {
   background-repeat: no-repeat;
   background-color: rgba(0, 0, 0, 0.5);
 }
-#content .close:hover {
+.no-touch #content .close:hover {
   background-position: 100% 100%;
   cursor: pointer;
 }
@@ -478,7 +478,7 @@ p {
   background-position: 0 100%;
   border: 0;
 }
-#about .close:hover {
+.no-touch #about .close:hover {
   background-position: 100% 100%;
   cursor: pointer;
 }
