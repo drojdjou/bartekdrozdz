@@ -1,6 +1,6 @@
 Content = function() {
 
-	var _active = false;
+	var _active = false, _canScroll = false;
 
 	var data;
 	var section = EXT.select('#content');
@@ -19,14 +19,14 @@ Content = function() {
 	}
 
 	var onScroll = function(e) {
-        if(!_active) return;
+        if(!_active && _canScroll) return;
 
         var dx = (e) ? e.deltaY : 0;
         easer.updateTarget(dx);
     }
 
    var onRender = function() {
-   		if(!_active) return;
+   		if(!_active && _canScroll) return;
 
         var scr = easer.easeVal();
 
@@ -45,6 +45,7 @@ Content = function() {
 		_active = (r == Site.PROJECT || r == Site.ARTICLE);
 
 		if(_active) {
+			_canScroll = false;
 			data = Data.getProjectById(e.parts[1]);
 			content.innerHTML = '';
 
@@ -116,6 +117,8 @@ Content = function() {
 		}
 
 		onResize();
+
+		_canScroll = true;
 	}
 
 	VirtualScroll.on(onScroll);
