@@ -1,36 +1,5 @@
---- New framework ---
-Implement new framework
-
-
-
-
-
-
-
-### Add Head WebGL demo
-### Finish writing bio
-	Update balls demo images
-### Add links in footer
-### Link conferences & publications
-### Add "Launch project" button
-
-### Fix no-JS version
-
-### Resizing bug on detail page (possibly on about too)
-###	Content hero image needs to reload when resizing
-### Fix scrolling bug on detail page
-### Fix header scrolling effect
-#	Fix global margins on mobile
-
-
-### Header link underline with media-queries
-### Align "Work" and "Play" in boxes
-### Make Play button smaller on mobile
-### Format footer for mobile and desktop
-
-
---- 2 ---
-	Add rollover effect on boxes
-	Add rollover effect on close button
-	Reflow the main page boxes using javascript (?)
-	Add posters to video in no-js mode
+Update balls demo and images
+Add posters to video in no-js mode
+Add cooler rollover effect on close button
+Show arrow after a few sec and make it go away as soon as user scolls
+Fix project page bug

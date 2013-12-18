@@ -618,28 +618,28 @@ section#projects ul.projects li .container .hover {
   -ms-transform: translateY(150%) translateX(-15%) scaleX(2);
   transform: translateY(150%) translateX(-15%) scaleX(2);
 }
-section#projects ul.projects li .hovered-transition .hover {
+.no-touch section#projects ul.projects li .hovered-transition .hover {
   -webkit-transition: -webkit-transform 0.8s ease-out;
   -moz-transition: -moz-transform 0.8s ease-out;
   -o-transition: -o-transform 0.8s ease-out;
   -ms-transition: -ms-transform 0.8s ease-out;
   transition: transform 0.8s ease-out;
 }
-section#projects ul.projects li .hovered-transition img {
+.no-touch section#projects ul.projects li .hovered-transition img {
   -webkit-transition: -webkit-transform 0.2s ease-out;
   -moz-transition: -moz-transform 0.2s ease-out;
   -o-transition: -o-transform 0.2s ease-out;
   -ms-transition: -ms-transform 0.2s ease-out;
   transition: transform 0.2s ease-out;
 }
-section#projects ul.projects li .hovered-transition h4 {
+.no-touch section#projects ul.projects li .hovered-transition h4 {
   -webkit-transition: -webkit-transform 0.2s ease-out;
   -moz-transition: -moz-transform 0.2s ease-out;
   -o-transition: -o-transform 0.2s ease-out;
   -ms-transition: -ms-transform 0.2s ease-out;
   transition: transform 0.2s ease-out;
 }
-section#projects ul.projects li .hovered-container:hover .hover {
+.no-touch section#projects ul.projects li .hovered-container:hover .hover {
   -webkit-transition: -webkit-transform 0.1s ease-out;
   -moz-transition: -moz-transform 0.1s ease-out;
   -o-transition: -o-transform 0.1s ease-out;
@@ -651,14 +651,14 @@ section#projects ul.projects li .hovered-container:hover .hover {
   -ms-transform: translateY(80%) scaleX(2);
   transform: translateY(80%) scaleX(2);
 }
-section#projects ul.projects li .hovered-container:hover img {
+.no-touch section#projects ul.projects li .hovered-container:hover img {
   -webkit-transform: translateY(-3%);
   -moz-transform: translateY(-3%);
   -o-transform: translateY(-3%);
   -ms-transform: translateY(-3%);
   transform: translateY(-3%);
 }
-section#projects ul.projects li .hovered-container:hover h4 {
+.no-touch section#projects ul.projects li .hovered-container:hover h4 {
   -webkit-transform: translateY(-40%);
   -moz-transform: translateY(-40%);
   -o-transform: translateY(-40%);

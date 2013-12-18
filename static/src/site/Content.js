@@ -13,7 +13,7 @@ Content = function() {
 		if(!_active) return;
 
 		var max = (content.ext.height() - window.innerHeight);
-		easer.setLimits(Math.min(0, -max), hero.height());
+		easer.setLimits(Math.min(hero.height(), -max), hero.height());
 		hero.onResize();
 		onScroll();
 	}
