@@ -25,6 +25,7 @@
 		"src/framework/Util.js",
 
 		"src/site/util/Easer.js",
+		"src/site/util/Timing.js",
 
 		"src/site/Site.js",
 		"src/site/Main.js",

@@ -57,7 +57,7 @@ Content = function() {
 			case Site.ARTICLE:
 				if(!startUp) {
 					hero.adjust();
-					section.ext.transition({ transform: { x: 0 }, opacity: 1 }, 800, 'ease', 0, function() {
+					section.ext.transition({ transform: { x: 0 }, opacity: 1 }, Timing.pageTransition(), 'ease', 0, function() {
 						// console.log("Content.transtion.in over");
 						hero.setup(data);
 					});
@@ -74,7 +74,7 @@ Content = function() {
 				hero.killIframe();
 
 				if(!startUp) {
-					section.ext.transition({ transform: { x: offset }, opacity: 0 }, 800, 'ease', 0, function() {
+					section.ext.transition({ transform: { x: offset }, opacity: 0 }, Timing.pageTransition(), 'ease', 0, function() {
 						hero.kill();
 					});
 				} else {

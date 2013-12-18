@@ -41,7 +41,7 @@ About = function() {
 			case Site.ABOUT:
 				if(!startUp) {
 					_canScroll = false;
-					plate.ext.transition({ transform: { rotY: 0, x: 0 }, opacity: 1 }, 800, 'ease', 0, onAnimatedIn);
+					plate.ext.transition({ transform: { rotY: 0, x: 0 }, opacity: 1 }, Timing.pageTransition(), 'ease', 0, onAnimatedIn);
 				} else {
 					_canScroll = true;
 				}
@@ -49,7 +49,7 @@ About = function() {
 			default:
 				if(!startUp) {
 					_canScroll = false;
-					plate.ext.transition({ transform: { rotY: -90, x: -offset }, opacity: 0 }, 800, 'ease');
+					plate.ext.transition({ transform: { rotY: -90, x: -offset }, opacity: 0 }, Timing.pageTransition(), 'ease');
 				} else {
 					plate.ext.transform({ rotY: -90, x: -offset });
 					plate.ext.css('opacity', 0);

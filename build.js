@@ -31,6 +31,7 @@
 		"framework/Util",
 
 		"site/util/Easer",
+		"site/util/Timing",
 
 		"site/Site",
 		"site/Main",

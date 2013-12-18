@@ -59,7 +59,7 @@ Main = function() {
 			case Site.MAIN:
 
 				if(pr) {
-					section.ext.transition({ transform: { x: 0 } }, 800, 'ease');
+					section.ext.transition({ transform: { x: 0 } }, Timing.pageTransition(), 'ease');
 				} else {
 					section.ext.transform({ x: 0 });
 				}
@@ -68,7 +68,7 @@ Main = function() {
 			case Site.ABOUT:
 
 				if(pr) {
-					section.ext.transition({ transform: { x: offset } }, 800, 'ease');
+					section.ext.transition({ transform: { x: offset } }, Timing.pageTransition(), 'ease');
 				} else {
 					section.ext.transform({ x: offset });
 				}
@@ -77,7 +77,7 @@ Main = function() {
 			case Site.PROJECT:
 
 				if(pr) {
-					section.ext.transition({ transform: { x: -window.innerWidth } }, 800, 'ease', 0, function() {
+					section.ext.transition({ transform: { x: -window.innerWidth } }, Timing.pageTransition(), 'ease', 0, function() {
 						// console.log("Main.transtion.in over");
 					});
 				} else {
