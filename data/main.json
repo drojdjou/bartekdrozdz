@@ -14,7 +14,6 @@
             "type": "article",
             "deps": [],
             "name": "Only the name remains",
-            "poster": "assets/content/toyota-235.jpg",
             "contentUrl": "data/toyota",
             "tint": "#6e9da8"
         },
@@ -23,7 +22,6 @@
             "name": "Rectify",
             "type": "article",
             "deps": [],
-            "poster": "assets/content/rectify-235.jpg",
             "contentUrl": "data/rectify",
             "tint": "#a2a1a2"
         },

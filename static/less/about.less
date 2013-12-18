@@ -17,9 +17,14 @@
 
 	.no-js & {
 		position: relative;
-		width: 800px;
-		left: 50%;
-		margin-left: -400px;
+		width: 100%;
+		
+
+		@media screen and (min-width: 800px) {
+			width: 800px;
+			left: 50%;
+			margin-left: -400px;
+		}
 	}
 
 	overflow-x: hidden;
@@ -83,9 +88,10 @@
 		color: #fff;
 	}
 
-	a {
+	.no-touch & a:not(.close):hover {
 		border-bottom: 1px solid white;
 	}
+
 
 	ul {
 		list-style-type: none;
@@ -109,10 +115,6 @@
 		div {
 			padding: 30px 20px 20px 20px;
 			font-weight: normal;
-		}
-
-		a {
-			border-bottom: 1px solid white;
 		}
 
 		.close {

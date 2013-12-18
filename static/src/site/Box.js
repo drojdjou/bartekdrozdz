@@ -109,7 +109,6 @@ var Box = function(element) {
     element.box = {};
     
     element.box.onResize = function(m) {
-        console.log("Box.onResize");
         easer.setLimits(-m, 0);
 
         rect = element.ext.rect();

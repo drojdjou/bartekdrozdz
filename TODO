@@ -1,5 +1,5 @@
-Update balls demo and images
-Add posters to video in no-js mode
-Add cooler rollover effect on close button
-Show arrow after a few sec and make it go away as soon as user scolls
-Fix project page bug
+	Update balls demo and images
+	Add posters to video in no-js mode
+	Add cooler rollover effect on close button
+	Show arrow after a few sec and make it go away as soon as user scolls
+	Fallback HTML info for videos in project pages

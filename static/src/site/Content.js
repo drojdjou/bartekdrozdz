@@ -59,14 +59,18 @@ Content = function() {
 			case Site.PROJECT:
 			case Site.ARTICLE:
 				if(!startUp) {
+
 					hero.adjust();
 					hero.setup(data);
+
 					section.ext.transition({ transform: { x: 0 }, opacity: 1 }, Timing.pageTransition(), 'ease', 0, function() {
 						hero.load(data);
 					});
+
 				} else {
 					section.ext.transform({ x: 0 });
 					section.ext.css('opacity', 1);
+					
 					hero.setup(data);
 					hero.load(data);
 				}

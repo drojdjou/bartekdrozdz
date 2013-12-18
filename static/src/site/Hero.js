@@ -35,6 +35,9 @@ Hero = function(container) {
 	}
 
 	hi.load = function(data) {
+
+		if(!ctn) hi.setup(data);
+		
 		var folder = isWide() ? 'assets/content/1920w-235as/' : 'assets/content/871sq/';
 		ctn.src = isDemo ? data.url : folder + data.id + '.jpg';
 	}

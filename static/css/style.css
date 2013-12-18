@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400);
 html,
 body {
   font-family: Helvetica, Arial, sans-serif;
@@ -21,6 +21,9 @@ body {
 }
 html.js body {
   overflow: hidden;
+}
+html.no-js body {
+  overflow: visible;
 }
 h1,
 h2,
@@ -437,9 +440,14 @@ p {
 }
 .no-js #about {
   position: relative;
-  width: 800px;
-  left: 50%;
-  margin-left: -400px;
+  width: 100%;
+}
+@media screen and (min-width: 800px) {
+  .no-js #about {
+    width: 800px;
+    left: 50%;
+    margin-left: -400px;
+  }
 }
 #about div {
   -webkit-transform-origin: 100% 0;
@@ -490,7 +498,7 @@ p {
   text-decoration: none;
   color: #fff;
 }
-#about a {
+.no-touch #about a:not(.close):hover {
   border-bottom: 1px solid white;
 }
 #about ul {
@@ -509,9 +517,6 @@ p {
   #about div {
     padding: 30px 20px 20px 20px;
     font-weight: normal;
-  }
-  #about a {
-    border-bottom: 1px solid white;
   }
   #about .close {
     width: 30px;
