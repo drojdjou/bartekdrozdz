@@ -58,11 +58,16 @@ window.Simplrz = (function() {
 		ie = (m && m.length > 1) ? parseInt(m[1]) : null;
 	}
 
+
+	// These properties are for browser specific hack (yes, they are sometimes necessary)
 	s["ie"] = ie || false;
 	classes.push((ie) ? "ie-" + ie : "no-ie");
 
 	s["firefox"] = prefix.lowercase == "moz";
-	classes.push((ie) ? "firefox" : "no-firefox");
+	classes.push(s["firefox"] ? "firefox" : "no-firefox");
+
+	s["ipad7"] = navigator.userAgent.match(/iPad;.*CPU.*OS 7_\d/i);
+	classes.push(s["ipad7"] ? "ipad7" : "no-ipad7");
 
 	check("css3d", function() {
 		var div = document.createElement("div");

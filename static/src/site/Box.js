@@ -27,14 +27,18 @@ var Box = function(element) {
         var imagePath = "assets/content/%f%/%id%.jpg".replace("%f%", imageFolder).replace("%id%", data.id);
 
         img.ext.on('load', function() {
-            mask.ext.transition({ 'backgroundColor': 'rgba(0,0,0,0)' }, 500, 'ease', 0, function() {
-                mask.ext.attr('class', 'hover');
-                Util.delay(function() {
-                    mask.ext.css('backgroundColor', data.tint);
-                    container.classList.add('hovered-transition');
-                    releaseHoverLock();
+            if(Simplrz.touch) {
+                mask.ext.css('opacity', 0);
+            } else {
+                    mask.ext.transition({ 'backgroundColor': 'rgba(0,0,0,0)' }, 500, 'ease', 0, function() {
+                    mask.ext.attr('class', 'hover');
+                    Util.delay(function() {
+                        mask.ext.css('backgroundColor', data.tint);
+                        container.classList.add('hovered-transition');
+                        releaseHoverLock();
+                    });
                 });
-            });
+            }
         });
     }
 
@@ -70,9 +74,7 @@ var Box = function(element) {
             var ex = Math.clamp01(Math.abs( (bb.left + bb.width / 2) - touchX) / window.innerWidth);
 
             if(scrollDirection < 0) ey = 1 - ey;
-
             var e = ey * 0.5 + (1 - ex) * 0.5;
-
             easer.setEase(0.05 + e * 0.12); 
         }
 

@@ -19,7 +19,7 @@ Hero = function(container) {
 		});
 
 		isDemo = (data.type == 'demo' && missingDeps.length == 0);
-		isWide = window.innerWidth > 1024;
+		isWide = window.innerWidth >= 1024;
 
 		ctn = EXT.create(isDemo ? 'iframe' : 'img');
 		ctn.ext.attr('frameborder', 0);
