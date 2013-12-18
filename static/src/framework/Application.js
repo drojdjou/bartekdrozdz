@@ -12,6 +12,10 @@ Application = (function(window) {
 			app.trigger(MSG.RESIZE, e);
 		});
 
+		window.addEventListener('orientationchange', function(e) {
+			app.trigger(MSG.RESIZE, e);
+		});
+
 		if(window.FrameImpulse && window.Anm) FrameImpulse.on(Anm.update);
 	}
 	
