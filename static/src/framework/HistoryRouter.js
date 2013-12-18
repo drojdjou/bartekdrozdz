@@ -31,7 +31,7 @@ HistoryRouter = function (broadcast) {
 				link.hijacked = true;
 
 				var cb = function (e) {
-					e.preventDefault();
+					if(e) e.preventDefault();
 					pushState(this.href);
 				}
 
