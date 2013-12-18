@@ -30,12 +30,16 @@ HistoryRouter = function (broadcast) {
 			if (!link.hijacked) {
 				link.hijacked = true;
 
-				var ev = (Simplrz.touch) ? 'touchend' : 'click';
-
-				link.addEventListener(ev, function (e) {
+				var cb = function (e) {
 					e.preventDefault();
 					pushState(this.href);
-				});
+				}
+
+				if(Simplrz.touch) {
+					Util.handleTap(link, cb);
+				} else {
+					link.addEventListener(ev, cb);
+				}
 			}
 		}
 	};

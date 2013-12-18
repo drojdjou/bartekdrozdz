@@ -49,6 +49,44 @@ Math.hexToRgb = function(hex) {
 
 Util = {
 
+	handleTap: function(element, callback) {
+
+		var tapHandler = (function() {
+
+			var th = {};
+			var minTime = 20000;
+			var startTime;
+			var minDistSq = 100;
+			var sx, sy;
+
+			th.touchStart = function(e) {
+				startTime = new Date().getTime();
+				sx = e.targetTouches[0].pageX;
+				sy = e.targetTouches[0].pageY;
+			}
+
+			th.touchEnd = function(e) {
+				var t = new Date().getTime() - startTime;
+
+				var dx = e.changedTouches[0].pageX - sx;
+				var dy = e.changedTouches[0].pageY - sy;
+				var dsq = (dx*dx + dy*dy);
+
+				if(t < minTime && dsq < minDistSq) callback();
+			}
+
+			return th;
+
+		})();
+
+		element.addEventListener("touchstart", tapHandler.touchStart);
+		element.addEventListener("touchend", tapHandler.touchEnd);
+
+		return tapHandler;
+	}
+
+
+
 	delay: function(func, time, scope) {
 		time = time || 0;
 		setTimeout(function () {
