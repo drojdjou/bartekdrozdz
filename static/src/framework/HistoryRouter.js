@@ -19,13 +19,20 @@ HistoryRouter = function (broadcast) {
 			var hj = link.ext.attr('data-hj');
 
 			if(url.indexOf(':') > -1 || target == '_blank' || hj == "no") {
+				// Skip absolute URLs, those that have a _blank target 
+				// and those that are explicitely set to not be hijacked
+				// (this is done by adding an attribute like this: data-hj='no')
+				
 				// console.log('HistoryRouter.hijackLinks: skipping', url);
 				continue;
 			}
 			
 			if (!link.hijacked) {
 				link.hijacked = true;
-				link.addEventListener('click', function (e) {
+
+				var ev = (Simplrz.touch) ? 'touchstart' : 'click';
+
+				link.addEventListener(ev, function (e) {
 					e.preventDefault();
 					pushState(this.href);
 				});
