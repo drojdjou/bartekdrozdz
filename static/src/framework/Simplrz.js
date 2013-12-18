@@ -1,6 +1,6 @@
 window.Simplrz = (function() {
 
-	var s ={}, classes = ['js']; // Add 'js' class by default (bc if this code runs, JS is enabled, right?)
+	var s = {}, classes = ['js']; // Add 'js' class by default (bc if this code runs, JS is enabled, right?)
 
 	var check = function(feature, test) {
 		var result = test();
@@ -34,7 +34,7 @@ window.Simplrz = (function() {
 	 *	After reading this (https://github.com/zamiang/detect-css3-3d-transform)
 	 *	I realized detecting css3d transforms is unreliable. But also - we don't really need it
 	 *	because typically the only browser we need to support that doesn't do css 3d transforms
-	 *	is IE9 and IE8 so why not do some good old browser sniffing. Then, I found the snippet below.
+	 *	is IE9 and IE8 so why not do some good old browser sniffing?
 	 *
 	 *	(as a reminder: IE9 - only 2d transforms, no transrion, no animarions, IE8 - not even 2d)
 	 */
@@ -66,7 +66,7 @@ window.Simplrz = (function() {
 	s["firefox"] = prefix.lowercase == "moz";
 	classes.push(s["firefox"] ? "firefox" : "no-firefox");
 
-	s["ipad7"] = navigator.userAgent.match(/iPad;.*CPU.*OS 7_\d/i);
+	s["ipad7"] = navigator.userAgent.match(/iPad;.*CPU.*OS 7_\d/i) !== false;
 	classes.push(s["ipad7"] ? "ipad7" : "no-ipad7");
 
 	check("css3d", function() {
@@ -124,6 +124,8 @@ window.Simplrz = (function() {
 			window.ActiveXObject && new ActiveXObject('ShockwaveFlash.ShockwaveFlash')
 		);
 	});
+
+	s.classes = classes;
 
 	return s;
 

@@ -52,6 +52,9 @@ featureList.appendChild(li);
 li.innerHTML = "<b>prefix</b> - " + prefixes.join(", ");
 featureList.appendChild(li);
 
+li.innerHTML = "<b>classes</b> - " + Simplrz.classes.join(", ");
+featureList.appendChild(li);
+
 for(var p in props) {
     var prop = props[p];
     var li = document.createElement("li");
