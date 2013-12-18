@@ -5,7 +5,10 @@ var Box = function(element) {
 	var ext = element.ext;
 	var id = ext.attr("data-id");
     var imageLoaded = false, hoverLockTimer = 0;
+
     var easer = new Easer(), scrollDirection = 0, touchX = 0;
+    easer.setEase(0.1); 
+
     var container = ext.select(".container");
 
     if(id) {
