@@ -38,7 +38,7 @@ HistoryRouter = function (broadcast) {
 				if(Simplrz.touch) {
 					Util.handleTap(link, cb);
 				} else {
-					link.addEventListener(ev, cb);
+					link.addEventListener('click', cb);
 				}
 			}
 		}

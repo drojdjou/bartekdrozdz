@@ -83,9 +83,7 @@ Util = {
 		element.addEventListener("touchend", tapHandler.touchEnd);
 
 		return tapHandler;
-	}
-
-
+	},
 
 	delay: function(func, time, scope) {
 		time = time || 0;
