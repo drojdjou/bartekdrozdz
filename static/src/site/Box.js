@@ -63,7 +63,7 @@ var Box = function(element) {
             }
         }
 
-        // On touch screens scroll the whole panel (for better performance) (see Main.onRender)
+        // Individual easing only on non-touch screens (for better performance)
         if(!Simplrz.touch) {
             var bb = element.ext.rect();
             var ey = Math.clamp01(bb.top / window.innerHeight);
@@ -76,9 +76,8 @@ var Box = function(element) {
             easer.setEase(0.05 + e * 0.12); 
         }
 
-            var v = easer.easeVal();
-            element.ext.transform({ y: v }); 
-        // }       
+        var v = easer.easeVal();
+        element.ext.transform({ y: v });       
     }
 
     var onRoute = function(e) {

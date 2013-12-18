@@ -40,12 +40,6 @@ Main = function() {
         
         var n = 1 - Math.norm(scr, -20, -100);
         header.ext.css('opacity', n);
-
-        // On touch screens scroll the whole panel (for better performance) (see Box.onRender)
-        // if(Simplrz.touch) {
-        // 	projects.ext.y = scr * 1.25;
-        // 	projects.ext.transform();
-        // }
 	}
 
 	var onRoute = function(e) {
