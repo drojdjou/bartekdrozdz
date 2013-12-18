@@ -72,7 +72,7 @@ Util = {
 				var dy = e.changedTouches[0].pageY - sy;
 				var dsq = (dx*dx + dy*dy);
 
-				if(t < minTime && dsq < minDistSq) callback();
+				if(t < minTime && dsq < minDistSq) callback.apply(element);
 			}
 
 			return th;
