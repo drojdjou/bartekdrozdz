@@ -58,6 +58,8 @@ Util = {
 			var startTime;
 			var minDistSq = 100;
 			var sx, sy;
+			var el = element;
+			var cb = callback;
 
 			th.touchStart = function(e) {
 				startTime = new Date().getTime();
@@ -72,7 +74,7 @@ Util = {
 				var dy = e.changedTouches[0].pageY - sy;
 				var dsq = (dx*dx + dy*dy);
 
-				if(t < minTime && dsq < minDistSq) callback.apply(element);
+				if(t < minTime && dsq < minDistSq) cb.apply(el);
 			}
 
 			return th;
