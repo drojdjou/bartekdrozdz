@@ -71,10 +71,11 @@ var Box = function(element) {
             var e = ey * 0.5 + (1 - ex) * 0.5;
 
             easer.setEase(0.05 + e * 0.12); 
+        }
 
             var v = easer.easeVal();
             element.ext.transform({ y: v }); 
-        }       
+        // }       
     }
 
     var onRoute = function(e) {
