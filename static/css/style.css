@@ -57,11 +57,17 @@ p {
   font-weight: 100;
   line-height: 1.1em;
   text-align: center;
-  color: black;
+  color: #808080;
 }
 #main h2.header p {
   margin: 0;
-  color: #808080;
+}
+#main h2.header em {
+  display: block;
+  margin-top: -20px;
+  font-style: normal;
+  color: #cccccc;
+  font-size: 0.6em;
 }
 #main h2.header a {
   display: inline-block;
