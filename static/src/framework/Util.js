@@ -61,13 +61,21 @@ Util = {
 			var el = element;
 			var cb = callback;
 
+			th.click = function(e) {
+				e.preventDefault();
+			} 
+
 			th.touchStart = function(e) {
+				e.preventDefault();
+
 				startTime = new Date().getTime();
 				sx = e.targetTouches[0].pageX;
 				sy = e.targetTouches[0].pageY;
 			}
 
 			th.touchEnd = function(e) {
+				e.preventDefault();
+
 				var t = new Date().getTime() - startTime;
 
 				var dx = e.changedTouches[0].pageX - sx;
@@ -83,6 +91,7 @@ Util = {
 
 		element.addEventListener("touchstart", tapHandler.touchStart);
 		element.addEventListener("touchend", tapHandler.touchEnd);
+		element.addEventListener("click", tapHandler.click);
 
 		return tapHandler;
 	},
