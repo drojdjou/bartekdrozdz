@@ -9,6 +9,8 @@ var Box = function(element) {
     var easer = new Easer(), scrollDirection = 0, touchX = 0;
     easer.setEase(0.1); 
 
+    var rect, offset;
+
     var container = ext.select(".container");
 
     if(id) {
@@ -26,10 +28,13 @@ var Box = function(element) {
         var imageFolder = (largeScreen) ? largeFolder : smallFolder;
         var imagePath = "assets/content/%f%/%id%.jpg".replace("%f%", imageFolder).replace("%id%", data.id);
 
+        rect = element.ext.rect();
+        offset = 0;
+
         img.ext.on('load', function() {
-            if(Simplrz.touch) {
-                mask.ext.css('opacity', 0);
-            } else {
+            // if(Simplrz.touch) {
+            //     mask.ext.css('opacity', 0);
+            // } else {
                     mask.ext.transition({ 'backgroundColor': 'rgba(0,0,0,0)' }, 500, 'ease', 0, function() {
                     mask.ext.attr('class', 'hover');
                     Util.delay(function() {
@@ -38,7 +43,7 @@ var Box = function(element) {
                         releaseHoverLock();
                     });
                 });
-            }
+            // }
         });
     }
 
@@ -54,29 +59,29 @@ var Box = function(element) {
         clearTimeout(hoverLockTimer);
         container.classList.remove('hovered-container');
         hoverLockTimer = setTimeout(releaseHoverLock, 1000);
+
+        offset += e.deltaY;
     }
 
     var onRender = function() {
         if(!_active) return;
 
         if(!imageLoaded && img) {
-            var bb = element.ext.rect();
-            if(bb.top < window.innerHeight) {
+            if((rect.top + offset) < window.innerHeight) {
         		img.src = imagePath;
                 imageLoaded = true;
             }
         }
 
         // Individual easing only on non-touch screens (for better performance)
-        if(!Simplrz.touch) {
-            var bb = element.ext.rect();
-            var ey = Math.clamp01(bb.top / window.innerHeight);
-            var ex = Math.clamp01(Math.abs( (bb.left + bb.width / 2) - touchX) / window.innerWidth);
+        // if(!Simplrz.touch) {
+            var ey = Math.clamp01((rect.top + offset) / window.innerHeight);
+            var ex = Math.clamp01(Math.abs( (rect.left + rect.width / 2) - touchX) / window.innerWidth);
 
             if(scrollDirection < 0) ey = 1 - ey;
             var e = ey * 0.5 + (1 - ex) * 0.5;
             easer.setEase(0.05 + e * 0.12); 
-        }
+        // }
 
         var v = easer.easeVal();
         element.ext.transform({ y: v });       
@@ -91,7 +96,6 @@ var Box = function(element) {
             container.classList.remove('hovered-container');
         }
     };
-
     
     VirtualScroll.on(onScroll);
     Application.on(MSG.ROUTE, onRoute);
@@ -110,6 +114,9 @@ var Box = function(element) {
     
     element.box.onResize = function(m) {
         easer.setLimits(-m, 0);
+
+        rect = element.ext.rect();
+        offset = 0;
 
         var bb = element.ext.rect();
 
