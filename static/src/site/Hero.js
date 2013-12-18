@@ -24,17 +24,19 @@ Hero = function(container) {
 
 		isDemo = (data.type == 'demo' && missingDeps.length == 0);
 		
-
 		ctn = EXT.create(isDemo ? 'iframe' : 'img');
 		ctn.ext.attr('frameborder', 0);
 		ctn.ext.css('opacity', 0);
 		ctn.ext.on('load', fadeIn);
-		var folder = isWide() ? 'assets/content/1920w-235as/' : 'assets/content/871sq/';
-		ctn.src = isDemo ? data.url : folder + data.id + '.jpg';
 		
 		hi.adjust();
 		container.innerHTML = '';
 		container.appendChild(ctn);
+	}
+
+	hi.load = function(data) {
+		var folder = isWide() ? 'assets/content/1920w-235as/' : 'assets/content/871sq/';
+		ctn.src = isDemo ? data.url : folder + data.id + '.jpg';
 	}
 
 	hi.adjust = function() {

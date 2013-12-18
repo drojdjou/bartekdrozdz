@@ -30,7 +30,7 @@ HistoryRouter = function (broadcast) {
 			if (!link.hijacked) {
 				link.hijacked = true;
 
-				var ev = (Simplrz.touch) ? 'touchend' : 'click';
+				var ev = (Simplrz.touch) ? 'click' : 'click';
 
 				link.addEventListener(ev, function (e) {
 					e.preventDefault();

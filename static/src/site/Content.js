@@ -60,14 +60,15 @@ Content = function() {
 			case Site.ARTICLE:
 				if(!startUp) {
 					hero.adjust();
+					hero.setup(data);
 					section.ext.transition({ transform: { x: 0 }, opacity: 1 }, Timing.pageTransition(), 'ease', 0, function() {
-						// console.log("Content.transtion.in over");
-						hero.setup(data);
+						hero.load(data);
 					});
 				} else {
 					section.ext.transform({ x: 0 });
 					section.ext.css('opacity', 1);
 					hero.setup(data);
+					hero.load(data);
 				}
 
 				break;
