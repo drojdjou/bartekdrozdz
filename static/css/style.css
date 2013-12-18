@@ -525,10 +525,6 @@ section#projects ul.projects {
   margin: 0;
   padding: 0;
 }
-.touch section#projects ul.projects {
-  clear: both;
-  overflow: auto;
-}
 section#projects ul.projects .title-box .container {
   position: absolute;
   top: 0;
