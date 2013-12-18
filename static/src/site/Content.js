@@ -47,8 +47,6 @@ Content = function() {
 			content.innerHTML = '';
 
 			easer.reset(hero.height());
-			var max = content.ext.height() - window.innerHeight;
-			easer.setLimits(Math.min(0, -max), hero.height());
 
 			Loader.loadText('/data/' + e.parts[1], onData);
 		}
