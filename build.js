@@ -12,7 +12,6 @@
 
 	include: [		
 		"../../app/shared/Data",
-		"lib/RLdummy",
 
 		"framework/Simplrz",
 		"framework/Events",
