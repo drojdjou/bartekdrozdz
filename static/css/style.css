@@ -160,10 +160,8 @@ p {
 }
 @media screen and (max-width: 600px) {
   #content .close {
-    top: 4px;
-    right: 4px;
-    width: 26px;
-    height: 26px;
+    top: 8px;
+    right: 8px;
   }
   #content h2 {
     padding: 4px;
