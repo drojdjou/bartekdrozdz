@@ -106,14 +106,14 @@ Content = function() {
 			playImage.ext.on('click', function() {
 				video.ext.css("display", "block");
 				video.play();
-				// playImage.ext.css("display", "none");
+				playImage.ext.css("display", "none");
 			});
 		}
 
 		if(video && Simplrz.touch) {
 			var resetVideo = function() {
 				video.ext.css("display", "none");
-				// playImage.ext.css("display", "block");
+				playImage.ext.css("display", "block");
 			}
 
 			video.ext.css("display", "none");
