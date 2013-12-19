@@ -104,7 +104,7 @@ window.Simplrz = (function() {
 	});
 
 
-	check("webrct", function() {
+	check("webrtc", function() {
 		return ('getUserMedia' in navigator || 'webkitGetUserMedia' in navigator);
 	});
 

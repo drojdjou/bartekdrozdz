@@ -134,7 +134,7 @@
         {
             "id": "webcam",
             "type": "demo",
-            "deps": ["webgl", "webrct"],
+            "deps": ["webgl", "webrtc"],
             "name": "Webcam effect",
             "imageLarge": "assets/play/webcam.jpg",
             "url": "http://j3d.bartekdrozdz.com/demo/020_Webcam.html",
