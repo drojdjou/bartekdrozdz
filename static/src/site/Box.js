@@ -28,7 +28,7 @@ var Box = function(element) {
         var largeFolder = (data.type == "demo") ? "400sq" : "675sq";
         var smallFolder = (data.type == "demo") ? "200sq" : "320sq";
         var imageFolder = (largeScreen) ? largeFolder : smallFolder;
-        var imagePath = "assets/content/%f%/%id%.jpg".replace("%f%", imageFolder).replace("%id%", data.id);
+        var imagePath = Site.CDN + "assets/content/%f%/%id%.jpg".replace("%f%", imageFolder).replace("%id%", data.id);
 
         img.ext.on('load', function() {
             // if(Simplrz.touch) {

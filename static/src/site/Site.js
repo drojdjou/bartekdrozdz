@@ -13,6 +13,8 @@ window.Site = function(data) {
 	Content();
 }
 
+Site.CDN = "http://cdn.bartekdrozdz.com/";
+
 Site.MAIN = "";
 Site.ABOUT = "about";
 Site.PROJECT = "project";

@@ -21,7 +21,8 @@ var context = {
 	config: {
 		javascriptEnabled: true,
 		dev: defaultToDev,
-		jsq: ''
+		jsq: '',
+		cdn: 'http://cdn.bartekdrozdz.com/'
 	},
 
 	imports: require('../data/imports.json'),

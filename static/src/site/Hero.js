@@ -38,7 +38,7 @@ Hero = function(container) {
 
 		if(!ctn) hi.setup(data);
 		
-		var folder = isWide() ? 'assets/content/1920w-235as/' : 'assets/content/871sq/';
+		var folder = isWide() ? Site.CDN + 'assets/content/1920w-235as/' : Site.CDN + 'assets/content/871sq/';
 		ctn.src = isDemo ? data.url : folder + data.id + '.jpg';
 	}
 

@@ -6,6 +6,8 @@
 <!DOCTYPE html>
 <!-- <![endif]-->
 
+<!-- {{config.cdn}} -->
+
 {{#if config.javascriptEnabled}}
 <html>
 {{else}}
@@ -73,7 +75,7 @@
                     <img>
                     <div class="mask"></div>
                     {{else}}
-                    <img src="/assets/content/675sq/{{id}}.jpg">
+                    <img src="{{../../config.cdn}}assets/content/675sq/{{id}}.jpg">
                     {{/if}}
                     <h4>{{name}}</h4>
                 </div>
@@ -95,7 +97,7 @@
                     <img>
                     <div class="mask"></div>
                     {{else}}
-                    <img src="/assets/content/400sq/{{id}}.jpg">
+                    <img src="{{../../config.cdn}}assets/content/400sq/{{id}}.jpg">
                     {{/if}}
                     <h4>{{name}}</h4>
                 </div>
