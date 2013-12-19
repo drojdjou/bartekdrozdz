@@ -23,7 +23,8 @@ var Box = function(element) {
 
         mask.ext.css('backgroundColor', data.tint);
 
-        var largeScreen = window.innerWidth > 768;
+        // Always load big images for non-touch devices (ex. when user has browser window very small on desktop)
+        var largeScreen = window.innerWidth > 768 || (!Simplrz.touch);
         var largeFolder = (data.type == "demo") ? "400sq" : "675sq";
         var smallFolder = (data.type == "demo") ? "200sq" : "320sq";
         var imageFolder = (largeScreen) ? largeFolder : smallFolder;
