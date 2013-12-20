@@ -35,8 +35,8 @@ var Box = function(element) {
                 mask.ext.attr('class', 'hover');
                 Util.delay(function() {
                     mask.ext.css('backgroundColor', data.tint);
-                    container.classList.add('hovered-transition');
-                    releaseHoverLock();
+                    if(!Simplrz.touch) container.classList.add('hovered-transition');
+                    imageLoaded = true;
                 });
             });
         });
@@ -44,7 +44,7 @@ var Box = function(element) {
 
     var applyHoverLock = function() {
         if(Simplrz.touch) return;
-        container.classList.add('hovered-container');
+        container.classList.remove('hovered-container');
         hoverLocked = true;
     }
 
@@ -67,11 +67,10 @@ var Box = function(element) {
         if(!imageLoaded && img) {
             if((initY + offset) < window.innerHeight) {
         		img.src = imagePath;
-                imageLoaded = true;
             }
         }
 
-        if(easer.velocity < 0.01 && hoverLocked) releaseHoverLock();
+        if(easer.velocity < 0.1 && hoverLocked && imageLoaded) releaseHoverLock();
 
         var ey = Math.clamp01((initY + offset) / window.innerHeight);
         var ex = Math.clamp01(Math.abs( (rect.left + rect.width / 2) - Pointer.x) / window.innerWidth);

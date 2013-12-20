@@ -629,25 +629,25 @@ section#projects ul.projects li .container .hover {
   transition: transform 0.8s ease-out;
 }
 .no-touch section#projects ul.projects li .hovered-transition img {
-  -webkit-transition: -webkit-transform 0.2s ease-out;
-  -moz-transition: -moz-transform 0.2s ease-out;
-  -o-transition: -o-transform 0.2s ease-out;
-  -ms-transition: -ms-transform 0.2s ease-out;
-  transition: transform 0.2s ease-out;
+  -webkit-transition: -webkit-transform 0.2s ease-out 0.1s;
+  -moz-transition: -moz-transform 0.2s ease-out 0.1s;
+  -o-transition: -o-transform 0.2s ease-out 0.1s;
+  -ms-transition: -ms-transform 0.2s ease-out 0.1s;
+  transition: transform 0.2s ease-out 0.1s;
 }
 .no-touch section#projects ul.projects li .hovered-transition h4 {
+  -webkit-transition: -webkit-transform 0.2s ease-in;
+  -moz-transition: -moz-transform 0.2s ease-in;
+  -o-transition: -o-transform 0.2s ease-in;
+  -ms-transition: -ms-transform 0.2s ease-in;
+  transition: transform 0.2s ease-in;
+}
+.no-touch section#projects ul.projects li .hovered-container:hover .hover {
   -webkit-transition: -webkit-transform 0.2s ease-out;
   -moz-transition: -moz-transform 0.2s ease-out;
   -o-transition: -o-transform 0.2s ease-out;
   -ms-transition: -ms-transform 0.2s ease-out;
   transition: transform 0.2s ease-out;
-}
-.no-touch section#projects ul.projects li .hovered-container:hover .hover {
-  -webkit-transition: -webkit-transform 0.1s ease-out;
-  -moz-transition: -moz-transform 0.1s ease-out;
-  -o-transition: -o-transform 0.1s ease-out;
-  -ms-transition: -ms-transform 0.1s ease-out;
-  transition: transform 0.1s ease-out;
   -webkit-transform: translateY(80%) scaleX(2);
   -moz-transform: translateY(80%) scaleX(2);
   -o-transform: translateY(80%) scaleX(2);
