@@ -30,6 +30,7 @@ Hero = function(container) {
 
 		// If it is a demo, it just doesn't look very good (too many color flashes)
 		if(!isDemo) container.ext.css('backgroundColor', data.tint);
+		else container.ext.css('backgroundColor', "#000");
 
 		ctn.ext.on('load', fadeIn);
 		

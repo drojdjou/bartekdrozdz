@@ -170,7 +170,7 @@ p {
   }
 }
 #content .content {
-  background-color: #222222;
+  background-color: rgba(0, 0, 0, 0.5);
   font-family: Helvetica, Arial, sans-serif;
   width: 100%;
   color: #aaaaaa;
