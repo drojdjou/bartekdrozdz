@@ -9,13 +9,14 @@ var data = require('./shared/Data').Data;
 data.setMain(require('../data/main.json'));
 
 var serverRoot = process.argv[2];
+var defaultToDev = (process.argv[3] == "dev");
+var port = process.argv[4] || 3123;
 
 if(!serverRoot || serverRoot == "") {
 	console.log(strftime('%d %b %H:%M:%S') + " - [bd-server] - Server root not provided, defaulting to ./");
 	serverRoot = "./";
 }
 
-var defaultToDev = process.argv[3] == "dev";
 
 var context = {
 	config: {
@@ -99,7 +100,9 @@ app.get('/shared/:name', function(request, response) {
 	response.sendfile(p);
 });
 
-app.listen(3123);
+app.listen(port);
+
+console.log("Server started on port " + port);
 
 
 

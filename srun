@@ -1,0 +1,2 @@
+#!/bin/bash
+nohup node app/bd-server.js ./ prod $1 &
