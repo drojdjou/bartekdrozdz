@@ -49,11 +49,25 @@ for(var prefix in Simplrz.prefix) {
 li.innerHTML = "<b>user-agent</b> - " + navigator.userAgent;
 featureList.appendChild(li);
 
+li.innerHTML = "<b>platform</b> - " + navigator.platform;
+featureList.appendChild(li);
+
 li.innerHTML = "<b>prefix</b> - " + prefixes.join(", ");
 featureList.appendChild(li);
 
 li.innerHTML = "<b>classes</b> - " + Simplrz.classes.join(", ");
 featureList.appendChild(li);
+
+li.innerHTML = "<b>pixel ratio</b> - " + s.pixelRatio;
+featureList.appendChild(li);
+
+li.innerHTML = "<b>window</b> - w: " + window.innerWidth + " x " + window.innerHeight;
+featureList.appendChild(li);
+
+li.innerHTML = "<b>screen</b> - w: " + screen.availWidth + " x " + window.availHeight;
+featureList.appendChild(li);
+
+
 
 for(var p in props) {
     var prop = props[p];
