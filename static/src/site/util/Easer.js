@@ -5,7 +5,9 @@ Easer = function(e) {
 	var pos = 0, target = 0, min = -100000000, max = 1000000000;
 	var MAXDELTA = 100000;
 	
-	var e = {};
+	var e = {
+		velocity: 0
+	};
 
 	e.setTarget = function(_target) {
 		target = _target;
@@ -26,8 +28,8 @@ Easer = function(e) {
 
 	e.easeVal = function() {
 		target = Math.clamp(target, min, max);
-		var velocity = (target - pos) * ease;
-        pos += velocity;
+		e.velocity = (target - pos) * ease;
+        pos += e.velocity;
         return pos;
 	}
 

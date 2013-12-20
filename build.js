@@ -27,6 +27,7 @@
 		"framework/Loader",
 		"framework/MSG",
 		"framework/VirtualScroll",
+		"framework/Pointer",
 		"framework/Util",
 
 		"site/util/Easer",

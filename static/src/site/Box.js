@@ -4,9 +4,9 @@ var Box = function(element) {
 
 	var ext = element.ext;
 	var id = ext.attr("data-id");
-    var imageLoaded = false, hoverLockTimer = 0;
+    var imageLoaded = false, hoverLocked = true;
 
-    var easer = new Easer(), scrollDirection = 0, touchX = 0;
+    var easer = new Easer(), scrollDirection = 0;
     easer.setEase(0.1); 
 
     var rect = element.ext.rect();
@@ -31,33 +31,32 @@ var Box = function(element) {
         var imagePath = Site.CDN + "assets/content/%f%/%id%.jpg".replace("%f%", imageFolder).replace("%id%", data.id);
 
         img.ext.on('load', function() {
-            // if(Simplrz.touch) {
-            //     mask.ext.css('opacity', 0);
-            // } else {
-                    mask.ext.transition({ 'backgroundColor': 'rgba(0,0,0,0)' }, 500, 'ease', 0, function() {
-                    mask.ext.attr('class', 'hover');
-                    Util.delay(function() {
-                        mask.ext.css('backgroundColor', data.tint);
-                        container.classList.add('hovered-transition');
-                        releaseHoverLock();
-                    });
+            mask.ext.transition({ 'backgroundColor': 'rgba(0,0,0,0)' }, 500, 'ease', 0, function() {
+                mask.ext.attr('class', 'hover');
+                Util.delay(function() {
+                    mask.ext.css('backgroundColor', data.tint);
+                    container.classList.add('hovered-transition');
+                    releaseHoverLock();
                 });
-            // }
+            });
         });
+    }
+
+    var applyHoverLock = function() {
+        container.classList.add('hovered-container');
+        hoverLocked = true;
     }
 
     var releaseHoverLock = function() {
         container.classList.add('hovered-container');
+        hoverLocked = false;
     }
 
     var onScroll = function(e) {
         if(!_active) return;
         easer.updateTarget(e.deltaY);
         scrollDirection = e.deltaY / Math.abs(e.deltaY);
-
-        clearTimeout(hoverLockTimer);
-        container.classList.remove('hovered-container');
-        hoverLockTimer = setTimeout(releaseHoverLock, 1000);
+        if(!hoverLocked) applyHoverLock();
     }
 
     var onRender = function() {
@@ -70,15 +69,14 @@ var Box = function(element) {
             }
         }
 
-        // Individual easing only on non-touch screens (for better performance)
-        // if(!Simplrz.touch) {
-            var ey = Math.clamp01((initY + offset) / window.innerHeight);
-            var ex = Math.clamp01(Math.abs( (rect.left + rect.width / 2) - touchX) / window.innerWidth);
+        if(easer.velocity < 0.01 && hoverLocked) releaseHoverLock();
 
-            if(scrollDirection < 0) ey = 1 - ey;
-            var e = ey * 0.5 + (1 - ex) * 0.5;
-            easer.setEase(0.05 + e * 0.12); 
-        // }
+        var ey = Math.clamp01((initY + offset) / window.innerHeight);
+        var ex = Math.clamp01(Math.abs( (rect.left + rect.width / 2) - Pointer.x) / window.innerWidth);
+
+        if(scrollDirection < 0) ey = 1 - ey;
+        var e = ey * 0.5 + (1 - ex) * 0.5;
+        easer.setEase(0.05 + e * 0.12); 
 
         offset = easer.easeVal();
         element.ext.transform({ y: offset });       
@@ -88,24 +86,12 @@ var Box = function(element) {
         var r = e.parts[0];
         _active = (r == Site.MAIN);
 
-        if(!_active) {
-            clearTimeout(hoverLockTimer);
-            container.classList.remove('hovered-container');
-        }
+        if(!_active) applyHoverLock();
     };
     
     VirtualScroll.on(onScroll);
     Application.on(MSG.ROUTE, onRoute);
     FrameImpulse.on(onRender);
-
-    document.addEventListener("mousemove", function(e) {
-        touchX = e.pageX;
-    });
-
-    document.addEventListener("touchmove", function(e) {
-        var t = (e.targetTouches) ? e.targetTouches[0] : e;
-        touchX = t.pageX;
-    });
 
     element.box = {};
     

@@ -19,6 +19,7 @@
 		"src/framework/Loader.js",
 		"src/framework/MSG.js",
 		"src/framework/VirtualScroll.js",
+		"src/framework/Pointer.js",
 		"src/framework/Util.js",
 
 		"src/site/util/Easer.js",
