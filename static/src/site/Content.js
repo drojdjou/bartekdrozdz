@@ -33,8 +33,13 @@ Content = function() {
         content.ext.y = scr;
         content.ext.transform();
 
-        hero.ext.y = (scr - hero.height()) * 0.5;
+        var br = scr - hero.height();
+
+        hero.ext.y = br * 0.5;
         hero.ext.transform();
+
+        var b = Math.clamp(br/-10, 0, 40) | 0;
+        hero.ext.css("webkitFilter", "blur(" + b + "px)");
 	}
 
 	var onRoute = function(e) {

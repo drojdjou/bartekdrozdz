@@ -27,6 +27,10 @@ Hero = function(container) {
 		ctn = EXT.create(isDemo ? 'iframe' : 'img');
 		ctn.ext.attr('frameborder', 0);
 		ctn.ext.css('opacity', 0);
+
+		// If it is a demo, it just doesn't look very good (too many color flashes)
+		if(!isDemo) container.ext.css('backgroundColor', data.tint);
+
 		ctn.ext.on('load', fadeIn);
 		
 		hi.adjust();
