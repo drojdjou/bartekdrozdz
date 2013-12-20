@@ -13,6 +13,8 @@ Content = function() {
 	// it is not a touch screen or it is an iPhone 5
 	var canBlur = Simplrz.prefix.lowercase == "webkit" && (!Simplrz.touch || (navigator.platform == "iPhone" && screen.height == 568));
 
+	if(canBlur) content.ext.css("backgroundColor", "rgba(0, 0, 0, 0.5)");
+
 	var onResize = function() {
 		if(!_active) return;
 
