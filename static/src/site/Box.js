@@ -43,11 +43,13 @@ var Box = function(element) {
     }
 
     var applyHoverLock = function() {
+        if(Simplrz.touch) return;
         container.classList.add('hovered-container');
         hoverLocked = true;
     }
 
     var releaseHoverLock = function() {
+        if(Simplrz.touch) return;
         container.classList.add('hovered-container');
         hoverLocked = false;
     }
