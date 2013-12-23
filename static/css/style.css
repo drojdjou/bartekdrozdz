@@ -47,6 +47,20 @@ p {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-backface-visibility: hidden;
 }
+.fps {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  background-color: black;
+  color: white;
+  padding: 5px;
+  width: 80px;
+  font-family: Courier, monospace;
+}
+.fps b {
+  color: red;
+}
 .typo-main-header {
   font-family: Oswald;
   font-size: 2em;

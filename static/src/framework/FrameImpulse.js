@@ -23,8 +23,27 @@ FrameImpulse = (function() {
 
 	var listeners = [], numListeners = 0, toRemove = [], numToRemove;
 
+	var fps = document.getElementById("fps"), lastTime = 0;
+	fps.style.opacity = 0;
+
+	document.addEventListener('keydown', function(e) {
+		if(e.keyCode == 32) {
+			fps.style.opacity = 1;
+		}
+	});
+
 	var run = function(deltaTime) {
 		requestAnimationFrame(run);
+
+		var ft = (deltaTime - lastTime) | 0;
+		var ps = (1000/ft) | 0;
+
+		lastTime = deltaTime;
+		if(ft > 20) {
+			fps.innerHTML = '<b>'+ft+'</b> | ' + ps;
+		} else {
+			fps.innerHTML = ft + ' | ' + ps;
+		}
 
 		if(numListeners == 0) return;
 
