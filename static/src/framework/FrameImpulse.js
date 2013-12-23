@@ -19,15 +19,15 @@ FrameImpulse = (function() {
         };
     }
 
-    var fps = document.getElementById("fps");
+    var fpsDiv = document.getElementById("fps");
     var lastTime = 0, frameIndex = 0;
     var sumFrame = 0, avgFrame = 0, avgFPS = 0;
 
-    if(fps) {
-		fps.style.opacity = 0;
+    if(fpsDiv) {
+		// fpsDiv.style.opacity = 0;
 		document.addEventListener('keydown', function(e) {
 			if(e.keyCode == 32) {
-				fps.style.opacity = 1;
+				fpsDiv.style.opacity = 0;
 			}
 		});
 	}
@@ -48,13 +48,15 @@ FrameImpulse = (function() {
 
 		frameIndex++;
 
+		r.fps = avgFPS;
 
-		if(!fps) return;
+
+		if(!fpsDiv) return;
 
 		if(avgFrame > 20) {
-			fps.innerHTML = '<b>'+(avgFrame|0)+'</b> | ' + (avgFPS|0);
+			fpsDiv.innerHTML = '<b>'+(avgFrame|0)+'</b> | ' + (avgFPS|0);
 		} else {
-			fps.innerHTML = (avgFrame|0) + ' | ' + (avgFPS|0);
+			fpsDiv.innerHTML = (avgFrame|0) + ' | ' + (avgFPS|0);
 		}
 	}
 

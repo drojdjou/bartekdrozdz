@@ -46,6 +46,8 @@ Content = function() {
         hero.ext.y = br * 0.5;
         hero.ext.transform();
 
+        if(FrameImpulse.fps < 50 && canBlur) canBlur = false;
+
         if(canBlur) {
 	        var b = Math.clamp(br/-10, 0, 40) | 0;
 	        hero.ext.css("webkitFilter", "blur(" + b + "px)");
