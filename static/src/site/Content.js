@@ -50,7 +50,7 @@ Content = function() {
         if(canBlur) {
 	        var b = Math.clamp(br/-10, 0, 40) | 0;
 
-	        if(FrameImpulse.fpsNow < 40 && b > 0) {
+	        if(FrameImpulse.fps < 40 && b > 0) {
 	        	content.ext.css("backgroundColor", "rgba(0, 0, 0, 1)");
 	        	hero.ext.css("webkitFilter", "");
 	        	canBlur = false;

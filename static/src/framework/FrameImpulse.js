@@ -28,7 +28,7 @@ FrameImpulse = (function() {
     }
 
     if(fpsDiv) {
-		// fpsDiv.style.opacity = 0;
+		fpsDiv.style.opacity = 0;
 		document.addEventListener('keydown', function(e) {
 			if(e.keyCode == 32) {
 				fpsDiv.style.opacity = 0;
