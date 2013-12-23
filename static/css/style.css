@@ -268,7 +268,7 @@ p {
   position: relative;
   width: 800px;
   left: 50%;
-  margin: 0.2em 0 0.8em -400px;
+  margin: 0.2em 0 0.2em -400px;
   font-family: Oswald;
   font-size: 1.6em;
   line-height: 1em;
@@ -318,6 +318,7 @@ p {
   font-size: 1em;
   letter-spacing: 0.02em;
   font-size: 1.3em;
+  margin: 1em 0 1em 0;
 }
 #content .content .text h5 {
   font-family: 'Droid Sans';
@@ -489,7 +490,7 @@ p {
   }
   #content .content h1 {
     width: 90%;
-    margin: 0.6em 0 1em -45%;
+    margin: 0.6em 0 0.6em -45%;
   }
   #content .content .text {
     width: 90%;
