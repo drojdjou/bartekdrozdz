@@ -1,5 +1,9 @@
 #about {
 
+	overflow-x: hidden;
+	.perspective(~"1500px");
+	color: #aaa;
+
 	.js & {
 		position: absolute;
 		width: 100%;
@@ -27,45 +31,10 @@
 		}
 	}
 
-	overflow-x: hidden;
-
-	font-size: 1.0em;
-	line-height: 1.5em;
-
-	.perspective(~"1500px");
-
-	div {	
-		.transform-origin(~"100% 0");
-		padding: 20px 10px 30px 10px;
-		pointer-events: auto;
-		
-
-		color: #aaa;
-		// font-family: @contentFont;
-		letter-spacing: 0.02em;
-	}
-
-	h2 {
-		margin: 0 0 0 0;
-		// font-family: @titleFont;
-		font-size: 2em;
-		display: inline-block;
-	}
-
-	h3 {
-		// font-family: @titleFont;
-		font-size: 1.4em;
-		line-height: 1.2em;
-	}
-
-	h4 {
-		font-size: 1.1em;
-	}
-
 	.close {
 		position: absolute;
-		top: 8px;
-		right: 8px;
+		top: 0.5em;
+		right: 0.5em;
 		width: 34px;
 		height: 34px;
 		background-image: url('../assets/buttons.png');
@@ -79,17 +48,56 @@
 		}
 	}
 
+	div {	
+		.transform-origin(~"100% 0");
+		padding: 20px 10px 30px 10px;
+		pointer-events: auto;
+	}
+
+	h3 {
+		.typo-header();
+		font-size: 1.3em;
+	}
+
+	h4 {
+		.typo-text();
+		font-size: 1.5em;
+		margin: 1.5em 0 1em 0;
+		line-height: 1.35;
+	}
+
 	p {
-		font-size: 0.9em;
+		.typo-text();
+		margin: 0.5em 0 0 0;
+		line-height: 1.55;
+	}
+
+	p + p {
+		margin: 0;
+		text-indent: 1em;
+	}
+
+	.awards {
+		margin: 1em 0 1em 1em;
+	}
+
+	.aw-num {
+		color: lighten(red, 15%);
+		font-size: 1.2em;
+		line-height: 1;
 	}
 
 	b, a {
 		text-decoration: none;
-		color: #fff;
+		color: lighten(red, 15%);
+	}
+
+	a {
+		border-bottom: 1px solid lighten(red, 15%);
 	}
 
 	.no-touch & a:not(.close):hover {
-		border-bottom: 1px solid white;
+		border-bottom: 1px solid lighten(red, 15%);
 	}
 
 
@@ -97,24 +105,30 @@
 		list-style-type: none;
 		margin: 0;
 		padding: 0;
+		line-height: 1.55;
 
 		li {
-			font-size: 0.9em;
-			line-height: 2em;
+			.typo-text();
 		}
 
 		i {
-		}
+			display: block;
+			margin-bottom: 0.3em;
 
-		i:before {
-			content: " - ";
+			@media screen and (min-width: 600px) {
+				&:before {
+					content: " - ";
+				}
+					
+				display: inline;
+			}
+			
 		}
 	}
 
 	@media screen and (min-width: 600px) {
 		div {
 			padding: 30px 20px 20px 20px;
-			font-weight: normal;
 		}
 
 		.close {

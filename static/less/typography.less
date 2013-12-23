@@ -1,10 +1,11 @@
-@import url(http://fonts.googleapis.com/css?family=Oswald:300,400,700);
+@import url(http://fonts.googleapis.com/css?family=Oswald:400);
 @import url(http://fonts.googleapis.com/css?family=Fjord+One);
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans);
 
-@league: 'League Gothic';
 @oswald: Oswald;
-@georgia: Georgia, sans-serif;
-@fjord: 'Fjord One';
+@droid: 'Droid Sans';
+@fjord: 'Fjord One', sans-serif;
+@georgia: 'Georgia', sans-serif;
 
 .typo-main-header {
 	font-family: @oswald;
@@ -18,3 +19,59 @@
 		font-size: 4em;
 	}
 }
+
+.typo-title-box {
+	font-family: @oswald;
+	font-size: 2em;
+	text-transform: uppercase;
+	font-weight: 400;
+	line-height: 1;
+
+	@media screen and (min-width: 600px) {
+		font-size: 2.5em;
+	}
+
+	@media screen and (min-width: 600px) {
+		font-size: 3em;
+	}
+}
+
+.typo-box {
+	font-family: @oswald;
+	font-size: 0.8em;
+	text-transform: uppercase;
+	font-weight: 400;
+	line-height: 1;
+
+	@media screen and (min-width: 600px) {
+		font-size: 1em;
+	}
+
+	@media screen and (min-width: 600px) {
+		font-size: 1.5em;
+	}
+}
+
+.typo-title {
+	font-family: @oswald;
+	font-size: 1.6em;
+}
+
+.typo-launch {
+	font-family: @oswald;
+	font-size: 1.2em;
+}
+
+.typo-header {
+	font-family: @droid;
+}
+
+.typo-text {
+	font-family: @fjord;
+	font-weight: 100;
+	font-size: 1em;
+	letter-spacing: 0.02em;
+}
+
+
+

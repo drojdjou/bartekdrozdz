@@ -49,24 +49,11 @@
 		height: auto;
 	}
 
-	@media screen and (min-width: 1920px) {
-		h2 {
-			font-size: 3.5em;
-			padding: 10px;
-		}
-	}
-
 	@media screen and (max-width: 600px) {
 
 		.close {
 			top: 8px;
 			right: 8px;
-		}
-
-		h2 {
-			padding: 4px;
-			margin: 4px 0 0 4px;
-			font-size: 1.0em;
 		}
 	}
 
@@ -82,9 +69,6 @@
 		width: 100%;
 
 		color: #aaaaaa;
-		font-size: 1.0em;
-		line-height: 1.7em;
-		letter-spacing: 0;
 
 		padding: 2em 0 2em 0;
 		margin: 0;
@@ -97,9 +81,7 @@
 			left: 50%;
 			margin: 0.5em 0 0.8em @demoContentWidth * -0.5;
 
-			// font-family: @titleFont;
-			font-size: 4em;
-			line-height: 1em;
+			.typo-title();
 			text-transform: uppercase;
 		}
 
@@ -136,28 +118,24 @@
 			}
 
 			h4 {
-				font-size: 1.2em;
-				line-height: 1.6em;
+				.typo-text();
+				font-size: 1.3em;
 			}
 
 			h5 {
-				margin: 4px 0 4px 0;
-				color: #fff;
+				font-size: 1em;
 			}
 
 			h6 {
-				font-size: 0.75em;
-				color: #fff;
 			}
 
 			p {
-				font-size: 1em;
-				line-height: 1.6em;
+				.typo-text();
+				line-height: 1.45em;
 			}
 
 			em {
 				font-style: normal;
-				color: #fff;
 			}
 
 			ul {
@@ -165,12 +143,9 @@
 				padding: 0;
 
 				li {
-					font-size: 0.9em;
-					line-height: 2em;
 				}
 
 				b {
-					color: #fff;
 				}
 
 				i {
@@ -194,19 +169,20 @@
 			.launch {
 				background-color: @darkred;
 				color: #ffffff;
-				padding: 10px 12px 10px 12px;
+				padding: 10px 14px 10px 14px;
 				border-radius: 4px;
 				display: inline-block;
 
+				.typo-launch();
+
 				@media screen and (min-width: 600px) {
-					padding: 3px 7px 5px 7px;
+					padding: 5px 10px 5px 10px;
 				}
 
 				.transition(~"all 0.05s ease");
 
 				a {
 					color: #fff;
-					font-size: 0.8em;
 					border-bottom: 0;
 					text-decoration: none;
 					text-transform: uppercase;
@@ -229,7 +205,6 @@
 				a {
 					color: #808080;
 					border: 0;
-					font-size: 0.8em;
 				}
 				
 			}
@@ -283,7 +258,6 @@
 
 		@media screen and (min-width: 1920px) {
 
-			line-height: 1.5em;
 			padding: 1em 0 0 0;
 
 			@demoContentWidth: 1400px;
@@ -291,33 +265,14 @@
 			h1 {
 				width: @demoContentWidth;
 				margin: 0.6em 0 0.7em @demoContentWidth * -0.5 - 10;
-				font-size: 8em;
 			}
 
 			.text {
 				width: @demoContentWidth;
 				margin: 0 0 1em @demoContentWidth * -0.5;
 
-				h4 {
-					font-size: 2.4em;
-					line-height: 1.6em;
-				}
-
-				p {
-					font-size: 1.6em;
-				}
-
 				.launch {
-					font-size: 2em;
 					padding: 20px;
-				}
-
-				h5 {
-					font-size: 1.3em;
-				}
-
-				ul li {
-					font-size: 1.3em;
 				}
 			
 				.video {
@@ -333,8 +288,6 @@
 		}
 
 		@media screen and (max-width: 1024px) {
-
-			line-height: 1.5em;
 			padding: 1em 0 0 0;
 
 			@demoContentWidth: 90%;
@@ -342,8 +295,6 @@
 			h1 {
 				width: @demoContentWidth;
 				margin: 0.6em 0 1em @demoContentWidth * -0.5;
-
-				font-size: 3em;
 			}
 
 			.text {

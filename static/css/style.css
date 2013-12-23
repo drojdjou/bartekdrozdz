@@ -1,6 +1,8 @@
-@import url(http://fonts.googleapis.com/css?family=Oswald:300,400,700);
+@import url(http://fonts.googleapis.com/css?family=Oswald:400);
 
 @import url(http://fonts.googleapis.com/css?family=Fjord+One);
+
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans);
 html,
 body {
   color: #000000;
@@ -59,6 +61,57 @@ p {
     font-size: 4em;
   }
 }
+.typo-title-box {
+  font-family: Oswald;
+  font-size: 2em;
+  text-transform: uppercase;
+  font-weight: 400;
+  line-height: 1;
+}
+@media screen and (min-width: 600px) {
+  .typo-title-box {
+    font-size: 2.5em;
+  }
+}
+@media screen and (min-width: 600px) {
+  .typo-title-box {
+    font-size: 3em;
+  }
+}
+.typo-box {
+  font-family: Oswald;
+  font-size: 0.8em;
+  text-transform: uppercase;
+  font-weight: 400;
+  line-height: 1;
+}
+@media screen and (min-width: 600px) {
+  .typo-box {
+    font-size: 1em;
+  }
+}
+@media screen and (min-width: 600px) {
+  .typo-box {
+    font-size: 1.5em;
+  }
+}
+.typo-title {
+  font-family: Oswald;
+  font-size: 1.6em;
+}
+.typo-launch {
+  font-family: Oswald;
+  font-size: 1.2em;
+}
+.typo-header {
+  font-family: 'Droid Sans';
+}
+.typo-text {
+  font-family: 'Fjord One', sans-serif;
+  font-weight: 100;
+  font-size: 1em;
+  letter-spacing: 0.02em;
+}
 #main {
   width: 100%;
   background-color: #ffffff;
@@ -94,22 +147,23 @@ p {
 #main h2.header p:nth-of-type(1) {
   font-size: 3em;
   font-weight: 400;
-  letter-spacing: 0.025em;
   text-transform: uppercase;
 }
 #main h2.header p:nth-of-type(2) {
-  word-spacing: 0.1em;
-  font-family: 'Fjord One';
+  word-spacing: 0.05em;
+  letter-spacing: -0.025em;
+  font-family: 'Fjord One', sans-serif;
   margin: 0.5em 0 0.25em 0;
 }
 #main h2.header p:nth-of-type(3) {
   word-spacing: -0.05em;
-  font-family: 'Fjord One';
+  letter-spacing: -0.025em;
+  font-family: 'Fjord One', sans-serif;
   margin: 0.25em 0 0.5em 0;
 }
 #main h2.header p:nth-of-type(4) {
   font-size: 0.45em;
-  font-family: 'Fjord One';
+  font-family: 'Fjord One', sans-serif;
 }
 #main h2.header a {
   display: inline-block;
@@ -175,30 +229,16 @@ p {
   width: 100%;
   height: auto;
 }
-@media screen and (min-width: 1920px) {
-  #content h2 {
-    font-size: 3.5em;
-    padding: 10px;
-  }
-}
 @media screen and (max-width: 600px) {
   #content .close {
     top: 8px;
     right: 8px;
-  }
-  #content h2 {
-    padding: 4px;
-    margin: 4px 0 0 4px;
-    font-size: 1.0em;
   }
 }
 #content .content {
   background-color: #000000;
   width: 100%;
   color: #aaaaaa;
-  font-size: 1.0em;
-  line-height: 1.7em;
-  letter-spacing: 0;
   padding: 2em 0 2em 0;
   margin: 0;
 }
@@ -211,8 +251,8 @@ p {
   width: 800px;
   left: 50%;
   margin: 0.5em 0 0.8em -400px;
-  font-size: 4em;
-  line-height: 1em;
+  font-family: Oswald;
+  font-size: 1.6em;
   text-transform: uppercase;
 }
 #content .content .text {
@@ -244,35 +284,28 @@ p {
   display: none;
 }
 #content .content .text h4 {
-  font-size: 1.2em;
-  line-height: 1.6em;
+  font-family: 'Fjord One', sans-serif;
+  font-weight: 100;
+  font-size: 1em;
+  letter-spacing: 0.02em;
+  font-size: 1.3em;
 }
 #content .content .text h5 {
-  margin: 4px 0 4px 0;
-  color: #fff;
-}
-#content .content .text h6 {
-  font-size: 0.75em;
-  color: #fff;
+  font-size: 1em;
 }
 #content .content .text p {
+  font-family: 'Fjord One', sans-serif;
+  font-weight: 100;
   font-size: 1em;
-  line-height: 1.6em;
+  letter-spacing: 0.02em;
+  line-height: 1.45em;
 }
 #content .content .text em {
   font-style: normal;
-  color: #fff;
 }
 #content .content .text ul {
   list-style-type: none;
   padding: 0;
-}
-#content .content .text ul li {
-  font-size: 0.9em;
-  line-height: 2em;
-}
-#content .content .text ul b {
-  color: #fff;
 }
 #content .content .text ul i:before {
   content: " - ";
@@ -288,9 +321,11 @@ p {
 #content .content .text .launch {
   background-color: #840003;
   color: #ffffff;
-  padding: 10px 12px 10px 12px;
+  padding: 10px 14px 10px 14px;
   border-radius: 4px;
   display: inline-block;
+  font-family: Oswald;
+  font-size: 1.2em;
   -webkit-transition: all 0.05s ease;
   -moz-transition: all 0.05s ease;
   -o-transition: all 0.05s ease;
@@ -299,12 +334,11 @@ p {
 }
 @media screen and (min-width: 600px) {
   #content .content .text .launch {
-    padding: 3px 7px 5px 7px;
+    padding: 5px 10px 5px 10px;
   }
 }
 #content .content .text .launch a {
   color: #fff;
-  font-size: 0.8em;
   border-bottom: 0;
   text-decoration: none;
   text-transform: uppercase;
@@ -323,7 +357,6 @@ p {
 #content .content .text .video-link a {
   color: #808080;
   border: 0;
-  font-size: 0.8em;
 }
 #content .content .text .video {
   position: relative;
@@ -370,34 +403,18 @@ p {
 }
 @media screen and (min-width: 1920px) {
   #content .content {
-    line-height: 1.5em;
     padding: 1em 0 0 0;
   }
   #content .content h1 {
     width: 1400px;
     margin: 0.6em 0 0.7em -710px;
-    font-size: 8em;
   }
   #content .content .text {
     width: 1400px;
     margin: 0 0 1em -700px;
   }
-  #content .content .text h4 {
-    font-size: 2.4em;
-    line-height: 1.6em;
-  }
-  #content .content .text p {
-    font-size: 1.6em;
-  }
   #content .content .text .launch {
-    font-size: 2em;
     padding: 20px;
-  }
-  #content .content .text h5 {
-    font-size: 1.3em;
-  }
-  #content .content .text ul li {
-    font-size: 1.3em;
   }
   #content .content .text .video {
     width: 100%;
@@ -410,13 +427,11 @@ p {
 }
 @media screen and (max-width: 1024px) {
   #content .content {
-    line-height: 1.5em;
     padding: 1em 0 0 0;
   }
   #content .content h1 {
     width: 90%;
     margin: 0.6em 0 1em -45%;
-    font-size: 3em;
   }
   #content .content .text {
     width: 90%;
@@ -438,11 +453,10 @@ p {
 }
 #about {
   overflow-x: hidden;
-  font-size: 1.0em;
-  line-height: 1.5em;
   -webkit-perspective: 1500px;
   -moz-perspective: 1500px;
   perspective: 1500px;
+  color: #aaa;
 }
 .js #about {
   position: absolute;
@@ -468,33 +482,10 @@ p {
     margin-left: -400px;
   }
 }
-#about div {
-  -webkit-transform-origin: 100% 0;
-  -moz-transform-origin: 100% 0;
-  -o-transform-origin: 100% 0;
-  -ms-transform-origin: 100% 0;
-  transform-origin: 100% 0;
-  padding: 20px 10px 30px 10px;
-  pointer-events: auto;
-  color: #aaa;
-  letter-spacing: 0.02em;
-}
-#about h2 {
-  margin: 0 0 0 0;
-  font-size: 2em;
-  display: inline-block;
-}
-#about h3 {
-  font-size: 1.4em;
-  line-height: 1.2em;
-}
-#about h4 {
-  font-size: 1.1em;
-}
 #about .close {
   position: absolute;
-  top: 8px;
-  right: 8px;
+  top: 0.5em;
+  right: 0.5em;
   width: 34px;
   height: 34px;
   background-image: url('../assets/buttons.png');
@@ -506,33 +497,86 @@ p {
   background-position: 100% 100%;
   cursor: pointer;
 }
+#about div {
+  -webkit-transform-origin: 100% 0;
+  -moz-transform-origin: 100% 0;
+  -o-transform-origin: 100% 0;
+  -ms-transform-origin: 100% 0;
+  transform-origin: 100% 0;
+  padding: 20px 10px 30px 10px;
+  pointer-events: auto;
+}
+#about h3 {
+  font-family: 'Droid Sans';
+  font-size: 1.3em;
+}
+#about h4 {
+  font-family: 'Fjord One', sans-serif;
+  font-weight: 100;
+  font-size: 1em;
+  letter-spacing: 0.02em;
+  font-size: 1.5em;
+  margin: 1.5em 0 1em 0;
+  line-height: 1.35;
+}
 #about p {
-  font-size: 0.9em;
+  font-family: 'Fjord One', sans-serif;
+  font-weight: 100;
+  font-size: 1em;
+  letter-spacing: 0.02em;
+  margin: 0.5em 0 0 0;
+  line-height: 1.55;
+}
+#about p + p {
+  margin: 0;
+  text-indent: 1em;
+}
+#about .awards {
+  margin: 1em 0 1em 1em;
+}
+#about .aw-num {
+  color: #ff4d4d;
+  font-size: 1.2em;
+  line-height: 1;
 }
 #about b,
 #about a {
   text-decoration: none;
-  color: #fff;
+  color: #ff4d4d;
+}
+#about a {
+  border-bottom: 1px solid #ff4d4d;
 }
 .no-touch #about a:not(.close):hover {
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid #ff4d4d;
 }
 #about ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  line-height: 1.55;
 }
 #about ul li {
-  font-size: 0.9em;
-  line-height: 2em;
+  font-family: 'Fjord One', sans-serif;
+  font-weight: 100;
+  font-size: 1em;
+  letter-spacing: 0.02em;
 }
-#about ul i:before {
-  content: " - ";
+#about ul i {
+  display: block;
+  margin-bottom: 0.3em;
+}
+@media screen and (min-width: 600px) {
+  #about ul i {
+    display: inline;
+  }
+  #about ul i:before {
+    content: " - ";
+  }
 }
 @media screen and (min-width: 600px) {
   #about div {
     padding: 30px 20px 20px 20px;
-    font-weight: normal;
   }
   #about .close {
     width: 24px;
@@ -566,9 +610,24 @@ section#projects ul.projects .title-box .container {
 section#projects ul.projects .title-box .container h1 {
   position: absolute;
   color: black;
-  bottom: 0%;
-  right: 0%;
-  margin: 0 15px 5px 15px;
+  bottom: 0;
+  right: 0;
+  margin: 0 3% 3% 0;
+  font-family: Oswald;
+  font-size: 2em;
+  text-transform: uppercase;
+  font-weight: 400;
+  line-height: 1;
+}
+@media screen and (min-width: 600px) {
+  section#projects ul.projects .title-box .container h1 {
+    font-size: 2.5em;
+  }
+}
+@media screen and (min-width: 600px) {
+  section#projects ul.projects .title-box .container h1 {
+    font-size: 3em;
+  }
 }
 section#projects ul.projects .title-box .container .fwd-b {
   position: absolute;
@@ -593,10 +652,25 @@ section#projects ul.projects li {
 section#projects ul.projects li h4 {
   position: absolute;
   color: white;
-  margin: 0;
-  padding: 0;
+  margin: 0 0 3% 3%;
   bottom: 0;
   left: 0;
+  font-family: Oswald;
+  font-size: 0.8em;
+  text-transform: uppercase;
+  font-weight: 400;
+  line-height: 1;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.33);
+}
+@media screen and (min-width: 600px) {
+  section#projects ul.projects li h4 {
+    font-size: 1em;
+  }
+}
+@media screen and (min-width: 600px) {
+  section#projects ul.projects li h4 {
+    font-size: 1.5em;
+  }
 }
 section#projects ul.projects li .container {
   position: absolute;
@@ -671,11 +745,11 @@ section#projects ul.projects li .container .hover {
   transform: translateY(-3%);
 }
 .no-touch section#projects ul.projects li .hovered-container:hover h4 {
-  -webkit-transform: translateY(-40%);
-  -moz-transform: translateY(-40%);
-  -o-transform: translateY(-40%);
-  -ms-transform: translateY(-40%);
-  transform: translateY(-40%);
+  -webkit-transform: translateY(-35%);
+  -moz-transform: translateY(-35%);
+  -o-transform: translateY(-35%);
+  -ms-transform: translateY(-35%);
+  transform: translateY(-35%);
 }
 section#projects ul.projects li .spacer {
   margin-top: 100%;
