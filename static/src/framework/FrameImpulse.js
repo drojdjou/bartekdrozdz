@@ -2,9 +2,10 @@ FrameImpulse = (function() {
 
     var vendors = ['webkit', 'moz'];
 
-    var fpsDiv = document.getElementById("fps");
+    var fpsDiv;// = document.getElementById("fps");
     var lastTime = 0, frameIndex = 0;
-    var sumFrame = 0, avgFrame = 16, avgFPS = 60, spikeFlag = false;
+    var sumFrame = 0, avgFrame = 16, avgFPS = 60;
+    var lowFPS = 60;
 
     var r = {};
 	var listeners = [], numListeners = 0, toRemove = [], numToRemove;
@@ -41,34 +42,27 @@ FrameImpulse = (function() {
 		var frameTime = (deltaTime - lastTime);
 
 		if(isNaN(frameTime)) frameTime = 1000/60;
-
-		if(!spikeFlag && frameTime > 60) {
-			frameTime = 1000/60;
-			spikeFlag = true;
-		}
-
-		if(spikeFlag && frameTime < 60) {
-			spikeFlag = false;
-		}
-
 		lastTime = deltaTime;
 
 		// if(frameIndex < 10 || frameIndex % 10 == 0) console.log(frameTime);
-
 		sumFrame += frameTime;
-		avgFrame = sumFrame / frameIndex;
+
+		// avgFrame = sumFrame / frameIndex;
+		avgFrame = (frameTime + avgFrame * 99) / 100;
+
 		avgFPS = 1000 / avgFrame;
+		lowFPS = Math.min(avgFPS, lowFPS);
 		
 		r.fps = (isNaN(avgFPS) || !avgFPS) ? 60 : avgFPS;
 		r.fpsNow = 1000 / frameTime;
-
+		r.fpsLow = lowFPS;
 
 		if(!fpsDiv) return;
 
 		if(avgFrame > 20) {
-			fpsDiv.innerHTML = '<b>'+(avgFrame|0)+'</b> | ' + (avgFPS|0);
+			fpsDiv.innerHTML = '<b>'+(avgFPS|0)+'</b> | ' + (avgFrame|0);
 		} else {
-			fpsDiv.innerHTML = (avgFrame|0) + ' | ' + (avgFPS|0);
+			fpsDiv.innerHTML = (avgFPS|0) + ' | ' + (avgFrame|0);
 		}
 	}
 
