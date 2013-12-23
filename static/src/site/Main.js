@@ -16,6 +16,9 @@ Main = function() {
 	});
 
 	var scrollToProject = function() {
+
+		console.log("Main.scrollToProject");
+		
 		var t = window.innerHeight * -0.75;
 
 		easer.setTarget(t);
