@@ -47,9 +47,10 @@ Content = function() {
         hero.ext.transform();
 
         // If we see a drop in frame rate - let's skip the blur effect
-        if(FrameImpulse.fps < 25 && canBlur) {
+        if(FrameImpulse.fps < 49 && canBlur) {
         	console.log("Cancaling blur: ", FrameImpulse.fps);
         	content.ext.css("backgroundColor", "rgba(0, 0, 0, 1)");
+        	hero.ext.css("webkitFilter", "");
         	canBlur = false;
         }
 
