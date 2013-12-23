@@ -95,6 +95,10 @@ var Box = function(element) {
     FrameImpulse.on(onRender);
 
     element.box = {};
+
+    element.box.onAutoScroll = function(t) {
+        easer.setTarget(t);
+    }
     
     element.box.onResize = function(m) {
         easer.setLimits(-m, 0);

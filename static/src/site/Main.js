@@ -7,12 +7,27 @@ Main = function() {
 	var projects = 	EXT.select('#projects');
 
 	var boxes = 	EXT.selectAll('.box');
+	var projectsBtn = section.ext.select('#projects-shortcut');
+
+	var easer = new Easer(0.1);
 
 	boxes.forEach(function(item) {
 		Box(item);
 	});
 
-	var easer = new Easer(0.1);
+	var scrollToProject = function() {
+		var t = window.innerHeight * -0.75;
+
+		easer.setTarget(t);
+
+		boxes.forEach(function(item) {
+			item.box.onAutoScroll(t);
+		});
+	}
+
+	if(!Simplrz.touch) {
+		projectsBtn.ext.on('click', scrollToProject);
+	}
 
 	var onResize = function() {
 		var max = section.ext.height() - window.innerHeight;
