@@ -19,31 +19,52 @@ FrameImpulse = (function() {
         };
     }
 
-	var r = {};
+    var fps = document.getElementById("fps");
+    var lastTime = 0, frameIndex = 0;
+    var sumFrame = 0, avgFrame = 0, avgFPS = 0;
 
-	var listeners = [], numListeners = 0, toRemove = [], numToRemove;
+    if(fps) {
+		fps.style.opacity = 0;
+		document.addEventListener('keydown', function(e) {
+			if(e.keyCode == 32) {
+				fps.style.opacity = 1;
+			}
+		});
+	}
 
-	var fps = document.getElementById("fps"), lastTime = 0;
-	fps.style.opacity = 0;
+	var calculateFPS = function(deltaTime) {
 
-	document.addEventListener('keydown', function(e) {
-		if(e.keyCode == 32) {
-			fps.style.opacity = 1;
+		if(frameIndex >= 60) {
+			frameIndex = 0;
+			sumFrame = 0;
 		}
-	});
+
+		var frameTime = (deltaTime - lastTime);
+		lastTime = deltaTime;
+
+		sumFrame += frameTime;
+		avgFrame = sumFrame / (frameIndex+1);
+		avgFPS = 1000 / avgFrame;
+
+		frameIndex++;
+
+
+		if(!fps) return;
+
+		if(avgFrame > 20) {
+			fps.innerHTML = '<b>'+(avgFrame|0)+'</b> | ' + (avgFPS|0);
+		} else {
+			fps.innerHTML = (avgFrame|0) + ' | ' + (avgFPS|0);
+		}
+	}
+
+	var r = {};
+	var listeners = [], numListeners = 0, toRemove = [], numToRemove;
 
 	var run = function(deltaTime) {
 		requestAnimationFrame(run);
 
-		var ft = (deltaTime - lastTime) | 0;
-		var ps = (1000/ft) | 0;
-
-		lastTime = deltaTime;
-		if(ft > 20) {
-			fps.innerHTML = '<b>'+ft+'</b> | ' + ps;
-		} else {
-			fps.innerHTML = ft + ' | ' + ps;
-		}
+		calculateFPS(deltaTime);
 
 		if(numListeners == 0) return;
 
