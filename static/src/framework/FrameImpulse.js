@@ -4,7 +4,7 @@ FrameImpulse = (function() {
 
     var fpsDiv = document.getElementById("fps");
     var lastTime = 0, frameIndex = 0;
-    var sumFrame = 0, avgFrame = 16, avgFPS = 60;
+    var sumFrame = 0, avgFrame = 16, avgFPS = 60, spikeFlag = false;
 
     var r = {};
 	var listeners = [], numListeners = 0, toRemove = [], numToRemove;
@@ -27,24 +27,38 @@ FrameImpulse = (function() {
         };
     }
 
-    if(fpsDiv) {
-		// fpsDiv.style.opacity = 0;
-		document.addEventListener('keydown', function(e) {
-			if(e.keyCode == 32) {
-				fpsDiv.style.opacity = 0;
-			}
-		});
-	}
+ //    if(fpsDiv) {
+	// 	document.addEventListener('keydown', function(e) {
+	// 		if(e.keyCode == 32) {
+	// 			fpsDiv.style.display = 'block';
+	// 		}
+	// 	});
+	// }
 
 	var calculateFPS = function(deltaTime) {
+		frameIndex++;
+
 		var frameTime = (deltaTime - lastTime);
-		if(isNaN(frameTime)) frameTime = 16;
+
+		if(isNaN(frameTime)) frameTime = 1000/60;
+
+		if(!spikeFlag && frameTime > 60) {
+			frameTime = 1000/60;
+			spikeFlag = true;
+		}
+
+		if(spikeFlag && frameTime < 60) {
+			spikeFlag = false;
+		}
+
 		lastTime = deltaTime;
 
-		avgFrame = (frameTime + avgFrame) / 2;
-		avgFPS = 1000 / avgFrame;
-		// frameIndex++;
+		// if(frameIndex < 10 || frameIndex % 10 == 0) console.log(frameTime);
 
+		sumFrame += frameTime;
+		avgFrame = sumFrame / frameIndex;
+		avgFPS = 1000 / avgFrame;
+		
 		r.fps = (isNaN(avgFPS) || !avgFPS) ? 60 : avgFPS;
 		r.fpsNow = 1000 / frameTime;
 

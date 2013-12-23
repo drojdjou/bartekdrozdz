@@ -57,9 +57,6 @@ Content = function() {
 	        } else {
 	        	hero.ext.css("webkitFilter", "blur(" + b + "px)");
 	        }
-
-
-	        
 	    }
 	}
 
