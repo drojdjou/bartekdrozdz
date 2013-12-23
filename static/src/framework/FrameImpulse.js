@@ -28,7 +28,7 @@ FrameImpulse = (function() {
     }
 
     if(fpsDiv) {
-		fpsDiv.style.opacity = 0;
+		// fpsDiv.style.opacity = 0;
 		document.addEventListener('keydown', function(e) {
 			if(e.keyCode == 32) {
 				fpsDiv.style.opacity = 0;
@@ -37,20 +37,13 @@ FrameImpulse = (function() {
 	}
 
 	var calculateFPS = function(deltaTime) {
-
-		if(frameIndex >= 60) {
-			frameIndex = 0;
-			sumFrame = 0;
-		}
-
 		var frameTime = (deltaTime - lastTime);
+		if(isNaN(frameTime)) frameTime = 16;
 		lastTime = deltaTime;
 
-		sumFrame += frameTime;
-		avgFrame = sumFrame / (frameIndex+1);
+		avgFrame = (frameTime + avgFrame) / 2;
 		avgFPS = 1000 / avgFrame;
-
-		frameIndex++;
+		// frameIndex++;
 
 		r.fps = (isNaN(avgFPS) || !avgFPS) ? 60 : avgFPS;
 		r.fpsNow = 1000 / frameTime;
