@@ -39,21 +39,24 @@ var props = [
     "cssanimations", "history"
 ];
 
-var li = document.createElement("li");
+var add = function(m) {
+    var li = document.createElement("li");
+    li.innerHTML = m;
+    featureList.appendChild(li);
+}
 
 var prefixes = [];
 for(var prefix in Simplrz.prefix) {
     prefixes.push(prefix + ": " + Simplrz.prefix[prefix]);
 }
 
-li.innerHTML = "<b>user-agent</b> - " + navigator.userAgent;
-featureList.appendChild(li);
-
-li.innerHTML = "<b>prefix</b> - " + prefixes.join(", ");
-featureList.appendChild(li);
-
-li.innerHTML = "<b>classes</b> - " + Simplrz.classes.join(", ");
-featureList.appendChild(li);
+add("<b>user-agent</b> - " + navigator.userAgent);
+add("<b>platform</b> - " + navigator.platform);
+add("<b>prefix</b> - " + prefixes.join(", "));
+add("<b>classes</b> - " + Simplrz.classes.join(", "));
+add("<b>pixel ratio</b> - " + Simplrz.pixelRatio);
+add("<b>window</b> - w: " + window.innerWidth + " x " + window.innerHeight);
+add("<b>screen</b> - w: " + screen.width + " x " + screen.height);
 
 for(var p in props) {
     var prop = props[p];

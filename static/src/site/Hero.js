@@ -28,8 +28,7 @@ Hero = function(container) {
 		ctn.ext.attr('frameborder', 0);
 		ctn.ext.css('opacity', 0);
 
-		// If it is a demo, it just doesn't look very good (too many color flashes)
-		if(!isDemo) container.ext.css('backgroundColor', data.tint);
+		container.ext.css('backgroundColor', "#000");
 
 		ctn.ext.on('load', fadeIn);
 		
