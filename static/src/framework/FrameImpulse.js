@@ -52,7 +52,8 @@ FrameImpulse = (function() {
 
 		frameIndex++;
 
-		r.fps = (isNaN(avgFPS) || !avgFPS) ? 60 : avgFPS ;
+		r.fps = (isNaN(avgFPS) || !avgFPS) ? 60 : avgFPS;
+		r.fpsNow = 1000 / frameTime;
 
 
 		if(!fpsDiv) return;
