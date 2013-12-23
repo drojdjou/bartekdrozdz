@@ -11,13 +11,11 @@ Content = function() {
 
 	// Is it a webkit browser and it is not a touch screen or it is an iPhone 5
 	var canBlurFunc =  function() {
-		return 
-			Simplrz.prefix.lowercase == "webkit" && 
-			(!Simplrz.touch || 
-				(navigator.platform == "iPhone" && screen.height == 568)
-			);
+		return Simplrz.prefix.lowercase == "webkit" && (!Simplrz.touch || (navigator.platform == "iPhone" && screen.height == 568));
 	
 	}
+
+	var canBlur = false;
 
 	var onResize = function() {
 		if(!_active) return;
@@ -49,7 +47,8 @@ Content = function() {
         hero.ext.transform();
 
         // If we see a drop in frame rate - let's skip the blur effect
-        if(FrameImpulse.fps < 50 && canBlur) {
+        if(FrameImpulse.fps < 25 && canBlur) {
+        	console.log("Cancaling blur: ", FrameImpulse.fps);
         	content.ext.css("backgroundColor", "rgba(0, 0, 0, 1)");
         	canBlur = false;
         }
@@ -69,7 +68,7 @@ Content = function() {
 
 		if(_active) {
 
-			var canBlur = canBlurFunc() && FrameImpulse.fps > 50;
+			canBlur = canBlurFunc();
 			if(canBlur) content.ext.css("backgroundColor", "rgba(0, 0, 0, 0.5)");
 
 			_canScroll = false;

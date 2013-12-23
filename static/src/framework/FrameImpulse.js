@@ -1,7 +1,15 @@
 FrameImpulse = (function() {
 
-    var lastTime = 0;
     var vendors = ['webkit', 'moz'];
+
+    var fpsDiv = document.getElementById("fps");
+    var lastTime = 0, frameIndex = 0;
+    var sumFrame = 0, avgFrame = 16, avgFPS = 60;
+
+    var r = {};
+	var listeners = [], numListeners = 0, toRemove = [], numToRemove;
+
+	r.fps = 60;
 
     for(var i = 0; i < vendors.length && !window.requestAnimationFrame; ++i) {
         window.requestAnimationFrame = window[vendors[i] + 'RequestAnimationFrame'];
@@ -18,10 +26,6 @@ FrameImpulse = (function() {
             return id;
         };
     }
-
-    var fpsDiv = document.getElementById("fps");
-    var lastTime = 0, frameIndex = 0;
-    var sumFrame = 0, avgFrame = 0, avgFPS = 0;
 
     if(fpsDiv) {
 		// fpsDiv.style.opacity = 0;
@@ -48,7 +52,7 @@ FrameImpulse = (function() {
 
 		frameIndex++;
 
-		r.fps = avgFPS;
+		r.fps = (isNaN(avgFPS) || !avgFPS) ? 60 : avgFPS ;
 
 
 		if(!fpsDiv) return;
@@ -59,9 +63,6 @@ FrameImpulse = (function() {
 			fpsDiv.innerHTML = (avgFrame|0) + ' | ' + (avgFPS|0);
 		}
 	}
-
-	var r = {};
-	var listeners = [], numListeners = 0, toRemove = [], numToRemove;
 
 	var run = function(deltaTime) {
 		requestAnimationFrame(run);
