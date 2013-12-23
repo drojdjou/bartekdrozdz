@@ -10,12 +10,14 @@ Content = function() {
 	var easer = new Easer(0.2);
 
 	// Is it a webkit browser and it is not a touch screen or it is an iPhone 5
-	var canBlur = Simplrz.prefix.lowercase == "webkit" && (!Simplrz.touch || (navigator.platform == "iPhone" && screen.height == 568));
+	var canBlurFunc =  function() {
+		return 
+			Simplrz.prefix.lowercase == "webkit" && 
+			(!Simplrz.touch || 
+				(navigator.platform == "iPhone" && screen.height == 568)
+			);
 	
-	// Temp: only on iPhone 5 for now, turned off to be to be really slow on Chrome
-	// var canBlur = (navigator.platform == "iPhone" && screen.height == 568);
-
-	if(canBlur) content.ext.css("backgroundColor", "rgba(0, 0, 0, 0.5)");
+	}
 
 	var onResize = function() {
 		if(!_active) return;
@@ -46,7 +48,11 @@ Content = function() {
         hero.ext.y = br * 0.5;
         hero.ext.transform();
 
-        if(FrameImpulse.fps < 50 && canBlur) canBlur = false;
+        // If we see a drop in frame rate - let's skip the blur effect
+        if(FrameImpulse.fps < 50 && canBlur) {
+        	content.ext.css("backgroundColor", "rgba(0, 0, 0, 1)");
+        	canBlur = false;
+        }
 
         if(canBlur) {
 	        var b = Math.clamp(br/-10, 0, 40) | 0;
@@ -62,6 +68,10 @@ Content = function() {
 		_active = (r == Site.PROJECT || r == Site.ARTICLE);
 
 		if(_active) {
+
+			var canBlur = canBlurFunc() && FrameImpulse.fps > 50;
+			if(canBlur) content.ext.css("backgroundColor", "rgba(0, 0, 0, 0.5)");
+
 			_canScroll = false;
 			data = Data.getProjectById(e.parts[1]);
 			content.innerHTML = '';
