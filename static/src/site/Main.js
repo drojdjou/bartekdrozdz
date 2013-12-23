@@ -27,6 +27,8 @@ Main = function() {
 
 	if(!Simplrz.touch) {
 		projectsBtn.ext.on('click', scrollToProject);
+	} else {
+		Util.handleTap(projectsBtn, scrollToProject);
 	}
 
 	var onResize = function() {

@@ -7,7 +7,7 @@ var Box = function(element) {
     var imageLoaded = false, hoverLocked = true;
 
     var easer = new Easer(), scrollDirection = 0;
-    easer.setEase(0.1); 
+    easer.setEase(0.5); 
 
     var rect = element.ext.rect();
     var initY = element.ext.rect().top, offset = 0;
