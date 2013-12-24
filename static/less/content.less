@@ -138,7 +138,11 @@
 				line-height: 1.45em;
 			}
 
-			
+			// Aka the tweet-me line
+			h6 {
+				.typo-header();
+				font-size: 0.8em;
+			}
 
 			b {
 				color: white;
@@ -176,10 +180,9 @@
 
 			a {
 				color: inherit;
-				border-bottom: 1px solid #ffffff;
-				text-decoration: none;
+				text-decoration: underline;
 
-				&:hover {
+				.no-touch &:hover {
 					color: #fff;
 				}
 			}
