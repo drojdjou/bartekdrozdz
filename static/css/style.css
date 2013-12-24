@@ -350,6 +350,10 @@ p {
   letter-spacing: 0.02em;
   line-height: 1.45em;
 }
+#content .content .text h6 {
+  font-family: 'Droid Sans';
+  font-size: 0.8em;
+}
 #content .content .text b {
   color: white;
 }
@@ -385,10 +389,9 @@ p {
 }
 #content .content .text a {
   color: inherit;
-  border-bottom: 1px solid #ffffff;
-  text-decoration: none;
+  text-decoration: underline;
 }
-#content .content .text a:hover {
+.no-touch #content .content .text a:hover {
   color: #fff;
 }
 #content .content .text .launch {
