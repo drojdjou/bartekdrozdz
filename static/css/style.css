@@ -314,8 +314,10 @@ p {
   background-color: #7c0000;
   color: white;
   font-size: 0.9em;
-  padding: 5px 5px 5px 10px;
+  line-height: 1.45;
+  padding: 8px 8px 10px 10px;
   border-radius: 4px;
+  font-family: 'Droid Sans';
 }
 .webgl #content .content .text .webgl {
   display: none;
