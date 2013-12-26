@@ -5,7 +5,7 @@ FrameImpulse = (function() {
     var fpsDiv;// = document.getElementById("fps");
     var lastTime = 0, frameIndex = 0;
     var sumFrame = 0, avgFrame = 16, avgFPS = 60;
-    var lowFPS = 60, fpsMeasureTime = 100;
+    var lowFPS = 60, fpsMeasureTime = 1000;
 
     var r = {};
 	var listeners = [], numListeners = 0, toRemove = [], numToRemove;
