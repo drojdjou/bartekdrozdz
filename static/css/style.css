@@ -926,8 +926,7 @@ section#projects ul.projects li .spacer {
   margin-bottom: 0;
 }
 #blog p + p {
-  margin-top: 0;
-  text-indent: 1em;
+  margin-top: 0.8em;
 }
 #blog a {
   color: inherit;
