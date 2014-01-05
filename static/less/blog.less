@@ -1,0 +1,168 @@
+#blog {
+
+	position: absolute;
+	width: 100%;
+	background-color: #fff;
+	color: #333;
+
+	&.inverted {
+		background-color: #000;
+		color: #bbb;
+
+		code {
+			background-color: #333;
+		}
+
+		a:hover {
+			color: #fff;
+		}
+	}
+
+	@article-width: 700px;
+
+	article {
+		position: relative;
+		margin: 2em;
+		font-size: 1.0em;
+		line-height: 1.4em;
+		
+
+		@media screen and (min-width: 800px) {
+			font-size: 1.1em;
+			left: 50%;
+			max-width: @article-width;
+			margin: 0 0 2em @article-width * -0.5;
+		}
+	}
+
+	h1 {
+		.typo-title();
+		text-transform: uppercase;
+		margin: 0.5em 0 0.3em 0;
+	}
+
+	// Subtitle
+	h2 {
+		.typo-header();
+	}
+
+	// Big header
+	h3 {
+		.typo-header();
+		line-height: 1.5em;
+	}
+
+	// Heading paragraph
+	h4 {
+		.typo-text();
+		font-weight: bold;
+	}
+
+	p, li {
+		.typo-text();
+		margin-bottom: 0;
+	}
+
+	p + p {
+		margin-top: 0;
+		text-indent: 1em;
+	}
+
+	a {
+		color: inherit;
+		text-decoration: underline;
+
+		&:hover {
+			color: #808080;
+		}
+	}
+
+	code {
+		background-color: #ddd;
+		border-radius: 2px;
+		font-size: 0.8em;
+		padding: 0.2em 0.4em 0.2em 0.4em;
+	}
+
+	article > code {
+		display: block;
+		margin: 1em 0 1em 0;
+		white-space: pre-line;
+		padding: 1em;
+
+		@media screen and (min-width: 800px) {
+			// white-space: pre;
+			padding: 1em;
+		}
+	}
+
+	ul {
+		padding-left: 1em;
+
+		li {
+			margin-bottom: 0.25em;
+		}
+	}
+
+	.demo {
+		position: relative;
+		width: 100%;
+		min-height: 100px;
+		background-color: #ddd;
+		margin: 1em 0 0 0;
+	}
+
+	.redbox {
+		position: absolute;
+		min-width: 50px;
+		height: 50px;
+		background-color: #f00;
+		top: 25px;
+		left: 25px;
+		color: #fff;
+		.typo-header();
+		text-align: center;
+		padding: 0.85em 0.8em 0 0.8em;
+	}
+
+	.input {
+		.typo-text();
+		margin: 1em 0 1em 0;
+
+		input {
+			border: 0;
+			margin: 0;
+			padding: 0.5em;
+			.typo-text();
+			background-color: #f7e6ba;
+			width: 10em;
+		}
+	}
+
+	.buttons {
+		list-style-type: none;
+		padding: 0;
+		overflow: auto;
+		margin-bottom: 0.5em;
+
+		li {
+			float: left;
+			.typo-header();
+			margin: 0 1em 0.1em 0;
+			background-color: #444;
+			color: #fff;
+			padding: 0.3em 0.8em 0.3em 0.8em;
+			border-radius: 6px;
+			cursor: pointer;
+
+			&:hover {
+				background-color: #f00;
+			}
+		}
+	}
+}
+
+
+
+
+

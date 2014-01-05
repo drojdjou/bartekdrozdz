@@ -856,3 +856,162 @@ section#projects ul.projects li .spacer {
     width: 20%;
   }
 }
+#blog {
+  position: absolute;
+  width: 100%;
+  background-color: #fff;
+  color: #333;
+}
+#blog.inverted {
+  background-color: #000;
+  color: #bbb;
+}
+#blog.inverted code {
+  background-color: #333;
+}
+#blog.inverted a:hover {
+  color: #fff;
+}
+#blog article {
+  position: relative;
+  margin: 2em;
+  font-size: 1.0em;
+  line-height: 1.4em;
+}
+@media screen and (min-width: 800px) {
+  #blog article {
+    font-size: 1.1em;
+    left: 50%;
+    max-width: 700px;
+    margin: 0 0 2em -350px;
+  }
+}
+#blog h1 {
+  font-family: Oswald;
+  font-size: 1.6em;
+  line-height: 1em;
+  text-transform: uppercase;
+  margin: 0.5em 0 0.3em 0;
+}
+@media screen and (min-width: 600px) {
+  #blog h1 {
+    font-size: 2.6em;
+  }
+}
+@media screen and (min-width: 600px) {
+  #blog h1 {
+    font-size: 3.6em;
+  }
+}
+#blog h2 {
+  font-family: 'Droid Sans';
+}
+#blog h3 {
+  font-family: 'Droid Sans';
+  line-height: 1.5em;
+}
+#blog h4 {
+  font-family: 'Fjord One', sans-serif;
+  font-weight: 100;
+  font-size: 1em;
+  letter-spacing: 0.02em;
+  font-weight: bold;
+}
+#blog p,
+#blog li {
+  font-family: 'Fjord One', sans-serif;
+  font-weight: 100;
+  font-size: 1em;
+  letter-spacing: 0.02em;
+  margin-bottom: 0;
+}
+#blog p + p {
+  margin-top: 0;
+  text-indent: 1em;
+}
+#blog a {
+  color: inherit;
+  text-decoration: underline;
+}
+#blog a:hover {
+  color: #808080;
+}
+#blog code {
+  background-color: #ddd;
+  border-radius: 2px;
+  font-size: 0.8em;
+  padding: 0.2em 0.4em 0.2em 0.4em;
+}
+#blog article > code {
+  display: block;
+  margin: 1em 0 1em 0;
+  white-space: pre-line;
+  padding: 1em;
+}
+@media screen and (min-width: 800px) {
+  #blog article > code {
+    padding: 1em;
+  }
+}
+#blog ul {
+  padding-left: 1em;
+}
+#blog ul li {
+  margin-bottom: 0.25em;
+}
+#blog .demo {
+  position: relative;
+  width: 100%;
+  min-height: 100px;
+  background-color: #ddd;
+  margin: 1em 0 0 0;
+}
+#blog .redbox {
+  position: absolute;
+  min-width: 50px;
+  height: 50px;
+  background-color: #f00;
+  top: 25px;
+  left: 25px;
+  color: #fff;
+  font-family: 'Droid Sans';
+  text-align: center;
+  padding: 0.85em 0.8em 0 0.8em;
+}
+#blog .input {
+  font-family: 'Fjord One', sans-serif;
+  font-weight: 100;
+  font-size: 1em;
+  letter-spacing: 0.02em;
+  margin: 1em 0 1em 0;
+}
+#blog .input input {
+  border: 0;
+  margin: 0;
+  padding: 0.5em;
+  font-family: 'Fjord One', sans-serif;
+  font-weight: 100;
+  font-size: 1em;
+  letter-spacing: 0.02em;
+  background-color: #f7e6ba;
+  width: 10em;
+}
+#blog .buttons {
+  list-style-type: none;
+  padding: 0;
+  overflow: auto;
+  margin-bottom: 0.5em;
+}
+#blog .buttons li {
+  float: left;
+  font-family: 'Droid Sans';
+  margin: 0 1em 0.1em 0;
+  background-color: #444;
+  color: #fff;
+  padding: 0.3em 0.8em 0.3em 0.8em;
+  border-radius: 6px;
+  cursor: pointer;
+}
+#blog .buttons li:hover {
+  background-color: #f00;
+}
