@@ -535,9 +535,13 @@
 
 		<p>Many other easing functions are easy to find on the web. They are part of virtually every tweening engine out there, so just take a look at the source and you'll find them. I encourage you to experiment, change values, break things - this is the best way to learn. Who knows, maybe you will invent new easing formulas!</p>
 
-		<h2>Conclusion</h2>
+		<h3>Building an animation engine?</h3>
 
-		<h3>Pros and cons</h3>
+		<p>If you used a 3rd party animation (tweening) engine before and you thought that building one must be very a complex task, then I hope this article proves that in fact it is not so complicated. Of course it takes some work to create one but a basic engine can be written with a few hundred lines of code - so it is not a huge task for an entire team to do.</p>
+
+		<p>All you need is to wrap the logic explained above it into an API that exposes all different parameters and can be reused on multiple DOM elements. It's a great exercise to create an animation engine. Even if you don't end up using it in production, the experience you'll get from writing it is invaluable!</p>
+
+		<h2>Conclusion</h2>
 
 		<p>The reason this technique is called frame-by-frame is because it is based on code executed at every frame that calculates the current values and updates the CSS properties.<p>
 		
@@ -548,12 +552,6 @@
 		<p>For the reasons above, understanding how it works is a rather good time investment.</p>
 		
 		<p>However, in the context of web development, it comes at a price. Since the animation is executed in Javascript, it has a bigger performance impact that the two other techniques - CSS Transitions and CSS Animations. All projects are different and each time you need to decide whether you go for performance or flexibility.</p>
-
-		<h3>Building an animation engine</h3>
-
-		<p>If you used a 3rd party animation (tweening) engine before and you thought that building one must be very a complex task, then I hope this article proves that in fact it is not so complicated. Of course it takes some work to create one but a basic engine can be written with a few hundred lines of code - so it is not a huge task for an entire team to do.</p>
-
-		<p>All you need is to wrap the logic explained above it into an API that exposes all different parameters and can be reused on multiple DOM elements. It's a great exercise to create an animation engine. Even if you don't end up using it in production, the experience you'll get from writing it is invaluable!</p>
 
 		<h3>Further reading and useful links</h3>
 
