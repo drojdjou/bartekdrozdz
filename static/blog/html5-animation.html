@@ -39,28 +39,26 @@
 			var DEMO = {};
 		</script>
 
-		<h1>Animation in HTML5</h1>
+		<h1>HTML5 Animation, Part I</h1>
+		<h2>Frame-by-frame animation</h2>
 
-		<h3>Animations can make your website stand out of the crowd. Good animations enchance the user interface, make the navigation feel smooth and offer an superior esthetic experience. Modern browsers support animations quite well, but there are so many different ways of animating an element on the page that it often confuses even experienced developers. This article is the first in a series aimed to explain different HTML5 animation techniques in depth.</h3>
+		<h3>Animations can make your website stand out of the crowd. Good animations enchance the <a href="http://www.ui-transitions.com/" target="_blank">user interface</a>, make navigation feel smooth and offer superior esthetic experience. Modern browsers support animations quite well, but there are so many different ways of animating HTML elements that it often confuses even experienced developers.</h3>
 
-		<p>In the most general terms, animation is a way to gradually transform an object from value A to value B over time. Typically the animation involves changing the position, size, rotation, color or opacity of an element, but any parameter of a object can be animated in the same way. Animations can be trigerred automatically or in response to user interaction - like ex. hover effects.</p>
-
-		<p>There are 3 ways to create animation in modern browser:</p>
+		<p>This the the first part of a serie aimed at exploring HTML5 animation in depth. The serie will consist of three parts and will cover the following topics:</p>
 		
 		<ol class="anim-types">
 			<li>Frame-by-frame animation</li>
 			<li>CSS Transitions</li>
 			<li>CSS Animations</li>
 		</ol>
+
+		<p><em>For the sake of completeness, I need to add that there are ways to animate shapes in SVG as well as inside WebGL shaders. Both are interesting but very specific so I decided to leave them out.</em></p>
+
+		<p>In this first article, we will focus on frame-by-frame animation. You will learn how easy it is to create an animation loop in Javascript using the <code>requestAnimationFrame</code> function and animate CSS properties of HTML elements inside it with some simple math. This article assumes that you have a basic knowledge of CSS and that can create a properly formated HTML document and add some script to it, but advanced Javascript knowledge is not required. You also do not need to know any animation related math equations.</p>
+
+		<p>The other two articles are on the way so keep an eye on this page or follow me on <a href="https://twitter.com/bartekd">Twitter</a> to get notified when they are released!</p>
 		
-		<p>The first technique relies entirely on Javascript while other two are CSS-based. For the sake of completeness, I need to add that there are ways to animate shapes in SVG as well as inside WebGL shaders. Both are interesting but very specific so I won't discuss them in this article.</p>
-
-		<p>It is good to remember that any 3rd party API or animation engine out there relies on one or more of those techniques, simply because there isn't any other way to animate anything in a browser. Knowing those basic techniques will allow you to make better choices and result in smoother and more efficient animations.</p>
-
-		<p>This article focuses on the first technique - frame-by-frame animation. From a coding perspecitve, it's the most complex one, but understanding how it works is very rewarding and will give you a solid background when working with any time of animation.</p>
-
-		<a name="frame-by-frame"></a>
-		<h2>Frame-by-frame animation</h2>
+		<p>Ok, without further ado, let's dive right in!</p>
 
 		<h3>1. Interpolation</h3>
 
@@ -70,7 +68,7 @@
 
 		<code>value = start + (end - start) * (time / duration);</code>
 
-		<p>The interpolated value is the start value plus the difference between end and start multiplied by the current time divided by the overall duration. Dividing the time by the duration gives us a value between 0 and 1, where 0 is the beginning of the animation, and 1 is the end. As you will see later, there are some big advantages to keeping the value of the time in 0-1 range.</p>
+		<p>The interpolated value is the start value plus the difference between end and start multiplied by the current time divided by the overall duration. Dividing the time by the duration gives us a value between 0 and 1, where 0 is the beginning of the animation, and 1 is the end. As you will see later, there are some big advantages to keeping the value of the time in 0-1 range. I would also recommend reading this great <a href="http://sol.gfxile.net/interpolation/" target="_blank">article</a> on interpolation.</p>
 
 		<p>If we want to calculate the position of the object 0.5 sec after the animation started, we simply plug the values from the example above to the formula, we get:</p>
 
@@ -210,9 +208,9 @@
 
 		<h3>4. Timing</h3>
 
-		<p>We could move the object by a a pixel or more on every frame, but the problem is that there is no guarantee that our animation function will be invoked at consistent time intervals. Depending on the browser, the CPU, other Javascript code and many other factors the frame rate can drop below 60 FPS. It's much better to use some kind of timer and for this we can use the built-in <code>Date</code> object. In the future it will be replaced by <a href="http://updates.html5rocks.com/2012/08/When-milliseconds-are-not-enough-performance-now" target="_blank"><code>window.performance</code></a>, but it's not widely supported yet.</p>
+		<p>We could move the object by an even amount of pixels on every frame and expect a steady pace of animation, but the problem is that there is no guarantee that our animation function will be invoked at consistent time intervals. Depending on browser,k CPU, other Javascript code and many other factors, the frame rate can drop below 60 FPS. It's much better to use some kind of timer to test the actual time of the animaton. For this we can use the built-in <code>Date</code> object. In the future it will be replaced by <a href="http://updates.html5rocks.com/2012/08/When-milliseconds-are-not-enough-performance-now" target="_blank"><code>window.performance</code></a>, but it's not widely supported yet (when it is supported I will update this section, promised!)</p>
 
-		<p>The idea of measuring time is simple: when the animation starts, save the current time to a variable called <code>startTime</code>. Then at each frame subtract <code>startTime</code> from current time - the result says how much time elapsed since the animation started. Here's the loop code with time measurement added:</p>
+		<p>The idea of measuring time is simple: when the animation starts, save the current time to a variable called <code>startTime</code>. Then, at each frame, subtract <code>startTime</code> from current time - the result says how much time passed since the animation started. Here's the loop code with time measurement added:</p>
 
 		<code>var startTime, time;
 			function run() {
@@ -535,37 +533,19 @@
 
 		<p>Many other easing functions are easy to find on the web. They are part of virtually every tweening engine out there, so just take a look at the source and you'll find them. I encourage you to experiment, change values, break things - this is the best way to learn. Who knows, maybe you will invent new easing formulas!</p>
 
-		<h3>Building an animation engine?</h3>
-
-		<p>If you used a 3rd party animation (tweening) engine before and you thought that building one must be very a complex task, then I hope this article proves that in fact it is not so complicated. Of course it takes some work to create one but a basic engine can be written with a few hundred lines of code - so it is not a huge task for an entire team to do.</p>
-
-		<p>All you need is to wrap the logic explained above it into an API that exposes all different parameters and can be reused on multiple DOM elements. It's a great exercise to create an animation engine. Even if you don't end up using it in production, the experience you'll get from writing it is invaluable!</p>
-
 		<h2>Conclusion</h2>
 
-		<p>The reason this technique is called frame-by-frame is because it is based on code executed at every frame that calculates the current values and updates the CSS properties.<p>
+		<p>By now you probably understand the reason this technique is called frame-by-frame animation. It is based on code executed at every frame that calculates the current values and updates the CSS properties.<p>
 		
-		<p>This technique is universal. We used it above to move a DOM element, but we could as well use it to move around shapes drawn with Canvas 2d or WebGL. It can even be used outside of the browser in any visual programing environmant including moving physical stuff with things like Arduino. The only thing that changes is the way to run the loop - each language has it's own way of dealing with this.</p>
+		<p>This technique is universal. We used it above to move a DOM element, but we could as well use it to move around shapes drawn with Canvas 2d or WebGL. It can even be used outside of the browser in any visual programing environment including moving physical stuff with things like Arduino. The only thing that changes is the way to run the loop - each language has it's own way of dealing with this.</p>
 		
-		<p>Frame-by-frame very hackable. You can change and tweak every part of the system and see the results. You can implement things like pausing, reversing or repeating the animation or create a timeline system where a master animation controls the pace of other animations. You can come up with some exotic easing equations or twist other parameters to achieve unique results.</p>
-		
-		<p>For the reasons above, understanding how it works is a rather good time investment.</p>
-		
-		<p>However, in the context of web development, it comes at a price. Since the animation is executed in Javascript, it has a bigger performance impact that the two other techniques - CSS Transitions and CSS Animations. All projects are different and each time you need to decide whether you go for performance or flexibility.</p>
+		<p>Frame-by-frame is very hackable. You can change and tweak every part of the system and see the results. You can implement things like pausing, reversing or repeating the animation or create a timeline system where a master animation controls the pace of other animations. You can come up with some exotic easing equations or tweak other parameters to achieve unique results.</p>
 
-		<h3>Further reading and useful links</h3>
+		<p>If you used a 3rd party animation (tweening) engine before and you thought that building one must be very a complex task, then I hope this article proves that in fact it is not so complicated. Of course it takes some work to create an animation engine, and covering this in depth goes beyoned the scope of this article, but the basic philosophy of such engine is outlined above.</p>
 
-		<p>Below are a few links related to animation, interpolation and tweening engines that I found interesting.</p>
+		<p>You need to know however that, in the context of web development, the flexibility comes at a price. Since the animation is executed in Javascript, it has a bigger performance impact that the two other techniques - CSS Transitions and CSS Animations. In the next two installments of this series I will explain how those CSS-based techniques work and how to use them in your projects.</p>
 
-		<ul class="link-list">
-			<li><a href="http://sol.gfxile.net/interpolation/" target="_blank">Interpolation Tricks</a></li>
-			<li><a href="http://greweb.me/2012/02/bezier-curve-based-easing-functions-from-concept-to-implementation/">Bezier Curve based easing functions</a></li>
-			<li><a href="http://www.ui-transitions.com/">Meaningful Transitions</a></li>
-			<li><a href="https://github.com/sole/tween.js/blob/master/src/Tween.js" target="_blank">sole/Tween.js</a> - lightweight JS animation engine</li>
-			<li><a href="http://www.html5rocks.com/en/tutorials/speed/high-performance-animations/" target="_blank">High Performance Animations</a></li>
-			<li><a href="http://coding.smashingmagazine.com/2013/03/04/animating-web-gonna-need-bigger-api/">Animating the web needs bigger API</li>
-		</ul>
-
+		<p>I hope you find this article useful. I you would like to share some thoughts please send me a reply to <a href="https://twitter.com/bartekd" target="_blank">@bartekd</a> or shoot me an <a href="mailto:bartek@everyday3d.com?subject=HTML5 Animation">email</a>. Thanks!</p>
 	</article>
 </section>
 
