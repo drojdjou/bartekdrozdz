@@ -1,50 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Animation in HTML5</title>
+	<title>Animation in HTML5. Part 1.</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable = no">
 	<link href="/css/style.css" media="screen, projection" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <section id="blog" class="">
+
+	<div class="navi"><a href="/">back to bartekdrozdz.com</a></div>
+
+	<div class="minidoc"></div>
+	<div class="minidoc-preview"></div>
+
 	<article>
 
-		<script type="text/javascript">
-			(function() {
-			    var lastTime = 0;
-			    var vendors = ['webkit', 'moz'];
-			    for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
-			        window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
-			        window.cancelAnimationFrame =
-			          window[vendors[x]+'CancelAnimationFrame'] || window[vendors[x]+'CancelRequestAnimationFrame'];
-			    }
+		<header>
+			<h1>HTML5 Animation, Part I</h1>
+			<h2>Frame-by-frame animation</h2>
+		</header>
 
-			    if (!window.requestAnimationFrame)
-			        window.requestAnimationFrame = function(callback, element) {
-			            var currTime = new Date().getTime();
-			            var timeToCall = Math.max(0, 16 - (currTime - lastTime));
-			            var id = window.setTimeout(function() { callback(currTime + timeToCall); },
-			              timeToCall);
-			            lastTime = currTime + timeToCall;
-			            return id;
-			        };
-
-			    if (!window.cancelAnimationFrame)
-			        window.cancelAnimationFrame = function(id) {
-			            clearTimeout(id);
-			        };
-			}());
-
-			var DEMO = {};
-		</script>
-
-		<h1>HTML5 Animation, Part I</h1>
-		<h2>Frame-by-frame animation</h2>
+		<span class="info">Posted on January 16th 2014.</span>
 
 		<h3>Animations can make your website stand out of the crowd. Good animations enchance the <a href="http://www.ui-transitions.com/" target="_blank">user interface</a>, make navigation feel smooth and offer superior esthetic experience. Modern browsers support animations quite well, but there are so many different ways of animating HTML elements that it often confuses even experienced developers.</h3>
 
-		<p>This the the first part of a serie aimed at exploring HTML5 animation in depth. The serie will consist of three parts and will cover the following topics:</p>
+		<p>This the the first part of a series aimed at exploring HTML5 animation in depth. There will be three parts that will cover the following topics:</p>
 		
 		<ol class="anim-types">
 			<li>Frame-by-frame animation</li>
@@ -54,21 +35,23 @@
 
 		<p><em>For the sake of completeness, I need to add that there are ways to animate shapes in SVG as well as inside WebGL shaders. Both are interesting but very specific so I decided to leave them out.</em></p>
 
-		<p>In this first article, we will focus on frame-by-frame animation. You will learn how easy it is to create an animation loop in Javascript using the <code>requestAnimationFrame</code> function and animate CSS properties of HTML elements inside it with some simple math. This article assumes that you have a basic knowledge of CSS and that can create a properly formated HTML document and add some script to it, but advanced Javascript knowledge is not required. You also do not need to know any animation related math equations.</p>
+		<p>In this first article, we will focus on frame-by-frame animation. You will learn how easy it is to create an animation loop in Javascript using the <code>requestAnimationFrame</code> function and animate CSS properties of HTML elements inside it with some simple math. This article assumes that you have a basic knowledge of web development so that you can create a properly formated HTML document and add some Javascript to it. No advanced Javascript knowledge is not required. You also do not need to know any animation related math.</p>
 
-		<p>The other two articles are on the way so keep an eye on this page or follow me on <a href="https://twitter.com/bartekd">Twitter</a> to get notified when they are released!</p>
+		<p>The other two articles on CSS Transitions and CSS Animations are on the way so keep an eye on this page or follow me <a href="https://twitter.com/bartekd">@bartekd</a> to get notified when they are released!</p>
 		
 		<p>Ok, without further ado, let's dive right in!</p>
 
 		<h3>1. Interpolation</h3>
 
-		<p>Frame-by-frame animation is based on a Javascript implementation of the basic idea of animation, that is that of changing the value of a property from A to B over time. To understand how to achieve this you need to get familiar with the concept of interpolation, which is fundamental to any animation.</p>
+		<p>The frame-by-frame technique is based on a Javascript implementation of the basic idea of animation, that is of changing the value of a property over time. To understand how to achieve this you need to get familiar with the concept of interpolation, which is fundamental to any animation.</p>
 
-		<p>Let's take a practical example: we want to move a object from 0 to 200 in 2 second. To find the value at any given time in between the start and end, we use interpolation. The formula is extremly simple:</p>
+		<p>Let's take a practical example: we want to animate a property from <code>0</code> to <code>200</code> in 2 second. This value can express anything - a postion, a rotation etc. To find the value at any given time in between the start and end, we use interpolation. The formula is:</p>
 
 		<code>value = start + (end - start) * (time / duration);</code>
 
-		<p>The interpolated value is the start value plus the difference between end and start multiplied by the current time divided by the overall duration. Dividing the time by the duration gives us a value between 0 and 1, where 0 is the beginning of the animation, and 1 is the end. As you will see later, there are some big advantages to keeping the value of the time in 0-1 range. I would also recommend reading this great <a href="http://sol.gfxile.net/interpolation/" target="_blank">article</a> on interpolation.</p>
+		<p>What it basically means is that you need to calculate how far from start and how close to the end you are at the given time.</p>
+
+		<p>Dividing the time by the duration gives us a value between 0 and 1, where 0 is the beginning of the animation, and 1 is the end. As you will see later, there are some big advantages to keeping the value of the time in 0-1 range. I would also recommend reading this great <a href="http://sol.gfxile.net/interpolation/" target="_blank">article</a> on interpolation.</p>
 
 		<p>If we want to calculate the position of the object 0.5 sec after the animation started, we simply plug the values from the example above to the formula, we get:</p>
 
@@ -102,10 +85,12 @@
 
 		<p>To move our object to the initial position of x = 100px we can say:</p>
 
-		<code>var redbox = document.getElementById("redbox");
+		<code>var redbox = document.querySelector("#redbox");
 		redbox.style["transform"] = "translateX(100px)";</code>
 
-		<p>This would be nice, but unfortunately the <code>transform</code> property is polluted with vendor prefixes. There are many ways to deal with this, and I invite you to figure out the most elegant one, but for now let's use a quick-and-dirty way and wrap the whole thing into a function:</p>
+		<p>If you are not familiar with the <code>querySelector</code> function, it returns an element from the DOM using a CSS selector syntax. If you want to get an element by id, you will just pass the id prefixed with a hash in the same way as you would define styles for this id in CSS. In the same way you can select elements by their classes using the <code>.className</code> notation. <code>querySelector</code> also works with more complex selectors, so be sure to try it out!</p>
+
+		<p>In the next line we simply set the CSS <code>transform</code> property to the value we want. This could be that simple, but unfortunately the <code>transform</code> property is polluted with vendor prefixes. There are many ways to deal with this, and I invite you to figure out the most elegant one, but for now let's use a quick-and-dirty way and wrap the whole thing into a function:</p>
 
 		<code>function setX(element, x) {
 		&nbsp;&nbsp;var t = "translateX(" + x + "px)";
@@ -127,23 +112,6 @@
 
 		<div class="demo">
 			<div class="redbox" id="redbox-02"></div>
-			<script type="text/javascript">
-
-			DEMO.e1 = {};
-
-			DEMO.e1.setX = function(element, x) {    
-				var t = "translateX(" + x + "px)";  
-				var s = element.style;  
-				s["transform"] = t;    
-				s["webkitTransform"] = t;   
-				s["mozTransform"] = t;    
-				s["msTransform"] = t; 
-			}
-
-			DEMO.e1.redbox = document.getElementById("redbox-02");
-			DEMO.e1.setX(DEMO.e1.redbox, Math.min(window.innerWidth/4, 100));
-
-			</script>
 		</div>
 
 		<h3>3. Animation loop</h3>
@@ -173,39 +141,6 @@
 			<li id="redbox-btn-02">Stop</li>
 		</ul>
 
-		<script type="text/javascript">
-
-			DEMO.e2 = {}
-			DEMO.e2.redbox = document.getElementById("redbox-03");
-			DEMO.e2.c = 0, 
-			DEMO.e2.running = true;
-
-			DEMO.e2.run = function() {
-				if(!DEMO.e2.running) return;
-				requestAnimationFrame(DEMO.e2.run);
-				DEMO.e2.c++;
-				DEMO.e2.redbox.innerHTML = DEMO.e2.c;
-			}
-			
-			DEMO.e2.start = function() {
-				DEMO.e2.running = true;
-				DEMO.e2.run();
-			}
-
-			DEMO.e2.stop = function() {
-				DEMO.e2.running = false;
-				DEMO.e2.c = 0;
-				DEMO.e2.redbox.innerHTML = DEMO.e2.c;
-			}
-
-			DEMO.e2.startBtn = document.getElementById("redbox-btn-01");
-			DEMO.e2.stopBtn = document.getElementById("redbox-btn-02");
-
-			DEMO.e2.startBtn.addEventListener('click', DEMO.e2.start);
-			DEMO.e2.stopBtn.addEventListener('click', DEMO.e2.stop);
-
-		</script>
-
 		<h3>4. Timing</h3>
 
 		<p>We could move the object by an even amount of pixels on every frame and expect a steady pace of animation, but the problem is that there is no guarantee that our animation function will be invoked at consistent time intervals. Depending on browser,k CPU, other Javascript code and many other factors, the frame rate can drop below 60 FPS. It's much better to use some kind of timer to test the actual time of the animaton. For this we can use the built-in <code>Date</code> object. In the future it will be replaced by <a href="http://updates.html5rocks.com/2012/08/When-milliseconds-are-not-enough-performance-now" target="_blank"><code>window.performance</code></a>, but it's not widely supported yet (when it is supported I will update this section, promised!)</p>
@@ -234,41 +169,6 @@
 			<li id="redbox-btn-03">Start</li>
 			<li id="redbox-btn-04">Stop</li>
 		</ul>
-
-		<script type="text/javascript">
-
-		(function() {
-
-			var redbox = document.getElementById("redbox-04");
-			var running = true;
-			var startTime;
-
-			var run = function() {
-				if(!running) return;
-				requestAnimationFrame(run);
-				redbox.innerHTML = (new Date().getTime() - startTime) + "ms";
-			}
-			
-			var start = function() {
-				startTime = new Date().getTime();
-				running = true;
-				run();
-			}
-
-			var stop = function() {
-				running = false;
-				redbox.innerHTML = "0ms";
-			}
-
-			var startBtn = document.getElementById("redbox-btn-03");
-			var stopBtn = document.getElementById("redbox-btn-04");
-
-			startBtn.addEventListener('click', start);
-			stopBtn.addEventListener('click', stop);
-
-		})();
-
-		</script>
 
 		<h3>5. Animation sequence</h3>
 
@@ -306,38 +206,6 @@
 		<ul class="buttons">
 			<li id="redbox-btn-05">Start</li>
 		</ul>
-
-		<script type="text/javascript">
-
-		(function() {
-
-			var redbox = document.getElementById("redbox-05");
-			var startTime, duration;
-
-			var run = function() {
-				var time = (new Date().getTime() - startTime) / duration;
-				redbox.innerHTML = time;
-				if(time < 1) requestAnimationFrame(run);
-				else stop();
-			}
-			
-			var start = function() {
-				duration = input.value;
-				startTime = new Date().getTime();
-				run();
-			}
-
-			var stop = function() {
-				redbox.innerHTML = "Done!";
-			}
-
-			var startBtn = document.getElementById("redbox-btn-05");
-			var input = document.getElementById("redbox-input-01");
-
-			startBtn.addEventListener('click', start);
-		})();
-
-		</script>
 
 		<h3>6. Making things move</h3>
 
@@ -377,44 +245,6 @@
 		<ul class="buttons">
 			<li id="redbox-btn-06">Start</li>
 		</ul>
-
-		<script type="text/javascript">
-
-		(function() {
-
-			var redbox = document.getElementById("redbox-06");
-			var startBtn = document.getElementById("redbox-btn-06");
-			var input = document.getElementById("redbox-input-02");
-
-			var startTime, duration;
-			var rect = redbox.getBoundingClientRect();
-			var startX = 0, endX = window.innerWidth - rect.left * 2 - rect.width;
-
-			var setX = function(element, x) {    
-				var t = "translateX(" + x + "px)";  
-				var s = element.style;  
-				s["transform"] = t;    
-				s["webkitTransform"] = t;   
-				s["mozTransform"] = t;    
-				s["msTransform"] = t; 
-			}
-
-			var run = function() {
-				var time = (new Date().getTime() - startTime) / duration;
-				if(time < 1) requestAnimationFrame(run);
-				setX(redbox, startX + (endX - startX) * time);
-			}
-			
-			var start = function() {
-				duration = input.value;
-				startTime = new Date().getTime();
-				run();
-			}
-
-			startBtn.addEventListener('click', start);
-		})();
-
-		</script>
 
 		<h3>7. Easing</h3>
 
@@ -466,59 +296,14 @@
 			<li id="redbox-btn-07">Start</li>
 		</ul>
 
-		<script type="text/javascript">
-
-		(function() {
-
-			var redbox = document.getElementById("redbox-07");
-			var startBtn = document.getElementById("redbox-btn-07");
-			var input = document.getElementById("redbox-input-03");
-
-			var startTime, duration;
-			var rect = redbox.getBoundingClientRect();
-			var startX = 0, endX = window.innerWidth - rect.left * 2 - rect.width;
-
-			var setX = function(element, x) {    
-				var t = "translateX(" + x + "px)";  
-				var s = element.style;  
-				s["transform"] = t;    
-				s["webkitTransform"] = t;   
-				s["mozTransform"] = t;    
-				s["msTransform"] = t; 
-			}
-
-			var easeIn = function(t) {
-				return t * t;
-			}
-
-			var run = function() {
-				var time = (new Date().getTime() - startTime) / duration;
-				if(time < 1) { requestAnimationFrame(run);
-					time = easeIn(time);
-					setX(redbox, startX + (endX - startX) * time);
-				} else {
-					setX(redbox, endX);
-				}
-			}
-			
-			var start = function() {
-				console.log("Start", redbox),
-				duration = input.value;
-				startTime = new Date().getTime();
-				run();
-			}
-
-			startBtn.addEventListener('click', start);
-		})();
-
-		</script>
-
-		<p>The animation has a somewhat subtle, but visible effect where it starts slowly and then accelerates towards the end. If you think the effect is not strong enough, change the easing function to this:</p>
+		<p>The animation has a subtle but visible effect where it starts slowly and then accelerates towards the end. If you think the effect is not strong enough, try changing the easing function to this:</p>
 
 		<code>function easeIn(t) {
 			&nbsp;&nbsp;return t * t * t * t;
 			}
 		</code>
+
+		<p>This easing equation what is typically called <code>quadEaseIn</code>, where quad means that we raise <code>t</code> to the power 4.</p>
 
 		<p>Another very useful easing function is called smoothstep. This one will make the object gently accelerate at the beginning and then slow down towards the end - it is perfect for all kinds of UI transitions. Here's the fomula:</p>
 
@@ -541,13 +326,259 @@
 		
 		<p>Frame-by-frame is very hackable. You can change and tweak every part of the system and see the results. You can implement things like pausing, reversing or repeating the animation or create a timeline system where a master animation controls the pace of other animations. You can come up with some exotic easing equations or tweak other parameters to achieve unique results.</p>
 
-		<p>If you used a 3rd party animation (tweening) engine before and you thought that building one must be very a complex task, then I hope this article proves that in fact it is not so complicated. Of course it takes some work to create an animation engine, and covering this in depth goes beyoned the scope of this article, but the basic philosophy of such engine is outlined above.</p>
+		<p>If you used a 3rd party animation engine before and you thought that building one must be very a complex task, then I hope this article proves that in fact it is not so complicated. Of course it takes work to create an animation engine, and covering this in depth goes beyone the scope of this article, but the basic philosophy of such engine is outlined above.</p>
 
-		<p>You need to know however that, in the context of web development, the flexibility comes at a price. Since the animation is executed in Javascript, it has a bigger performance impact that the two other techniques - CSS Transitions and CSS Animations. In the next two installments of this series I will explain how those CSS-based techniques work and how to use them in your projects.</p>
+		<p>You need to know however that, in the context of web development, this flexibility comes at a price. Since the animation is executed in Javascript, it has a bigger performance impact that the two other techniques - CSS Transitions and CSS Animations. In the next two installments of this series I will explain how those CSS-based techniques work and how to use them in your projects.</p>
 
 		<p>I hope you find this article useful. I you would like to share some thoughts please send me a reply to <a href="https://twitter.com/bartekd" target="_blank">@bartekd</a> or shoot me an <a href="mailto:bartek@everyday3d.com?subject=HTML5 Animation">email</a>. Thanks!</p>
 	</article>
 </section>
+
+<script type="text/javascript">
+
+(function() {
+    var lastTime = 0;
+    var vendors = ['webkit', 'moz'];
+    for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+        window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
+        window.cancelAnimationFrame =
+          window[vendors[x]+'CancelAnimationFrame'] || window[vendors[x]+'CancelRequestAnimationFrame'];
+    }
+
+    if (!window.requestAnimationFrame)
+        window.requestAnimationFrame = function(callback, element) {
+            var currTime = new Date().getTime();
+            var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+            var id = window.setTimeout(function() { callback(currTime + timeToCall); },
+              timeToCall);
+            lastTime = currTime + timeToCall;
+            return id;
+        };
+
+    if (!window.cancelAnimationFrame)
+        window.cancelAnimationFrame = function(id) {
+            clearTimeout(id);
+        };
+}());
+
+(function() {
+
+	var setX = function(element, x) {    
+		var t = "translateX(" + x + "px)";  
+		var s = element.style;  
+		s["transform"] = t;    
+		s["webkitTransform"] = t;   
+		s["mozTransform"] = t;    
+		s["msTransform"] = t; 
+	}
+
+	var redbox = document.getElementById("redbox-02");
+	setX(redbox, Math.min(window.innerWidth/4, 100));
+
+})();
+
+(function() {
+
+	var redbox = document.getElementById("redbox-03");
+	var c = 0, running = true;
+
+	var run = function() {
+		if(!running) return;
+		requestAnimationFrame(run);
+		c++;
+		redbox.innerHTML = c;
+	}
+	
+	var start = function() {
+		running = true;
+		run();
+	}
+
+	var stop = function() {
+		running = false;
+		c = 0;
+		redbox.innerHTML = c;
+	}
+
+	var startBtn = document.getElementById("redbox-btn-01");
+	var stopBtn = document.getElementById("redbox-btn-02");
+
+	startBtn.addEventListener('click', start);
+	stopBtn.addEventListener('click', stop);
+
+})();
+
+(function() {
+
+	var redbox = document.getElementById("redbox-04");
+	var running = true;
+	var startTime;
+
+	var run = function() {
+		if(!running) return;
+		requestAnimationFrame(run);
+		redbox.innerHTML = (new Date().getTime() - startTime) + "ms";
+	}
+	
+	var start = function() {
+		startTime = new Date().getTime();
+		running = true;
+		run();
+	}
+
+	var stop = function() {
+		running = false;
+		redbox.innerHTML = "0ms";
+	}
+
+	var startBtn = document.getElementById("redbox-btn-03");
+	var stopBtn = document.getElementById("redbox-btn-04");
+
+	startBtn.addEventListener('click', start);
+	stopBtn.addEventListener('click', stop);
+
+})();
+
+(function() {
+
+	var redbox = document.getElementById("redbox-05");
+	var startTime, duration;
+
+	var run = function() {
+		var time = (new Date().getTime() - startTime) / duration;
+		redbox.innerHTML = time;
+		if(time < 1) requestAnimationFrame(run);
+		else stop();
+	}
+	
+	var start = function() {
+		duration = input.value;
+		startTime = new Date().getTime();
+		run();
+	}
+
+	var stop = function() {
+		redbox.innerHTML = "Done!";
+	}
+
+	var startBtn = document.getElementById("redbox-btn-05");
+	var input = document.getElementById("redbox-input-01");
+
+	startBtn.addEventListener('click', start);
+})();
+
+(function() {
+
+	var redbox = document.getElementById("redbox-06");
+	var startBtn = document.getElementById("redbox-btn-06");
+	var input = document.getElementById("redbox-input-02");
+
+	var startTime, duration;
+	var rect = redbox.getBoundingClientRect();
+	var startX = 0, endX = window.innerWidth - rect.left * 2 - rect.width;
+
+	var setX = function(element, x) {    
+		var t = "translateX(" + x + "px)";  
+		var s = element.style;  
+		s["transform"] = t;    
+		s["webkitTransform"] = t;   
+		s["mozTransform"] = t;    
+		s["msTransform"] = t; 
+	}
+
+	var run = function() {
+		var time = (new Date().getTime() - startTime) / duration;
+		if(time < 1) requestAnimationFrame(run);
+		setX(redbox, startX + (endX - startX) * time);
+	}
+	
+	var start = function() {
+		duration = input.value;
+		startTime = new Date().getTime();
+		run();
+	}
+
+	startBtn.addEventListener('click', start);
+})();
+
+(function() {
+
+	var redbox = document.getElementById("redbox-07");
+	var startBtn = document.getElementById("redbox-btn-07");
+	var input = document.getElementById("redbox-input-03");
+
+	var startTime, duration;
+	var rect = redbox.getBoundingClientRect();
+	var startX = 0, endX = window.innerWidth - rect.left * 2 - rect.width;
+
+	var setX = function(element, x) {    
+		var t = "translateX(" + x + "px)";  
+		var s = element.style;  
+		s["transform"] = t;    
+		s["webkitTransform"] = t;   
+		s["mozTransform"] = t;    
+		s["msTransform"] = t; 
+	}
+
+	var easeIn = function(t) {
+		return t * t;
+	}
+
+	var run = function() {
+		var time = (new Date().getTime() - startTime) / duration;
+		if(time < 1) { requestAnimationFrame(run);
+			time = easeIn(time);
+			setX(redbox, startX + (endX - startX) * time);
+		} else {
+			setX(redbox, endX);
+		}
+	}
+	
+	var start = function() {
+		duration = input.value;
+		startTime = new Date().getTime();
+		run();
+	}
+
+	startBtn.addEventListener('click', start);
+})();
+
+
+var makePreview = function() {
+
+	var article = document.querySelector("article");
+	var minidoc = document.querySelector(".minidoc");
+	var preview = document.querySelector(".minidoc-preview");
+
+	var articleHeight = article.getBoundingClientRect().height;
+	var scaleFactor = window.innerHeight / articleHeight;
+
+	minidoc.innerHTML = article.innerHTML;
+
+	var scaleDown = "scaleX(" + scaleFactor + ") scaleY(" +  scaleFactor + ") translateZ(0)";
+
+	preview.style.height = (window.innerHeight * scaleFactor) + "px";
+	preview.style.width = (700 * scaleFactor + 20) + "px";
+
+	minidoc.style['transform'] = scaleDown;
+	minidoc.style['webkitTransform'] = scaleDown;
+	minidoc.style['mozTransform'] = scaleDown;
+	minidoc.style['msTransform'] = scaleDown;
+
+	window.addEventListener('scroll', function(e) {
+		var top = (article.getBoundingClientRect().top / articleHeight) * -1;
+		var py = top * window.innerHeight;
+		var t = "translateY(" + py + "px)";
+		preview.style['transform'] = t;
+		preview.style['webkitTransform'] = t;
+		preview.style['mozTransform'] = t;
+		preview.style['msTransform'] = t;
+	});
+}
+
+makePreview();
+
+</script>
 
 <script type="text/javascript">
     if(location.host.indexOf("localhost") > -1 || location.host.indexOf("192.168") > -1) {
