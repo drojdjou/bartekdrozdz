@@ -1070,6 +1070,7 @@ section#projects ul.projects li .spacer {
   -ms-transform-origin: top right;
   opacity: 0.5;
   -webkit-font-smoothing: antialiased;
+  display: none;
 }
 @media screen and (min-width: 800px) {
   #blog .minidoc {
@@ -1078,10 +1079,21 @@ section#projects ul.projects li .spacer {
     margin: 0 0 2em -350px;
   }
 }
+@media screen and (min-width: 1024px) {
+  #blog .minidoc {
+    display: block;
+  }
+}
 #blog .minidoc-preview {
   position: fixed;
   top: 0px;
   right: 10px;
   background-color: rgba(0, 0, 0, 0.2);
   border-left: 3px solid #000;
+  display: none;
+}
+@media screen and (min-width: 1024px) {
+  #blog .minidoc-preview {
+    display: block;
+  }
 }

@@ -545,6 +545,7 @@
 
 
 var makePreview = function() {
+	if(window.innerWidth < 1024) return;
 
 	var article = document.querySelector("article");
 	var minidoc = document.querySelector(".minidoc");
@@ -576,6 +577,7 @@ var makePreview = function() {
 	});
 }
 
+window.addEventListener('resize', makePreview);
 makePreview();
 
 </script>
