@@ -22,10 +22,10 @@ body {
     height: 672px !important;
   }
 }
-html.js body {
+html.js body.main-page {
   overflow: hidden;
 }
-html.no-js body {
+html.no-js body.main-page {
   overflow: visible;
 }
 h1,
@@ -883,20 +883,27 @@ section#projects ul.projects li .spacer {
   font-size: 1.6em;
   line-height: 1em;
   text-transform: uppercase;
-  margin: 0.5em 0 0.3em 0;
+  margin: 0.3em 0 0.3em 0;
 }
 @media screen and (min-width: 600px) {
   #blog h1 {
-    font-size: 2.6em;
+    font-size: 2.5em;
   }
 }
 @media screen and (min-width: 600px) {
   #blog h1 {
-    font-size: 3.6em;
+    font-size: 3.4em;
   }
 }
 #blog h2 {
   font-family: 'Droid Sans';
+  margin: 0.3em 0 0.3em 0;
+}
+#blog h3 {
+  font-family: 'Droid Sans';
+  line-height: 1.5em;
+  font-size: 1.8em;
+  margin: 3em 0 0.3em 0;
 }
 #blog article {
   position: relative;
@@ -935,10 +942,6 @@ section#projects ul.projects li .spacer {
 #blog .navi a:hover {
   color: #fff;
   text-decoration: underline;
-}
-#blog h3 {
-  font-family: 'Droid Sans';
-  line-height: 1.5em;
 }
 #blog h4 {
   font-family: 'Fjord One', sans-serif;
@@ -1011,19 +1014,6 @@ section#projects ul.projects li .spacer {
   background-color: #ddd;
   margin: 1em 0 0 0;
 }
-#blog .redbox {
-  position: absolute;
-  min-width: 50px;
-  height: 50px;
-  background-color: #f00;
-  top: 25px;
-  left: 25px;
-  color: #fff;
-  font-family: 'Droid Sans';
-  text-align: center;
-  padding: 0.85em 0.8em 0 0.8em;
-  font-family: monospace;
-}
 #blog .input {
   font-family: 'Fjord One', sans-serif;
   font-weight: 100;
@@ -1068,6 +1058,7 @@ section#projects ul.projects li .spacer {
   margin: 1em;
   font-size: 1.0em;
   line-height: 1.4em;
+  pointer-events: none;
   transform-origin: top right;
   -webkit-transform-origin: top right;
   -moz-transform-origin: top right;
