@@ -926,16 +926,6 @@ section#projects ul.projects li .spacer {
 #blog .navi a {
   text-decoration: none;
 }
-#blog .navi a:before {
-  content: "\025C2";
-  font-size: 2em;
-  display: inline-block;
-  -webkit-transform: translateY(0.2em);
-  -moz-transform: translateY(0.2em);
-  -o-transform: translateY(0.2em);
-  -ms-transform: translateY(0.2em);
-  transform: translateY(0.2em);
-}
 #blog .navi a:hover {
   color: #fff;
   text-decoration: underline;
@@ -967,6 +957,13 @@ section#projects ul.projects li .spacer {
   line-height: 1.4;
 }
 #blog p + p {
+  margin-top: 0.8em;
+}
+#blog footer {
+  font-family: 'Fjord One', sans-serif;
+  font-weight: 100;
+  font-size: 1em;
+  letter-spacing: 0.02em;
   margin-top: 0.8em;
 }
 #blog a {
@@ -1019,6 +1016,7 @@ section#projects ul.projects li .spacer {
   font-family: 'Droid Sans';
   text-align: center;
   padding: 0.85em 0.8em 0 0.8em;
+  font-family: monospace;
 }
 #blog .input {
   font-family: 'Fjord One', sans-serif;

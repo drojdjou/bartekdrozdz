@@ -5,11 +5,31 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable = no">
 	<link href="/css/style.css" media="screen, projection" rel="stylesheet" type="text/css" />
+
+	<style type="text/css">
+
+	#redbox-02:before {
+		position: absolute;
+		content: '100px';
+		display: block;
+		color: black;
+		width: 100px;
+		height: 2px;
+		background-color: black;
+		margin: 0;
+		line-height: 1.6;
+		padding: 0;
+		top: 22px;
+		left: -100px;
+	}
+
+	</style>
+
 </head>
 <body>
 <section id="blog" class="">
 
-	<div class="navi"><a href="/">back to bartekdrozdz.com</a></div>
+	<div class="navi"><a href="/">&lt; back to bartekdrozdz.com</a></div>
 
 	<div class="minidoc"></div>
 	<div class="minidoc-preview"></div>
@@ -21,11 +41,11 @@
 			<h2>Frame-by-frame animation</h2>
 		</header>
 
-		<span class="info">Posted on January 16th 2014.</span>
+		<span class="info">Posted on January 17th 2014.</span>
 
-		<h3>Animations can make your website stand out of the crowd. Good animations enchance the <a href="http://www.ui-transitions.com/" target="_blank">user interface</a>, make navigation feel smooth and offer superior esthetic experience. Modern browsers support animations quite well, but there are so many different ways of animating HTML elements that it often confuses even experienced developers.</h3>
+		<h3>Animations can make your website stand out of the crowd. Good animations enhance the <a href="http://www.ui-transitions.com/" target="_blank">user interface</a>, make navigation feel smoother and offer superior esthetic experience. Modern browsers support animations quite well, but there are so many different ways of animating HTML elements that it often confuses even experienced developers.</h3>
 
-		<p>This the the first part of a series aimed at exploring HTML5 animation in depth. There will be three parts that will cover the following topics:</p>
+		<p>This the the first part of a series aimed at exploring HTML5 animation in depth. It will consists of three parts that will cover the following topics:</p>
 		
 		<ol class="anim-types">
 			<li>Frame-by-frame animation</li>
@@ -33,45 +53,43 @@
 			<li>CSS Animations</li>
 		</ol>
 
-		<p><em>For the sake of completeness, I need to add that there are ways to animate shapes in SVG as well as inside WebGL shaders. Both are interesting but very specific so I decided to leave them out.</em></p>
+		<!-- <p><em>For the sake of completeness, I will add that there are ways to animate shapes in SVG and with WebGL shaders. Both are interesting but very specific so I decided to leave them out.</em></p> -->
 
-		<p>In this first article, we will focus on frame-by-frame animation. You will learn how easy it is to create an animation loop in Javascript using the <code>requestAnimationFrame</code> function and animate CSS properties of HTML elements inside it with some simple math. This article assumes that you have a basic knowledge of web development so that you can create a properly formated HTML document and add some Javascript to it. No advanced Javascript knowledge is not required. You also do not need to know any animation related math.</p>
+		<p>This first part focuses on frame-by-frame animation. You will learn how easy it is to create an animation loop in Javascript using the <code>requestAnimationFrame</code> function and animate CSS properties of HTML elements inside it using simple math.</p>
 
-		<p>The other two articles on CSS Transitions and CSS Animations are on the way so keep an eye on this page or follow me <a href="https://twitter.com/bartekd">@bartekd</a> to get notified when they are released!</p>
+		<p>This article assumes that you have basic knowledge of web development, enough so that you can create a properly formatted HTML document and add some Javascript to it. No advanced Javascript knowledge is required. You also don't need to know any animation related math.</p>
+
+		<p>The other two articles on CSS Transitions and CSS Animations are on the way so keep an eye on this page or <a href="https://twitter.com/bartekd">follow me</a> on Twitter to get notified when they are released!</p>
 		
-		<p>Ok, without further ado, let's dive right in!</p>
+		<p>Ok, now let's dive right in!</p>
 
 		<h3>1. Interpolation</h3>
 
-		<p>The frame-by-frame technique is based on a Javascript implementation of the basic idea of animation, that is of changing the value of a property over time. To understand how to achieve this you need to get familiar with the concept of interpolation, which is fundamental to any animation.</p>
+		<p>The technique of frame-by-frame animation consists of Javascript code used to change the value of a property over time. To understand how to it works, first you need to get familiar with the concept of interpolation.</p>
 
-		<p>Let's take a practical example: we want to animate a property from <code>0</code> to <code>200</code> in 2 second. This value can express anything - a postion, a rotation etc. To find the value at any given time in between the start and end, we use interpolation. The formula is:</p>
+		<p>Let's take a practical example: we want to move an object on the screen by 200 pixels to the right in 2 seconds. In other words at the beginning the object is at 0 pixels, then it starts to move and 2 seconds later it ends up at 200 pixels. To make it move we need to know where the object is at any given time. Thanks to interpolation we can find that value. The formula we will use is the following:</p>
 
-		<code>value = start + (end - start) * (time / duration);</code>
+		<code>valueAtTime = start + (end - start) * (time / duration);</code>
 
-		<p>What it basically means is that you need to calculate how far from start and how close to the end you are at the given time.</p>
+		<p>What it basically means is that you calculate how far from start you are at any given time. As time progresses you get further from the start value and closer to the end value.</p>
 
-		<p>Dividing the time by the duration gives us a value between 0 and 1, where 0 is the beginning of the animation, and 1 is the end. As you will see later, there are some big advantages to keeping the value of the time in 0-1 range. I would also recommend reading this great <a href="http://sol.gfxile.net/interpolation/" target="_blank">article</a> on interpolation.</p>
+		<p>If we want to calculate the position of the object 0.5 sec after the animation started, we simply plug those values into the formula, we get this:</p>
 
-		<p>If we want to calculate the position of the object 0.5 sec after the animation started, we simply plug the values from the example above to the formula, we get:</p>
+		<code>valueAtTime = 0px + (200px - 0px) * (0.5sec / 2sec);
+		valueAtTime = 50px;</code>
 
-		<code>value = 0 + (200 - 0) * (0.5 / 2);
-		value = 0 + (200 * 0.25);
-		value = 0 + 50;
-		value = 50;</code>
+		<p>And here's an example of the equation with a start value of 50 and end value of 100 pixels:</p>
 
-		<p>Simply elemntary school grade math, right? And here's an example of the equation for a start value of 50 and end value of 100</p>
+		<code>valueAtTime = 50px + (100px - 50px) * (0.5sec / 2sec);
+		valueAtTime = 62.5px;</code>
 
-		<code>value = 50 + (100 - 50) * (0.5 / 2);
-		value = 50 + (50 * 0.25);
-		value = 50 + 12.5;
-		value = 62.5;</code>
+		<p>Please take a moment to notice how the time is divided by the duration in <code>0.5sec / 2sec</code>. This operation will return a value between 0 and 1, where 0 is the beginning of the animation sequence and 1 is the end. As you will see later, there are some big advantages to having the time expressed in the 0-1 range instead of just keeping its value in seconds.</p>  
 
-		<p>Before we jump into details on how to implement this with Javascipt however, we need to talk about DOM elements and the CSS properties that we want to animate.</p>
+		<p>Now we know how interpolation works, but before we jump into details on how to implement this, we need to talk about DOM elements and the CSS properties that we want to animate.</p>
 
 		<h3>2. CSS Transform</h3>
 
-		<p>In our simple example we want to move an object on screen by modifying it's position. The way to do it is to change the object's CSS properties in with Javascript code.</p>
+		<p>In our simple example we want to move an object on screen by modifying its position. The way to do it is to change the object's CSS properties in with Javascript code.</p>
 
 		<p>So let's start with defining an HTML element that we want to animate:</p>
 
@@ -81,18 +99,20 @@
 			<div class="redbox" id="redbox-01"></div>
 		</div>
 
-		<p>While there are a few CSS properties that can move an object, the best option is to change the value of the CSS <code>transform</code> property. The reason for this is performance, since changing the valus of this property doesn't require a document reflow. It is all very eloquently explained in <a href="http://www.html5rocks.com/en/tutorials/speed/high-performance-animations/" target="_blank">this article</a>, so be sure to read it later.</p>
+		<p>There are a few different ways to position and object in CSS. Most of us are used to setting the <code>top</code> and <code>left</code> property or using margins. For animation purposes however, it is recommended to use the CSS <code>transform</code> property. The reason for this is performance. Changing the value of <code>transform</code> doesn't trigger a document reflow so the browser can move objects much more effectively. I don't want to go to deep into how browsers work, it is all very well explained in <a href="http://www.html5rocks.com/en/tutorials/speed/high-performance-animations/" target="_blank">this article</a>, so be sure to read it later.</p>
 
-		<p>To move our object to the initial position of x = 100px we can say:</p>
+		<p>To move the object to the initial position of x = 100px we can say:</p>
 
 		<code>var redbox = document.querySelector("#redbox");
 		redbox.style["transform"] = "translateX(100px)";</code>
 
-		<p>If you are not familiar with the <code>querySelector</code> function, it returns an element from the DOM using a CSS selector syntax. If you want to get an element by id, you will just pass the id prefixed with a hash in the same way as you would define styles for this id in CSS. In the same way you can select elements by their classes using the <code>.className</code> notation. <code>querySelector</code> also works with more complex selectors, so be sure to try it out!</p>
+		<p>For those of you who are not familiar with the <code>querySelector</code> function, it returns a DOM element that matches the CSS selector passed as argument. If you want to get an element by id, you just pass the id prefixed with a <code>#</code> which is the same syntax you would use to define styles for this id in CSS. You can also select elements by their classes using the <code>.className</code> notation. <code>querySelector</code> is a native function, <a href="http://caniuse.com/queryselector" target="_blank">widely supported</a> in modern browsers. It is very similar to the jQuery function and it works with complex selectors so be sure to try it out!</p>
 
-		<p>In the next line we simply set the CSS <code>transform</code> property to the value we want. This could be that simple, but unfortunately the <code>transform</code> property is polluted with vendor prefixes. There are many ways to deal with this, and I invite you to figure out the most elegant one, but for now let's use a quick-and-dirty way and wrap the whole thing into a function:</p>
+		<p>In the next line we simply set the CSS <code>transform</code> property to the value we want. If you are not familiar with the specific syntax of the CSS transform property, you can take a look at <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform" target="_blank">the documentation on MDN</a>.</p>
 
-		<code>function setX(element, x) {
+		<p>One day this will be that simple, but currently the <code>transform</code> property is unfortunately polluted with vendor prefixes. There are many ways to deal with this, and I invite you to figure out the most elegant one, but for now let's use a quick-and-dirty way and wrap the whole thing into a function:</p>
+
+		<code>var setX = function(element, x) {
 		&nbsp;&nbsp;var t = "translateX(" + x + "px)";
 		&nbsp;&nbsp;var s = element.style;
 		&nbsp;&nbsp;s["transform"] = t;
@@ -106,9 +126,9 @@
 		<code>var redbox = document.getElementById("redbox");
 		setX(redbox, 100);</code>
 
-		<p>Please note that a function like this, that only sets the x translation value is not very robust. In your production code you might want to write a function or an object with a few methods to deal with all possible transform values. Here's <a href="https://github.com/drojdjou/bartekdrozdz.com/blob/master/static/src/framework/domExtend/Transform.js#L31-L72" target="_blank">one</a> I use.</p>
+		<p>Please note that a function that only sets the x translation value is not very robust. In your production code you might want to write a function or wrap it all in an object that exposes some methods to deal with all possible transform values. Here's the <a href="https://github.com/drojdjou/bartekdrozdz.com/blob/master/static/src/framework/domExtend/Transform.js#L31-L72" target="_blank">one</a> I use. Creating your own solution for this is a great coding exercise!</p>
 
-		<p>Here's the result: our box is moved 100 pixels to the right.</p>
+		<p>Back to our code, here's the result of calling the <code>setX</code> function: our box is moved 100 pixels to the right.</p>
 
 		<div class="demo">
 			<div class="redbox" id="redbox-02"></div>
@@ -116,11 +136,11 @@
 
 		<h3>3. Animation loop</h3>
 
-		<p>Now that you know how to set the elements position, we can start moving it around. In order to animate the red box, we will need to call a function repeatedly in short intervals and each time interpolate the position of the box until it reaches the end. In order to do this, you need to get familiar with the <code>requestAnimationFrame</code> function that exists in modern browsers. This function is still prefixed in some browsers so make sure to include <a href="http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/" target="_blank">the polyfill</a> in your code - the code below assumes you did that.</p>
+		<p>In order to actually animate the red box, we will need to call a function repeatedly at short intervals and each time interpolate the position of the box until it reaches the end. In order to do this, you need to get familiar with the <code>requestAnimationFrame</code> function that exists in modern browsers. This function is still prefixed in some browsers so make sure to include <a href="http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/" target="_blank">the polyfill</a> in your code - the code below assumes you did that.</p>
 
-		<p>The <code>requestAnimationFrame</code> function is simple - it takes one argument, where you can pass a reference to another function and it will be invoked the next time the browser repaints the screen. Typically it is 60 times per second.</p>
+		<p>The <code>requestAnimationFrame</code> function is simple - it takes one argument, where you can pass a reference to a function and it will be invoked the next time the browser repaints the screen.</p>
 
-		<p>That way it works it to define a function called <code>loop</code> or <code>run</code> (or whatever you like) that calls the <code>requestAnimationFrame</code> and passes itself as argument. On top of that you can add a flag to control starting and stopping the loop.</p>
+		<p>The way you'd typically use it is to define a function called <code>run</code> (or whatever you like) that calls the <code>requestAnimationFrame</code> and passes itself as argument - this will create a loop that calls the function infinitely.</p>
 
 		<code>function run() {
 			&nbsp;&nbsp;requestAnimationFrame(run);
@@ -130,7 +150,7 @@
 			run();
 		</code>
 
-		<p>Calling <code>run()</code> for the first time will start the loop because it will keep invoking itself through <code>requestAnimationFrame</code>. Below you can see the code in action, just press the Start button to start the loop.</p>
+		<p>Calling <code>run()</code> for the first time will start the loop. Below you can see the code in action. Just press the button to start the loop. Inside the red box you can see how many times the <code>run()</code> function has been called. As you can see it moves quite fast - typically the browsers repaint the screen 60 times per second, however you can't rely on this because depending on the device and browser capabilities, other Javascript code running in the same time and many other factors, the frame rate can be lower.</p>
 
 		<div class="demo">
 			<div class="redbox" id="redbox-03">0</div>
@@ -143,7 +163,7 @@
 
 		<h3>4. Timing</h3>
 
-		<p>We could move the object by an even amount of pixels on every frame and expect a steady pace of animation, but the problem is that there is no guarantee that our animation function will be invoked at consistent time intervals. Depending on browser,k CPU, other Javascript code and many other factors, the frame rate can drop below 60 FPS. It's much better to use some kind of timer to test the actual time of the animaton. For this we can use the built-in <code>Date</code> object. In the future it will be replaced by <a href="http://updates.html5rocks.com/2012/08/When-milliseconds-are-not-enough-performance-now" target="_blank"><code>window.performance</code></a>, but it's not widely supported yet (when it is supported I will update this section, promised!)</p>
+		<p>Now that we have a function that is called repeatedly, we need to figure out how to measure time. As I mentioned above, it is not safe to rely on the number of times the loop was called because the frame rate it not stable. Instead we can use the built-in <code>Date</code> object. In the future it will be replaced by <a href="http://updates.html5rocks.com/2012/08/When-milliseconds-are-not-enough-performance-now" target="_blank"><code>window.performance</code></a>, but it's not widely supported yet, so let's stick with <code>Date</code> for the time being.</p>
 
 		<p>The idea of measuring time is simple: when the animation starts, save the current time to a variable called <code>startTime</code>. Then, at each frame, subtract <code>startTime</code> from current time - the result says how much time passed since the animation started. Here's the loop code with time measurement added:</p>
 
@@ -159,7 +179,7 @@
 
 		</code>
 
-		<p>And here is the updated demo:</p>
+		<p>And here is the updated demo. Now the red box shows how much time, in milliseconds passed since the loop started:</p>
 
 		<div class="demo">
 			<div class="redbox" id="redbox-04">0ms</div>
@@ -172,13 +192,14 @@
 
 		<h3>5. Animation sequence</h3>
 
-		<p>Still there? Hang on for a little bit more, we're almost done. Now that we can tell the time of the animation, we can stop the loop when the animation is done.</p>
+		<p>Still there? Hang on for a little bit, we close to start moving the red box around. Now that we know the time of the animation, we can tell when the animation is done and stop the loop.</p>
 
-		<p>We introduce a new variable that will define the duration of the animation. The <code>new Date().getTime()</code> method returns time in milliseonds, so let's use this unit from now on: 2 seconds thus become 2000 milliseconds.</p>
+		<p>We will introduce a new variable that will define the duration of the animation. The <code>new Date().getTime()</code> method returns time in milliseconds, so let's use this unit from now on.</p>
 
 		<code>var startTime, time;
-			var duration = 2000;
-			function run() {
+			var duration = 2000; // = 2 sec
+
+			var run = function() {
 			&nbsp;&nbsp;time = new Date().getTime() - startTime;
 			&nbsp;&nbsp;time = time / duration;
 			&nbsp;&nbsp;if(time < 1) requestAnimationFrame(run);
@@ -191,12 +212,12 @@
 			start();
 		</code>
 
-		<p>Notice how in the code above I divide the time by the duration? That way the <code>time</code> variable is in the 0-1 range and I test if <code>time < 1</code> to know if the animation is over. This is the single most important lesson in animation, so I will repeat it: <em>always keep your time in 0-1 range!</em></p>
+		<p>Notice how in the code above I divide the time by the duration? I already mentioned this before. That way the <code>time</code> variable is in the 0-1 range and I simply test if <code>time < 1</code> to know if the animation is finished. This is the single most important lesson in animation, so I will repeat it: <em>always keep your time in 0-1 range!</em></p>
 
-		<p>Here's this code at work. You can set any duration in the input field below and see how the animation loop runs for the specified duration, but whatever the duration the time value is always going from 0 to 1. This way we can animate our elements the same way regardless of the duration.</p>
+		<p>Below is this code at work. You can set any value in the input field below and see how the animation loop runs for the specified duration. Whatever the duration however, the time value is always going from 0 to 1. This way we can animate our elements the same way regardless of the duration.</p>
 
 		<div class="demo">
-			<div class="redbox" id="redbox-05">0ms</div>
+			<div class="redbox" id="redbox-05">0.0000</div>
 		</div>
 
 		<div class="input">
@@ -209,28 +230,29 @@
 
 		<h3>6. Making things move</h3>
 
-		<p>The red box has been sitting there for a while, now let's make it move! To do that, we will add two new variables: <code>startX</code> that defines the starting postion and <code>endX</code> that says where the element should be at the end of the animation.</p>
+		<p>The red box has been sitting there for a while, let's finally make it move! To do that, we will add two new variables: <code>startX</code> that defines the starting position and <code>endX</code> that defines the position the element should end up at.</p>
 
 		<code>var startTime, time;
 			var duration = 2000;
 			var startX = 0, endX = 200;
 
-			function run() {
+			var run = function() {
 			&nbsp;&nbsp;time = new Date().getTime() - startTime;
 			&nbsp;&nbsp;time = time / duration;
 			&nbsp;&nbsp;if(time < 1) requestAnimationFrame(run);
-			&nbsp;&nbsp;setX(redBox, startX + (startX - endX) / time);
+			&nbsp;&nbsp;var value = startX + (startX - endX) / time;
+			&nbsp;&nbsp;setX(redBox, value);
 			}
 			
 			startTime = new Date().getTime();
 			run();
 		</code>
 
-		<p>To run this you need a reference to the div object as well as the <code>setX</code> function - we discussed both earlier.</p>
+		<p>To run this you need a reference to the div object as well as the <code>setX</code> function which we discussed earlier.</p>
 
-		<p>You can see how I plug the interpolation formula to get the interpolated value at each frame:</p>
+		<p>We plug the interpolation formula to get the current value at each frame:</p>
 
-		<code>startX + (startX - endX) / time</code>
+		<code>var value = startX + (startX - endX) / time</code>
 
 		<p>That is the essential part of the code and the one that makes the movement possible. Here's a demo:</p>
 
@@ -246,19 +268,21 @@
 			<li id="redbox-btn-06">Start</li>
 		</ul>
 
+		<p>The box is alive! But we are not quite done yet.</p>
+
 		<h3>7. Easing</h3>
 
 		<p>You've seen how having the time in 0-1 range can make your life easier. Now you will see how it is also quite powerful.</p>
 
-		<p>If you used a tweening engine or did animation with CSS before, you are certainly familiar with the concept of easing. Easing is used to accelerate, slow down or otherwise alter the animation in different ways. It helps making your animations smooth and beautiful.</p>
+		<p>If you used an animation engine or did animation with CSS before, you are certainly familiar with the concept of easing. Easing is used to accelerate, slow down or otherwise alter the animation in different ways. It helps making your animations smooth and beautiful.</p>
 
-		<p>The good news is that it is simple to implement. Think of easing as a function to which you pass the current time and it returns it back, slightly modified. That returned value is what you use in the interpolation equation instead.</p>
+		<p>The good news is that very it's simple to implement. Think of easing as a function to which you pass the current time and it returns it back, slightly modified. That returned value is what you use in the interpolation equation.</p>
 
 		<p>To add easing to our animation, let's add two things to the code.</p>
 
 		<p>First - a new function. Let's call it <code>easeIn</code>. It takes an argument <code>t</code> and returns it squared - <code>t * t</code>. What it does, is that the returned value will grow slower than the value passed to it: <code>0.5</code> will return <code>0.25</code>, <code>0.8</code> will return <code>0.64</code> etc. This causes the animation to start at a slower pace and then gradually accelerate.</p>
 
-		<p>The beauty and elegance of this solution is that there are a lot of different functions that result in different effects and you can simply plug-in and use them with your animation. We will see some more below. There is one trick though! Those functions only work if the value of <code>t</code> is between 0-1, so now you can see why it was so important!</p>
+		<p>The beauty and elegance of this solution is that there are a lot of different functions that result in different effects and you can simply plug them in and use them with your animation. There is one trick though! Those functions only work if the value of <code>t</code> is between 0-1. Now you can see why it was so important!</p>
 
 		<p>The other thing we add is inside the <code>run</code> function. We take the time, pass it to the easing function and save the result back in the same variable. After this we do the interpolation in the same way as we did before, but now <code>time</code> has already the easing applied to it.</p>
 
@@ -266,11 +290,11 @@
 			var duration = 2000;
 			var startX = 0, endX = 200;
 
-			function easeIn(t) {
+			var easeIn = function(t) {
 			&nbsp;&nbsp;return t * t;
 			}
 
-			function run() {
+			var run = function() {
 			&nbsp;&nbsp;time = new Date().getTime() - startTime;
 			&nbsp;&nbsp;time = time / duration;
 			&nbsp;&nbsp;if(time < 1) requestAnimationFrame(run);
@@ -296,18 +320,16 @@
 			<li id="redbox-btn-07">Start</li>
 		</ul>
 
-		<p>The animation has a subtle but visible effect where it starts slowly and then accelerates towards the end. If you think the effect is not strong enough, try changing the easing function to this:</p>
+		<p>The animation now has a subtle effect where it starts slowly and then accelerates towards the end. If you think the effect is not strong enough, try changing the easing function to this:</p>
 
-		<code>function easeIn(t) {
+		<code>var easeIn = function(t) {
 			&nbsp;&nbsp;return t * t * t * t;
 			}
 		</code>
 
-		<p>This easing equation what is typically called <code>quadEaseIn</code>, where quad means that we raise <code>t</code> to the power 4.</p>
+		<p>Different equations will produce different animation effects. A very useful easing function is called smoothstep. This one will make the object gently accelerate at the beginning and then slow down towards the end - it is perfect for all kinds of UI transitions. Here's the formula:</p>
 
-		<p>Another very useful easing function is called smoothstep. This one will make the object gently accelerate at the beginning and then slow down towards the end - it is perfect for all kinds of UI transitions. Here's the fomula:</p>
-
-		<code>function smoothstep(t) {
+		<code>var smoothstep = function(t) {
 			&nbsp;&nbsp;return t * t * (3 - 2 * t);
 			}
 		</code>
@@ -316,21 +338,19 @@
 
 		<code>time = smoothstep(time);</code>
 
-		<p>Many other easing functions are easy to find on the web. They are part of virtually every tweening engine out there, so just take a look at the source and you'll find them. I encourage you to experiment, change values, break things - this is the best way to learn. Who knows, maybe you will invent new easing formulas!</p>
+		<p>Easing equation are everywhere. They are part of every tweening engine out there. If you want to learn more, I recommend reading this <a href="http://sol.gfxile.net/interpolation/" target="_blank">great article</a> on interpolation as well as familiarizing yourself with <a href="http://www.robertpenner.com/easing/" target="_blank">Rob Penner's</a> equations. Another easing technique is <a href="http://greweb.me/2012/02/bezier-curve-based-easing-functions-from-concept-to-implementation/" target="_blank">cubic bezier</a> interpolation, which is used in CSS Transitions and CSS Animations, as we will see later. Robust animation software, like Maya or After Effects also use curve paths to define easing.</p> 
 
 		<h2>Conclusion</h2>
 
-		<p>By now you probably understand the reason this technique is called frame-by-frame animation. It is based on code executed at every frame that calculates the current values and updates the CSS properties.<p>
+		<p>By now you probably understand why it's called frame-by-frame animation - it is based on code executed at every frame.<p>
 		
-		<p>This technique is universal. We used it above to move a DOM element, but we could as well use it to move around shapes drawn with Canvas 2d or WebGL. It can even be used outside of the browser in any visual programing environment including moving physical stuff with things like Arduino. The only thing that changes is the way to run the loop - each language has it's own way of dealing with this.</p>
+		<p>This technique is universal. We used it to move a DOM element, but we could as well move around shapes drawn with Canvas 2d or WebGL or even to modify values that do not have visual output, like audio volume. It can be used in any programing environment, not only in a browser, including moving physical stuff with things like Arduino. What changes is the code to run the loop - each language has it's own way of dealing with this. The math always stays the same.</p>
 		
-		<p>Frame-by-frame is very hackable. You can change and tweak every part of the system and see the results. You can implement things like pausing, reversing or repeating the animation or create a timeline system where a master animation controls the pace of other animations. You can come up with some exotic easing equations or tweak other parameters to achieve unique results.</p>
+		<p>With frame-by-frame animation you can implement things like pausing, reversing and repeating the animation or create a timeline system where a master animation controls other animations. You can come up with some exotic easing equations or tweak other parameters to achieve unique results. It is very hackable, way more than CSS Transitions or CSS Animations.</p>
 
-		<p>If you used a 3rd party animation engine before and you thought that building one must be very a complex task, then I hope this article proves that in fact it is not so complicated. Of course it takes work to create an animation engine, and covering this in depth goes beyone the scope of this article, but the basic philosophy of such engine is outlined above.</p>
+		<p>However, the flexibility of this approach comes at a price. Since the animation is executed in Javascript, it has a bigger performance impact than the two other techniques. This is why it's important to correctly asses which one to use in a specific situation. In the next two installments of this series I will explain how CSS Transitions and CSS Animations work and how to use them in your projects. This will allow you to always make an informed decision!</p>
 
-		<p>You need to know however that, in the context of web development, this flexibility comes at a price. Since the animation is executed in Javascript, it has a bigger performance impact that the two other techniques - CSS Transitions and CSS Animations. In the next two installments of this series I will explain how those CSS-based techniques work and how to use them in your projects.</p>
-
-		<p>I hope you find this article useful. I you would like to share some thoughts please send me a reply to <a href="https://twitter.com/bartekd" target="_blank">@bartekd</a> or shoot me an <a href="mailto:bartek@everyday3d.com?subject=HTML5 Animation">email</a>. Thanks!</p>
+		<footer>I hope you find this article useful. I you would like to share some thoughts or comments please send me a reply to <a href="https://twitter.com/bartekd" target="_blank">@bartekd</a> or shoot me an <a href="mailto:bartek@everyday3d.com?subject=HTML5 Animation">email</a>.</footer>
 	</article>
 </section>
 
@@ -446,7 +466,7 @@
 
 	var run = function() {
 		var time = (new Date().getTime() - startTime) / duration;
-		redbox.innerHTML = time;
+		redbox.innerHTML = time.toPrecision(4).substring(0, 6);
 		if(time < 1) requestAnimationFrame(run);
 		else stop();
 	}
@@ -458,7 +478,7 @@
 	}
 
 	var stop = function() {
-		redbox.innerHTML = "Done!";
+		redbox.innerHTML = "1.0000";
 	}
 
 	var startBtn = document.getElementById("redbox-btn-05");
@@ -488,8 +508,12 @@
 
 	var run = function() {
 		var time = (new Date().getTime() - startTime) / duration;
-		if(time < 1) requestAnimationFrame(run);
-		setX(redbox, startX + (endX - startX) * time);
+		if(time < 1) {
+			requestAnimationFrame(run);
+			setX(redbox, startX + (endX - startX) * time);
+		} else {
+			setX(redbox, endX);
+		}
 	}
 	
 	var start = function() {
@@ -512,7 +536,7 @@
 	var startX = 0, endX = window.innerWidth - rect.left * 2 - rect.width;
 
 	var setX = function(element, x) {    
-		var t = "translateX(" + x + "px)";  
+		var t = "translateX(" + x + "px) translateZ(0)";  
 		var s = element.style;  
 		s["transform"] = t;    
 		s["webkitTransform"] = t;   
@@ -521,6 +545,7 @@
 	}
 
 	var easeIn = function(t) {
+		// return t * (1 - t * t) + t; // < random experiment
 		return t * t;
 	}
 
@@ -544,12 +569,15 @@
 })();
 
 
+var article, preview;
+
 var makePreview = function() {
 	if(window.innerWidth < 1024) return;
 
-	var article = document.querySelector("article");
+	article = document.querySelector("article");
+	preview = document.querySelector(".minidoc-preview");
+
 	var minidoc = document.querySelector(".minidoc");
-	var preview = document.querySelector(".minidoc-preview");
 
 	var articleHeight = article.getBoundingClientRect().height;
 	var scaleFactor = window.innerHeight / articleHeight;
@@ -565,20 +593,24 @@ var makePreview = function() {
 	minidoc.style['webkitTransform'] = scaleDown;
 	minidoc.style['mozTransform'] = scaleDown;
 	minidoc.style['msTransform'] = scaleDown;
+}
 
-	window.addEventListener('scroll', function(e) {
-		var top = (article.getBoundingClientRect().top / articleHeight) * -1;
-		var py = top * window.innerHeight;
-		var t = "translateY(" + py + "px)";
-		preview.style['transform'] = t;
-		preview.style['webkitTransform'] = t;
-		preview.style['mozTransform'] = t;
-		preview.style['msTransform'] = t;
-	});
+var scroll = function() {
+	requestAnimationFrame(scroll);
+	if(window.innerWidth < 1024) return;
+	var rect = article.getBoundingClientRect();
+	var top = (rect.top / rect.height) * -1;
+	var py = top * window.innerHeight;
+	var t = "translateY(" + py + "px)";
+	preview.style['transform'] = t;
+	preview.style['webkitTransform'] = t;
+	preview.style['mozTransform'] = t;
+	preview.style['msTransform'] = t;
 }
 
 window.addEventListener('resize', makePreview);
 makePreview();
+scroll();
 
 </script>
 
