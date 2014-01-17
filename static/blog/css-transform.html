@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>CSS Transitions | Animation in HTML5, part 2</title>
+	<title>CSS Transforms</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable = no">
 	<link href="/css/style.css" media="screen, projection" rel="stylesheet" type="text/css" />
@@ -18,15 +18,20 @@
 	<article class="article">
 
 		<header>
-			<h2>HTML5 Animation, Part II</h2>
-			<h1>CSS Transitions</h1>
+			<h2>Dealing with CSS Transforms in Javascript</h2>
+			<h1>CSS TRansforms</h1>
 		</header>
 
 		<span class="info">Posted on ...</span>
 
-		<h4>This the second article exploring HTML5 animation. It focuses on CSS Transitions. In the first article I discussed frame-by-frame animations, which is a technique that relies on Javascript. CSS Transitions can be used without Javascript at all, however you will need to add some script to make them truly useful. On the up side, they offer silky smooth performance with very little jank.</h4>
+		<h4>Transform is a superior form of CSS property. It is fast, powerful and magic. It also has a nasty syntax and some browser only recognize it under it's prefixed form, so whenever you try to use it in the code it quickly turns into a mess.</h4>
 
-		<p>I think CSS Transitions are the most misunderstood feature in CSS. Maybe this is because most developers are used to tweening engines where they call a function, pass an object along with some paramaters which fires the animation once and that's it. CSS Transtions do not work that way. If added in CSS they are permanent and are fired each time you change the a CSS property of the object they are attached to. This often confuses people and leads to messy code and poor performance - I've been there.</p>
+		<p>This article will show you how to create a simple wrapper around the CSS transform property in Javascript. This wrapper can be used to move and animate HTML elements using CSS transform while keeping the code nice, tiday and very readable.</p>
+
+		<h3>Why transform?</h3>
+		<h3>Good old Flash sprites</h3>
+		<h3>Javascript wrapper</h3>
+		<h3>The matrix form</h3>
 
 		<p>I hope you find this article useful. I you would like to share some thoughts or comments please send me a reply to <a href="https://twitter.com/bartekd" target="_blank">@bartekd</a> or shoot me an <a href="mailto:bartek@everyday3d.com?subject=HTML5 Animation">email</a>.</p>
 	</article>

@@ -128,6 +128,9 @@ p {
   font-family: Oswald;
   font-size: 1.2em;
 }
+.typo-article-box {
+  font-family: Oswald;
+}
 .typo-header {
   font-family: 'Droid Sans';
 }
@@ -712,16 +715,6 @@ section#projects ul.projects .title-box .container h1 {
     font-size: 3em;
   }
 }
-section#projects ul.projects .title-box .container .fwd-b {
-  position: absolute;
-  top: 0;
-  left: 0;
-  content: '';
-  display: block;
-  width: 100%;
-  height: 100%;
-  background-color: #cccccc;
-}
 section#projects ul.projects .title-box .spacer {
   margin-top: 100%;
 }
@@ -800,7 +793,9 @@ section#projects ul.projects li .container .hover {
   -ms-transition: -ms-transform 0.2s ease-out 0.1s;
   transition: transform 0.2s ease-out 0.1s;
 }
-.no-touch section#projects ul.projects li .hovered-transition h4 {
+.no-touch section#projects ul.projects li .hovered-transition h4,
+.no-touch section#projects ul.projects li .hovered-transition h6,
+.no-touch section#projects ul.projects li .hovered-transition p {
   -webkit-transition: -webkit-transform 0.2s ease-in;
   -moz-transition: -moz-transform 0.2s ease-in;
   -o-transition: -o-transform 0.2s ease-in;
@@ -832,6 +827,14 @@ section#projects ul.projects li .container .hover {
   -o-transform: translateY(-35%);
   -ms-transform: translateY(-35%);
   transform: translateY(-35%);
+}
+.no-touch section#projects ul.projects li .hovered-container:hover h6,
+.no-touch section#projects ul.projects li .hovered-container:hover p {
+  -webkit-transform: translateY(-45%);
+  -moz-transform: translateY(-45%);
+  -o-transform: translateY(-45%);
+  -ms-transform: translateY(-45%);
+  transform: translateY(-45%);
 }
 section#projects ul.projects li .spacer {
   margin-top: 100%;
