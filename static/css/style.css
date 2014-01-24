@@ -1050,7 +1050,7 @@ section#projects ul.projects li .spacer {
 #blog p + p {
   margin-top: 1em;
 }
-#blog p:last-of-type {
+#blog article > p:last-of-type {
   margin-bottom: 3em;
 }
 #blog a {
