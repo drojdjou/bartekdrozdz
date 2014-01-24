@@ -86,9 +86,9 @@ app.get('/data', function(request, response) {
 	response.send(data.getMain());
 });
 
-app.get('/blog', function(request, response) {
-	response.redirect('/');
-});
+// app.get('/blog', function(request, response) {
+// 	response.redirect('/blog/index.html');
+// });
 
 app.get('/context', function(request, response) {
 	response.send(context);

@@ -1,8 +1,25 @@
+// ::-webkit-scrollbar {
+//     width: 8px;
+// }
+ 
+// ::-webkit-scrollbar-track {
+//     background: rgb(255, 255, 255); 
+// }
+ 
+// ::-webkit-scrollbar-thumb {
+//     background: rgba(0,0,0,0.8); 
+// }
+// ::-webkit-scrollbar-thumb:window-inactive {
+// 	background: rgba(0,0,0,0.4); 
+// }
+
 #blog {
 	position: absolute;
 	width: 100%;
 	background-color: #fff;
+	min-height: 100%;
 	color: #333;
+	overflow-x: hidden;
 
 	&.inverted {
 		background-color: #000;
@@ -15,9 +32,16 @@
 		a:hover {
 			color: #fff;
 		}
-	}
 
-	@article-width: 700px;
+		.demo {
+			background-color: rgba(255, 255, 255, 0.2);
+		}
+
+		.buttons li {
+			background-color: #808080;
+			color: #000;
+		}
+	}
 
 	h1 {
 		font-family: @oswald;
@@ -42,43 +66,64 @@
 	}
 
 	h3 {
-		.typo-header();
+		.typo-text();
 		line-height: 1.5em;
-		font-size: 1.8em;
-		margin: 3em 0 0.3em 0;
+		font-size: 2.0em;
+		margin: 0.6em 0 0.6em 0;
+	}
+
+	@article-width: 800px;
+	@sizereg-width: 20px;
+	@sizeout-width: 50px;
+	@header-color: #4e9bd7;
+
+	.sizeout(@top-padding: 1em, @bottom-padding: 1em, @top-margin: 0, @bottom-margin: 0) {
+		margin: @top-margin -@sizeout-width @bottom-margin -@sizeout-width;
+		padding: @top-padding @sizeout-width @bottom-padding @sizeout-width;
+	}
+
+	.sizereg(@top-padding: 1em, @bottom-padding: 1em, @top-margin: 0, @bottom-margin: 0) {
+		margin: @top-margin -@sizereg-width @bottom-margin -@sizereg-width;
+		padding: @top-padding @sizereg-width @bottom-padding @sizereg-width;
 	}
 
 	article {
 		position: relative;
-		margin: 1em;
+		margin: 0;
 		font-size: 1.0em;
 		line-height: 1.4em;
+		padding: 0 @sizereg-width 0 @sizereg-width;
 
-		@media screen and (min-width: 800px) {
+		@media screen and (min-width: 900px) {
 			font-size: 1.1em;
 			max-width: @article-width;
-			margin: 0 0 2em @article-width * -0.5;
+			margin: 0 0 0 @article-width * -0.5;
 			left: 50%;
+			padding: 0 @sizeout-width 0 @sizeout-width;
 		}
 	}
 
 	.navi {
-		position: relative;
-		margin: 1em;
-		line-height: 1.4em;
+		margin: 0 -@sizereg-width 0 -@sizereg-width;
+		padding: 1em 1em 1em 1em;
 
-		padding: 1em;
+		@media screen and (min-width: 900px) {
+			margin: 0 -@sizeout-width 0 -@sizeout-width;
+			padding: 1em 1em 1em 1em;
+		}
+
+		
+		box-shadow: 0px 2px 0px darken(@header-color, 20%);
+		position: relative;
+		z-index: 999;
+		color: #fff;
 
 		.typo-header();
 		font-size: 0.8em;
-
-		@media screen and (min-width: 800px) {
-			max-width: @article-width;
-			margin: 0 0 2em @article-width * -0.5;
-			left: 50%;
-		}
+		background-color: #000;
 
 		a {
+			color: #fff;
 			text-decoration: none;
 		}
 
@@ -86,9 +131,88 @@
 			color: #fff;
 			text-decoration: underline;
 		}
+	}
 
-		background-color: #000;
+	header {
+		background-color: @header-color;
 		color: #fff;
+
+		.sizereg(2em, 2em);
+
+		@media screen and (min-width: 900px) {
+			.sizeout(2em, 2em);
+		}
+	}
+
+	.article-list {
+
+		a:hover {
+			text-decoration: none;
+		}
+
+		.navi {
+			background-color: #000;
+			box-shadow: 0px 2px 0px darken(@header-color, 20%);
+
+			a:hover {
+				text-decoration: underline;
+			}
+		}
+		
+		header {
+
+			&:hover {
+				background-color: darken(@header-color, 20%);
+				cursor: pointer;
+
+				h1 {
+					text-decoration: underline;
+				}
+
+				h2, p {
+					text-decoration: none !important;
+				}
+			} 
+		}
+	}
+
+	footer {
+		.sizereg(1em, 3em, 2em);
+
+		@media screen and (min-width: 900px) {
+			.sizeout(1em, 3em, 2em);
+
+			li {
+				float: left;
+			}
+
+			li:not(:last-child):after {
+				content: " | ";
+				display: inline-block;
+				margin: 0 0.5em 0 0.5em;
+			}
+		}
+
+		.typo-header();
+		background-color: darken(@header-color, 50%);
+		font-size: 0.8em;
+		line-height: 1.4;
+		color: lighten(@header-color, 10%);
+
+		ul {
+			padding: 0;
+			list-style-type: none;
+			clear: both;
+		}
+
+		li {
+			display: block;
+			font-style: normal;
+		}
+
+		a {
+			font-style: normal;
+		}		
 	}
 
 	h4 {
@@ -99,28 +223,26 @@
 	p, li {
 		.typo-text();
 		margin-bottom: 0;
+		font-size: 0.9em;
+		line-height: 1.5em;
+		
+		@media screen and (min-width: 900px) {
+			font-size: 1em;
+			line-height: 1.6em;
+		}
 	}
 
-	.info {
-		.typo-header();
-		font-size: 0.7em;
+	li {
 		font-style: italic;
-		display: block;
-		line-height: 1.4;
 	}
 
 	p + p, {
-		margin-top: 0.8em;
+		margin-top: 1em;
 		// text-indent: 1em;
 	}
 
-	footer {
-		.typo-text();
-		margin-top: 0.8em;
-	}
-
 	a {
-		color: inherit;
+		color: @header-color;
 		text-decoration: underline;
 
 		&:hover {
@@ -129,10 +251,13 @@
 	}
 
 	code {
-		background-color: #ddd;
+		background-color: #262822;
 		border-radius: 2px;
-		font-size: 0.8em;
-		padding: 0.2em 0.4em 0.2em 0.4em;
+		font-size: 0.75em;
+		line-height: 1.5em;
+		color: #fff;
+		padding: 0.3em 0.5em 0.3em 0.5em;
+		white-space: nowrap;
 	}
 
 	article > code, .minidoc > code {
@@ -159,7 +284,7 @@
 		position: relative;
 		width: 100%;
 		min-height: 100px;
-		background-color: #ddd;
+		background-color: rgba(0, 0, 0, 0.2);
 		margin: 1em 0 0 0;
 	}
 
@@ -168,12 +293,15 @@
 		margin: 1em 0 1em 0;
 
 		input {
-			border: 0;
+			position: relative;
+			top: -0.2em;
 			margin: 0;
-			padding: 0.5em;
-			.typo-text();
+			padding: 0.5em 0.5em 0.4em 0.7em;
+			font-family: monospace;
+			font-size: 0.75em;
 			background-color: #f7e6ba;
-			width: 10em;
+			width: 4em;
+			border: 1px solid rgba(0, 0, 0, 0.25);
 		}
 	}
 
@@ -187,11 +315,12 @@
 			float: left;
 			.typo-header();
 			margin: 0 1em 0.1em 0;
-			background-color: #444;
+			background-color: #000;
 			color: #fff;
-			padding: 0.3em 0.8em 0.3em 0.8em;
+			padding: 0.3em 1.8em 0.3em 1.8em;
 			border-radius: 6px;
 			cursor: pointer;
+			font-style: normal;
 
 			&:hover {
 				background-color: #f00;
@@ -201,6 +330,7 @@
 
 	.minidoc {
 		position: fixed;
+		z-index: 1000;
 		top: 0px;
 		right: 20px;
 
@@ -234,6 +364,7 @@
 
 	.minidoc-preview {
 		position: fixed;
+		z-index: 1001;
 		top: 0px;
 		right: 10px;
 
@@ -246,6 +377,16 @@
 			display: block;
 		}
 	}
+
+
+
+	///// Code syntax
+	.comment { color: #74725e; }
+	.keyword { color: #00d9ef; }
+	.object { color: #bf76d7; }
+	.operator { color: #ff0073; }
+	.string { color: #e1d65a; }
+	.func { color: #74ea33 }
 }
 
 

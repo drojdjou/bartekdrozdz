@@ -18,8 +18,9 @@
 		color: #fff;
 		.typo-header();
 		text-align: center;
-		padding: 0.85em 0.8em 0 0.8em;
+		padding: 1.0em 0.8em 0 0.8em;
 		font-family: monospace;
+		font-size: 0.75em;
 	}
 
 	#redbox-02:before {
@@ -43,20 +44,19 @@
 <body>
 <section id="blog" class="">
 
-	<div class="navi"><a href="/">&lt; back to bartekdrozdz.com</a></div>
-
 	<article class="article">
 
+		<div class="navi"><a href="/">bartekdrozdz.com</a> | <a href="/blog">blog</a></div>
+
 		<header>
+			
 			<h2>HTML5 Animation, Part I</h2>
 			<h1>Frame-by-frame animation</h1>
 		</header>
 
-		<span class="info">Posted on January 17th 2014.</span>
+		<h4>Animations can make your project stand out of the crowd. Good animations enhance the <a href="http://www.ui-transitions.com/" target="_blank">user interface</a>, make navigation feel smoother and offer superior esthetic experience (bad animation does the opposite, so be careful). Modern browsers support animations quite well, but there are so many different ways of animating HTML elements that it often confuses even experienced developers.</h4>
 
-		<h4>Animations can make your website stand out of the crowd. Good animations enhance the <a href="http://www.ui-transitions.com/" target="_blank">user interface</a>, make navigation feel smoother and offer superior esthetic experience. Modern browsers support animations quite well, but there are so many different ways of animating HTML elements that it often confuses even experienced developers.</h4>
-
-		<p>This the the first part of a series aimed at exploring HTML5 animation in depth. It will consists of three parts that will cover the following topics:</p>
+		<p>This is the first part of a series aimed at exploring HTML5 animation in depth. It will consists of three parts that will cover the following topics:</p>
 		
 		<ol class="anim-types">
 			<li>Frame-by-frame animation</li>
@@ -132,7 +132,7 @@
 
 		<p>Now our code looks like this:</p>
 
-		<code>var redbox = document.getElementById("redbox");
+		<code>var redbox = document.querySelector("#redbox");
 		setX(redbox, 100);</code>
 
 		<p>Please note that a function that only sets the x translation value is not very robust. In your production code you might want to write a function or wrap it all in an object that exposes some methods to deal with all possible transform values. Here's the <a href="https://github.com/drojdjou/bartekdrozdz.com/blob/master/static/src/framework/domExtend/Transform.js#L31-L72" target="_blank">one</a> I use. Creating your own solution for this is a great coding exercise!</p>
@@ -172,7 +172,7 @@
 
 		<h3>Timing</h3>
 
-		<p>Now that we have a function that is called repeatedly, we need to figure out how to measure time. As I mentioned above, it is not safe to rely on the number of times the loop was called because the frame rate it not stable. Instead we can use the built-in <code>Date</code> object. In the future it will be replaced by <a href="http://updates.html5rocks.com/2012/08/When-milliseconds-are-not-enough-performance-now" target="_blank"><code>window.performance</code></a>, but it's not widely supported yet, so let's stick with <code>Date</code> for the time being.</p>
+		<p>Now that we have a function that is called repeatedly, we need to figure out how to measure time. As I mentioned above, it is not safe to rely on the number of times the loop was called because the frame rate it not stable. Instead we can use the built-in <code>Date</code> object. In the future it will be replaced by <code>window.performance</code>, but it's not <a href="http://updates.html5rocks.com/2012/08/When-milliseconds-are-not-enough-performance-now" target="_blank">widely supported</a> yet, so let's stick with <code>Date</code> for the time being.</p>
 
 		<p>The idea of measuring time is simple: when the animation starts, save the current time to a variable called <code>startTime</code>. Then, at each frame, subtract <code>startTime</code> from current time - the result says how much time passed since the animation started. Here's the loop code with time measurement added:</p>
 
@@ -359,16 +359,23 @@
 
 		<p>However, the flexibility of this approach comes at a price. Since the animation is executed in Javascript, it has a bigger performance impact than the two other techniques. This is why it's important to correctly asses which one to use in a specific situation. In the next two installments of this series I will explain how CSS Transitions and CSS Animations work and how to use them in your projects. This will allow you to always make an informed decision!</p>
 
-		<p>I hope you find this article useful. I you would like to share some thoughts or comments please send me a reply to <a href="https://twitter.com/bartekd" target="_blank">@bartekd</a> or shoot me an <a href="mailto:bartek@everyday3d.com?subject=HTML5 Animation">email</a>.</p>
+		<p>I hope you find this article useful. I you would like to share some thoughts or comments please send me an <a href="mailto:bartek@everyday3d.com?subject=HTML5 Animation">email</a>.</p>
+
+		<footer>
+			<ul>
+				<li>Posted on January 17th 2014</li>
+				<li><a href="http://bartekdrozdz.com">bartekdrozdz.com</a></li>
+				<li><a href="https://twitter.com/bartekd" target="_blank">@bartekd</a></li>
+			</ul>
+		</footer>
 	</article>
 </section>
 
 <script type="text/javascript" src="js/html5-animation.js"></script>
-<script type="text/javascript" src="../src/framework/Simplrz.js"></script>
-<script type="text/javascript" src="../js/Minidoc.js"></script>
+<script type="text/javascript" src="js/CodeColor.js"></script>
 
 <script type="text/javascript">
-	if(!Simplrz.touch) Minidoc.create(document.querySelector(".article"));
+	CodeColor.colorize("article code");
 </script>
 
 <script type="text/javascript">

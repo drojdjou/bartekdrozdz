@@ -76,7 +76,7 @@ p {
   }
 }
 .typo-title-box {
-  font-family: Oswald;
+  font-family: Oswald, sans-serif;
   font-size: 2em;
   text-transform: uppercase;
   font-weight: 400;
@@ -93,7 +93,7 @@ p {
   }
 }
 .typo-box {
-  font-family: Oswald;
+  font-family: Oswald, sans-serif;
   font-size: 0.8em;
   text-transform: uppercase;
   font-weight: 400;
@@ -110,7 +110,7 @@ p {
   }
 }
 .typo-title {
-  font-family: Oswald;
+  font-family: Oswald, sans-serif;
   font-size: 1.6em;
   line-height: 1em;
 }
@@ -125,17 +125,17 @@ p {
   }
 }
 .typo-launch {
-  font-family: Oswald;
+  font-family: Oswald, sans-serif;
   font-size: 1.2em;
 }
 .typo-article-box {
-  font-family: Oswald;
+  font-family: Oswald, sans-serif;
 }
 .typo-header {
-  font-family: 'Droid Sans';
+  font-family: 'Droid Sans', sans-serif;
 }
 .typo-text {
-  font-family: 'Fjord One', sans-serif;
+  font-family: 'Fjord One', sans-serif, Geogria, "Times New Roman", serif;
   font-weight: 100;
   font-size: 1em;
   letter-spacing: 0.02em;
@@ -173,17 +173,19 @@ p {
   line-height: 1;
 }
 #main h2.header p:nth-of-type(1) {
-  font-size: 3em;
+  font-size: 3.4em;
   font-weight: 400;
   text-transform: uppercase;
 }
 #main h2.header p:nth-of-type(2) {
+  font-size: 1.02em;
   word-spacing: 0.05em;
   letter-spacing: -0.025em;
   font-family: 'Fjord One', sans-serif;
   margin: 0.5em 0 0.25em 0;
 }
 #main h2.header p:nth-of-type(3) {
+  font-size: 1.02em;
   word-spacing: -0.05em;
   letter-spacing: -0.025em;
   font-family: 'Fjord One', sans-serif;
@@ -195,7 +197,7 @@ p {
 }
 #main h2.header a {
   display: inline-block;
-  margin: 0.6em 1.4em 0 1.4em;
+  margin: 0.5em 0.2em 0 0.2em;
   color: white;
   background-color: black;
   padding: 0.5em 0.5em 0.5em 0.5em;
@@ -218,6 +220,9 @@ p {
   }
   #main h2.header p:nth-of-type(4) {
     font-size: 0.35em;
+  }
+  #main h2.header a {
+    margin: 0.5em 0.8em 0 0.8em;
   }
 }
 @media screen and (min-width: 1100px) {
@@ -292,7 +297,7 @@ p {
   width: 800px;
   left: 50%;
   margin: 0.2em 0 0.2em -400px;
-  font-family: Oswald;
+  font-family: Oswald, sans-serif;
   font-size: 1.6em;
   line-height: 1em;
   text-transform: uppercase;
@@ -326,7 +331,7 @@ p {
   line-height: 1.45;
   padding: 8px 8px 10px 10px;
   border-radius: 4px;
-  font-family: 'Droid Sans';
+  font-family: 'Droid Sans', sans-serif;
 }
 .webgl #content .content .text .webgl {
   display: none;
@@ -338,7 +343,7 @@ p {
   display: none;
 }
 #content .content .text h4 {
-  font-family: 'Fjord One', sans-serif;
+  font-family: 'Fjord One', sans-serif, Geogria, "Times New Roman", serif;
   font-weight: 100;
   font-size: 1em;
   letter-spacing: 0.02em;
@@ -346,21 +351,21 @@ p {
   margin: 1em 0 1em 0;
 }
 #content .content .text h5 {
-  font-family: 'Droid Sans';
+  font-family: 'Droid Sans', sans-serif;
   font-size: 1.2em;
   color: #aaa;
   margin: 1em 0 1em 0;
   font-style: normal;
 }
 #content .content .text p {
-  font-family: 'Fjord One', sans-serif;
+  font-family: 'Fjord One', sans-serif, Geogria, "Times New Roman", serif;
   font-weight: 100;
   font-size: 1em;
   letter-spacing: 0.02em;
   line-height: 1.45em;
 }
 #content .content .text h6 {
-  font-family: 'Droid Sans';
+  font-family: 'Droid Sans', sans-serif;
   font-size: 0.8em;
 }
 #content .content .text b {
@@ -372,7 +377,7 @@ p {
   line-height: 1.55;
 }
 #content .content .text ul li {
-  font-family: 'Fjord One', sans-serif;
+  font-family: 'Fjord One', sans-serif, Geogria, "Times New Roman", serif;
   font-weight: 100;
   font-size: 1em;
   letter-spacing: 0.02em;
@@ -410,7 +415,7 @@ p {
   border-radius: 4px;
   display: inline-block;
   font-style: normal;
-  font-family: Oswald;
+  font-family: Oswald, sans-serif;
   font-size: 1.2em;
   margin: 1em 0 1em 0;
   -webkit-transition: all 0.05s ease;
@@ -593,11 +598,11 @@ p {
   pointer-events: auto;
 }
 #about h3 {
-  font-family: 'Droid Sans';
+  font-family: 'Droid Sans', sans-serif;
   font-size: 1.3em;
 }
 #about h4 {
-  font-family: 'Fjord One', sans-serif;
+  font-family: 'Fjord One', sans-serif, Geogria, "Times New Roman", serif;
   font-weight: 100;
   font-size: 1em;
   letter-spacing: 0.02em;
@@ -606,7 +611,7 @@ p {
   line-height: 1.35;
 }
 #about p {
-  font-family: 'Fjord One', sans-serif;
+  font-family: 'Fjord One', sans-serif, Geogria, "Times New Roman", serif;
   font-weight: 100;
   font-size: 1em;
   letter-spacing: 0.02em;
@@ -643,7 +648,7 @@ p {
   line-height: 1.55;
 }
 #about ul li {
-  font-family: 'Fjord One', sans-serif;
+  font-family: 'Fjord One', sans-serif, Geogria, "Times New Roman", serif;
   font-weight: 100;
   font-size: 1em;
   letter-spacing: 0.02em;
@@ -699,7 +704,7 @@ section#projects ul.projects .title-box .container h1 {
   bottom: 0;
   right: 0;
   margin: 0 3% 3% 0;
-  font-family: Oswald;
+  font-family: Oswald, sans-serif;
   font-size: 2em;
   text-transform: uppercase;
   font-weight: 400;
@@ -731,7 +736,7 @@ section#projects ul.projects li h4 {
   margin: 0 0 3% 3%;
   bottom: 0;
   left: 0;
-  font-family: Oswald;
+  font-family: Oswald, sans-serif;
   font-size: 0.8em;
   text-transform: uppercase;
   font-weight: 400;
@@ -869,7 +874,9 @@ section#projects ul.projects li .spacer {
   position: absolute;
   width: 100%;
   background-color: #fff;
+  min-height: 100%;
   color: #333;
+  overflow-x: hidden;
 }
 #blog.inverted {
   background-color: #000;
@@ -880,6 +887,13 @@ section#projects ul.projects li .spacer {
 }
 #blog.inverted a:hover {
   color: #fff;
+}
+#blog.inverted .demo {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+#blog.inverted .buttons li {
+  background-color: #808080;
+  color: #000;
 }
 #blog h1 {
   font-family: Oswald;
@@ -899,55 +913,129 @@ section#projects ul.projects li .spacer {
   }
 }
 #blog h2 {
-  font-family: 'Droid Sans';
+  font-family: 'Droid Sans', sans-serif;
   margin: 0.3em 0 0.3em 0;
 }
 #blog h3 {
-  font-family: 'Droid Sans';
+  font-family: 'Fjord One', sans-serif, Geogria, "Times New Roman", serif;
+  font-weight: 100;
+  font-size: 1em;
+  letter-spacing: 0.02em;
   line-height: 1.5em;
-  font-size: 1.8em;
-  margin: 3em 0 0.3em 0;
+  font-size: 2.0em;
+  margin: 0.6em 0 0.6em 0;
 }
 #blog article {
   position: relative;
-  margin: 1em;
+  margin: 0;
   font-size: 1.0em;
   line-height: 1.4em;
+  padding: 0 20px 0 20px;
 }
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 900px) {
   #blog article {
     font-size: 1.1em;
-    max-width: 700px;
-    margin: 0 0 2em -350px;
+    max-width: 800px;
+    margin: 0 0 0 -400px;
     left: 50%;
+    padding: 0 50px 0 50px;
   }
 }
 #blog .navi {
+  margin: 0 -20px 0 -20px;
+  padding: 1em 1em 1em 1em;
+  box-shadow: 0px 2px 0px #23679c;
   position: relative;
-  margin: 1em;
-  line-height: 1.4em;
-  padding: 1em;
-  font-family: 'Droid Sans';
+  z-index: 999;
+  color: #fff;
+  font-family: 'Droid Sans', sans-serif;
   font-size: 0.8em;
   background-color: #000;
-  color: #fff;
 }
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 900px) {
   #blog .navi {
-    max-width: 700px;
-    margin: 0 0 2em -350px;
-    left: 50%;
+    margin: 0 -50px 0 -50px;
+    padding: 1em 1em 1em 1em;
   }
 }
 #blog .navi a {
+  color: #fff;
   text-decoration: none;
 }
 #blog .navi a:hover {
   color: #fff;
   text-decoration: underline;
 }
+#blog header {
+  background-color: #4e9bd7;
+  color: #fff;
+  margin: 0 -20px 0 -20px;
+  padding: 2em 20px 2em 20px;
+}
+@media screen and (min-width: 900px) {
+  #blog header {
+    margin: 0 -50px 0 -50px;
+    padding: 2em 50px 2em 50px;
+  }
+}
+#blog .article-list a:hover {
+  text-decoration: none;
+}
+#blog .article-list .navi {
+  background-color: #000;
+  box-shadow: 0px 2px 0px #23679c;
+}
+#blog .article-list .navi a:hover {
+  text-decoration: underline;
+}
+#blog .article-list header:hover {
+  background-color: #23679c;
+  cursor: pointer;
+}
+#blog .article-list header:hover h1 {
+  text-decoration: underline;
+}
+#blog .article-list header:hover h2,
+#blog .article-list header:hover p {
+  text-decoration: none !important;
+}
+#blog footer {
+  margin: 2em -20px 0 -20px;
+  padding: 1em 20px 3em 20px;
+  font-family: 'Droid Sans', sans-serif;
+  background-color: #07141f;
+  font-size: 0.8em;
+  line-height: 1.4;
+  color: #78b3e0;
+}
+@media screen and (min-width: 900px) {
+  #blog footer {
+    margin: 2em -50px 0 -50px;
+    padding: 1em 50px 3em 50px;
+  }
+  #blog footer li {
+    float: left;
+  }
+  #blog footer li:not(:last-child):after {
+    content: " | ";
+    display: inline-block;
+    margin: 0 0.5em 0 0.5em;
+  }
+}
+#blog footer ul {
+  padding: 0;
+  list-style-type: none;
+  clear: both;
+}
+#blog footer li {
+  display: block;
+  font-style: normal;
+}
+#blog footer a {
+  font-style: normal;
+}
 #blog h4 {
-  font-family: 'Fjord One', sans-serif;
+  font-family: 'Fjord One', sans-serif, Geogria, "Times New Roman", serif;
   font-weight: 100;
   font-size: 1em;
   letter-spacing: 0.02em;
@@ -955,41 +1043,42 @@ section#projects ul.projects li .spacer {
 }
 #blog p,
 #blog li {
-  font-family: 'Fjord One', sans-serif;
+  font-family: 'Fjord One', sans-serif, Geogria, "Times New Roman", serif;
   font-weight: 100;
   font-size: 1em;
   letter-spacing: 0.02em;
   margin-bottom: 0;
+  font-size: 0.9em;
+  line-height: 1.5em;
 }
-#blog .info {
-  font-family: 'Droid Sans';
-  font-size: 0.7em;
+@media screen and (min-width: 900px) {
+  #blog p,
+  #blog li {
+    font-size: 1em;
+    line-height: 1.6em;
+  }
+}
+#blog li {
   font-style: italic;
-  display: block;
-  line-height: 1.4;
 }
 #blog p + p {
-  margin-top: 0.8em;
-}
-#blog footer {
-  font-family: 'Fjord One', sans-serif;
-  font-weight: 100;
-  font-size: 1em;
-  letter-spacing: 0.02em;
-  margin-top: 0.8em;
+  margin-top: 1em;
 }
 #blog a {
-  color: inherit;
+  color: #4e9bd7;
   text-decoration: underline;
 }
 #blog a:hover {
   color: #808080;
 }
 #blog code {
-  background-color: #ddd;
+  background-color: #262822;
   border-radius: 2px;
-  font-size: 0.8em;
-  padding: 0.2em 0.4em 0.2em 0.4em;
+  font-size: 0.75em;
+  line-height: 1.5em;
+  color: #fff;
+  padding: 0.3em 0.5em 0.3em 0.5em;
+  white-space: nowrap;
 }
 #blog article > code,
 #blog .minidoc > code {
@@ -1014,26 +1103,26 @@ section#projects ul.projects li .spacer {
   position: relative;
   width: 100%;
   min-height: 100px;
-  background-color: #ddd;
+  background-color: rgba(0, 0, 0, 0.2);
   margin: 1em 0 0 0;
 }
 #blog .input {
-  font-family: 'Fjord One', sans-serif;
+  font-family: 'Fjord One', sans-serif, Geogria, "Times New Roman", serif;
   font-weight: 100;
   font-size: 1em;
   letter-spacing: 0.02em;
   margin: 1em 0 1em 0;
 }
 #blog .input input {
-  border: 0;
+  position: relative;
+  top: -0.2em;
   margin: 0;
-  padding: 0.5em;
-  font-family: 'Fjord One', sans-serif;
-  font-weight: 100;
-  font-size: 1em;
-  letter-spacing: 0.02em;
+  padding: 0.5em 0.5em 0.4em 0.7em;
+  font-family: monospace;
+  font-size: 0.75em;
   background-color: #f7e6ba;
-  width: 10em;
+  width: 4em;
+  border: 1px solid rgba(0, 0, 0, 0.25);
 }
 #blog .buttons {
   list-style-type: none;
@@ -1043,19 +1132,21 @@ section#projects ul.projects li .spacer {
 }
 #blog .buttons li {
   float: left;
-  font-family: 'Droid Sans';
+  font-family: 'Droid Sans', sans-serif;
   margin: 0 1em 0.1em 0;
-  background-color: #444;
+  background-color: #000;
   color: #fff;
-  padding: 0.3em 0.8em 0.3em 0.8em;
+  padding: 0.3em 1.8em 0.3em 1.8em;
   border-radius: 6px;
   cursor: pointer;
+  font-style: normal;
 }
 #blog .buttons li:hover {
   background-color: #f00;
 }
 #blog .minidoc {
   position: fixed;
+  z-index: 1000;
   top: 0px;
   right: 20px;
   margin: 1em;
@@ -1073,8 +1164,8 @@ section#projects ul.projects li .spacer {
 @media screen and (min-width: 800px) {
   #blog .minidoc {
     font-size: 1.1em;
-    max-width: 700px;
-    margin: 0 0 2em -350px;
+    max-width: 800px;
+    margin: 0 0 2em -400px;
   }
 }
 @media screen and (min-width: 1024px) {
@@ -1084,6 +1175,7 @@ section#projects ul.projects li .spacer {
 }
 #blog .minidoc-preview {
   position: fixed;
+  z-index: 1001;
   top: 0px;
   right: 10px;
   background-color: rgba(0, 0, 0, 0.2);
@@ -1094,4 +1186,22 @@ section#projects ul.projects li .spacer {
   #blog .minidoc-preview {
     display: block;
   }
+}
+#blog .comment {
+  color: #74725e;
+}
+#blog .keyword {
+  color: #00d9ef;
+}
+#blog .object {
+  color: #bf76d7;
+}
+#blog .operator {
+  color: #ff0073;
+}
+#blog .string {
+  color: #e1d65a;
+}
+#blog .func {
+  color: #74ea33;
 }

@@ -7,7 +7,6 @@ var Minidoc = (function() {
 	var makePreview = function() {
 		if(window.innerWidth < 1024) return;
 
-		
 		var articleHeight = article.getBoundingClientRect().height;
 		var scaleFactor = window.innerHeight / articleHeight;
 
@@ -16,7 +15,7 @@ var Minidoc = (function() {
 		var scaleDown = "scaleX(" + scaleFactor + ") scaleY(" +  scaleFactor + ") translateZ(0)";
 
 		preview.style.height = (window.innerHeight * scaleFactor) + "px";
-		preview.style.width = (700 * scaleFactor + 20) + "px";
+		preview.style.width = (700 * scaleFactor + 25) + "px";
 
 		minidoc.style['transform'] = scaleDown;
 		minidoc.style['webkitTransform'] = scaleDown;
