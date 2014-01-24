@@ -5,6 +5,7 @@ var fs = require('fs');
 var strftime = require('strftime');
 
 var data = require('./shared/Data').Data;
+var blog = require('./Blog').Blog;
 
 data.setMain(require('../data/main.json'));
 
@@ -17,6 +18,7 @@ if(!serverRoot || serverRoot == "") {
 	serverRoot = "./";
 }
 
+blog.load(serverRoot);
 
 var context = {
 	config: {
@@ -86,9 +88,14 @@ app.get('/data', function(request, response) {
 	response.send(data.getMain());
 });
 
-// app.get('/blog', function(request, response) {
-// 	response.redirect('/blog/index.html');
-// });
+app.get('/blog', function(request, response) {
+	response.render('blogindex', { posts:blog.postlist });
+});
+
+app.get("/blog/:name", function(request, response) {
+	var post = blog.posts[request.params.name];
+	response.render('blog', { post:post });
+});
 
 app.get('/context', function(request, response) {
 	response.send(context);

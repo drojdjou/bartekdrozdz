@@ -1,18 +1,3 @@
-// ::-webkit-scrollbar {
-//     width: 8px;
-// }
- 
-// ::-webkit-scrollbar-track {
-//     background: rgb(255, 255, 255); 
-// }
- 
-// ::-webkit-scrollbar-thumb {
-//     background: rgba(0,0,0,0.8); 
-// }
-// ::-webkit-scrollbar-thumb:window-inactive {
-// 	background: rgba(0,0,0,0.4); 
-// }
-
 #blog {
 	position: absolute;
 	width: 100%;
@@ -72,10 +57,10 @@
 		margin: 0.6em 0 0.6em 0;
 	}
 
+	@link-color: #4e9bd7;
 	@article-width: 800px;
 	@sizereg-width: 20px;
 	@sizeout-width: 50px;
-	@header-color: #4e9bd7;
 
 	.sizeout(@top-padding: 1em, @bottom-padding: 1em, @top-margin: 0, @bottom-margin: 0) {
 		margin: @top-margin -@sizeout-width @bottom-margin -@sizeout-width;
@@ -111,9 +96,8 @@
 			margin: 0 -@sizeout-width 0 -@sizeout-width;
 			padding: 1em 1em 1em 1em;
 		}
-
 		
-		box-shadow: 0px 2px 0px darken(@header-color, 20%);
+		box-shadow: 0px 2px 0px rgba(0,0,0,0.25);
 		position: relative;
 		z-index: 999;
 		color: #fff;
@@ -134,7 +118,6 @@
 	}
 
 	header {
-		background-color: @header-color;
 		color: #fff;
 
 		.sizereg(2em, 2em);
@@ -146,41 +129,23 @@
 
 	.article-list {
 
-		a:hover {
+		a {
+			color: #fff;
 			text-decoration: none;
 		}
 
-		.navi {
-			background-color: #000;
-			box-shadow: 0px 2px 0px darken(@header-color, 20%);
-
-			a:hover {
-				text-decoration: underline;
-			}
+		a:hover {
+			color: #fff;
+			text-decoration: underline;
 		}
-		
-		header {
 
-			&:hover {
-				background-color: darken(@header-color, 20%);
-				cursor: pointer;
-
-				h1 {
-					text-decoration: underline;
-				}
-
-				h2, p {
-					text-decoration: none !important;
-				}
-			} 
-		}
 	}
 
 	footer {
-		.sizereg(1em, 3em, 2em);
+		.sizereg(1em, 3em);
 
 		@media screen and (min-width: 900px) {
-			.sizeout(1em, 3em, 2em);
+			.sizeout(1em, 5em);
 
 			li {
 				float: left;
@@ -194,10 +159,10 @@
 		}
 
 		.typo-header();
-		background-color: darken(@header-color, 50%);
+		background-color: rgb(20,20,20);
 		font-size: 0.8em;
 		line-height: 1.4;
-		color: lighten(@header-color, 10%);
+		color: rgb(200,200,200);
 
 		ul {
 			padding: 0;
@@ -241,8 +206,12 @@
 		// text-indent: 1em;
 	}
 
+	p:last-of-type {
+		margin-bottom: 3em;
+	}
+
 	a {
-		color: @header-color;
+		color: @link-color;
 		text-decoration: underline;
 
 		&:hover {
@@ -380,7 +349,7 @@
 
 
 
-	///// Code syntax
+	///// JS code syntax coloring
 	.comment { color: #74725e; }
 	.keyword { color: #00d9ef; }
 	.object { color: #bf76d7; }

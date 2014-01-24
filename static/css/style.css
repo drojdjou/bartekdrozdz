@@ -944,7 +944,7 @@ section#projects ul.projects li .spacer {
 #blog .navi {
   margin: 0 -20px 0 -20px;
   padding: 1em 1em 1em 1em;
-  box-shadow: 0px 2px 0px #23679c;
+  box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.25);
   position: relative;
   z-index: 999;
   color: #fff;
@@ -967,7 +967,6 @@ section#projects ul.projects li .spacer {
   text-decoration: underline;
 }
 #blog header {
-  background-color: #4e9bd7;
   color: #fff;
   margin: 0 -20px 0 -20px;
   padding: 2em 20px 2em 20px;
@@ -978,40 +977,27 @@ section#projects ul.projects li .spacer {
     padding: 2em 50px 2em 50px;
   }
 }
-#blog .article-list a:hover {
+#blog .article-list a {
+  color: #fff;
   text-decoration: none;
 }
-#blog .article-list .navi {
-  background-color: #000;
-  box-shadow: 0px 2px 0px #23679c;
-}
-#blog .article-list .navi a:hover {
+#blog .article-list a:hover {
+  color: #fff;
   text-decoration: underline;
-}
-#blog .article-list header:hover {
-  background-color: #23679c;
-  cursor: pointer;
-}
-#blog .article-list header:hover h1 {
-  text-decoration: underline;
-}
-#blog .article-list header:hover h2,
-#blog .article-list header:hover p {
-  text-decoration: none !important;
 }
 #blog footer {
-  margin: 2em -20px 0 -20px;
+  margin: 0 -20px 0 -20px;
   padding: 1em 20px 3em 20px;
   font-family: 'Droid Sans', sans-serif;
-  background-color: #07141f;
+  background-color: #141414;
   font-size: 0.8em;
   line-height: 1.4;
-  color: #78b3e0;
+  color: #c8c8c8;
 }
 @media screen and (min-width: 900px) {
   #blog footer {
-    margin: 2em -50px 0 -50px;
-    padding: 1em 50px 3em 50px;
+    margin: 0 -50px 0 -50px;
+    padding: 1em 50px 5em 50px;
   }
   #blog footer li {
     float: left;
@@ -1063,6 +1049,9 @@ section#projects ul.projects li .spacer {
 }
 #blog p + p {
   margin-top: 1em;
+}
+#blog p:last-of-type {
+  margin-bottom: 3em;
 }
 #blog a {
   color: #4e9bd7;

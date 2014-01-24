@@ -1,66 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Frame-by-frame animation | Animation in HTML5, part 1</title>
+	<title>{{post.title}} | Bartek Drozdz</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable = no">
 	<link href="/css/style.css" media="screen, projection" rel="stylesheet" type="text/css" />
-
-	<style type="text/css">
-
-	.redbox {
-		position: absolute;
-		min-width: 50px;
-		height: 50px;
-		background-color: #f00;
-		top: 25px;
-		left: 25px;
-		color: #fff;
-		.typo-header();
-		text-align: center;
-		padding: 1.0em 0.8em 0 0.8em;
-		font-family: monospace;
-		font-size: 0.75em;
-	}
-
-	#redbox-02:before {
-		position: absolute;
-		content: '100px';
-		display: block;
-		color: black;
-		width: 100px;
-		height: 2px;
-		background-color: black;
-		margin: 0;
-		line-height: 1.6;
-		padding: 0;
-		top: 22px;
-		left: -100px;
-	}
-
-	</style>
 
 </head>
 <body>
 <section id="blog" class="">
 
-	<article class="article-list">
+	<article class="article">
 
-		<div class="navi"><a href="/">bartekdrozdz.com</a> | <u>blog</u></div>
+		<div class="navi"><a href="/">bartekdrozdz.com</a> | <a href="/blog">blog</a></div>
 
-		<a href="html5-animation.html"><header>
-			
-				<h2>HTML5 Animation, Part I</h2>
-				<h1>Frame-by-frame animation</h1>
-				<p>The first part of a series aimed at exploring HTML5 animation in depth, focused on frame-by-frame animation.</p>
+		<header>
+			<h2>{{post.subtitle}}</h2>
+			<h1>{{post.title}}</h1>
+		</header>
 
-		</header></a>
+		{{{post.content}}}
 
+		<footer>
+			<ul>
+				<li>Posted on {{post.date}}</li>
+				<li><a href="http://bartekdrozdz.com">bartekdrozdz.com</a></li>
+				<li><a href="https://twitter.com/bartekd" target="_blank">@bartekd</a></li>
+			</ul>
+		</footer>
 	</article>
 </section>
 
-<script type="text/javascript" src="js/html5-animation.js"></script>
-<script type="text/javascript" src="js/CodeColor.js"></script>
+{{#each post.scripts}}
+<script type="text/javascript" src="/blog-js/{{this}}"></script>
+{{/each}}
+
+<script type="text/javascript" src="/blog-js/CodeColor.js"></script>
 
 <script type="text/javascript">
 	CodeColor.colorize("article code");
