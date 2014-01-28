@@ -11,7 +11,7 @@ State = function(ext, element) {
 	};
 
 	ext.visible = function() {
-		return element.style.display != "none";
+		return ext.readCss('display') != "none";
 	};
 
 	ext.on = function(event, callback, useCapture) {
@@ -23,20 +23,25 @@ State = function(ext, element) {
 	};
 
 	ext.css = function(property, value) {
-		if(typeof property == "string"){
-			if(value !== null) element.style[property] = value;
-			return element.style[property];
-		}else{
-			// assume property arg is object
+		if(typeof property == "string") {
+			var ccp = property.replace(/-([a-z])/g, function (g) { return g[1].toUpperCase(); });
+			element.style[ccp] = value;
+		} else {
+		// assume property arg is object
 			for(var p in property){
 				element.style[p] = property[p];
 			}
 		}
 	};
 
-	ext.attr = function(attrName, attrVal){
-		if(attrVal != undefined)
-			element.setAttribute(attrName, attrVal);
-		return element.getAttribute(attrName);
+	ext.readCss = function(property, notCalculated) {
+		return (notCalculated) ? element.style[property] : getComputedStyle(element).getPropertyValue(property);
+	}
+
+	ext.attr = function(name, value) {
+		if(value != undefined) {
+			element.setAttribute(name, value);
+		}
+		return element.getAttribute(name);
 	}
 };

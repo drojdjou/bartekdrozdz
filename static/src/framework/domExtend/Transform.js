@@ -31,9 +31,11 @@ Transform = function(ext, element) {
 	ext.x = 0;
 	ext.y = 0;
 	ext.z = 0;
+
 	ext.rotX = 0;
 	ext.rotY = 0;
 	ext.rotZ = 0;
+	
 	ext.scaleX = 1;
 	ext.scaleY = 1;
 	ext.scaleZ = 1;

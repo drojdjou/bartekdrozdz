@@ -15,6 +15,10 @@
 
 <style type="text/css">
 
+  body {
+    background-color: #000;
+  }
+
   #square {
     width: 100px;
     height: 100px;
@@ -100,7 +104,7 @@ function done() {
 function moveX() {
   red.ext.transition({ transform: {x: 400} }, 500, 'ease-out').start(function() {
     red.ext.transform({ x: 800 });
-    red.ext.transition({ transform: { x: 1200 } }, 300, 'ease-in', 500)
+    red.ext.transition({ transform: { x: window.innerWidth - 100 } }, 300, 'ease-in', 500)
   });
 }
 

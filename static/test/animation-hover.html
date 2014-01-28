@@ -48,6 +48,24 @@ var resetItem = Anm.create(350, { y:-20, opacity:0.5 }).ease(Anm.QUADOUT);
 // 2. Grab the elements
 var items = document.ext.selectAll("li");
 
+// 2.5 fix widths of items
+var fixItemWidths = function(items) {
+
+    var numItems = items.length, totalWidth = 0;
+
+    for(var i = 0; i < numItems; i++) {
+        var it = items[i];
+
+        var bw = Math.round(it.getBoundingClientRect().width);
+        totalWidth += bw;
+
+        if(i == numItems-1) bw -= (totalWidth - window.innerWidth);
+        it.style.width = bw + "px";
+    }
+}
+
+fixItemWidths(items);
+
 // 3. Play initial animation
 items.forEach(function(item, index) {
     item.ext.opacity = 0.5;

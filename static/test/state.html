@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>State - Framework Tests</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable = no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <style type="text/css">
+
+        body {
+            position: absolute;
+            width: 100%;
+            margin: 10px;
+
+            font-family: Arial, sans-serif;
+            font-size: 1.0em;
+            background-color: #000;
+            color: #fff;
+        }
+
+        ul {
+            list-style-type: none;
+            clear: both;
+            display: block;
+            overflow: auto;
+            padding: 0;
+        }
+
+        li {
+            background-color: red;
+            width: 100px;
+            height: 100px;
+            padding: 10px;
+            margin: 2px;
+            float: left;
+        }
+
+        .blue {
+            background-color: #0050dd;
+        }
+
+        p {
+            line-height: 1.1;
+            margin: 0.4em 0 0 0;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li id="seven">7</li>
+</ul>
+
+<p>Square numbers should go from 1 to 5</p>
+<p>[1] Should be blue</p>
+<p>[2] Should be missing</p>
+<p>[3] Should be show the value of the color property</p>
+<p>[4] Should be green and moved down</p>
+<p>[5] Should before 3</p>
+
+<script type="text/javascript" src="../src/framework/Simplrz.js"></script>
+<script type="text/javascript" src="../src/framework/domExtend/State.js"></script>
+<script type="text/javascript" src="../src/framework/domExtend/DomExtend.js"></script>
+
+<script type="text/javascript">
+
+    var list = EXT.select('ul');
+
+    var one = list.ext.select('li:first-child');
+    one.ext.attr('class', 'blue');
+
+    var two = EXT.select('li:nth-of-type(2)');
+    console.log("two.style.display before calling hide() = " + two.style.display);
+    console.log("two.readCss(display) before calling hide() = " + two.ext.readCss('display'));
+    two.ext.hide();
+    console.log("two.ext.visible = " + two.ext.visible());
+    console.log("two.style.display = " + two.style.display);
+
+    var three = EXT.select('li:nth-of-type(3)');
+    three.innerHTML += '<br>[' + three.ext.readCss('color')+ ']';
+
+    var four = EXT.select('li:nth-of-type(4)');
+    four.ext.css('background-color', 'rgba(0, 127, 0, 1)');
+    four.ext.css('marginTop', '10px');
+
+    var five = EXT.select('li:nth-of-type(5)');
+    // list.removeChild(five);
+    list.insertBefore(five, three);
+
+    var six = EXT.create('li');
+    six.innerHTML = '6';
+    list.appendChild(six);
+
+    var seven = EXT.select('#seven');
+    list.removeChild(seven);
+
+</script>
+
+<script type="text/javascript">
+    if(location.host.indexOf("localhost") > -1 || location.host.indexOf("192.168") > -1 || location.host.indexOf("127.0") > -1) {
+        document.write('<script src=\"http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1\"></' + 'script>');
+    }
+</script>
+
+</body>
+</html>   
+
+
+
+
+
+
+
+          

@@ -11,6 +11,9 @@
 		var files = fs.readdirSync(basePath + postsPath);
 
 		files.forEach(function(file) {
+
+			if(file.indexOf('.html') < 0) return;
+
 			var p = fs.readFileSync(basePath + postsPath + "/" + file, { encoding:'utf8' });
 			
 			var lines = p.split("\n"), currentSection, post = {};
