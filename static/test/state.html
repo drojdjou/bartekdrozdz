@@ -50,7 +50,7 @@
 <body>
 
 <ul>
-    <li>1</li>
+    <li style="color: #aaa">1</li>
     <li>2</li>
     <li>3</li>
     <li>4</li>
@@ -75,6 +75,8 @@
 
     var one = list.ext.select('li:first-child');
     one.ext.attr('class', 'blue');
+
+    console.log(one.ext.readCss('color', true));
 
     var two = EXT.select('li:nth-of-type(2)');
     console.log("two.style.display before calling hide() = " + two.style.display);

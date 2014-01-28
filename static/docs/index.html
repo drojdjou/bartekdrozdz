@@ -149,10 +149,13 @@ var a2 = Anm.create(50, { y:10, opacity:1 }).ease(Anm.LINEAR);</blockquote>
     <p>Shortcut for <code>element.removeEventListener</code>. Legacy IE8 not supported, unless we add a shim.</p>
 
     <h2>css(property, value)</h2>
-    <p>Sets the CSS <code>property</code> to <code>value</code>. If <code>value</code> is ommited, return the value of this property. Warning: 1. Returning a value is not reliable, since it doesn't use computed styles. 2. This function doesn't take vendor prefixes into account.</p>
+    <p>Sets the CSS <code>property</code> to <code>value</code>. This function is write only, it does not return the current value of this CSS property. If <code>property</code> is an object this function will interate through this object - can be used to set multiple properties. Warning: This function doesn't take vendor prefixes into account, however you can pass the properties in both dahsed and camelCase form.</p>
 
-    <h2>attr(name, value)</h2>
-    <p>Sets an the attribute named <code>name</code> to <code>value</code>.</p>
+    <h2>readCss(property, notCalculated)</h2>
+    <p>Returns the CSS the value of the specified <code>property</code>. You can pass the properties in both dahsed and camelCase form. if tyhe second argument is set to <code>true</code> then it will return the value using the elements <code>style</code> propeorty. This value is empty, unless it was defined with JS or the style was set inline in HTML.</p>
+
+    <h2>attr(name, notCalculated)</h2>
+    <p>Returns the value of the CSS property <code>name</code> to <code>value</code>.</p>
 
     <h2>rect()</h2>
     <p>Returns an object specifying the screen coordinates and dimensions of the element. It has the following properties: 
