@@ -73,7 +73,7 @@ app.get('/project/:name', function(request, response) {
 		var p = path.resolve(serverRoot + 'data/items/' + request.params.name + '.html');
 		
 		fs.readFile(p, function (err, fileContent) {
-		  if (err) throw err;
+		  if (err) response.send('404 |' + request.params.name + ' does not exist.');
 		  response.render('project', { 
 		  	content: fileContent, 
 		  	item: data.getProjectById(request.params.name),
