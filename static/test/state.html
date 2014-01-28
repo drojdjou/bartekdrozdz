@@ -13,7 +13,7 @@
             margin: 10px;
 
             font-family: Arial, sans-serif;
-            font-size: 1.0em;
+            font-size: 0.8em;
             background-color: #000;
             color: #fff;
         }
@@ -56,14 +56,17 @@
     <li>4</li>
     <li>5</li>
     <li id="seven">7</li>
+    <li>8</li>
 </ul>
 
-<p>Square numbers should go from 1 to 5</p>
-<p>[1] Should be blue</p>
-<p>[2] Should be missing</p>
-<p>[3] Should be show the value of the color property</p>
-<p>[4] Should be green and moved down</p>
-<p>[5] Should before 3</p>
+<p>[1] should be blue with grey text (defined inline)</p>
+<p>[2] should be missing</p>
+<p>[3] should show the value of the color property</p>
+<p>[4] should be green and moved down</p>
+<p>[5] should be before 3</p>
+<p>[8] should be before 6 and label should say 8b</p>
+
+<div id="logs"></div>
 
 <script type="text/javascript" src="../src/framework/Simplrz.js"></script>
 <script type="text/javascript" src="../src/framework/domExtend/State.js"></script>
@@ -71,22 +74,21 @@
 
 <script type="text/javascript">
 
+    var log = function(m) {
+        var p = EXT.create('p');
+        p.innerHTML = m;
+        EXT.select('#logs').appendChild(p);
+    }
+
     var list = EXT.select('ul');
 
     var one = list.ext.select('li:first-child');
     one.ext.attr('class', 'blue');
 
-    console.log(one.ext.readCss('color', true));
-
     var two = EXT.select('li:nth-of-type(2)');
-    console.log("two.style.display before calling hide() = " + two.style.display);
-    console.log("two.readCss(display) before calling hide() = " + two.ext.readCss('display'));
-    two.ext.hide();
-    console.log("two.ext.visible = " + two.ext.visible());
-    console.log("two.style.display = " + two.style.display);
-
+    
     var three = EXT.select('li:nth-of-type(3)');
-    three.innerHTML += '<br>[' + three.ext.readCss('color')+ ']';
+    three.innerHTML += '<br>' + three.ext.readCss('color');
 
     var four = EXT.select('li:nth-of-type(4)');
     four.ext.css('background-color', 'rgba(0, 127, 0, 1)');
@@ -96,12 +98,32 @@
     // list.removeChild(five);
     list.insertBefore(five, three);
 
+    var eight = document.ext.select('li:last-child');
+    var eightB = EXT.create('li');
+    eightB.innerHTML = "8b";
+    list.replaceChild(eightB, eight);
+
     var six = EXT.create('li');
     six.innerHTML = '6';
     list.appendChild(six);
 
     var seven = EXT.select('#seven');
     list.removeChild(seven);
+
+    log("[2] style.display before calling hide() = " + two.style.display);
+    log("[2] readCss(display) before calling hide() = " + two.ext.readCss('display'));
+    two.ext.hide();
+    log("[2] ext.visible after hide() = " + two.ext.visible());
+    log("[2] style.display after hide() = " + two.style.display);
+    log("[2] readCss(display) after calling hide() = " + two.ext.readCss('display'));
+
+    log('[1] readCss(color, true): ' + one.ext.readCss('color', true));
+    log('[1] readCss(color): ' + one.ext.readCss('color'));
+    log('[1] style.color: ' + one.style.color);
+
+    log('[5] readCss(color, true): ' + five.ext.readCss('color', true));
+    log('[5] readCss(color): ' + five.ext.readCss('color'));
+    log('[5] style.color: ' + five.style.color);
 
 </script>
 

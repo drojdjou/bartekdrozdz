@@ -91,11 +91,12 @@ var a2 = Anm.create(50, { y:10, opacity:1 }).ease(Anm.LINEAR);</blockquote>
 
     <a name="domextend"></a>
     <h1>DomExtend
-        <a href="../test/extend.html">Test</a> 
-        <a href="../test/transition.html">Test Transtion</a> 
+        <a href="../test/state.html">Test - State functions</a> 
+        <a href="../test/extend.html">Test - Transform functions</a> 
+        <a href="../test/transition.html">Test Transtion functions</a> 
     </h1>
 
-    <p>DomExtend extends the DOM object with some additional features and wrappers around native functions. Once applied to a DOM element the object is available as a property on this object called <code>ext</code> which contains a collection of functions documented below. DomExtend also exposes several functions through global <code>window.EXT</code> object (those functions are marked  as <i>static</i> below). DomExtend is applied to the <code>document</code> by default so <code>document.ext</code> is always available.</p>
+    <p>DomExtend extends the DOM object with some additional features and wrappers around native functions. Once applied to a DOM element the object is available as a property on this object called <code>ext</code> which contains a collection of functions documented below. DomExtend also exposes several functions through global <code>window.EXT</code> object (those functions are marked  as <i>static</i> below). DomExtend is applied to the <code>document</code>  automatically, so <code>document.ext</code> is always available.</p>
 
     <em class="red">Below is a list of functions and properties NOT implemented in DomExtend, for which native JS should be used. Usually new functions should be added where the native function call is long/akward, not supported the same way by all browsers or that requires extra code. Unless one of the above turns out to be true, these properties and functions should be used natively:
         <ul>
