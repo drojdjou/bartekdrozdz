@@ -35,7 +35,7 @@ Transform = function(ext, element) {
 	ext.rotX = 0;
 	ext.rotY = 0;
 	ext.rotZ = 0;
-	
+
 	ext.scaleX = 1;
 	ext.scaleY = 1;
 	ext.scaleZ = 1;
@@ -45,17 +45,17 @@ Transform = function(ext, element) {
 
 		var t = "";
 
-		if(values.x) t += "translateX(" + values.x + "px)";
-		if(values.y) t += "translateY(" + values.y + "px)";
-		if(Simplrz.css3d && !force2d) t += "translateZ(" + values.z + "px)";
+		if(values.x) t += "translateX(" + values.x + "px) ";
+		if(values.y) t += "translateY(" + values.y + "px) ";
+		if(Simplrz.css3d && !force2d) t += "translateZ(" + values.z + "px) ";
 		
-		if(values.rotX && Simplrz.css3d) t += "rotateX(" + values.rotX + "deg)";
+		if(values.rotX && Simplrz.css3d) t += "rotateX(" + values.rotX + "deg)  ";
 		if(values.rotY && Simplrz.css3d) t += "rotateY(" + values.rotY + "deg)";
-		if(values.rotZ && Simplrz.css3d) t += "rotateZ(" + values.rotZ + "deg)";
-		else if(values.rotZ) t += "rotate(" + values.rotZ + "deg)";
+		if(values.rotZ && Simplrz.css3d) t += "rotateZ(" + values.rotZ + "deg) ";
+		else if(values.rotZ) t += "rotate(" + values.rotZ + "deg) ";
 		
-		if(values.scaleX != 1) t += "scaleX(" + values.scaleX + ")";
-		if(values.scaleY != 1) t += "scaleY(" + values.scaleY + ")";
+		if(values.scaleX != 1) t += "scaleX(" + values.scaleX + ") ";
+		if(values.scaleY != 1) t += "scaleY(" + values.scaleY + ") ";
 		if(values.scaleZ != 1 && Simplrz.css3d) t += "scaleZ(" + values.scaleZ + ")";
 	
 		return t;
@@ -69,7 +69,7 @@ Transform = function(ext, element) {
 		}
 
 		var t = ext.transformToString(ext, force2d);
-		element.style[Simplrz.prefix.js + "Transform"] = t;
+		element.style[Simplrz.prefixedProp('transform')] = t;
 		element.style["transform"] = t;
 	};
 

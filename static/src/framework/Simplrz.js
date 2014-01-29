@@ -28,6 +28,15 @@ window.Simplrz = (function() {
 	s["prefix"] = prefix;
 	classes.push(prefix.lowercase);
 
+	s.prefixedProp = function(prop) {
+		switch(prefix.lowercase) {
+			case "webkit": return "webkit" + prop.charAt(0).toUpperCase() + prop.slice(1);
+			case "ms": return "-ms-" + prop;
+			case "moz": return "Moz" + prop.charAt(0).toUpperCase() + prop.slice(1);
+			default: return prefix.css + prop;
+		}
+	} 
+
 	/**
 	 *	Note on detecting some CSS features:
 	 *
@@ -70,10 +79,18 @@ window.Simplrz = (function() {
 	classes.push(s.ipad7 ? "ipad7" : "no-ipad7");
 
 	check("css3d", function() {
-		var div = document.createElement("div");
-		div.style[this.prefix + "Transform"] = '';
-		div.style[this.prefix + "Transform"] = 'rotateY(90deg)';
-		return div.style[this.prefix + "Transform"] !== '';
+
+		if(prefix.lowercase == 'webkit' || prefix.lowercase == 'moz') return true;
+
+		if(prefix.lowercase == 'ms') {
+			var div = document.createElement("div");
+			div.style[prefix.css + "transform"] = 'translateZ(0px)';
+			var cs = getComputedStyle(div);
+			var a = cs.getPropertyValue(prefix.css + "transform");
+			return a && a != '' && a != 'none';
+		}
+
+		return false;
 	});
 
 	check("csstransitions", function() { return !ie || ie >= 10; });

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>State - Framework Tests (v0.3)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable = no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <style type="text/css">
+
+        body {
+            position: absolute;
+            width: 100%;
+            margin: 10px;
+
+            font-family: Arial, sans-serif;
+            font-size: 0.8em;
+            background-color: #000;
+            color: #fff;
+        }
+
+        #redbox {
+            background-color: #f00;
+            width: 100px;
+            height: 100px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div id="redbox"></div>
+
+<script type="text/javascript">
+
+    var redbox = document.querySelector('#redbox');
+    console.log(redbox);
+    redbox.style["-ms-transform"] = 'translateZ(0px)';
+    redbox.style["MozTransform"] = 'translateZ(0px)';
+
+    var style = getComputedStyle(redbox);
+    console.log(style.getPropertyValue('-ms-transform'));
+    console.log(style.getPropertyValue('MozTransform'));
+    console.log(style.getPropertyValue('transform'));
+
+    console.log(style);
+
+</script>
+
+<script type="text/javascript">
+    if(location.host.indexOf("localhost") > -1 || location.host.indexOf("192.168") > -1 || location.host.indexOf("127.0") > -1) {
+        document.write('<script src=\"http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1\"></' + 'script>');
+    }
+</script>
+
+</body>
+</html>   
+
+
+
+
+
+
+
+          

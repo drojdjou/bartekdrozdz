@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>State - Framework Tests</title>
+    <title>State - Framework Tests (v0.3)</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable = no">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
@@ -64,6 +64,7 @@
 <p>[3] should show the value of the color property</p>
 <p>[4] should be green and moved down</p>
 <p>[5] should be before 3</p>
+<p>[6] onclick should toggle between blue and red</p>
 <p>[8] should be before 6 and label should say 8b</p>
 
 <div id="logs"></div>
@@ -106,6 +107,19 @@
     var six = EXT.create('li');
     six.innerHTML = '6';
     list.appendChild(six);
+
+    six.ext.css('cursor', 'pointer');
+    six.ext.css('userSelect', 'none');
+    six.ext.css('webkitUserSelect', 'none');
+    six.ext.css('MozUserSelect', 'none');
+    six.ext.css('-moz-user-select', 'none');
+
+    six.ext.on('click', function() {
+        var c = six.ext.attr('class');
+
+        if(c == 'blue') six.ext.attr('class', '');
+        else six.ext.attr('class', 'blue');
+    });
 
     var seven = EXT.select('#seven');
     list.removeChild(seven);

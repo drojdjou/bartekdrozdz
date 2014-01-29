@@ -328,10 +328,18 @@ var a2 = Anm.create(50, { y:10, opacity:1 }).ease(Anm.LINEAR);</blockquote>
     </h1>
     <p>Feature detection utility. It checks for support of several features at startup, which are exposed as boolean properties of the object for use in the code. Those properties are listed below. Additionaly, all features are set as classes on the document's <code>&lt;html&gt;</code> element, as either the property name, if supported, or ther property name preceded by <code>no-</code> if not. Example: <code>webgl</code> or <code>no-webgl</code>.</p>
 
+    <h2>prefixedProp(property)</h2>
+
+    <p>Returns a property with corect prefix added. Different browsers have different syntax for that, ex. IE expect <code>-ms-property</code>, while Webkit browsers need <code>webkitProperty</code>. This function takes care of returning the correct format. Ex. for <code>transform</code>, your browser returns <code>
+    <script type="text/javascript">
+    document.write(Simplrz.prefixedProp('transform'));
+    </script>
+    </code>.</p>
+
     <script type="text/javascript">
 
         var props = [
-            "ie", "webrct", 
+            "ie", "webrtc", 
             "canvas", "flash", 
             "webgl", "touch", 
             "pointer", "css3d", 
@@ -340,7 +348,7 @@ var a2 = Anm.create(50, { y:10, opacity:1 }).ease(Anm.LINEAR);</blockquote>
         ];
 
         var descriptions = {
-            "ie" : "Returns the version of IE or false it not IE.", 
+            "ie" : "Returns the version of IE or false it not IE. Warning: currently this code returns uncorrect values if IE is in compatibility mode.", 
             "webrct" : "Returns true if browser supports WebRCT.", 
             "canvas" : "Returns true if browser supports Canvas 2D.", 
             "flash" : "Returns true if browser supports Flash.", 
