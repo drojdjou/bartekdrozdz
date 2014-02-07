@@ -1,0 +1,10 @@
+        {
+            "id": "polygons",
+            "name": "3D objects + LeapMotion",
+            "type": "demo",
+            "deps": ["canvas"],
+            "imageLarge": "assets/play/polygons.jpg",
+            "url": "http://sqr.bartekdrozdz.com/bin/3d/005-polygons.html",
+            "contentUrl": "data/polygons",
+            "tint": "#055d6a"
+        },
