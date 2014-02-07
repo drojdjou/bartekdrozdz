@@ -5,3 +5,4 @@
 node_modules
 s3/config.json
 nohup.out
+cdn.sh
