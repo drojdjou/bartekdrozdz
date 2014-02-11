@@ -5,9 +5,9 @@ html5-animation.html
 #4e9bd7
 
 <!--#excerpt -->
-HTML5 Animation, Part I
+HTML5 and Javascript
 Frame-by-frame animation
-The first part of a series aimed at exploring HTML5 animation in depth, focused on frame-by-frame animation.
+A in-depth tutorial on creating frame-by-frame HTML5 animation with Javascript.
 
 <!--#date -->
 January 17th 2014
@@ -18,21 +18,15 @@ html5-animation.js
 <!--#content -->
 <h4>Animations can make your project stand out of the crowd. Good animations enhance the <a href="http://www.ui-transitions.com/" target="_blank">user interface</a>, make navigation feel smoother and offer superior esthetic experience (bad animation does the opposite, so be careful). Modern browsers support animations quite well, but there are so many different ways of animating HTML elements that it often confuses even experienced developers.</h4>
 
-<p>This is the first part of a series aimed at exploring HTML5 animation in depth. It will consists of three parts that will cover the following topics:</p>
+<p>There are five ways to animate things on the web. The first one, the topic of this article, is frame-by-frame animation written in plain Javasript. Another way to animate things is using CSS Transitions or CSS Animations (which are not the same thing!). Next, there are animation functions availabe in SVG. Finally things can be moved around with GLSL shaders in WebGL.</p>
 
-<ol class="anim-types">
-	<li>Frame-by-frame animation</li>
-	<li>CSS Transitions</li>
-	<li>CSS Animations</li>
-</ol>
+<p>The frame-by-frame technique is universal. CSS based animation is available in most browsers these days and offer a very smooth perofmance. SVG and WebGL animation are kid of a niche, but both very interesting nonetheless. Shader animation offers possibility to animate milions of particles with a decent framerate!</p>
 
-<!-- <p><em>For the sake of completeness, I will add that there are ways to animate shapes in SVG and with WebGL shaders. Both are interesting but very specific so I decided to leave them out.</em></p> -->
+<p>This tutorial focuses on the first technique - frame-by-frame animation. You will learn how easy it is to create an animation loop in Javascript using the <code>requestAnimationFrame</code> function and animate CSS properties of HTML elements inside it using simple math.</p>
 
-<p>This first part focuses on frame-by-frame animation. You will learn how easy it is to create an animation loop in Javascript using the <code>requestAnimationFrame</code> function and animate CSS properties of HTML elements inside it using simple math.</p>
+<p>Getting familiar with the concepts presented in this article will allow you to make animations with Javascript but also to understand how animation works in general, so you can consider this an introduction to the subject.</p>
 
 <p>This article assumes that you have basic knowledge of web development, enough so that you can create a properly formatted HTML document and add some Javascript to it. No advanced Javascript knowledge is required. If you typically use jQuery and put all you script in the head of the document, don't do it this time. All the code listed below is assumed to be inside a script tag added at the end of the document, right before the closing <code>body</code> tag. You also don't need to know any animation related math.</p>
-
-<p>The other two articles on CSS Transitions and CSS Animations are on the way so keep an eye on this page or <a href="https://twitter.com/bartekd">follow me</a> on Twitter to get notified when they are released!</p>
 
 <p>Ok, now let's dive right in!</p>
 
@@ -317,9 +311,9 @@ setX(redbox, 100);</code>
 
 <p>This technique is universal. We used it to move a DOM element, but we could as well move around shapes drawn with Canvas 2d or WebGL or even to modify values that do not have visual output, like audio volume. It can be used in any programing environment, not only in a browser, including moving physical stuff with things like Arduino. What changes is the code to run the loop - each language has it's own way of dealing with this. The math always stays the same.</p>
 
-<p>With frame-by-frame animation you can implement things like pausing, reversing and repeating the animation or create a timeline system where a master animation controls other animations. You can come up with some exotic easing equations or tweak other parameters to achieve unique results. It is very hackable, way more than CSS Transitions or CSS Animations.</p>
+<p>With frame-by-frame animation you can implement things like pausing, reversing and repeating the animation or create a timeline system where a master animation controls other animations. You can come up with some exotic easing equations or tweak other parameters to achieve unique results. It is very hackable, way more than the two other techniques - CSS Transitions or CSS Animations.</p>
 
-<p>However, the flexibility of this approach comes at a price. Since the animation is executed in Javascript, it has a bigger performance impact than the two other techniques. This is why it's important to correctly asses which one to use in a specific situation. In the next two installments of this series I will explain how CSS Transitions and CSS Animations work and how to use them in your projects. This will allow you to always make an informed decision!</p>
+<p>However, the flexibility of this approach comes at a price. Since the animation is executed in Javascript, it has a bigger performance impact than the two other techniques and in many cases, especially when the animation is simple, it is not recommended. This is why it's important to correctly asses which one to use in a specific situation.</p>
 
 <p>I hope you find this article useful. I you would like to share some thoughts or comments please send me an <a href="mailto:bartek@everyday3d.com?subject=HTML5 Animation">email</a>.</p>
 

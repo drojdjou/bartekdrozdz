@@ -1,0 +1,97 @@
+<!--#slug -->
+smooth-scroll.html
+
+<!--#color -->
+#4ea99d
+
+<!--#excerpt -->
+Page scrolling effects with HTML5
+Scrolling the web
+Scrolling and clicking (or tapping) on things are probably the two most popular ways pepople interact with the web.
+
+<!--#date -->
+January 17th 2014
+
+<!--#scripts -->
+html5-animation.js
+
+<!--#content -->
+<h4>Scrolling and clicking (or tapping) are the two most popular ways pepople interact with the web. Clicking has been traditionally used for navigation and moving between pages, while scrolling was used to move within the content of a single page. Nowadays this distinction is often blurred. Scrolling is used to move between sections, while clicking on buttons and links doesn't reload the page but makes it scroll instead.</h4>
+
+<h3>Short history of scrolling</h3>
+
+<p>For may years scrolling was on the web was straightforward. If a page was longer than the browser height, user could move it using the mouse wheel or by clicking and dragging the scroll bar located on the right side of the window. As Javascript and jQuery became more widely used, things started to get a bit more fancy. We've seen the appaerance of things like fixed navigation, sticky buttons or animated panels triggered when the user scrolls beyond a certain threshold.</p>
+
+<p>Then came HTML5 and paralax scrolling. It has been, for better or for worse, one of the main interactive desing trends in the last years. It started with an effect where things would move at different pace when the user scrolls, creating a nice impression of depth and perspective. This is where the name comes from - "paralax" is the term used to describe the effect where things further away from the viewer move slower than things closer to him as he moves by.</p>
+
+<p>At the height of the paralax euforia, web designers created more and more elaborate scrolling schemes. Some websites had elements that would scroll in literally every possible direction. The effect was usually terribly chaotic.</p>
+
+<P>This eventually led to a technique that consists of replacing the entire content of the page at once when the user activates the scroll. It is a very tricky technique, because it breaks the fundamental way scrolling works. Scrolling is continous but now it is being treated the same way a click or top would be. No matter how well executed on a technical level, websites that do this offer a poor user experience.</p>
+
+<p>I'm not sure what great webdesign invetion is going to be the next big thing. Lately it seems that people stopped producing crazy paralax websites, which is good, becuse on a basic level, scrolling is the best way to browse the content of the web. As the interactive design community, I feel we did not unlock it's full potential yet.</p>
+
+<h3>Analog interaction</h3>
+
+<p>Modern mouse wheels and touchpads, as well as touch screens, offer an analog experience of scrolling. You can scroll one pixel or the entire page in short small finger movement. It is the opposite of clicking on things. Clicking is disruptive, it can wipe out the entire page and take you to a completely different place. Scrolling won't do that. You can always quickly and easily scroll back to where you came from. The content you were looking at is still there, waiting for you.</p>
+
+<p>I think that this is the feeling of comfort that the content is not going away that makes scrolling great. I often find myself reading or looking at photos and slowly scrolling at the same time. It works because I can keep my eye on the content while moving it slowly. My hand and my eye synchornize on a neural level and I control the situation entirely.</p>
+
+<p>This goes deep into how we experience the web. The web is full of content that somebody decided to publish because they thought it's interesting to share. But we all have our own tastes and we like some things more than others. When I scroll through a long article or a gallery of photos, I find some paragraphs or pictures more interesting than others. If there's something I like, I slow down my scrolling rate or stop it altogether and when there are things I'm not interested in - my scolling rate accelerates.</p>
+
+<p>Clicking doesn't give me this kind of control. When I click on a link, for example, a "next" button in a picture gallery, I have to wait before I can see if this next photo is interesting. If it is not, than I have to click again. By the time I can see 3 pictures in this navigation scheme, I could scroll through and entire gallery if it was laid out in one long page.</p>
+
+<p>Scrolling gives me a lot of control and allows to experience the content faster and more efficiently.</p>
+
+<h3>Beyond panning</h3>
+
+<p>So far I talked about scrolling interaction that results in panning the content, usually in a vertical direction. There are some other interesting uses of scroll however. When Apple intorduced the elastic overscroll effect, at first it was just a toy (an addictive toy, I must say). But then a lot of apps started using the overcroll as a "pull to refresh" function. I think this is one of the most innovative uses of scrolling.</p>
+
+<p>Another thing scrolling can help with is navigation. Small screen estate on mobile forced web dsigners to look for ways to clear the screen of content that is not necessary at the moment. This led to a trend where navigation became minimal, usually consisting on no more than small icon. Eventually it moved over to the desktop and thanks to this a lot of websites present content uncluttered with links and navigation elements like it used to be.</p>
+
+<p>But this pattern has one drawback - I have to move my mouse cursor all over the screen to click on the menu and expand it - this makes me loose the focus of what I'm doing/reading at the moment. An interesting take on it is to use scrolling to hide and show the navigation. When the user scrolls down, the navigation hides. When he scrolls back up - it comes back again. When you read the article you have your finger on the mouse wheel or touchpad already, so bringing the navigation at any time is a matter of on tiny finger movement. If you want to check it out, it is implemented very well in the Pinterest app on iOS.</p>
+
+
+<p>I hope you find this article useful. I you would like to share some thoughts or comments please send me a reply to <a href="https://twitter.com/bartekd" target="_blank">@bartekd</a> or shoot me an <a href="mailto:bartek@everyday3d.com?subject=HTML5 Animation">email</a>.</p>
+
+<!-- 
+
+<p>While the web was dealing with these unfortunate trends, more interesing uses of scrolling came from the mobile OS world. Apple intorduced the elastic overscroll effect first as a toy (addictive toy, I might add) and then introduced the "pull to refresh" function which is one of the most innovative uses of the scroll mechanism.</p>
+
+-->
+
+<style type="text/css">
+
+	#blog header {
+		background-color: #4ea99d;
+	}
+
+	.redbox {
+		position: absolute;
+		min-width: 50px;
+		height: 50px;
+		background-color: #f00;
+		top: 25px;
+		left: 25px;
+		color: #fff;
+		text-align: center;
+		padding: 1.0em 0.8em 0 0.8em;
+		font-family: monospace;
+		font-size: 0.75em;
+	}
+
+	#redbox-02:before {
+		position: absolute;
+		content: '100px';
+		display: block;
+		color: black;
+		width: 100px;
+		height: 2px;
+		background-color: black;
+		margin: 0;
+		line-height: 1.6;
+		padding: 0;
+		top: 22px;
+		left: -100px;
+	}
+
+</style>

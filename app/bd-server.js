@@ -18,7 +18,7 @@ if(!serverRoot || serverRoot == "") {
 	serverRoot = "./";
 }
 
-blog.load(serverRoot);
+blog.init(serverRoot);
 
 var context = {
 	config: {
@@ -89,11 +89,11 @@ app.get('/data', function(request, response) {
 });
 
 app.get('/blog', function(request, response) {
-	response.render('blogindex', { posts:blog.postlist });
+	response.render('blogindex', { posts:blog.getPostList(context.config.dev) });
 });
 
 app.get("/blog/:name", function(request, response) {
-	var post = blog.posts[request.params.name];
+	var post = blog.getPost(request.params.name, context.config.dev);
 	response.render('blog', { post:post });
 });
 
@@ -113,7 +113,7 @@ app.get('/shared/:name', function(request, response) {
 
 app.listen(port);
 
-console.log("Server started on port " + port);
+console.log("Server started on port " + port + ". Mode: " + context.config.dev);
 
 
 

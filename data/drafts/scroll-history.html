@@ -1,0 +1,76 @@
+<!--#slug -->
+smooth-scroll.html
+
+<!--#color -->
+#4ea99d
+
+<!--#excerpt -->
+Page scrolling effects with HTML5
+Scrolling the web
+Scrolling and clicking (or tapping) on things are probably the two most popular ways pepople interact with the web.
+
+<!--#date -->
+January 17th 2014
+
+<!--#scripts -->
+html5-animation.js
+
+<!--#content -->
+<h4>Scrolling and clicking (or tapping) are the two most popular ways pepople interact with the web. Clicking has been traditionally used for navigation and moving between pages, while scrolling was used to move within the content of a single page. Nowadays this distinction is often blurred. Scrolling is used to move between sections, while clicking on buttons and links doesn't reload the page but makes it scroll instead.</h4>
+
+<h3>History of scrolling</h3>
+
+<p>For may years scrolling was on the web was straightforward. If a page was longer than the browser height, user could move it using his mouse wheel, touch pad or by clicking and dragging the scroll bar located on the right side of the window. When Javascript started to be used more often, especially jQuery, things started to get a bit more fancy, with things like fixed navigation, sticky buttons or animated panels triggered when the user would scroll beyond a certain threshold.</p>
+
+<p>Then came paralax scrolling. It has been, for better or for worse, one of the dominating interactive desing trends in the last years. It started with an effect where things would move at different pace when the user scrolls, creating a nice impression of depth and perspective. This is where the name comes from - "paralax" is the term used to describe the effect where things further away from the viewer move slower than things closer to him as he moves by.</p>
+
+<p>During the paralax euforia, website creators went on and on, creating more elaborate scrolling schemes. Some websites had elements that on scroll moved literally in every possible direction. The effect was usually terribly chaotic.</p>
+
+<P>Later on "scroll hijacking" was introduced. It is a technique that consists of replacing the entire content of the page when the user scroll up or down. It is a very tricky thecnique, because it breaks the fundamental way scrolling works with its analog and continous nature. That is why the majority of these websites offer a poor user experience.</p>
+
+<p>While the web was dealing with these unfortunate trends, more interesing uses of scrolling came from the mobile OS world. Apple intorduced the elastic overscroll effect first as a toy (addictive toy, I might add) and then introduced the "pull to refresh" function which is one of the most innovative uses of the scroll mechanism.</p>
+
+<h3>Controling the overflow</h3>
+<h3>Mouse wheel and touch events</h3>
+<h3>CSS Transforms</h3>
+<h3>Getting fancy</h3>
+<h3>Fallback</h3>
+
+<p>I hope you find this article useful. I you would like to share some thoughts or comments please send me a reply to <a href="https://twitter.com/bartekd" target="_blank">@bartekd</a> or shoot me an <a href="mailto:bartek@everyday3d.com?subject=HTML5 Animation">email</a>.</p>
+
+<style type="text/css">
+
+	#blog header {
+		background-color: #4ea99d;
+	}
+
+	.redbox {
+		position: absolute;
+		min-width: 50px;
+		height: 50px;
+		background-color: #f00;
+		top: 25px;
+		left: 25px;
+		color: #fff;
+		text-align: center;
+		padding: 1.0em 0.8em 0 0.8em;
+		font-family: monospace;
+		font-size: 0.75em;
+	}
+
+	#redbox-02:before {
+		position: absolute;
+		content: '100px';
+		display: block;
+		color: black;
+		width: 100px;
+		height: 2px;
+		background-color: black;
+		margin: 0;
+		line-height: 1.6;
+		padding: 0;
+		top: 22px;
+		left: -100px;
+	}
+
+</style>

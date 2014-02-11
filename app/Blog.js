@@ -4,9 +4,28 @@
 	 
 	var postsPath = '/data/blog';
 	var metaTagMatch = /<!--#([a-zA-Z0-9]*).*-->/;
-	var posts = {}, postlist = [];
+	var posts, postlist;
+	var basePath;
 
-	var load = function(basePath) {
+	var init = function(_basePath) {
+		basePath = _basePath;
+		load();
+	}
+
+	var getPost = function(path, reload) {
+		if(reload) load();
+		return posts[path];
+	}
+
+	var getPostList = function(reload) {
+		if(reload) load();
+		return postlist;
+	}
+
+	var load = function() {
+
+		posts = {};
+		postlist = [];
 
 		var files = fs.readdirSync(basePath + postsPath);
 
@@ -55,9 +74,9 @@
 	}
 	
 	exports.Blog = {
-		load: load,
-		posts: posts,
-		postlist: postlist
+		init: init,
+		getPost: getPost,
+		getPostList:getPostList
 	};
  
 })((typeof process === 'undefined' || !process.versions) ? window : exports);

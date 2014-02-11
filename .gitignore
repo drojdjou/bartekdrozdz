@@ -2,6 +2,7 @@
 /html/templates_c/
 /html/.sass-cache/
 .DS_Store
+*/.DS_Store
 node_modules
 s3/config.json
 nohup.out
