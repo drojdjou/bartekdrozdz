@@ -6,16 +6,38 @@
 
 		var data;
 
+		var filterProjects = function() {
+			var d = {}, i;
+
+			d.projects = [];
+			d.play = [];
+
+			for(i = 0; i < data.projects.length; i++) {
+				var p = data.projects[i];
+				if(!p.hidden) d.projects.push(p);
+			}
+
+			for(i = 0; i < data.play.length; i++) {
+				var p = data.play[i];
+				if(!p.hidden) d.play.push(p);
+			}
+
+			return d;
+		}
+
 		that.setMain = function(d) {
 			data = d;
 		}
 
 		that.getMain = function() {
-			return data;
+			var d = filterProjects();
+			d.conferences = data.conferences;
+			d.publications = data.publications;
+			return d;
 		}
 
 		that.toFilteredJSON = function() {
-			var d = {}
+			var d = {};
 			d.projects = data.projects;
 			d.play = data.play;
 			return JSON.stringify(d);

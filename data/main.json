@@ -7,7 +7,8 @@
             "name": "Remote Control Tourist",
             "url": "http://toolofna.com",
             "contentUrl": "data/rct",
-            "tint": "#de8caa"
+            "tint": "#de8caa",
+            "hidden": true
         },
         {
             "id": "toolofna",
@@ -95,11 +96,12 @@
             "id": "soundviz",
             "type": "demo",
             "deps": ["webgl", "webrtc"],
-            "name": "Sound visualization",
+            "name": "Sound visualization + LeapMotion",
             "imageLarge": "assets/play/spacerun.jpg",
             "url": "http://sqr.bartekdrozdz.com/demo/soundviz/",
             "contentUrl": "data/soundviz",
-            "tint": "#413c38"
+            "tint": "#b0023f",
+            "hidden": true
         },
         {
             "id": "spacerun",
