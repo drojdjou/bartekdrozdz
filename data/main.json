@@ -100,8 +100,7 @@
             "imageLarge": "assets/play/spacerun.jpg",
             "url": "http://sqr.bartekdrozdz.com/demo/soundviz/",
             "contentUrl": "data/soundviz",
-            "tint": "#b0023f",
-            "hidden": true
+            "tint": "#b0023f"
         },
         {
             "id": "spacerun",
