@@ -125,6 +125,13 @@ Content = function() {
 		var playImage = content.ext.select(".video .play");
 		video = content.ext.select(".video video");
 
+		var gallery = content.ext.selectAll(".gallery-image");
+
+		for(var i = 0; i < gallery.length; i++) {
+			var image = gallery[i];
+			image.addEventListener('load', onResize);
+		}
+
 		if(playImage) {
 			playImage.ext.css("backgroundImage", "url(" + playImage.ext.attr("data-src") + ")");
 

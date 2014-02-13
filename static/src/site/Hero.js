@@ -10,7 +10,7 @@ Hero = function(container) {
 	}
 
 	var isWide = function() {
-		return window.innerWidth >= 1024;
+		return window.innerWidth >= window.innerHeight;
 	}
 
 	hi.setup = function(data) {
@@ -91,10 +91,12 @@ Hero = function(container) {
 	}
 
 	hi.height = function() {
-		if(isDemo) return window.innerHeight;
-		else return isWide() ? 
-			Math.max(window.innerWidth / ASPECT, window.innerHeight * 0.75) :
-			Math.min(window.innerWidth, window.innerHeight * 0.9);
+		if(isWide()) {
+			if(isDemo) return window.innerHeight;
+			else return Math.max(window.innerWidth / ASPECT, window.innerHeight * 0.75);
+		} else {
+			return Math.min(window.innerWidth, window.innerHeight * 0.9);
+		}
 	}
 
 	hi.onResize = function() {

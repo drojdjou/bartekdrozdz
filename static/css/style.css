@@ -494,6 +494,12 @@ p {
 .no-js #content .content .text .video .play {
   display: none;
 }
+#content .content .text .gallery-image {
+  text-align: center;
+  width: 100%;
+  height: auto;
+  padding: 20px;
+}
 @media screen and (min-width: 1920px) {
   #content .content {
     padding: 1em 0 0 0;
