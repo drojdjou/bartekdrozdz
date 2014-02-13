@@ -91,7 +91,8 @@ Hero = function(container) {
 	}
 
 	hi.height = function() {
-		return isWide() ? 
+		if(isDemo) return window.innerHeight;
+		else return isWide() ? 
 			Math.max(window.innerWidth / ASPECT, window.innerHeight * 0.75) :
 			Math.min(window.innerWidth, window.innerHeight * 0.9);
 	}

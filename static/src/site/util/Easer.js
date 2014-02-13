@@ -1,6 +1,6 @@
-Easer = function(e) {
+Easer = function(_ease) {
 
-	var ease = e || 1;
+	var ease = _ease || 1;
 
 	var pos = 0, target = 0, min = -100000000, max = 1000000000;
 	var MAXDELTA = 100000;
@@ -40,6 +40,10 @@ Easer = function(e) {
 	e.reset = function(val) {
 		pos = val || 0;
 		target = val || 0;
+	}
+
+	e.toString = function() {
+		return 'min: ' + min + ' / max: ' + max + ' / target: ' + target + ' / pos: ' + pos;
 	}
 	
 	return e;

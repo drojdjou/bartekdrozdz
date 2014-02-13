@@ -9,9 +9,11 @@ Content = function() {
 	var content = section.ext.select('.content');
 	var easer = new Easer(0.2);
 
-	// Is it a webkit browser and it is not a touch screen or it is an iPhone 5
+	// Is it a webkit browser and it is not a touch screen or it is an iPhone 5 and not demo
 	var canBlurFunc =  function() {
-		return Simplrz.prefix.lowercase == "webkit" && (!Simplrz.touch || (navigator.platform == "iPhone" && screen.height == 568));
+		return Simplrz.prefix.lowercase == "webkit" && 
+			(!Simplrz.touch || (navigator.platform == "iPhone" && screen.height == 568)) &&
+			data.type != 'demo';
 	
 	}
 
@@ -19,8 +21,7 @@ Content = function() {
 
 	var onResize = function() {
 		if(!_active) return;
-
-		var max = (content.ext.height() - window.innerHeight);
+		var max = content.ext.height() - window.innerHeight;
 		easer.setLimits(Math.min(hero.height(), -max), hero.height());
 		hero.onResize();
 		onScroll();
@@ -28,7 +29,6 @@ Content = function() {
 
 	var onScroll = function(e) {
         if(!_active && _canScroll) return;
-
         var dx = (e) ? e.deltaY : 0;
         easer.updateTarget(dx);
     }
@@ -69,16 +69,15 @@ Content = function() {
 
 		if(_active) {
 
+			data = Data.getProjectById(e.parts[1]);
+
 			canBlur = canBlurFunc();
+
 			if(canBlur) content.ext.css("backgroundColor", "rgba(0, 0, 0, 0.5)");
+			else content.ext.css("backgroundColor", "rgb(0, 0, 0)");
 
 			_canScroll = false;
-			data = Data.getProjectById(e.parts[1]);
 			content.innerHTML = '';
-
-			easer.reset(hero.height());
-			// easer.setLimits(0, hero.height());
-
 			Loader.loadText('/data/' + e.parts[1], onData);
 		}
 
@@ -86,14 +85,12 @@ Content = function() {
 			case Site.PROJECT:
 			case Site.ARTICLE:
 				if(!startUp) {
-
 					hero.adjust();
 					hero.setup(data);
 
 					section.ext.transition({ transform: { x: 0 }, opacity: 1 }, Timing.pageTransition(), 'ease', 0, function() {
 						hero.load(data);
 					});
-
 				} else {
 					section.ext.transform({ x: 0 });
 					section.ext.css('opacity', 1);
@@ -101,7 +98,7 @@ Content = function() {
 					hero.setup(data);
 					hero.load(data);
 				}
-
+				easer.reset(hero.height());
 				break;
 			default:
 
@@ -110,6 +107,7 @@ Content = function() {
 
 				if(!startUp) {
 					section.ext.transition({ transform: { x: offset }, opacity: 0 }, Timing.pageTransition(), 'ease', 0, function() {
+						hero.ext.css("webkitFilter", "");
 						hero.kill();
 					});
 				} else {
