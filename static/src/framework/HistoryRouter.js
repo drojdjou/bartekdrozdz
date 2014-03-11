@@ -72,7 +72,7 @@ HistoryRouter = function (broadcast) {
 	broadcast.on(MSG.HIJACK_LINKS, hijackLinks);
 	broadcast.on(MSG.NAVIGATE, pushState);
 
-	if(Simplrz.firefox || Simplrz.ie) setTimeout(pushState, 0, document.location.href);
+	setTimeout(pushState, 0, document.location.href);
 
 	return {
 		init: function () {
