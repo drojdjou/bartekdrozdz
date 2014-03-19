@@ -44,6 +44,12 @@ HistoryRouter = function (broadcast) {
 		}
 	};
 
+	// Some browser fire the popstate event on start others don't.
+	// Those who don't need help, and this is what the setTimeout below is for.
+	// but it can't be called twice, so we also need this flag./
+	// It's mostly for Chrome <33, so in the future this can be removed (maybe).
+	var historyAPIInitiated = false;
+
 	var notify = function() {
 		var r = route.substring(rootUrl.length);
 		var p = r.split("/");
@@ -64,6 +70,7 @@ HistoryRouter = function (broadcast) {
 	};
 
 	window.addEventListener('popstate', function(e) {
+		historyAPIInitiated = true;
 		prevRoute = (route) ? route.replace(rootUrl, "") : null;
 		route = document.location.href;
 		notify();
@@ -72,7 +79,10 @@ HistoryRouter = function (broadcast) {
 	broadcast.on(MSG.HIJACK_LINKS, hijackLinks);
 	broadcast.on(MSG.NAVIGATE, pushState);
 
-	setTimeout(pushState, 0, document.location.href);
+	setTimeout(function() {
+		if(!historyAPIInitiated) pushState();
+		else console.log("History initiated, no manual push.")
+	}, 20, document.location.href);
 
 	return {
 		init: function () {
