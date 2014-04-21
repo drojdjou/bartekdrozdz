@@ -52,7 +52,7 @@
         {{/if}}
         <p>I like to build things.</p>
         <p>
-            <a href="/" id="projects-shortcut">Projects</a>
+            <a href="/" id="projects-shortcut">Work</a>
             <a href="/about">About</a>
             <a href="/blog" data-hj="no">Blog</a>
         </p>
@@ -60,12 +60,6 @@
 
     <section id="projects">
         <ul class="projects">
-            <li class="box title-box">
-                <div class="container">
-                    <h1>Work</h1>
-                </div>
-                <div class="spacer"></div>
-            </li>
             {{#each data.projects}}
             <li class="box" data-id="{{id}}" data-type="project">
                 <a href="/project/{{id}}{{../config.jsq}}">
@@ -75,28 +69,6 @@
                     <div class="mask"></div>
                     {{else}}
                     <img src="{{../../config.cdn}}assets/content/675sq/{{id}}.jpg">
-                    {{/if}}
-                    <h4>{{name}}</h4>
-                </div>
-                <div class="spacer"></div>
-                </a>
-            </li>
-            {{/each}}
-            <li class="box title-box">
-                <div class="container">
-                    <h1>Play</h1>
-                </div>
-                <div class="spacer"></div>
-            </li>
-            {{#each data.play}}
-            <li class="box" data-id="{{id}}" data-type="play">
-                <a href="/project/{{id}}{{../config.jsq}}">
-                <div class="container">
-                    {{#if ../config.javascriptEnabled}}
-                    <img>
-                    <div class="mask"></div>
-                    {{else}}
-                    <img src="{{../../config.cdn}}assets/content/400sq/{{id}}.jpg">
                     {{/if}}
                     <h4>{{name}}</h4>
                 </div>

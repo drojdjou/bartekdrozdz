@@ -17,11 +17,6 @@
 				if(!p.hidden) d.projects.push(p);
 			}
 
-			for(i = 0; i < data.play.length; i++) {
-				var p = data.play[i];
-				if(!p.hidden) d.play.push(p);
-			}
-
 			return d;
 		}
 
@@ -48,16 +43,10 @@
 			id = (id.indexOf("?") > -1) ? id.split("?")[0] : id;
 
 			var np = data.projects.length;
-			var nl = data.play.length;
 			var p, i
 
 			for(i = 0; i < np; i++) {
 				p = data.projects[i];
-				if(p.id == id) return p;
-			}
-
-			for(i = 0; i < nl; i++) {
-				p = data.play[i];
 				if(p.id == id) return p;
 			}
 		}
