@@ -203,9 +203,22 @@ p {
   padding: 0.5em 0.5em 0.5em 0.5em;
   width: 6em;
   text-transform: lowercase;
+  border: 1px solid transparent;
+  -webkit-transition: background-color .3s ease-in;
+  -moz-transition: background-color .3s ease-in;
+  -o-transition: background-color .3s ease-in;
+  -ms-transition: background-color .3s ease-in;
+  transition: background-color .3s ease-in;
+  -webkit-transition: color .2s ease-in;
+  -moz-transition: color .2s ease-in;
+  -o-transition: color .2s ease-in;
+  -ms-transition: color .2s ease-in;
+  transition: color .2s ease-in;
 }
-#main h2.header a:before {
-  content: "/";
+#main h2.header a:hover {
+  border: 1px solid #000;
+  background-color: #fff;
+  color: #000;
 }
 @media screen and (min-width: 600px) {
   #main h2.header {

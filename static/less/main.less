@@ -62,9 +62,19 @@
 			padding: 0.5em 0.5em 0.5em 0.5em;
 			width: 6em;
 			text-transform: lowercase;
+			border: 1px solid transparent;
+
+			.transition(~"background-color .3s ease-in");
+			.transition(~"color .2s ease-in");
 
 			&:before {
-				content: "/";
+				// content: "/";
+			}
+
+			&:hover {
+				border: 1px solid #000;
+				background-color: #fff;
+				color: #000;
 			}
 
 			.no-touch &:hover {
