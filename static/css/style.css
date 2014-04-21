@@ -635,11 +635,11 @@ p {
   font-size: 1em;
   letter-spacing: 0.02em;
   margin: 0.5em 0 0 0;
-  line-height: 1.55;
+  line-height: 1.65;
 }
 #about p + p {
   margin: 0;
-  text-indent: 1em;
+  margin-top: 1em;
 }
 #about .awards {
   margin: 1em 0 1em 1em;
