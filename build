@@ -1,5 +1,5 @@
 #!/bin/bash
-r.js -o build.js
+node build.js
 ls -lh static/site.min.js
 ls -l static/site.min.js
 ls -l static/css/style.css

@@ -1,15 +1,11 @@
-({
+var fs = require('fs');
+var UglifyJS = require("uglify-js");
 
+console.log("Compressing javascript...");
+
+var data = {
 	baseUrl: "static/src/", 
-
 	out: "static/site.min.js", 
-
-	name: "main", 
-
-	optimize: "uglify2",
-
-	skipModuleInsertion: true,
-
 	include: [		
 		"../../app/shared/Data",
 
@@ -38,6 +34,29 @@
 		"site/Box",
 		"site/About",
 		"site/Content",
-		"site/Hero"
+		"site/Hero",
+
+		"main"
 	]
-})
+};
+
+var includes = [];
+
+for(var i = 0; i < data.include.length; i++) {
+	includes.push(data.baseUrl + data.include[i] + ".js");
+}
+
+var result = UglifyJS.minify(
+	includes
+);
+
+fs.writeFileSync(data.out, result.code);
+
+console.log("...done!");
+
+
+
+
+
+
+
