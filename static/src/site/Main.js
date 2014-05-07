@@ -17,7 +17,7 @@ Main = function() {
 
 	var scrollToProject = function() {
 
-		console.log("Main.scrollToProject");
+		// console.log("Main.scrollToProject");
 		
 		var t = window.innerHeight * -0.75;
 
@@ -53,7 +53,7 @@ Main = function() {
 
     }
 
-   var onRender = function() {
+	var onRender = function() {
         if(!_active) return;
 
         var scr = easer.easeVal();
