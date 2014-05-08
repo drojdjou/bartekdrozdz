@@ -5,10 +5,10 @@
 @import url(http://fonts.googleapis.com/css?family=Droid+Sans);
 html,
 body {
+  position: fixed;
   color: #000000;
   margin: 0;
   padding: 0;
-  position: absolute;
   width: 100%;
   height: 100%;
   background-color: #222222;
