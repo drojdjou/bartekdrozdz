@@ -89,12 +89,14 @@ app.get('/data', function(request, response) {
 });
 
 app.get('/blog', function(request, response) {
-	response.render('blogindex', { posts:blog.getPostList(context.config.dev) });
+	// response.render('blogindex', { posts:blog.getPostList(context.config.dev) });
+	response.redirect('http://www.everyday3d.com/blog/');
 });
 
 app.get("/blog/:name", function(request, response) {
-	var post = blog.getPost(request.params.name, context.config.dev);
-	response.render('blog', { post:post });
+	// var post = blog.getPost(request.params.name, context.config.dev);
+	// response.render('blog', { post:post });
+	response.redirect('http://www.everyday3d.com/blog/index.php/2014/05/08/frame-by-frame-animation-in-html5/');
 });
 
 app.get('/context', function(request, response) {
