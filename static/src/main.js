@@ -1,7 +1,7 @@
 // After JS is loaded
 window.addEventListener('load', function() {
 
-	if(Simplrz.ie && Simplrz.ie <= 9) {
+	if(!Simplrz.history) {
 		document.location = document.location.href + "?ns";
 		return;
 	}

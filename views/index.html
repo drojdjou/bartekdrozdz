@@ -154,6 +154,13 @@
     {{else}}
     <script type="text/javascript" src="{{imports.compressed}}"></script>
     {{/if}}
+{{else}}
+    <!-- is user gets redirected here, redirect him back if he has a capable browser -->
+    <script>
+        if(!!(window.history && window.history.pushState)) {
+            location.href = location.href.substring(0, location.href.indexOf('?'));
+        }
+    </script>
 {{/if}}
 
 {{#if config.dev}}

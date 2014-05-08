@@ -21,6 +21,16 @@
     </section>
 </div>
 
+{{#if config.javascriptEnabled}}
+{{else}}
+    <!-- is user gets redirected here, redirect him back if he has a capable browser -->
+    <script>
+        if(!!(window.history && window.history.pushState)) {
+            location.href = location.href.substring(0, location.href.indexOf('?'));
+        }
+    </script>
+{{/if}}
+
 {{!--
 <script type="text/javascript">
     if(location.host.indexOf("localhost") > -1 || location.host.indexOf("192.168") > -1) {
