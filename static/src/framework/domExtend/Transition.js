@@ -82,6 +82,7 @@ Transition = function(ext, element) {
 			tr = [];
 			ts = [];
 			element.style[Simplrz.prefix.js + "Transition"] = "";
+			element.style["transition"] = "";
 		}
 
 		transition.start = function(callback) {

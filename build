@@ -2,4 +2,8 @@
 node build.js
 ls -lh static/site.min.js
 ls -l static/site.min.js
+
+ls -lh static/framework*.js
+ls -l static/framework*.js
+
 ls -l static/css/style.css

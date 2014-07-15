@@ -1,14 +1,41 @@
 var fs = require('fs');
 var UglifyJS = require("uglify-js");
 
-console.log("Compressing javascript...");
+var version = require("./version.json");
 
-var data = {
-	baseUrl: "static/src/", 
-	out: "static/site.min.js", 
+var frameworkOut = "static/framework.js";
+var frameworkOutMin = "static/framework.min.js";
+var siteOut = "static/site.min.js";
+
+var baseUrl = "static/src/";
+
+var frameworkFiles = {
+	include: [
+		"framework/Version",
+		"framework/Simplrz",
+		"framework/Events",
+		"framework/Application",
+
+		"framework/domExtend/DomExtend",
+		"framework/domExtend/State",
+		"framework/domExtend/Transform",
+		"framework/domExtend/Transition",
+
+		"framework/FrameImpulse",
+		"framework/HistoryRouter",
+		"framework/Loader",
+		"framework/MSG",
+		"framework/VirtualScroll",
+		"framework/Pointer",
+		"framework/Util"
+	]
+};
+
+var siteFiles = {
 	include: [		
 		"../../app/shared/Data",
 
+		"framework/Version",
 		"framework/Simplrz",
 		"framework/Events",
 		"framework/Application",
@@ -40,17 +67,50 @@ var data = {
 	]
 };
 
-var includes = [];
+var updateVersion = function() {
+	version.build++;
+	version.date = new Date();
 
-for(var i = 0; i < data.include.length; i++) {
-	includes.push(data.baseUrl + data.include[i] + ".js");
+	var jsHeader = "/** DO NOT EDIT. Updated from version.json **/\nvar Framework = ";
+
+	fs.writeFileSync("./version.json", JSON.stringify(version));
+	fs.writeFileSync(baseUrl  + "framework/Version.js", jsHeader + JSON.stringify(version));
 }
 
-var result = UglifyJS.minify(
-	includes
-);
+var minify = function(set) {
+	var includes = [];
 
-fs.writeFileSync(data.out, result.code);
+	for(var i = 0; i < set.include.length; i++) {
+		includes.push(baseUrl + set.include[i] + ".js");
+	}
+
+	var result = UglifyJS.minify(includes);
+
+	return result.code;
+}
+
+var concat = function(set) {
+	var concatFile = "";
+
+	for(var i = 0; i < set.include.length; i++) {
+		var f = baseUrl + set.include[i] + ".js";
+
+		concatFile += "/* --- --- [" + set.include[i] + "] --- --- */\n\n";
+		concatFile += fs.readFileSync(f);
+		concatFile += "\n\n";
+	}
+
+	return concatFile;
+}
+
+updateVersion();
+
+console.log("Compressing javascript. Framework " + version.version + " build " + version.build);
+
+fs.writeFileSync(frameworkOut, concat(frameworkFiles, false));
+fs.writeFileSync(frameworkOutMin, minify(frameworkFiles, false));
+fs.writeFileSync(siteOut, minify(siteFiles, true));
+
 
 console.log("...done!");
 

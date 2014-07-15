@@ -13,15 +13,20 @@ window.Simplrz = (function() {
 	s.pixelRatio = window.devicePixelRatio || 1;
 
 	var prefix = (function () {
-		var styles = window.getComputedStyle(document.documentElement, ''),
-			pre = (Array.prototype.slice.call(styles).join('').match(/-(moz|webkit|ms)-/) || (styles.OLink === '' && ['', 'o']))[1],
+
+		var styles = "", pre = "", dom = "";
+
+		if(window.getComputedStyle) {
+			styles = window.getComputedStyle(document.documentElement, '');
+			pre = (Array.prototype.slice.call(styles).join('').match(/-(moz|webkit|ms)-/) || (styles.OLink === '' && ['', 'o']))[1];
 			dom = ('WebKit|Moz|MS|O').match(new RegExp('(' + pre + ')', 'i'))[1];
+		}
 
 		return {
 			dom: dom,
 			lowercase: pre,
 			css: '-' + pre + '-',
-			js: pre[0].toUpperCase() + pre.substr(1)
+			js: (pre == "") ? "" : pre[0].toUpperCase() + pre.substr(1)
 		};
 	})();
 
@@ -74,6 +79,9 @@ window.Simplrz = (function() {
 
 	s.firefox = prefix.lowercase == "moz";
 	classes.push(s.firefox ? "firefox" : "no-firefox");
+
+	s.safariDesktop = navigator.userAgent.match(/Safari/) && !navigator.userAgent.match(/Chrome/) && !('ontouchstart' in document);
+	classes.push(s.safariDesktop ? "safari-desktop" : "no-safari-desktop");
 
 	s.ipad7 = navigator.userAgent.match(/iPad;.*CPU.*OS 7_\d/i) || false;
 	classes.push(s.ipad7 ? "ipad7" : "no-ipad7");
@@ -135,12 +143,13 @@ window.Simplrz = (function() {
 		} 
 	});
 
-	check("flash", function() {
-		return !!(
-			navigator.mimeTypes["application/x-shockwave-flash"] || 
-			window.ActiveXObject && new ActiveXObject('ShockwaveFlash.ShockwaveFlash')
-		);
-	});
+	// Flash is dead anyway!
+	// check("flash", function() {
+	// 	return !!(
+	// 		navigator.mimeTypes["application/x-shockwave-flash"] || 
+	// 		window.ActiveXObject && new ActiveXObject('ShockwaveFlash.ShockwaveFlash')
+	// 	);
+	// });
 
 	s.classes = classes;
 

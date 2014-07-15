@@ -73,20 +73,20 @@ Transform = function(ext, element) {
 		element.style["transform"] = t;
 	};
 
-	var anim;
+	// var anim;
 
 	// Used to set frame based animation, created with ../Animation.js
-	ext.setAnimation = function(anm, delay) {
-		if(anim) anim.cancel();
+	// ext.setAnimation = function(anm, delay) {
+	// 	if(anim) anim.cancel();
 
-		anim = anm.applyTo(ext).onUpdate(function(v) { 
-			ext.transform();
-		}).onEnd(function() { 
-			anim = null;
-		}).start(delay);
+	// 	anim = anm.applyTo(ext).onUpdate(function(v) { 
+	// 		ext.transform();
+	// 	}).onEnd(function() { 
+	// 		anim = null;
+	// 	}).start(delay);
 
-		return anim;
-	}
+	// 	return anim;
+	// }
 };
 
 

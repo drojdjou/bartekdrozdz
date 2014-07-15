@@ -7,6 +7,8 @@ var VirtualScroll = (function(document) {
 	var touchStartX, touchStartY;
 
 	var touchMult = 2;
+	// Firefox on Windows needs a boost, since scrolling is very slow
+	var winFirefoxMult = 5;
 
 	// How many pixels to move with each key press
 	var keyStep = 120;
@@ -18,6 +20,11 @@ var VirtualScroll = (function(document) {
 	var hasTouchWin = navigator.msMaxTouchPoints && navigator.msMaxTouchPoints > 1;
 	var hasPointer = !!window.navigator.msPointerEnabled;
 	var hasKeyDown = 'onkeydown' in document;
+
+	var isWinFirefox = 
+		navigator.platform.indexOf('Win') > -1 && 
+		navigator.userAgent.indexOf('Firefox') > -1;
+
 
 	var event = {
 		y: 0,
@@ -53,6 +60,11 @@ var VirtualScroll = (function(document) {
 		// In Chrome and in Firefox (at least the new one)
 		event.deltaX = e.wheelDeltaX || e.deltaX * -1;
 		event.deltaY = e.wheelDeltaY || e.deltaY * -1;
+
+		if(isWinFirefox) {
+			event.deltaX *= winFirefoxMult;
+			event.deltaY *= winFirefoxMult;
+		}
 
 		notify(e);
 	}

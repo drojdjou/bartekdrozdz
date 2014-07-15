@@ -107,6 +107,10 @@ FrameImpulse = (function() {
 		numToRemove = toRemove.length;
 		// console.log("FrameImpulse > scheduled removal > total :", numListeners);
 	}
+
+	r.getListeners = function() {
+		return listeners;
+	}
 	
 	run();
 	return r;
