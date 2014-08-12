@@ -1,0 +1,24 @@
+{
+  "name": "bartek-drozdz-framework",
+  "version": "1.0.0",
+  "main": "framework.min.js",
+  "ignore": [
+    "app",
+    "data",
+    "dev",
+    "node_modules",
+    "quarantine",
+    "s3",
+    "static",
+    "views",
+    ".gitignore",
+    "build",
+    "build.js",
+    "package.json",
+    "qit.sh",
+    "run",
+    "srun",
+    "TODO",
+    "version.json"
+  ]
+}
