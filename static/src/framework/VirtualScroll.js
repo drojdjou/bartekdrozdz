@@ -8,7 +8,7 @@ var VirtualScroll = (function(document) {
 
 	var touchMult = 2;
 	// Firefox on Windows needs a boost, since scrolling is very slow
-	var winFirefoxMult = 5;
+	var firefoxMult = 15;
 
 	// How many pixels to move with each key press
 	var keyStep = 120;
@@ -21,10 +21,7 @@ var VirtualScroll = (function(document) {
 	var hasPointer = !!window.navigator.msPointerEnabled;
 	var hasKeyDown = 'onkeydown' in document;
 
-	var isWinFirefox = 
-		navigator.platform.indexOf('Win') > -1 && 
-		navigator.userAgent.indexOf('Firefox') > -1;
-
+	var isFirefox = navigator.userAgent.indexOf('Firefox') > -1;
 
 	var event = {
 		y: 0,
@@ -61,9 +58,11 @@ var VirtualScroll = (function(document) {
 		event.deltaX = e.wheelDeltaX || e.deltaX * -1;
 		event.deltaY = e.wheelDeltaY || e.deltaY * -1;
 
-		if(isWinFirefox) {
-			event.deltaX *= winFirefoxMult;
-			event.deltaY *= winFirefoxMult;
+		// for our purpose deltamode = 1 means user is on a wheel mouse, not touch pad 
+		// real meaning: https://developer.mozilla.org/en-US/docs/Web/API/WheelEvent#Delta_modes
+		if(isFirefox && e.deltaMode == 1) {
+			event.deltaX *= firefoxMult;
+			event.deltaY *= firefoxMult;
 		}
 
 		notify(e);

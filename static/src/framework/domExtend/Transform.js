@@ -2,8 +2,19 @@ Transform = function(ext, element) {
 
 	var force2d = false;
 
+	var zeroRect = { width: 0, height: 0, top: 0, left: 0 };
+
+	/**
+	 *	IE10 tends to throw and "unspecified error" here, so handle
+	 *	the exception and just return a zero rect to avoid further damage
+	 */
 	ext.rect = function() {
-		return element.getBoundingClientRect();
+		try {
+			return element.getBoundingClientRect();
+		} catch(e) {
+			console.log(e.stack);
+			return zeroRect;
+		}
 	};
 
 	/**

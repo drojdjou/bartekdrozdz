@@ -5,6 +5,9 @@ var version = require("./version.json");
 
 var frameworkOut = "static/framework.js";
 var frameworkOutMin = "static/framework.min.js";
+
+var frameworkDist = "framework.js";
+var frameworkDistMin = "framework.min.js";
 var siteOut = "static/site.min.js";
 
 var baseUrl = "static/src/";
@@ -107,10 +110,16 @@ updateVersion();
 
 console.log("Compressing javascript. Framework " + version.version + " build " + version.build);
 
-fs.writeFileSync(frameworkOut, concat(frameworkFiles, false));
-fs.writeFileSync(frameworkOutMin, minify(frameworkFiles, false));
-fs.writeFileSync(siteOut, minify(siteFiles, true));
+var minifiedFramework = minify(frameworkFiles, false);
+var concatenatedFramework = concat(frameworkFiles, false);
 
+fs.writeFileSync(frameworkOut, concatenatedFramework);
+fs.writeFileSync(frameworkOutMin, minifiedFramework);
+
+fs.writeFileSync(frameworkDist, concatenatedFramework);
+fs.writeFileSync(frameworkDistMin, minifiedFramework);
+
+fs.writeFileSync(siteOut, minify(siteFiles, true));
 
 console.log("...done!");
 

@@ -5,7 +5,6 @@ var fs = require('fs');
 var strftime = require('strftime');
 
 var data = require('./shared/Data').Data;
-var blog = require('./Blog').Blog;
 
 data.setMain(require('../data/main.json'));
 
@@ -17,8 +16,6 @@ if(!serverRoot || serverRoot == "") {
 	console.log(strftime('%d %b %H:%M:%S') + " - [bd-server] - Server root not provided, defaulting to ./");
 	serverRoot = "./";
 }
-
-blog.init(serverRoot);
 
 var context = {
 	config: {
