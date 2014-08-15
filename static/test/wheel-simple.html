@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Virtual scroll demo - simple</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable = no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <style type="text/css">
+
+        body {
+            background-color: #000;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            font-family: monospace;
+            /* use this to avoid elastic overscroll on desktop (see below for mobile */
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+
+        section {
+            /* the scrollable section needs to be positioned absolute, 
+               otherwise the margins are not taken into account when measuing height (CSS...) */
+            position: absolute;
+            width: 100%;
+        }
+
+        section div {
+            margin: 100px;
+            width: 200px;
+            height: 400px;
+            position: relative;
+        }
+
+        #box1 {
+            z-index: 10;
+            background-color: rgb(200, 0, 0);
+            left: 0%;
+        }
+
+        #box2 {
+            z-index: 10;
+            background-color: rgb(0, 200, 0);
+            left: 40%;
+        }
+
+        #box3 {
+            z-index: 10;
+            background-color: rgb(0, 0, 200);
+            left: 30%;
+        }
+
+        #box4 {
+            z-index: 10;
+            background-color: rgb(200, 200, 0);
+            left: 50%;
+        }
+
+        #box5 {
+            z-index: 10;
+            background-color: rgb(200, 0, 200);
+            left: 20%;
+        }
+
+    </style>
+
+<script type="text/javascript" src="../src/framework/VirtualScroll.js"></script>
+
+</head>
+<body>
+
+    <section>
+        <div id="box1"></div>
+        <div id="box2"></div>
+        <div id="box3"></div>
+        <div id="box4"></div>
+        <div id="box5"></div>
+    </section>
+
+    <script type="text/javascript">
+
+        // Grab both red boxes
+        var section = document.querySelector("section");
+
+        // Check how much we can scroll. This value is the 
+        // height of the scrollable element minus the height of the widow
+        var sectionHeight = section.getBoundingClientRect().height - window.innerHeight;
+
+        // Add easing to the scroll. Play with this value to find a setting that you like.
+        var ease = 0.1;
+
+        // Store current scroll position
+        var targetX = 0, targetY = 0;
+        var currentX = 0, currentY = 0;
+
+        // Use this if you want to lock the elastic overscroll on mobile
+        document.addEventListener('touchmove', function(e) { e.preventDefault(); });
+
+        // Add virtual scroll listener
+        VirtualScroll.on(function(e) {
+
+            // Accumulate delta value on each scroll event
+            targetY += e.deltaY;
+            targetX += e.deltaX;
+
+            // Clamp the value so it doesn't go too far up or down
+            // The value needs to be between 0 and -sectionHeight
+            targetY = Math.max(-sectionHeight, targetY);
+            targetY = Math.min(0, targetY);
+
+        });
+
+        var scroll = function() {
+            // Make sure this works across different browsers (use the shim or something)
+            requestAnimationFrame(scroll);
+
+            // Get closer to the target value at each frame, using ease. 
+            // Other easing methods are also ok.
+            currentY += (targetY - currentY) * ease;
+
+            // Uncomment this line to scroll horizontally
+            // currentX += (targetX - currentX) * ease;
+
+            // Create the CSS transform string
+            // (alternativly: use WebKitCSSMatrix, though it doesn't see any faster (http://jsperf.com/webkitcssmatrix-vs-translate3d)
+            var v1 = "translateX(" + currentX + "px) translateY(" + currentY + "px)";// translateZ(0)";
+            var v2 = "translateX(" + currentX + "px) translateY(" + currentY + "px)";// translateZ(0)";
+
+            // Apply CSS style
+            section.style['webkitTransform'] = v1;
+            section.style['msTransform'] = v1;
+            section.style.transform = v1;
+        }
+
+        // Start the rendering loop function
+        scroll();
+
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
