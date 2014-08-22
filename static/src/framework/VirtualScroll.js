@@ -6,12 +6,14 @@ var VirtualScroll = (function(document) {
 
 	var touchStartX, touchStartY;
 
+	// [ These settings can be customized with the options() function below ]
+	// Mutiply the touch action by two making the scroll a bit faster than finger movement
 	var touchMult = 2;
 	// Firefox on Windows needs a boost, since scrolling is very slow
 	var firefoxMult = 15;
-
 	// How many pixels to move with each key press
 	var keyStep = 120;
+
 	var bodyTouchAction;
 
 	var hasWheelEvent = 'onwheel' in document;
@@ -35,6 +37,12 @@ var VirtualScroll = (function(document) {
 		if(!initialized) initListeners(); 
 		listeners.push(f);
 		numListeners = listeners.length;
+	}
+
+	vs.options = function(opt) {
+		keyStep = opt.keyStep || 120;
+		firefoxMult = opt.firefoxMult || 15;
+		touchMult = opt.touchMult || 2;
 	}
 
 	vs.off = function(f) {

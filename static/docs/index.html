@@ -15,7 +15,7 @@
 <div id="main">
 
 <ul class="class-list">
-    <li><a href="#anm">Anm</a></li>
+    <!-- <li><a href="#anm">Anm</a></li> -->
     <li><a href="#application">Application</a></li>
     <li><a href="#domextend">DomExtend</a></li>
     <li><a href="#events">Events</a></li>
@@ -28,7 +28,10 @@
 </ul>
 
 <section>
-    <a name="anm"></a>
+
+    <em class="blue">Source code can be found <a href="https://github.com/drojdjou/bartekdrozdz.com/tree/master/static/src/framework">here</a>.</em>
+
+    <!--a name="anm"></a>
     <h1>Anm 
         <a href="../test/animation-perf.html">Test 1</a> 
         <a href="../test/gsap.css.html">vs. GSAP</a> 
@@ -67,7 +70,7 @@ var a2 = Anm.create(50, { y:10, opacity:1 }).ease(Anm.LINEAR);</blockquote>
     <p>Start the animation in <code>time</code> milliseconds.</p>
 
     <h2>update()</h2>
-    <p>This function needs to be called on every frame for the animations to run. The Anm engine doesn't take care of that automatically, so it's best to invoke this function in a loop based on <code>requestAnimationFrame</code>. However, after <a href="#application">Application.init()</a> is called, a call to Anm.update() on every frame is handled automatically.</p>
+    <p>This function needs to be called on every frame for the animations to run. The Anm engine doesn't take care of that automatically, so it's best to invoke this function in a loop based on <code>requestAnimationFrame</code>. However, after <a href="#application">Application.init()</a> is called, a call to Anm.update() on every frame is handled automatically.</p-->
 
 
 
@@ -76,7 +79,7 @@ var a2 = Anm.create(50, { y:10, opacity:1 }).ease(Anm.LINEAR);</blockquote>
 
     <a name="application"></a>
     <h1>Application
-        <a href="../test/history.html">Test Hisotry API</a>
+        <a href="../test/history.html">Test History API</a>
     </h1>
 
     <p>Global class that is a central piece of the entire application. It extends <a href="#events">Events</a> and is used to listen to and trigger all application-wide events using the <code>on</code>, <code>off</code> and <code>trigger</code> methods. It has the global listeners removal blocked by default using the <code>blockGloalRemoval</code> flag in <a href="#events">Events</a> constructor. Refer to <a href="#msg">MSG</a> for a list of messages that the Application object. Views and other modules that are part of the site/app should only communicte using events sent through the Application class to avoid tight coupling. Internally Application also handles routing using the History API - see <a href="#msg">MSG.ROUTE</a> for details.</p>
@@ -441,8 +444,8 @@ func = Util.debounce(func, 100);</blockquote>
     <em>This function can be useful, but in most cases it's an ugly hack, so think twice before you use it!</em>
 
 
-
-
+    
+    
 
 
     <a name="virtualscroll"></a>

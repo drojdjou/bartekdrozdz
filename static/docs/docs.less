@@ -22,7 +22,7 @@ body {
 }
 
 @menu-margin: 180px;
-@min-side-menu-width: 960px + @menu-margin;
+@min-side-menu-width: (960px + @menu-margin);
 @main-width: 960px;
 
 ul.class-list {
@@ -131,8 +131,15 @@ a {
 	color: inherit;
 }
 
-em {
+.red {
 	background-color: #ffcece;
+}
+
+.blue {
+	background-color: #5fd4e5;
+}
+
+em {
 	padding: 10px;
 	border-radius: 4px;
 	display: block;

@@ -118,8 +118,13 @@ p code {
 a {
   color: inherit;
 }
-em {
+.red {
   background-color: #ffcece;
+}
+.blue {
+  background-color: #5fd4e5;
+}
+em {
   padding: 10px;
   border-radius: 4px;
   display: block;
