@@ -1,7 +1,7 @@
 /* --- --- [framework/Version] --- --- */
 
 /** DO NOT EDIT. Updated from version.json **/
-var Framework = {"version":"0.1","build":27,"date":"2014-08-22T18:54:31.296Z"}
+var Framework = {"version":"0.1","build":28,"date":"2014-08-22T19:01:18.298Z"}
 
 /* --- --- [framework/Simplrz] --- --- */
 
@@ -918,6 +918,8 @@ var VirtualScroll = (function(document) {
 	var firefoxMult = 15;
 	// How many pixels to move with each key press
 	var keyStep = 120;
+	// General multiplier for all mousehweel including FF
+	var mouseMult = 1;
 
 	var bodyTouchAction;
 
@@ -948,6 +950,7 @@ var VirtualScroll = (function(document) {
 		keyStep = opt.keyStep || 120;
 		firefoxMult = opt.firefoxMult || 15;
 		touchMult = opt.touchMult || 2;
+		mouseMult = opt.mouseMult || 1;
 	}
 
 	vs.off = function(f) {
@@ -976,7 +979,10 @@ var VirtualScroll = (function(document) {
 		if(isFirefox && e.deltaMode == 1) {
 			event.deltaX *= firefoxMult;
 			event.deltaY *= firefoxMult;
-		}
+		} 
+
+		event.deltaX *= mouseMult;
+		event.deltaY *= mouseMult;
 
 		notify(e);
 	}
