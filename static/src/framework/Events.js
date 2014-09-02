@@ -35,6 +35,10 @@ Events = function (obj, blockGlobalRemoval) {
 	}
 
 	events.trigger = function (event, data, deffered) {
+
+		// defaults to true
+		if(deffered == null) deffered = true;
+
 		if(deffered) {
 			toCall.push(arguments);
 			numToCall = toCall.length;
