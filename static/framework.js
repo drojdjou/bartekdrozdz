@@ -1,7 +1,7 @@
 /* --- --- [framework/Version] --- --- */
 
 /** DO NOT EDIT. Updated from version.json **/
-var Framework = {"version":"0.1","build":29,"date":"2014-09-02T19:24:23.847Z"}
+var Framework = {"version":"0.1","build":32,"date":"2014-09-05T16:30:36.144Z"}
 
 /* --- --- [framework/Simplrz] --- --- */
 
@@ -204,22 +204,21 @@ Events = function (obj, blockGlobalRemoval) {
 
 	events.trigger = function (event, data, deffered) {
 
-		// defaults to true
-		if(deffered == null) deffered = true;
-
-		if(deffered) {
+		if(deffered && triggerLock) {
 			toCall.push(arguments);
 			numToCall = toCall.length;
 			return;
 		}
 
 		if(listeners[event]) {
+			triggerLock = true;
 			var i = 0, nl = listeners[event].length;
 			while(i < nl) {
 				var f = listeners[event][i];
 				f.call(contexts[f], data);
 				i++;
 			}
+			triggerLock = false;
 		}
 
 		if(numToRemove > 0) {

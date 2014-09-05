@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Framework Documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <link rel="stylesheet" type="text/css" href="docs.css">
+
+    <script type="text/javascript" src="../src/framework/Simplrz.js"></script>
+    <script type="text/javascript" src="../src/framework/Util.js"></script>
+
+</head>
+<body>
+<div id="main">
+
+<ul class="class-list">
+    <!-- <li><a href="#anm">Anm</a></li> -->
+    <li><a href="#selectors">Selectors</a></li>
+    <li><a href="#application-events">Application events</a></li>
+    <li><a href="#components">Components</a></li>
+    <li><a href="#animation-rendering">Animation & rendering</a></li>
+</ul>
+
+<section>
+
+    <h1>Getting started</h1>
+
+    <a name="selectors"></a>
+    <h2>Selectors</h2>
+
+    <p>To select elements from DOM use <code>EXT.select</code> and pass a valid CSS selector.</p>
+
+    <blockquote>var element = EXT.select('div.user-profile');</blockquote>
+
+    <p>This method returns a regular <code>HTMLElement</code> object.</p>
+
+    <p>Under the hood, it simply calls <code>document.querySelector</code>, but before returning the result, it extends it with the framework specific <code>DomExtend</code> object. The <code>DomExtend</code> object is available as the </code>ext</ext> property of the returned HTML element. It should be used to access the properties of <code>DomExtend</code>:</p>
+
+    <blockquote>var width = element.ext.width();
+element.ext.css('width', '20px');</blockquote>
+
+    <p>Note that you can also call <code>select</code> on the <code>DomExtend</code> object itself. So, assuming that the 'div' selected above contains an image, it can be selected this way:</p>
+
+    <blockquote>element.ext.select('img');</blockquote>
+
+    <p>Importnat consideration: this method does not cache the result. Invoking <code>querySelector</code> repeatedly, especially if the selector is complex, is slow. The good way of doing this is to save the result in a variable and call it only once, like this:</p>
+
+    <blockquote>var element = EXT.select('div.user-profile');
+
+var oftenInvokedFunc = function() {
+    // do stuff with 'element' and avoid calling 'select' on anything    
+};</blockquote>
+
+    <a name="application-events"></a>
+    <h2>Application Events</h2>
+
+    <p>Use the global <code>Application</code> object to send messages and events between parts of the application. To start the framework, simply call the <code>init</code> method of the <code>Application</code> object at the beginning when the page loads. Once this is done, you can start sending and listening to events.</p>
+
+    <blockquote>Application.init();</blockquote>
+
+    <p>To listen to an event:</p>
+
+    <blockquote>Application.on('someEvent', function() {
+    // Do stuff in response to event
+});</blockquote>
+
+    <p>To send an event:</p>
+
+    <blockquote>Application.trigger('someEvent');</blockquote>
+
+    <p>See documenttion for more details: <a href="index.html#application">Application</a></p>
+
+    <a name="components"></a>
+    <h2>Components (views & services)</h2>
+
+    <p>The philosophy of the framework is to make each component of the application, such as a view or a service, separate. You need to absolutely avoid one component directly referencing another. This rule is not enforced by the framework in any way, nor there is any base class for components. We suggest to implement components in this way:</p>
+
+    <blockquote>var MyComponent = function() {
+
+    [...]
+
+    Application.on('someEvent', function() {
+        // modify view to reflect state
+    });
+
+    // Send an event to all listeners
+    Appliction.trigger('myEvent');
+
+};</blockquote>
+    
+    <p>Alternatively, you can use an annonymous immediately-invoked function:</p>
+
+    <blockquote>(function() {
+    // Component code
+})();</blockquote>
+
+    <p>Whichever way you do it, make sure not to access the component's code from the outside in any other way than by sending events that the component is listening to. This will assure that the code is correctly encapsulated and easy to maintain. Note also that a component can be used to modify the DOM, which makes is similar to the MVC 'view' or to modify/fetch data, in which case it is similar to the 'model' part.</p>
+
+    <a name="#animation-rendering"></a>
+    <h2>Animation & rendering</h2>
+
+    <p>The <code>requestAnimationFrame</code> function is great, but because it uses a pattern where a function needs to pass itself as argument it is prone to a very hard to debug problem. It occurs when we want to stop and then restart the animation. Restarting typically means calling the function for the first time and the letting the rAF function keep calling it back in a loop. But if for any reason the loop was not stopped correctly in the first place, or the first function call is executed more than once, we end up having the code inside the loop run twice. This can hit the performance, but in many cases is not event directly visible during execution. Another problem with rAF is that it's hard to keep track how many loops are running in your code at the same time.</p>
+
+    <p>Therefore the framework offers a centralized object that can be used to register and unregister frame based listeners. It's called <a href="index.html#frameimpulse">FrameImpulse</a>. Every function that performs an action on every frame should be added as listener to the FrameImpusle object:</p>
+
+    <blockquote>FrameImpluse.on(renderingFunction);</blockquote>
+
+    <p>In siilar way, to stop the function being called on every frame, use:</p>
+
+    <blockquote>FrameImpluse.off(renderingFunction);</blockquote>
+
+</section>
+
+</div>
+
+<script type="text/javascript">
+    if(location.host.indexOf("localhost") > -1 || location.host.indexOf("192.168") > -1) {
+        document.write('<script src=\"http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1\"></' + 'script>');
+    }
+</script>
+</body>
+</html>   
+
+
+
+
+
+
+
+          

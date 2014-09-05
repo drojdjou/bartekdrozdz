@@ -36,22 +36,21 @@ Events = function (obj, blockGlobalRemoval) {
 
 	events.trigger = function (event, data, deffered) {
 
-		// defaults to true
-		if(deffered == null) deffered = true;
-
-		if(deffered) {
+		if(deffered && triggerLock) {
 			toCall.push(arguments);
 			numToCall = toCall.length;
 			return;
 		}
 
 		if(listeners[event]) {
+			triggerLock = true;
 			var i = 0, nl = listeners[event].length;
 			while(i < nl) {
 				var f = listeners[event][i];
 				f.call(contexts[f], data);
 				i++;
 			}
+			triggerLock = false;
 		}
 
 		if(numToRemove > 0) {

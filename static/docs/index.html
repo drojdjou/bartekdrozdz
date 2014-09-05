@@ -250,7 +250,7 @@ var a2 = Anm.create(50, { y:10, opacity:1 }).ease(Anm.LINEAR);</blockquote>
     <p>Optional <code>obj</code> to extend with Events functionality. The <code>blockGlobalRemoval</code> if set to true the object will not have the method <code>offAll</code> below.</p>
 
     <h2>trigger(event, params, deffered)</h2>
-    <p>Invokes all the callback functions listening to the event associated with <code>event</code>. If <code>params</code> argument is passed it will be forwarded to the callbacks - i.e. passed to them as argument. If called inside a function that is a callback itself, trigerring the event is deffered until the current loop is over, assuring that all the listeners will get the current event first, before getting the next one. If for some reason another behavior is wanted, <code>deffered</code> needs to be explicitely set to false.</p>
+    <p>Invokes all the callback functions listening to the event associated with <code>event</code>. If <code>params</code> argument is passed it will be forwarded to the callbacks - i.e. passed to them as argument. If called inside a function that is a callback itself, trigerring the event with <code>deffered</code> set tu true, will wait until the current loop is over, assuring that all the listeners will get the current event first, before getting the next one. It defaults to false.</p>
 
     <h2>on(message, callback, context)</h2>
     <p>Register the <code>callback</code> function to listen for event <code>message</code>. Optional <code>context</code> specifies the context in which the callback should be invoked.</p>
