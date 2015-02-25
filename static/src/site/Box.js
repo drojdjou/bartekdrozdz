@@ -40,6 +40,8 @@ var Box = function(element) {
                 });
             });
         });
+
+        img.src = imagePath;
     }
 
     var applyHoverLock = function() {
@@ -64,11 +66,11 @@ var Box = function(element) {
     var onRender = function() {
         if(!_active) return;
 
-        if(!imageLoaded && img) {
-            if((initY + offset) < window.innerHeight) {
-        		img.src = imagePath;
-            }
-        }
+        // if(!imageLoaded && img) {
+        //     if((initY + offset) < window.innerHeight) {
+        // 		img.src = imagePath;
+        //     }
+        // }
 
         if(easer.velocity < 0.1 && hoverLocked && imageLoaded) releaseHoverLock();
 
