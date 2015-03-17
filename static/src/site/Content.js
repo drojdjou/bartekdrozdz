@@ -11,9 +11,10 @@ Content = function() {
 
 	// Is it a webkit browser and it is not a touch screen or it is an iPhone 5 and not demo
 	var canBlurFunc =  function() {
-		return Simplrz.prefix.lowercase == "webkit" && 
-			(!Simplrz.touch || (navigator.platform == "iPhone" && screen.height == 568)) &&
-			data.type != 'demo';
+		return false;//
+			//Simplrz.prefix.lowercase == "webkit" && 
+			//(!Simplrz.touch || (navigator.platform == "iPhone" && screen.height == 568)) &&
+			//data.type != 'demo';
 	
 	}
 

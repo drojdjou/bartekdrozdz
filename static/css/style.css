@@ -495,6 +495,23 @@ p {
 .no-js #content .content .text .video .play {
   display: none;
 }
+#content .content .text .video-embed {
+  width: 100%;
+  height: 300px;
+}
+.touch #content .content .text .video-embed {
+  display: none;
+}
+@media screen and (min-width: 1024px) {
+  #content .content .text .video-embed {
+    height: 450px;
+  }
+}
+@media screen and (min-width: 1920px) {
+  #content .content .text .video-embed {
+    height: 800px;
+  }
+}
 #content .content .text .gallery-image {
   text-align: center;
   width: 100%;
