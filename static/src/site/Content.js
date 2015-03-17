@@ -5,7 +5,7 @@ Content = function() {
 	var data;
 	var section = EXT.select('#content');
 	var close = section.ext.select('.close');
-	var hero = Hero(section.ext.select('.hero')), video;
+	var hero = Hero(section.ext.select('.hero')), video, embed;
 	var content = section.ext.select('.content');
 	var easer = new Easer(0.2);
 
@@ -104,6 +104,7 @@ Content = function() {
 			default:
 
 				if(video) video.pause();
+				if(embed) embed.src = '';
 				hero.killIframe();
 
 				if(!startUp) {
@@ -126,6 +127,8 @@ Content = function() {
 		var playImage = content.ext.select(".video .play");
 		video = content.ext.select(".video video");
 
+		embed = content.ext.select(".video-embed");
+		
 		var gallery = content.ext.selectAll(".gallery-image");
 
 		for(var i = 0; i < gallery.length; i++) {
@@ -163,6 +166,11 @@ Content = function() {
 					resetVideo();
 				}
 			});
+		}
+
+		if(embed) {
+			var embedUrl = embed.getAttribute('data-src');
+			embed.src = embedUrl;
 		}
 
 		onResize();
