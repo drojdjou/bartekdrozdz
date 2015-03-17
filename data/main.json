@@ -1,6 +1,15 @@
 {
     "projects": [
         {
+            "id": "bullseye",
+            "type": "article",
+            "deps": [],
+            "name": "Bullseye's Playground",
+            "url": "http://bullseyesplayground.com/desktop",
+            "contentUrl": "data/bullseye",
+            "tint": "#28a1ac"
+        },
+        {
             "id": "conductar",
             "type": "article",
             "deps": [],
@@ -129,16 +138,6 @@
             "tint": "#808080"
         },
         {
-            "id": "earth",
-            "name": "Earth",
-            "type": "demo",
-            "deps": ["webgl"],
-            "imageLarge": "assets/play/j3d_globe.jpg",
-            "url": "http://j3d.bartekdrozdz.com/demo/018_Sphere.html",
-            "contentUrl": "data/earth",
-            "tint": "#081f2c"
-        },
-        {
             "id": "woodbots",
             "type": "article",
             "deps": [],
@@ -159,6 +158,11 @@
     ],
 
     "conferences": [{
+        "url" : "http://nerdyat72.com/",
+        "name": "Nerdy @ 72",
+        "date": "2014",
+        "location": "Los Angeles"
+    },{
         "url" : "http://offline.la/",
         "name": "Offline.LA",
         "date": "2013",
