@@ -1,5 +1,14 @@
 {
     "projects": [
+    {
+            "id": "tomorrowland",
+            "type": "article",
+            "deps": [],
+            "name": "Take Me To Tomorrowland",
+            "url": "https://www.takemetotomorrowland.com/",
+            "contentUrl": "data/tomorrowland",
+            "tint": "#6a85b1"
+        },
         {
             "id": "bullseye",
             "type": "article",
