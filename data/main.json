@@ -81,16 +81,6 @@
             "tint": "#3d3d3d"
         },
         {
-            "id": "spacerun",
-            "type": "demo",
-            "deps": ["webgl"],
-            "name": "Spacerun",
-            "imageLarge": "assets/play/spacerun.jpg",
-            "url": "http://j3d.bartekdrozdz.com/demo/024_Spacerun.html",
-            "contentUrl": "data/spacerun",
-            "tint": "#413c38"
-        },
-        {
             "id": "jam",
             "type": "article",
             "deps": [],

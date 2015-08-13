@@ -1,6 +1,3 @@
-@import url(http://fonts.googleapis.com/css?family=Oswald:400);
-@import url(http://fonts.googleapis.com/css?family=Fjord+One);
-@import url(http://fonts.googleapis.com/css?family=Droid+Sans);
 html,
 body {
   position: fixed;
@@ -60,7 +57,7 @@ p {
   color: red;
 }
 .typo-main-header {
-  font-family: Oswald;
+  font-family: "jaf-facitweb";
   font-size: 2em;
 }
 @media screen and (min-width: 600px) {
@@ -74,7 +71,7 @@ p {
   }
 }
 .typo-title-box {
-  font-family: Oswald, sans-serif;
+  font-family: "jaf-facitweb", sans-serif;
   font-size: 2em;
   text-transform: uppercase;
   font-weight: 400;
@@ -91,11 +88,9 @@ p {
   }
 }
 .typo-box {
-  font-family: Oswald, sans-serif;
+  font-family: "jaf-facitweb", sans-serif, sans-serif;
   font-size: 0.8em;
-  text-transform: uppercase;
-  font-weight: 400;
-  line-height: 1;
+  font-weight: 300;
 }
 @media screen and (min-width: 600px) {
   .typo-box {
@@ -104,38 +99,38 @@ p {
 }
 @media screen and (min-width: 600px) {
   .typo-box {
-    font-size: 1.5em;
+    font-size: 1em;
   }
 }
 .typo-title {
-  font-family: Oswald, sans-serif;
+  font-family: "jaf-facitweb", sans-serif;
   font-size: 1.6em;
   line-height: 1em;
 }
 @media screen and (min-width: 600px) {
   .typo-title {
-    font-size: 2.6em;
+    font-size: 2.2em;
   }
 }
 @media screen and (min-width: 600px) {
   .typo-title {
-    font-size: 3.6em;
+    font-size: 3.0em;
   }
 }
 .typo-launch {
-  font-family: Oswald, sans-serif;
+  font-family: "jaf-facitweb", sans-serif;
   font-size: 1.2em;
 }
 .typo-article-box {
-  font-family: Oswald, sans-serif;
+  font-family: "jaf-facitweb", sans-serif;
 }
 .typo-header {
-  font-family: 'Droid Sans', sans-serif;
+  font-family: "franklin-gothic-urw", sans-serif, sans-serif;
 }
 .typo-text {
-  font-family: 'Fjord One', sans-serif, Geogria, "Times New Roman", serif;
+  font-family: "jaf-facitweb", sans-serif, Geogria, "Times New Roman", serif;
   font-weight: 100;
-  font-size: 1em;
+  font-size: 0.8em;
   letter-spacing: 0.02em;
 }
 #main {
@@ -153,7 +148,7 @@ p {
   margin: 130px 0 130px 0;
   text-align: center;
   color: #000000;
-  font-family: Oswald;
+  font-family: "jaf-facitweb";
   font-size: 2em;
 }
 @media screen and (min-width: 600px) {
@@ -172,68 +167,68 @@ p {
 }
 #main h2.header p:nth-of-type(1) {
   font-size: 3.4em;
-  font-weight: 400;
-  text-transform: uppercase;
+  font-weight: 100;
+  letter-spacing: -0.05em;
 }
 #main h2.header p:nth-of-type(2) {
-  font-size: 1.02em;
-  word-spacing: 0.05em;
+  font-size: 1em;
+  word-spacing: -0.1em;
   letter-spacing: -0.025em;
-  font-family: 'Fjord One', sans-serif;
-  margin: 0.5em 0 0.25em 0;
+  font-weight: 400;
+  font-family: "jaf-facitweb", sans-serif;
+  margin: 20px 0 0.25em 0;
 }
 #main h2.header p:nth-of-type(3) {
-  font-size: 1.02em;
-  word-spacing: -0.05em;
+  font-size: 1em;
+  word-spacing: -0.1em;
   letter-spacing: -0.025em;
-  font-family: 'Fjord One', sans-serif;
-  margin: 0.25em 0 0.5em 0;
+  font-weight: 400;
+  font-family: "jaf-facitweb", sans-serif;
+  margin: 0.25em 0 20px 0;
 }
 #main h2.header p:nth-of-type(4) {
   font-size: 0.45em;
-  font-family: 'Fjord One', sans-serif;
+  font-family: "franklin-gothic-urw", sans-serif;
 }
 #main h2.header a {
   display: inline-block;
   margin: 0.5em 0.2em 0 0.2em;
-  color: white;
-  background-color: black;
+  color: black;
+  background-color: white;
   padding: 0.5em 0.5em 0.5em 0.5em;
   width: 6em;
   text-transform: lowercase;
   border: 1px solid transparent;
-  -webkit-transition: background-color .3s ease-in;
-  -moz-transition: background-color .3s ease-in;
-  -o-transition: background-color .3s ease-in;
-  -ms-transition: background-color .3s ease-in;
-  transition: background-color .3s ease-in;
-  -webkit-transition: color .2s ease-in;
-  -moz-transition: color .2s ease-in;
-  -o-transition: color .2s ease-in;
-  -ms-transition: color .2s ease-in;
-  transition: color .2s ease-in;
+  -webkit-transition: -webkit-border-bottom .3s ease;
+  -moz-transition: -moz-border-bottom .3s ease;
+  -o-transition: border-bottom .3s ease;
+  -ms-transition: border-bottom .3s ease;
+  transition: border-bottom .3s ease;
+  -webkit-transition: color .1s ease;
+  -moz-transition: color .1s ease;
+  -o-transition: color .1s ease;
+  -ms-transition: color .1s ease;
+  transition: color .1s ease;
 }
 #main h2.header a:hover {
-  border: 1px solid #000;
-  background-color: #fff;
-  color: #000;
+  border-bottom: 1px solid #000;
 }
 @media screen and (min-width: 600px) {
   #main h2.header {
-    margin: 200px 0 220px 0;
+    margin: 270px 0 270px 0;
   }
   #main h2.header p:nth-of-type(1) {
-    font-size: 3.05em;
+    font-size: 0.8em;
   }
   #main h2.header p:nth-of-type(2),
   #main h2.header p:nth-of-type(3) {
-    font-size: 0.9em;
+    font-size: 0.6em;
   }
   #main h2.header p:nth-of-type(4) {
     font-size: 0.35em;
   }
   #main h2.header a {
-    margin: 0.5em 0.8em 0 0.8em;
+    margin: 0 0.33em 0 0.33em;
   }
 }
 #main .blog {
@@ -302,19 +297,19 @@ p {
   width: 800px;
   left: 50%;
   margin: 0.2em 0 0.2em -400px;
-  font-family: Oswald, sans-serif;
+  font-family: "jaf-facitweb", sans-serif;
   font-size: 1.6em;
   line-height: 1em;
   text-transform: uppercase;
 }
 @media screen and (min-width: 600px) {
   #content .content h1 {
-    font-size: 2.6em;
+    font-size: 2.2em;
   }
 }
 @media screen and (min-width: 600px) {
   #content .content h1 {
-    font-size: 3.6em;
+    font-size: 3.0em;
   }
 }
 #content .content .text {
@@ -336,7 +331,7 @@ p {
   line-height: 1.45;
   padding: 8px 8px 10px 10px;
   border-radius: 4px;
-  font-family: 'Droid Sans', sans-serif;
+  font-family: "franklin-gothic-urw", sans-serif, sans-serif;
 }
 .webgl #content .content .text .webgl {
   display: none;
@@ -348,29 +343,29 @@ p {
   display: none;
 }
 #content .content .text h4 {
-  font-family: 'Fjord One', sans-serif, Geogria, "Times New Roman", serif;
+  font-family: "jaf-facitweb", sans-serif, Geogria, "Times New Roman", serif;
   font-weight: 100;
-  font-size: 1em;
+  font-size: 0.8em;
   letter-spacing: 0.02em;
   font-size: 1.3em;
   margin: 1em 0 1em 0;
 }
 #content .content .text h5 {
-  font-family: 'Droid Sans', sans-serif;
+  font-family: "franklin-gothic-urw", sans-serif, sans-serif;
   font-size: 1.2em;
   color: #aaa;
   margin: 1em 0 1em 0;
   font-style: normal;
 }
 #content .content .text p {
-  font-family: 'Fjord One', sans-serif, Geogria, "Times New Roman", serif;
+  font-family: "jaf-facitweb", sans-serif, Geogria, "Times New Roman", serif;
   font-weight: 100;
-  font-size: 1em;
+  font-size: 0.8em;
   letter-spacing: 0.02em;
   line-height: 1.45em;
 }
 #content .content .text h6 {
-  font-family: 'Droid Sans', sans-serif;
+  font-family: "franklin-gothic-urw", sans-serif, sans-serif;
   font-size: 0.8em;
 }
 #content .content .text b {
@@ -382,9 +377,9 @@ p {
   line-height: 1.55;
 }
 #content .content .text ul li {
-  font-family: 'Fjord One', sans-serif, Geogria, "Times New Roman", serif;
+  font-family: "jaf-facitweb", sans-serif, Geogria, "Times New Roman", serif;
   font-weight: 100;
-  font-size: 1em;
+  font-size: 0.8em;
   letter-spacing: 0.02em;
   margin-bottom: 0.5em;
 }
@@ -417,7 +412,7 @@ p {
   border-radius: 4px;
   display: inline-block;
   font-style: normal;
-  font-family: Oswald, sans-serif;
+  font-family: "jaf-facitweb", sans-serif;
   font-size: 1.2em;
   margin: 1em 0 1em 0;
   -webkit-transition: all 0.05s ease;
@@ -622,22 +617,22 @@ p {
   pointer-events: auto;
 }
 #about h3 {
-  font-family: 'Droid Sans', sans-serif;
+  font-family: "franklin-gothic-urw", sans-serif, sans-serif;
   font-size: 1.3em;
 }
 #about h4 {
-  font-family: 'Fjord One', sans-serif, Geogria, "Times New Roman", serif;
+  font-family: "jaf-facitweb", sans-serif, Geogria, "Times New Roman", serif;
   font-weight: 100;
-  font-size: 1em;
+  font-size: 0.8em;
   letter-spacing: 0.02em;
   font-size: 1.5em;
   margin: 1.5em 0 1em 0;
   line-height: 1.35;
 }
 #about p {
-  font-family: 'Fjord One', sans-serif, Geogria, "Times New Roman", serif;
+  font-family: "jaf-facitweb", sans-serif, Geogria, "Times New Roman", serif;
   font-weight: 100;
-  font-size: 1em;
+  font-size: 0.8em;
   letter-spacing: 0.02em;
   margin: 0.5em 0 0 0;
   line-height: 1.65;
@@ -692,9 +687,9 @@ p {
   line-height: 1.55;
 }
 #about ul li {
-  font-family: 'Fjord One', sans-serif, Geogria, "Times New Roman", serif;
+  font-family: "jaf-facitweb", sans-serif, Geogria, "Times New Roman", serif;
   font-weight: 100;
-  font-size: 1em;
+  font-size: 0.8em;
   letter-spacing: 0.02em;
 }
 #about ul i {
@@ -748,7 +743,7 @@ section#projects ul.projects .title-box .container h1 {
   bottom: 0;
   right: 0;
   margin: 0 3% 3% 0;
-  font-family: Oswald, sans-serif;
+  font-family: "jaf-facitweb", sans-serif;
   font-size: 2em;
   text-transform: uppercase;
   font-weight: 400;
@@ -780,11 +775,9 @@ section#projects ul.projects li h4 {
   margin: 0 0 3% 3%;
   bottom: 0;
   left: 0;
-  font-family: Oswald, sans-serif;
+  font-family: "jaf-facitweb", sans-serif, sans-serif;
   font-size: 0.8em;
-  text-transform: uppercase;
-  font-weight: 400;
-  line-height: 1;
+  font-weight: 300;
 }
 @media screen and (min-width: 600px) {
   section#projects ul.projects li h4 {
@@ -793,7 +786,7 @@ section#projects ul.projects li h4 {
 }
 @media screen and (min-width: 600px) {
   section#projects ul.projects li h4 {
-    font-size: 1.5em;
+    font-size: 1em;
   }
 }
 section#projects ul.projects li .container {
@@ -937,7 +930,7 @@ section#projects ul.projects li .spacer {
   color: #000;
 }
 #blog h1 {
-  font-family: Oswald;
+  font-family: "jaf-facitweb";
   font-size: 1.6em;
   line-height: 1em;
   text-transform: uppercase;
@@ -954,13 +947,13 @@ section#projects ul.projects li .spacer {
   }
 }
 #blog h2 {
-  font-family: 'Droid Sans', sans-serif;
+  font-family: "franklin-gothic-urw", sans-serif, sans-serif;
   margin: 0.3em 0 0.3em 0;
 }
 #blog h3 {
-  font-family: 'Fjord One', sans-serif, Geogria, "Times New Roman", serif;
+  font-family: "jaf-facitweb", sans-serif, Geogria, "Times New Roman", serif;
   font-weight: 100;
-  font-size: 1em;
+  font-size: 0.8em;
   letter-spacing: 0.02em;
   line-height: 1.5em;
   font-size: 2.0em;
@@ -989,7 +982,7 @@ section#projects ul.projects li .spacer {
   position: relative;
   z-index: 999;
   color: #fff;
-  font-family: 'Droid Sans', sans-serif;
+  font-family: "franklin-gothic-urw", sans-serif, sans-serif;
   font-size: 0.8em;
   background-color: #000;
 }
@@ -1029,7 +1022,7 @@ section#projects ul.projects li .spacer {
 #blog footer {
   margin: 0 -20px 0 -20px;
   padding: 1em 20px 3em 20px;
-  font-family: 'Droid Sans', sans-serif;
+  font-family: "franklin-gothic-urw", sans-serif, sans-serif;
   background-color: #141414;
   font-size: 0.8em;
   line-height: 1.4;
@@ -1062,17 +1055,17 @@ section#projects ul.projects li .spacer {
   font-style: normal;
 }
 #blog h4 {
-  font-family: 'Fjord One', sans-serif, Geogria, "Times New Roman", serif;
+  font-family: "jaf-facitweb", sans-serif, Geogria, "Times New Roman", serif;
   font-weight: 100;
-  font-size: 1em;
+  font-size: 0.8em;
   letter-spacing: 0.02em;
   font-weight: bold;
 }
 #blog p,
 #blog li {
-  font-family: 'Fjord One', sans-serif, Geogria, "Times New Roman", serif;
+  font-family: "jaf-facitweb", sans-serif, Geogria, "Times New Roman", serif;
   font-weight: 100;
-  font-size: 1em;
+  font-size: 0.8em;
   letter-spacing: 0.02em;
   margin-bottom: 0;
   font-size: 0.9em;
@@ -1137,9 +1130,9 @@ section#projects ul.projects li .spacer {
   margin: 1em 0 0 0;
 }
 #blog .input {
-  font-family: 'Fjord One', sans-serif, Geogria, "Times New Roman", serif;
+  font-family: "jaf-facitweb", sans-serif, Geogria, "Times New Roman", serif;
   font-weight: 100;
-  font-size: 1em;
+  font-size: 0.8em;
   letter-spacing: 0.02em;
   margin: 1em 0 1em 0;
 }
@@ -1162,7 +1155,7 @@ section#projects ul.projects li .spacer {
 }
 #blog .buttons li {
   float: left;
-  font-family: 'Droid Sans', sans-serif;
+  font-family: "franklin-gothic-urw", sans-serif, sans-serif;
   margin: 0 1em 0.1em 0;
   background-color: #000;
   color: #fff;

@@ -28,53 +28,55 @@
 
 		p:nth-of-type(1) {
 			font-size: 3.4em;
-			font-weight: 400;
-			text-transform: uppercase;
+			font-weight: 100;
+			letter-spacing: -0.05em;
 		}
 
 		p:nth-of-type(2) {
-			font-size: 1.02em;
-			word-spacing: 0.05em;
+			font-size: 1em;
+			word-spacing: -0.1em;
 			letter-spacing: -0.025em;
+			font-weight: 400;
 			font-family: @fjord;
-			margin: 0.5em 0 0.25em 0;
+			margin: 20px 0 0.25em 0;
 		}
 
 		p:nth-of-type(3) {
-			font-size: 1.02em;
-			word-spacing: -0.05em;
+			font-size: 1em;
+			word-spacing: -0.1em;
 			letter-spacing: -0.025em;
+			font-weight: 400;
 			font-family: @fjord;
-			margin: 0.25em 0 0.5em 0;
+			margin: 0.25em 0 20px 0;
 		}
 
 		p:nth-of-type(4) {
 			font-size: 0.45em;
-			font-family: @fjord;
+			font-family: @droid;
 		}
 
 		a {
 			display: inline-block;
 			@am: 0.2em;
 			margin: 0.5em @am 0 @am;
-			color: white;
-			background-color: black;
+			color: black;
+			background-color: white;
 			padding: 0.5em 0.5em 0.5em 0.5em;
 			width: 6em;
 			text-transform: lowercase;
 			border: 1px solid transparent;
 
-			.transition(~"background-color .3s ease-in");
-			.transition(~"color .2s ease-in");
+			.transition(~"border-bottom .3s ease");
+			.transition(~"color .1s ease");
 
 			&:before {
 				// content: "/";
 			}
 
 			&:hover {
-				border: 1px solid #000;
-				background-color: #fff;
-				color: #000;
+				border-bottom: 1px solid #000;
+				// background-color: black;
+				// color: white;
 			}
 
 			.no-touch &:hover {
@@ -86,22 +88,25 @@
 		}
 
 		@media screen and (min-width: 600px) {
-			margin: 200px 0 220px 0;
+
+			margin: 270px 0 270px 0;
+
 			p:nth-of-type(1) {
-				font-size: 3.05em;
+				font-size: 0.8em;
 			}
 
 			p:nth-of-type(2), p:nth-of-type(3) {
-				font-size: 0.9em;
+				font-size: 0.6em;
 			}
 
 			p:nth-of-type(4) {
 				font-size: 0.35em;
+
 			}
 
 			a {
-				@am: 0.8em;
-				margin: 0.5em @am 0 @am;
+				@am: 0.33em;
+				margin: 0 @am 0 @am;
 			}
 		}
 
