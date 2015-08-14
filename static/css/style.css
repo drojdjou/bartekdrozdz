@@ -145,7 +145,7 @@ p {
   text-decoration: none;
 }
 #main h2.header {
-  margin: 130px 0 130px 0;
+  margin: 190px 0 190px 0;
   text-align: center;
   color: #000000;
   font-family: "jaf-facitweb";
@@ -166,12 +166,12 @@ p {
   line-height: 1;
 }
 #main h2.header p:nth-of-type(1) {
-  font-size: 3.4em;
+  font-size: 1.1em;
   font-weight: 100;
   letter-spacing: -0.05em;
 }
 #main h2.header p:nth-of-type(2) {
-  font-size: 1em;
+  font-size: 0.7em;
   word-spacing: -0.1em;
   letter-spacing: -0.025em;
   font-weight: 400;
@@ -179,7 +179,7 @@ p {
   margin: 20px 0 0.25em 0;
 }
 #main h2.header p:nth-of-type(3) {
-  font-size: 1em;
+  font-size: 0.7em;
   word-spacing: -0.1em;
   letter-spacing: -0.025em;
   font-weight: 400;
