@@ -42,7 +42,7 @@
             "deps": ["webgl", "webrtc"],
             "name": "Sound viz + LeapMotion",
             "imageLarge": "assets/play/spacerun.jpg",
-            "url": "http://sqr.bartekdrozdz.com/demo/soundviz/",
+            "url": "http://work.bartekdrozdz.com/soundviz/",
             "contentUrl": "data/soundviz",
             "tint": "#b0023f"
         },
