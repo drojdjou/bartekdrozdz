@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;400;700;900&display=swap');
+
+body {
+    background-color: #000;
+    color: #fff;
+    font-family: "Inter", Helvetica, Arial, sans-serif;
+    margin: 40px;
+    font-size: 10pt;
+}
+
+@media(min-width: 400px) {
+    body {
+        font-size: 12pt;
+    }
+}
+
+img {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    margin: 0 0 1em 0;
+}
+
+.row li {
+    float: left;   
+    margin-right: 0.5em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 400;
+    margin: 0;
+    line-height: 1.4;
+}
+
+h1 {
+    font-size: 2em;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 3em;
+    font-weight: 900;
+}
+
+h5 {
+    opacity: 0.6;
+    font-style: italic;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-top: 1.5em;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover, span#email:hover {
+    cursor: pointer;
+    color: #8888ff;
+}
