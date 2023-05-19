@@ -1,1 +1,1 @@
-[bartekdrozdz.com](https://bartekdrozdz.com) is a simple website where I gathered a few links to things work on now and worked on in the past. 
+[bartekdrozdz.com](https://bartekdrozdz.com) is a simple website where I gathered a few links to things I work on now and that I worked on in the past. 
