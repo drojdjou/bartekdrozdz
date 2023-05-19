@@ -1,4 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
+
+* {
+    box-sizing: border-box;
+    outline: none;
+	-webkit-tap-highlight-color: rgba(255, 255, 255, 0); 
+	-webkit-tap-highlight-color: transparent;
+	scrollbar-width: thin;
+}
 
 body {
     background-color: #fff;
@@ -8,8 +17,8 @@ body {
     margin: 0;
 }
 
-div {
-    box-sizing: border-box;
+main {
+    max-width: 1200px;
 }
 
 .bg-image {
@@ -26,6 +35,7 @@ div {
     top: 50vh;
     padding: 20px;
     background-color: #fff;
+    max-width: 600px;
 }
 
 @media (min-width: 800px) {
@@ -40,20 +50,49 @@ div {
     }
 }
 
+@media (min-width: 1200px) {
+    .bg-image {
+        width: 600px;
+        height: 100%;
+    }
+
+    .content {
+        top: 0;
+        margin-left: 600px;
+    }
+}
+
 h1, h2, h3, h4, h5, h6, p {
     font-weight: 400;
     margin: 0;
     line-height: 1.4;
 }
 
+p, ul {
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
+    margin-bottom: 1em;
+    line-height: 1.5;
+}
+
+p a {
+    text-decoration: underline;
+}
+
+p a:hover {
+    text-decoration: none;
+}
+
 h1 {
-    font-size: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+h1, h2 {
+    font-size: 2.4em;
     font-weight: 200;
 }
 
 h2 {
-    font-size: 2.4em;
-    font-weight: 200;
+    margin-bottom: 0;
 }
 
 h5 {
@@ -61,18 +100,28 @@ h5 {
     font-style: italic;
 }
 
-ul {
+ul.links {
+    display: block;
+    margin-bottom: 32px;
     list-style-type: none;
     padding: 0;
 }
 
-li {
-    margin-bottom: 20px;
+ul.links li {
+    margin-bottom: 16px;
 }
 
 a {
     color: inherit;
     text-decoration: none;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: #888;
+    opacity: 0.4;
+    margin: 20px 0 0 0;
 }
 
 img.icon {
