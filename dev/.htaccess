@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteBase /projects/bartekdrozdz/dev/
+RewriteRule ^notes/([^.]*)$ notes/index.php [L]

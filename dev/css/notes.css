@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&family=Roboto+Condensed&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto@300:400&&display=swap');
+
+* {
+    box-sizing: border-box;
+    outline: none;
+	-webkit-tap-highlight-color: rgba(255, 255, 255, 0); 
+	-webkit-tap-highlight-color: transparent;
+	scrollbar-width: thin;
+}
+
+body {
+    background-color: #fff;
+    color: #000;
+    font-size: 13pt;
+    margin: 0;
+    padding: 1em;
+    width: 100%;
+    font-family: "Merriweather", serif;
+    line-height: 1.66;
+}
+
+main {
+    width: 100%;
+}
+
+article {
+    margin-bottom: 2em;
+}
+
+a {
+    color: inherit;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+h1 {
+    font-family: "Roboto", sans-serif;
+    font-size: 5em;
+    margin: 0.5em 0 0 0;
+    font-weight: 300;
+    line-height: 1;
+} 
+
+h2 {
+    font-family: "Roboto Condensed", sans-serif;
+    margin: 0.5em 0 0.5em 0;
+    font-size: 2em;
+    line-height: 1;
+}
+
+h3 {
+    font-family: "Roboto Condensed", sans-serif;
+    margin: 0.25em 0 0.25em 0;
+    line-height: 1;
+}
+
+h4, h5, h6 {
+    font-family: "Roboto", sans-serif;
+    margin: 0 0 0.5em 0;
+    font-weight: normal;
+    line-height: 1.25;
+}
+
+h4 {
+    font-size: 1em;
+    font-weight: bold;
+}
+
+h5 {
+    font-size: 1em;
+}
+
+h6 {
+    background-color: #eee;
+    padding: 0.5em;
+    font-style: italic;
+    font-size: 12pt;
+    border-radius: 0.25em;
+    line-height: 1;
+    margin: 0.5em 0 0 0;
+}
+
+p, ul, ol {
+    margin: 1em 0 1em 0;
+}
+
+ul, ol {
+    padding: 0 0 0 1.25em;
+}
+
+aside {
+    font-size: 10pt;
+}
+
+@media(min-width: 800px) {
+    body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    main {
+        width: 800px;
+    }
+}
